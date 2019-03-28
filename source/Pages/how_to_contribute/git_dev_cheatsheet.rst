@@ -13,7 +13,7 @@ of the documentation Github repository:
 
 .. code-block:: bash
 
-        $ git clone https://github.com/sara-nl/htdpdocs.git
+        $ git clone https://github.com/sara-nl/spiderdocs.git
 
 
 * Check whether the Docker Sphinx image ``rtfd-build:base`` is available on your machine:
