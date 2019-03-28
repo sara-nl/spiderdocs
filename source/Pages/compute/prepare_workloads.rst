@@ -46,13 +46,15 @@ your job script to request from the scheduler the estimated resources.
 In the current setup of Slurm on Spider, we ask you to specify at least
 the following attributes:
 
-================    ===================   =================
-SBATCH directive    Functionality         Usage example
-================    ===================   =================
-``-N <number>``     the number of nodes   ``#SBATCH -N 1`` (the job will run on a single node)
-``-c <number>``     the number of cores   ``#SBATCH -c 2`` (the job will use 2 cores couple to 16GB memory)
-``-t HH:MM:SS``     the wall-clock time   ``#SBATCH -t=1:00:00`` (the job will run max for 1 hour)
-================    ===================   =================
+==================    ===================   =================
+SBATCH directive      Functionality         Usage example
+==================    ===================   =================
+``-N <number>``       the number of nodes   ``#SBATCH -N 1`` (the job will run on a single node)
+``-c <number>``       the number of cores   ``#SBATCH -c 2`` (the job will use 2 cores couple to 16GB memory)
+``-t HH:MM:SS``       the wall-clock time   ``#SBATCH -t=1:00:00`` (the job will run max for 1 hour)
+``-p <partition>``    partition selection   ``#SBATCH -p normal`` (the job will run max for 120 hours) 
+``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)  
+==================    ===================   =================
 
 Some notes:
 
@@ -61,6 +63,12 @@ Some notes:
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
   * For example, by specifying ``-c 4`` you request 4 cores and 32 GB RAM
+* We have configured two partitions on Spider as shown in the table above:
+
+  * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
+  * Infinite queues can run only on two worker nodes with a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
+
+
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
