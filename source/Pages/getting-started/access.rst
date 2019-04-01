@@ -38,9 +38,9 @@ still don't have a user account, please request an account first as described in
 If you already have an ssh key-pair please proceed to the next section to
 upload it. Else you have to generate a key-pair by using the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
-   $laptop$ ssh-keygen # This will create a key-pair in $HOME/.ssh directory
+   laptop$ ssh-keygen # This will create a key-pair in $HOME/.ssh directory
 
 
 .. _upload-key:

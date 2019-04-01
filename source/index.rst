@@ -68,7 +68,7 @@ Getting started
 
    Pages/getting-started/access
    Pages/getting-started/login
-   .. Pages/getting-started/environment
+   Pages/getting-started/project-environment
 
 =================
 Storage on Spider
