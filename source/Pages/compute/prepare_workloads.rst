@@ -65,6 +65,7 @@ Some notes:
   * For example, by specifying ``-c 4`` you request 4 cores and 32 GB RAM
 
 * We have configured two partitions on Spider as shown in the table above:
+
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
   * Infinite queues can run only on two worker nodes with a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
 
