@@ -49,11 +49,11 @@ Project directories
 
 Project space is a POSIX storage place allocated to a certain project. It includes the following shares:
 
-* `/home/$USER`: each project member in a project has her/his personal home space. Only the account owner can read and write data in this directory
-* `/project/[PROJECTNAME]/Data`: any project-specific data. Any member of the project can read data in this directory, but only the data manager(s) can write data
-* `/project/[PROJECTNAME]/Software`: any project-specific software. Any member of the project can read/execute software in this directory, but only the software manager(s) can install software
-* `/project/[PROJECTNAME]/Share`: any data to be shared among the project members. Any member of the project can read and write data in this directory
-* `/project/[PROJECTNAME]/Public`: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (not implemented yet).
+* ``/home/$USER``: each project member in a project has her/his personal home space. Only the account owner can read and write data in this directory
+* ``/project/[PROJECTNAME]/Data``: any project-specific data. Any member of the project can read data in this directory, but only the data manager(s) can write data
+* ``/project/[PROJECTNAME]/Software``: any project-specific software. Any member of the project can read/execute software in this directory, but only the software manager(s) can install software
+* ``/project/[PROJECTNAME]/Share``: any data to be shared among the project members. Any member of the project can read and write data in this directory
+* ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (not implemented yet).
 
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
