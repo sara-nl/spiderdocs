@@ -66,7 +66,7 @@ is an executable bash script with the following code;
    #SBATCH -N 1
    #SBATCH -c 1
    #SBATCH -t 1:00
-   srun python /home//hello_python_test/hello_world.py
+   srun python /home/[username]/[path-to-script]/hello_world.py
 
 You can submit this job script to the Slurm managed job queue as;
 
@@ -193,7 +193,7 @@ on job submission via the option ``--constraint=<constraint-label-1>,<constraint
 Here a comma separated list implies that all constraints in the list must be
 fulfilled before the job can be executed.
 
-In terms of Spider-specific constraints, we support the following constraint
+In terms of Spider-specific constraints, we support the following constraints
 to select specific hardware:
 
 1) cpu architecture constraint labels : 'ivy' , 'skylake'
@@ -206,8 +206,9 @@ As an example we provide below a bash shell script ``hello_world.sh`` that execu
 
    #!/bin/bash
    #SBATCH -c 2 --constraint=skylake,ssd
-   echo "start-your-script"
-   #start-your-script
+   echo "start hello script"
+   /home/[username]/[path-to-script]/hello
+   echo "end hello script"
 
 From the command line interface the above script may be submitted to Slurm via:
 ``sbatch hello_world.sh``

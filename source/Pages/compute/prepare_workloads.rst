@@ -1,9 +1,9 @@
 .. warning:: Please note that Spider is a fresh service - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
-.. _prepare-workloads:
-
 .. contents::
     :depth: 2
+
+.. _prepare-workloads:
 
 **********************
 Prepare your workloads
