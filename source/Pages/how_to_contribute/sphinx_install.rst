@@ -10,7 +10,7 @@ Introduction
 
 Spider documentation itself is written in *restructured text*. The HTML
 documentation is generated using *Sphinx*.  This page explains how to install
-the Sphinx software.
+the Sphinx software on your local machine.
 
 =================
 Installing Sphinx

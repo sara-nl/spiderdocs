@@ -136,9 +136,7 @@ Index
    Pages/how_to_contribute/index
    Pages/cookie_policy
 
-* :ref:`search`
-
-.. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
+.. Tip:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
 
