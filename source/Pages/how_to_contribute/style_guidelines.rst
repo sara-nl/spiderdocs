@@ -1,6 +1,3 @@
-.. toctree::
-   :hidden:
-
 .. _doc-style:
 
 ****************

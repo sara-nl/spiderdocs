@@ -42,6 +42,7 @@ As a Spider user, you will be able to:
 * Process large amount of independent simulations on a batch system
 * Run workflows consisting of simulations of such kind
 * Collaborate, share data and workflows with your project team
+* Interact with user-friendly interfaces for efficient data handling
 * Access HA external storage facilities with fast connectivity, such as SWIFT and dCache
 * Make your own backups to Tape, such as Data Archive
 * Benefit from extensive user support and a dedicated service desk

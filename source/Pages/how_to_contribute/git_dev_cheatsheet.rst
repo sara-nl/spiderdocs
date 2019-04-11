@@ -1,3 +1,5 @@
+.. _git-dev-branch:
+
 **************
 Git dev branch
 **************
@@ -16,13 +18,13 @@ of the documentation Github repository:
         $ git clone https://github.com/sara-nl/spiderdocs.git
 
 
-* Check whether the Docker Sphinx image ``rtfd-build:base`` is available on your machine:
+* Check whether the Docker Sphinx image ``readthedocs/build`` is available on your machine:
 
 .. code-block:: bash
 
         $ docker images
-        # REPOSITORY    TAG   IMAGE ID    CREATED       SIZE
-        # rtfd-build    base  4d74a62i    2 months ago  4.29GB
+        # REPOSITORY        TAG     IMAGE ID      CREATED       SIZE
+        # readthedocs/build latest  6b9ab0a5ddaf  12 months ago 8.86GB
 
 If you miss the image, download it as explained :ref:`here <docker-install>`.
 
@@ -31,7 +33,7 @@ If you miss the image, download it as explained :ref:`here <docker-install>`.
 
 .. code-block:: bash
 
-        $ cd htdpdocs
+        $ cd spiderdocs
         $ git pull
 
 
@@ -136,7 +138,7 @@ warning 'This branch is 1 commit behind master.' You can resolve this with the f
 
 .. code-block:: bash
 
-        $ cd htdpdocs
+        $ cd spiderdocs
         $ git pull
 
 

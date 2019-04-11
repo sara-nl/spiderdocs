@@ -30,15 +30,15 @@ Login to the UI
 
 * Login to Spider via a terminal with the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
-   $ssh [USERNAME]@[Spider HOSTNAME]
+   ssh [USERNAME]@[Spider HOSTNAME]
 
 * For example:
 
-.. code-block:: console
+.. code-block:: bash
 
-      $ssh homer@spider.surfsara.nl
+      ssh homer@spider.surfsara.nl
       #[homer@htp-ui ~]$  # this is the first prompt upon login
 
 Congrats! You've just logged in to Spider.

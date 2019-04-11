@@ -68,7 +68,7 @@ Getting started
 
    Pages/getting-started/access
    Pages/getting-started/login
-   .. Pages/getting-started/environment
+   Pages/getting-started/project-environment
 
 =================
 Storage on Spider
@@ -136,9 +136,7 @@ Index
    Pages/how_to_contribute/index
    Pages/cookie_policy
 
-* :ref:`search`
-
-.. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
+.. Tip:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
 

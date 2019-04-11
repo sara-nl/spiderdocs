@@ -27,17 +27,17 @@ The ``srun`` command when used on the command line is executed locally by Slurm,
 an example of this is given below. A python script, ``hello_world.py``, has the
 following content;
 
-.. code-block:: console
+.. code-block:: bash
 
    #!/usr/bin/env python
    print("Hello World")
 
 This python script can be locally executed as;
 
-.. code-block:: console
+.. code-block:: bash
 
-   $ srun python hello_world.py
-   Hello World
+   srun python hello_world.py
+   #Hello World
 
 Typically ``srun`` should only be used with a job script that is submitted with
 ``sbatch`` to the Slurm managed job queue.
@@ -60,28 +60,28 @@ queue via ``sbatch`` and provide options ``- N 1`` to request only 1 node,
 request a maximum run time of 1 minute. The job script, ``hello_world.sh``,
 is an executable bash script with the following code;
 
-.. code-block:: console
+.. code-block:: bash
 
-   ##!/bin/bash
-   ##SBATCH -N 1
-   ##SBATCH -c 1
-   ##SBATCH -t 1:00
-   srun python /home//hello_python_test/hello_world.py
+   #!/bin/bash
+   #SBATCH -N 1
+   #SBATCH -c 1
+   #SBATCH -t 1:00
+   srun python /home/[username]/[path-to-script]/hello_world.py
 
 You can submit this job script to the Slurm managed job queue as;
 
-.. code-block:: console
+.. code-block:: bash
 
-   $ sbatch hello_world.sh
-   Submitted batch job 808
+   sbatch hello_world.sh
+   #Submitted batch job 808
 
 The job is scheduled in the queue with ``jobid 808`` and the stdout output of
 the job is saved in the ascii file ``slurm-808.out``.
 
-.. code-block:: console
+.. code-block:: bash
 
-   $ more slurm-808.out
-   Hello World
+   more slurm-808.out
+   #Hello World
 
 More information on ``sbatch`` can be found at the `Slurm documentation page`_.
 
@@ -140,12 +140,12 @@ job workflow:
 
 Here is a job script template for ``$TMPDIR`` usage;
 
-.. code-block:: console
+.. code-block:: bash
 
-   ##!/bin/bash
-   ##SBATCH -N 1      #request 1 node
-   ##SBATCH -c 1      #request 1 core and 8GB RAM
-   ##SBATCH -t 5:00   #request 5 minutes jobs slot
+   #!/bin/bash
+   #SBATCH -N 1      #request 1 node
+   #SBATCH -c 1      #request 1 core and 8GB RAM
+   #SBATCH -t 5:00   #request 5 minutes jobs slot
 
    mkdir "$TMPDIR"/myanalysis
    cp -r $HOME/mydata "$TMPDIR"/myanalysis
@@ -153,12 +153,70 @@ Here is a job script template for ``$TMPDIR`` usage;
 
    # = Run you analysis here =
 
-   ##when done, copy the output to your /home storage
+   #when done, copy the output to your /home storage
    tar cf output.tar output/
    cp "$TMPDIR"/myanalysis/output.tar $HOME/
    echo "SUCCESS"
    exit 0
 
+
+=================
+Slurm constraints
+=================
+
+Regular constraints
+===================
+
+The Slurm scheduler will schedule your job on any compute node that can fulfil
+the constraints that you provide with your ``sbatch`` command upon job
+submission.
+
+The minimum constraints that we ask you to provide with your job are given in
+:ref:`prepare-workloads`.
+
+Many other constraints can also be provided with your job submission. However,
+by adding more constraints it may become more difficult to schedule and execute
+your job. See the Slurm manual (https://slurm.schedmd.com) for more information
+and please note that not all constraint options are implemented on Spider. In
+case you are in doubt then please contact :ref:`our helpdesk <helpdesk>`.
+
+Spider-specific constraints
+===========================
+
+In addition to the regular ``sbatch`` constraints, we also have introduced a
+number of Spider-specific constraints that are tailored to the hardware of our
+compute nodes for the Spider platform.
+
+These specific constraints need to be specified via constraint labels to ``sbatch``
+on job submission via the option ``--constraint=<constraint-label-1>,<constraint-label-2>,...,<constraint-label-n>``
+
+Here a comma separated list implies that all constraints in the list must be
+fulfilled before the job can be executed.
+
+In terms of Spider-specific constraints, we support the following constraints
+to select specific hardware:
+
+1) cpu architecture constraint labels : 'ivy' , 'skylake'
+
+2) local scratch constraint labels    ; 'hdd' , 'ssd'
+
+As an example we provide below a bash shell script ``hello_world.sh`` that executes a compiled C script called 'hello'. In this script the #SBATCH line specifies that this script may only be executed on a node with 2 cpu-cores where the node must have a skylake cpu-architecture and ssd (solid state drive) local scratch disk space.
+
+.. code-block:: bash
+
+   #!/bin/bash
+   #SBATCH -c 2 --constraint=skylake,ssd
+   echo "start hello script"
+   /home/[username]/[path-to-script]/hello
+   echo "end hello script"
+
+From the command line interface the above script may be submitted to Slurm via:
+``sbatch hello_world.sh``
+
+Please note that not all combinations will be supported. In case you submit a
+combination that is not available you will receive the following error message:
+
+   'sbatch: error: Batch job submission failed: Requested node configuration is not available'
 
 
 

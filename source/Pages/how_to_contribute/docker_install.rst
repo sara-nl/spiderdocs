@@ -12,7 +12,7 @@ Before you start with the Docker image, make sure that:
 
 * You have `Docker Engine installed <https://docs.docker.com/engine/installation/>`_
 * Docker is running on your host
-* You have cloned the ``htdpdocs`` repository
+* You have cloned the ``spiderdocs`` repository
 
 ===========
 Build image

@@ -62,22 +62,6 @@ Reference tag: place above a title: .. _my-reference-label:
 Then refer to it from another page as. For example, for this cheatsheet: :ref:`cheatsheet` or ref:`other label <cheatsheet>`
 
 
-
-.. ============ Commands ===============
-
-This is a command::
-
-  openssl pkcs12 -in user.p12 -out userkey.pem -nocerts
-
-And this is a code block:
-
-.. code-block:: console
-	:linenos:
-
-	$openssl pkcs12 -in user.p12 -out userkey.pem -nocerts
-
-
-
 .. ============ Titles ===============
 
 ******************
@@ -131,9 +115,17 @@ value3               42
 
 .. ============ Note boxes ===============
 
-.. note::  This is a **note** box.
+.. WARNING::
+   This is a **warning** box.
 
-.. warning:: This is a **warning** box.
+.. Note::
+   This is a **note** box.
+
+.. Tip::
+   This is a **tip** box.
+
+.. Error::
+   This is an **error** box.
 
 .. seealso:: This is a simple **seealso** note.
 
@@ -161,11 +153,5 @@ value3               42
     :width: 200px
     :align: center
     :height: 100px
-
-.. figure:: /Images/surf_logos/SURF_SARA_fc.png
-    :width: 200px
-    :align: center
-    :height: 100px
-
 
 .. _`SURFsara website`: https://surfsara.nl/
