@@ -142,6 +142,6 @@ When you are done with your changes, commit and push to GitHub. See
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 
-.. _`Spider Github repo`: https://surfsara.nl/
+.. _`Spider Github repo`: https://github.com/sara-nl/spiderdocs
 .. _`Sphinx`: http://www.sphinx-doc.org
 .. _`ReadTheDocs`: https://readthedocs.org/
