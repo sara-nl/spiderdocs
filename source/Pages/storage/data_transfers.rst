@@ -42,54 +42,144 @@ logging into the system. For those cases that require another client for data
 transfers, we kindly request that you to contact us via
 :ref:`our helpdesk <helpdesk>`.
 
-Below we provide a number of examples.
+Data transfers between Spider and dCache
+========================================
 
-**1. SURFsara Data Archive**  
+SURFsara hosts a large storage system which consists of magnetic tape storage and hard disk storage. It uses `dCache system`_ that can store and retrieve huge amounts of data, distributed among a large number of heterogenous server nodes, under a single virtual filesystem tree. You may use the storage if your data does not fit within the storage allocation on Spider project space, or if you wish to use Tape storage.
 
-In order to store and retrieve data on and from the SURFsara Data Archive you need to have a separate (CUA) account at Archive. The Data Archive service is described in more detail on the `Data Archive - general information`_ page and on the `Data Archive - description`_  
+There are several storage clients that can interact with dCache and we provide here some examples with the clients we support. To use these clients you need to have an X509 Grid certificate and be a part of a Virtual Organisation (VO). Please refer to our Grid documentation page for instructions on `how to get a certificate`_  and `join a (VO)`_. 
 
-If you are logged in as a user on Spider then we support ``scp`` and ``rsync`` to transfer data between Spider and Data Archive as follows,  
+In the examples below, a user who is a member of the VO e.g., lsgrid, has the certificate installed on to the Spider login node and will copy data from dCache to/from your home directory on Spider. You may also transfer data to/from your project spaces.
 
-Transfer data from Spider to Data Archive:  
+Proxy creation
+--------------
 
-.. code-block:: bash
+To be able to interact with dCache using a storage client, you need to create a proxy. A proxy is a short-lived certificate/private key combination which is used to perform actions on your behalf without using passwords. With the following command you can set the default path for the proxy you will generate such that it is available on all worker nodes on Spider.
 
-        scp /home/<spider-user>/transferdata.tar.gz <archive-user>@archive.surfsara.nl:/home/<archive-user>/  
-        rsync -a -W /home/<spider-user>/transferdata.tar.gz <archive-user>@archive.surfsara.nl:/home/<archive-user>/  
+.. code-block:: console
+  
+   export X509_USER_PROXY=$HOME/.proxy
 
-Retrieve data from Data Archive on Spider:  
 
-.. code-block:: bash
+You may also add the above command to your $HOME/.bashrc file so that this path is defined for your future logins. Now issue the following command to create a local proxy. The pass phrase you are asked for, is your certificate password: 
 
-        scp <archive-user>@archive.surfsara.nl:/home/<archive-user>/transferdata.tar.gz /home/<spider-user>/  
-        rsync -a -W <archive-user>@archive.surfsara.nl:/home/<archive-user>/transferdata.tar.gz /home/<spider-user>/
+.. code-block:: console
+  
+   voms-proxy-init --voms lsgrid
 
-Best practices for the usage of Data Archive are described on the `Data Archive - usage`_ page. 
 
-Side note: If the file to be retrieved from Data Archive to Spider is not directly available on disk then the scp/rsync command will hang until the file is moved from tape to disk. Data Archive users can query the state of their files by logging into the Data Archive user interface and performing a dmls -l on the files of interest.  
+You will see the following output in your terminal:
 
-**2. Own Unix-based system (Linux, Unix, Mac)**  
+.. code-block:: console
+  
+   Enter GRID pass phrase for this identity:
+   Contacting voms.grid.sara.nl:30018  [/O=dutchgrid/O=hosts/OU=sara.nl/CN=voms.grid.sara.nl] "lsgrid"...
+   Remote VOMS server contacted successfully.
+   Created proxy in /tmp/x509up_u39111.
+   Your proxy is valid until Thu Jan 05 02:07:29 CET 2016
 
-If you are logged in as a user on Spider then we support ``scp`` and ``rsync`` to transfer data between Spider and your own Unix-based system as follows,
 
-Transfer data from Spider to your own Unix-based system:  
+You can inspect your local proxy with the command:
 
-.. code-block:: bash
+.. code-block:: console
+  
+   voms-proxy-info -all
 
-        scp /home/<spider-user>/transferdata.tar.gz <own-system-user>@own_system.nl:/home/<own-system-user>/  
-        rsync -a -W /home/<spider-user>/transferdata.tar.gz <own-system-user>@own_system.nl:/home/<own-system-user>/  
 
-Retrieve data from own Unix-based system on Spider:  
+Globus client
+-------------
+Please note that you need a valid proxy as described above to run the following commands.
 
-.. code-block:: bash
+* Listing directories on dCache:
 
-        scp <own-system-user>@own_system.nl:/home/<own-system-user>/transferdata.tar.gz /home/<spider-user>/  
-        rsync -a -W <own-system-user>@own_system.nl:/home/<own-system-user>/transferdata.tar.gz /home/<spider-user>/
+  .. code-block:: console
+  
+     globus-url-copy -list gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
+
+* Copy file from dCache to Spider:
+
+  .. code-block:: console
+
+     globus-url-copy \
+         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
+         file:///`pwd`/your-data.tar 
+
+* Copy file from Spider to dCache:
+
+  .. code-block:: console
+
+     globus-url-copy \
+         file:///$HOME/your-data.tar \
+         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar 
+
+* Copy directory from dCache to Spider:
+
+First create the directory locally, e.g. testdir.
+
+  .. code-block:: console
+
+     globus-url-copy -cd -r \
+     gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/testdir/ \
+     file:///$HOME/testdir/
+
+The ``globus-*`` client does not offer an option to create/delete directories or delete files. For this purpose you may use the gfal client as described below.
+
+gfal client
+-----------
+Please note that you need a valid proxy as described above to run the following commands.
+
+* Listing directories on dCache:
+
+ .. code-block:: console
+  
+     gfal-ls -l gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
+
+* Create directory on dCache:
+
+ .. code-block:: console
+  
+     gfal-mkdir gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/newdir/
+
+* Copy file from dCache to Spider:
+
+
+  .. code-block:: console
+
+     gfal-copy \
+         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
+         file:///`pwd`/your-data.tar 
+
+* Copy file from Spider to dCache:
+
+  .. code-block:: console
+
+     gfal-copy \
+         file:///$HOME/your-data.tar \
+         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar 
+
+
+* Remove a file from dCache:
+
+  .. code-block:: console
+
+     gfal-rm gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar 
+
+
+* Remove a whole (non empty) directory from dCache:
+
+  .. code-block:: console
+
+     gfal-rm -r gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/
+ 
+Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. For this purpose you may use globus-url-copy.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 
 .. Links:
-.. _`Data Archive - general information`: https://www.surf.nl/en/secure-long-term-storage-with-data-archive
-.. _`Data Archive - description`: https://userinfo.surfsara.nl/systems/data-archive/description
-.. _`Data Archive - usage`: https://userinfo.surfsara.nl/systems/data-archive/usage
+
+.. _`dCache system`: https://www.dcache.org/
+.. _`how to get a certificate`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#get-a-grid-certificate
+.. _`join a (VO)`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#join-a-virtual-organisation
+
+
