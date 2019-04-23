@@ -55,8 +55,7 @@ If you miss the image, download it as explained :ref:`here <docker-install>`.
 	# example
 	# git checkout -b picas
 
-* The previous command will immediately switch your current work branch to the newly created branch. 
-Check with:
+* The previous command will immediately switch your current work branch to the newly created branch. Check with:
 	
 .. code-block:: bash
 
@@ -110,7 +109,7 @@ Check with:
 
         $ git push -u origin picas
         # ...
-        # Branch 'picas' set up to track remote branch 'dev' from 'origin'.
+        # Branch 'picas' set up to track remote branch 'picas' from 'origin'.
 
 Note! We push changes on ``picas`` branch, nothing changes on ``master``.
 
