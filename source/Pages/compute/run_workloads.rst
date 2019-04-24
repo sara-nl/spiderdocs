@@ -159,6 +159,35 @@ Here is a job script template for ``$TMPDIR`` usage;
    echo "SUCCESS"
    exit 0
 
+==============================================================
+Using local ``/scratch`` with input/output data from/to dCache
+==============================================================
+
+Below we show another example where local ``/scratch`` is used and the input/output data are stored on dCache. You need a valid :ref:`proxy <data-transfers>` to interact with dCache using the storage clients.
+
+Here is a job script template for ``$TMPDIR`` usage;
+
+.. code-block:: bash
+   
+   #!/bin/bash
+   #SBATCH -N 1      #request 1 node
+   #SBATCH -c 1      #request 1 core and 8GB RAM
+   #SBATCH -t 5:00   #request 5 minutes jobs slot
+   
+   mkdir "$TMPDIR"/myanalysis
+   cd "$TMPDIR"/myanalysis
+   gfal-copy gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/path-to-your-data/your-data.tar file:///`pwd`/your-data.tar
+   
+   # = Run you analysis here =
+   
+   #when done, copy the output to dCache
+   tar cf output.tar output/
+   gfal-copy file:///`pwd`/output.tar gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/path-to-your-data/output.tar 
+   echo "SUCCESS"
+   exit 0
+
+Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging). We refer to the Grid documentation on how to `stage`_ data. 
+
 
 =================
 Slurm constraints
@@ -225,3 +254,4 @@ combination that is not available you will receive the following error message:
 .. Links:
 
 .. _`Slurm documentation page`: https://slurm.schedmd.com/
+.. _`stage`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_storage.html#staging-groups-of-files
