@@ -107,6 +107,11 @@ Software on Spider
 Advanced topics
 ===============
 
+.. toctree::
+   :maxdepth: 1
+
+   Pages/advanced/pilot_jobs
+
 ==========================
 Downtimes and maintenances
 ==========================
