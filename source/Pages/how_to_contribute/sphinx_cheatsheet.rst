@@ -17,13 +17,29 @@ The first lines of this page will also be explained later on in this document
 
 .. ============ Text fonts ===============
 
-*italic word*
+*Moderate emphasis*
 
-**bold word**
+**Strong emphasis**
 
 ``This is text in Courier``
 
 This is plain text.
+
+* Use ``literal markup`` for:
+
+  * pieces of code
+  * commands
+  * arguments
+  * file names, hostnames
+  * a specific term, when emphasis is on its name
+  * configuration file statements and values
+
+
+* Acronyms:
+
+In general: avoid acronyms. When you want to use them, the first occurrence on
+a page should explain them: CephFS (Ceph Filesystem). Sphinx supports a
+:abbr: tag, see http://www.sphinx-doc.org/en/stable/markup/inline.html#other-semantic-markup. Here's a test: :abbr:`CephFS (Ceph Filesystem)`
 
 
 .. ============= Bullets =================
@@ -153,5 +169,37 @@ value3               42
     :width: 200px
     :align: center
     :height: 100px
+
+
+.. ============== Code ====================
+
+* When you want to display commands, output and comments, use ``.. code-block:: console``. Prefix commands with a ``$`` and prefix comments with ``##``, otherwise they are marked up as a command. Example:
+
+  .. code-block:: console
+
+     $echo 'Hello World!'
+     Hello World!
+     ## Comments should be prefixed with a double ``#``.
+
+
+* When you want to display commands and comments, use ``.. code-block:: bash``. Don't prefix commands. Example:
+
+   .. code-block:: bash
+
+      # [homer@htp-ui ~]$ is the first prompt upon login
+      ssh [USERNAME]@[Spider HOSTNAME]
+
+
+* You can add line numbers to code examples with the :linenos: parameter.
+
+.. code-block:: bash
+   :linenos:
+
+   # [homer@htp-ui ~]$ is the first prompt upon login
+   ssh [USERNAME]@[Spider HOSTNAME]
+
+* To display the contents of a shell script, use ``.. code-block:: bash``.
+* To display configuration files, use ``.. code-block:: cfg``.
+
 
 .. _`SURFsara website`: https://surfsara.nl/

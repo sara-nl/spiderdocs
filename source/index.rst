@@ -28,115 +28,47 @@
 Spider User Guide
 *****************
 
-Welcome to the Spider platform user guide! Spider is a service
-based at `SURFsara`_ and tailored for scientists with data-intensive problems.
+Welcome to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` user guide! :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` is a feature-rich platform based at `SURFsara`_
+and tailored for data processing and collaboration.
 
-The aim of this user guide is to help new users getting started on the
-Spider, while it also serves a useful reference for existing Spider
-members. Whether you seek information for Spider in general, or how to
-access and use the available services, or best practices for the efficient use
+This guide aims to help new users getting started on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`, while it also serves a useful reference for
+existing :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` members. Whether you seek information for Spider in general, or how to
+access and use the available features, or best practices for the efficient use
 of the resources, read on!
 
-=====
-About
-=====
+Table of contents:
+
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+
+   Pages/about
+   Pages/getting_started
+   Pages/storage_on_spider
+   Pages/software_on_spider
+   Pages/compute_on_spider
+   Pages/workflows
+   Pages/web_public_view
+   Pages/jupyter_notebooks
+   Pages/maintenances
+   Pages/getting_help
+
+Other info:
 
 .. toctree::
    :maxdepth: 1
 
-   Pages/about/what_is_it.rst
-   Pages/about/for_whom.rst
-   Pages/about/how_to_grant_access
-   .. Pages/about/architecture
-   Pages/about/roadmap
-
-.. =================
- Project lifecycle
- =================
-
-   .. Pages/project_lifecycle/user_lifecycle
-   .. Pages/project_lifecycle/start_project
-   .. Pages/project_lifecycle/extend_project
-   .. Pages/project_lifecycle/join_existing_project
-
-===============
-Getting started
-===============
-
-.. toctree::
-   :maxdepth: 1
-
-   Pages/getting-started/access
-   Pages/getting-started/login
-   Pages/getting-started/project-environment
-
-=================
-Storage on Spider
-=================
-
-.. toctree::
-   :maxdepth: 1
-
-   Pages/storage/data_storage
-   Pages/storage/data_transfers
-   Pages/storage/backup_policies
-
-=================
-Compute on Spider
-=================
-
-.. toctree::
-    :maxdepth: 1
-
-    Pages/compute/common_commands
-    Pages/compute/prepare_workloads
-    Pages/compute/run_workloads
-
-==================
-Software on Spider
-==================
-
-.. toctree::
-   :maxdepth: 1
-
-   Pages/software/available_software
-   Pages/software/user_software
-   Pages/software/singularity
-
-===============
-Advanced topics
-===============
-
-==========================
-Downtimes and maintenances
-==========================
-
-.. ===============
- Success stories
- ===============
-
-=========
-Need help
-=========
-
-.. toctree::
-   :maxdepth: 1
-
-   Pages/need_help/helpdesk
-   Pages/need_help/faq
-
-
-=====
-Index
-=====
-
-.. toctree::
-   :maxdepth: 1
-
-   Pages/how_to_contribute/index
+   Pages/contributing_howto
    Pages/cookie_policy
 
-.. Tip:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
+**Happy Spidering!..**
+
+
+.. Tip:: Need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
 

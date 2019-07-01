@@ -4,18 +4,10 @@
 Sphinx-install
 **************
 
-============
-Introduction
-============
-
-Spider documentation itself is written in *restructured text*. The HTML
-documentation is generated using *Sphinx*.  This page explains how to install
+Spider documentation itself is written in *restructured text*. This page explains how to install
 the Sphinx software on your local machine.
 
-=================
-Installing Sphinx
-=================
-
+=====
 Linux
 =====
 
@@ -29,6 +21,7 @@ On Ubuntu, install with::
 
     sudo apt-get install python-sphinx
 
+========
 Mac OS X
 ========
 

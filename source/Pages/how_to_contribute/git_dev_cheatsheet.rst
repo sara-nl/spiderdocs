@@ -47,7 +47,7 @@ If you miss the image, download it as explained :ref:`here <docker-install>`.
         # remotes/origin/dev
         # remotes/origin/master
 
-* For each (big) change in the docs create a new branch: 
+* For each (big) change in the docs create a new branch:
 
 .. code-block:: bash
 
@@ -56,7 +56,7 @@ If you miss the image, download it as explained :ref:`here <docker-install>`.
 	# git checkout -b picas
 
 * The previous command will immediately switch your current work branch to the newly created branch. Check with:
-	
+
 .. code-block:: bash
 
          $ git branch -a
@@ -66,7 +66,7 @@ If you miss the image, download it as explained :ref:`here <docker-install>`.
          remotes/origin/HEAD -> origin/master
          remotes/origin/dev
          remotes/origin/master
-        
+
 * Merge master into the development branch to synch with the latest changes:
 
 .. code-block:: bash
@@ -132,12 +132,17 @@ Note! We push changes on ``picas`` branch, nothing changes on ``master``.
   * Add a description and check changes
   * Create a pull request
 
+* The approver (Helpdesk of the day) has to:
+
+  * Accept or Deny the pull request
+  * Remove the feature branch corresponding to this pull request from the Web interface
+
 
 ====================
 Commit behind master
 ====================
 
-Due to the multiple commits in the `dev` branch and possible pending pull requests, you may encounter the
+Due to the multiple commits in the same branch and possible pending pull requests, you may encounter the
 warning 'This branch is 1 commit behind master.' You can resolve this with the following steps:
 
 * Browse to the root directory of the documentation and pull to fetch the latest version to your local master:
