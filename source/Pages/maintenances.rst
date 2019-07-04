@@ -1,4 +1,4 @@
-.. warning:: Please note that Spider is a fresh service - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
+.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 .. _maintenances:
 
@@ -6,9 +6,9 @@
 Maintenances
 ************
 
-.. Tip:: To keep the system healthy we need sometimes to interrupt the service for maintenance. In this page you will find:
+.. Tip:: To keep the system healthy we need sometimes to interrupt the platform for maintenance. In this page you will find:
 
-     * the current status of the service & the maintenances log
+     * the current status of the platform & the maintenances log
      * our downtime policy
 
 
@@ -62,7 +62,7 @@ Policy
 All Spider users are notified in advance for the scheduled maintenance windows.
 Exceptions to this policy are made in the following cases:
 
-* Urgent changes are needed for the continuity of the service
+* Urgent changes are needed for the continuity of the platform
 * Patches for high-risk security issues
 
 In these cases, the changes will be applied as soon as needed, even outside maintenance windows.

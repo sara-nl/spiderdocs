@@ -1,4 +1,4 @@
-.. warning:: Please note that Spider is a fresh service - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
+.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 .. _about:
 
@@ -29,7 +29,7 @@ exceedingly short timespans. Superb network throughput ensures connectivity to
 external data storage systems.
 
 Apart from scaling and capacity, the platform is aimed at interoperability with
-other services, allowing for a high degree of integration and customization into
+other platforms, allowing for a high degree of integration and customization into
 the user domain, and further enhanced by specific features supporting
 collaboration, data (re)distribution, private resources or even private
 Spider instances.
@@ -40,10 +40,10 @@ for Interoperable Data Extraction and Redistribution)`:
 .. image:: /Images/Spider_features.png
    :align: center
 
-.. _service-components:
+.. _platform-components:
 
 ==================
-Service components
+Platform components
 ==================
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
@@ -97,7 +97,7 @@ Extraction and Redistribution)` if your project reflects some of the following n
 Also :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is a viable alternative for current and potential
 medium tail `Grid`_ users. It is a low-threshold platform, as opposed to highly
-complex Grid services that take many months of specialist development
+complex Grid platforms that take many months of specialist development
 before they can start. Being built upon the exact same physical data-processing
 infrastructure and sharing the same scalable network connectivity as the classical
 Grid-based processing environments, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
@@ -153,8 +153,8 @@ configuration to get going.  As a project member you are assigned at least one
 of the following roles:
 
 * *technical lead* role: the contact person for any technical matters that affect the design and execution of the project and the privileges of other members
-* *data manager* role: designated data dissemination manager; responsible for the management of project owned data
-* *software manager* role: designated software manager; responsible to install and maintain the project owned software
+* *data manager* role: designated data dissemination manager; responsible for the management of project-owned data
+* *software manager* role: designated software manager; responsible to install and maintain the project-owned software
 * *normal user* role: scientific users who focus on their data analysis
 
 .. _scientific-catalog:
@@ -183,8 +183,8 @@ The scientific catalog has only one (but important) role:
 Interoperability hotspot
 ========================
 
-In contrast to many of the processing services already available,
-typically offering an all-inclusive solution within the boundaries of the service
+In contrast to many of the processing platforms already available,
+typically offering an all-inclusive solution within the boundaries of the their
 environment, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is exactly the opposite. It aims to be a connecting
 platform in a world that has already a lot to offer in terms of storage systems,
@@ -233,7 +233,7 @@ Ending a project
 ================
 
 Once your project ends, all the relevant data and accounts will be removed
-according to the service terms and conditions.
+according to the our terms and conditions rules.
 
 
 

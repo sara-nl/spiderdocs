@@ -1,4 +1,4 @@
-.. warning:: Please note that Spider is a fresh service - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
+.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 ************
 Getting help
@@ -72,7 +72,7 @@ Tutorials
 
 .. Links:
 
-.. _`Here`: https://www.surf.nl/en/purchasing-services-from-surfsara/helpdesk-surfsara-services
+.. _`Here`: https://www.surf.nl/en/purchasing-platforms-from-surfsara/helpdesk-surfsara-platforms
 .. _`Introduction to Unix`: https://swcarpentry.github.io/shell-novice/
 .. _`Introduction to batch scheduling systems`: https://psteinb.github.io/hpc-in-a-day/
 .. _`Slurm Quickstart`: https://slurm.schedmd.com/quickstart.html

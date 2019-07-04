@@ -1,4 +1,4 @@
-.. warning:: Please note that Spider is a fresh service - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
+.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 ***************
 Web public view
@@ -12,7 +12,7 @@ Web public view
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 allows for public data sharing in a fast and easy way, which is often a huge problem
-in other services. In a web-based front-end, the so called *web public view*,
+in other platforms. In a web-based front-end, the so called *web public view*,
 you can give direct access to external collaborators in selected directories
 containing designated data products.
 
