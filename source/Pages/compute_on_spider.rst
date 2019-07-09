@@ -53,7 +53,7 @@ the following attributes:
 SBATCH directive      Functionality         Usage example
 ==================    ===================   =================
 ``-N <number>``       the number of nodes   ``#SBATCH -N 1`` (the job will run on a single node)
-``-c <number>``       the number of cores   ``#SBATCH -c 2`` (the job will use 2 cores couple to 16GB memory)
+``-c <number>``       the number of cores   ``#SBATCH -c 2`` (the job will use 2 cores couple to 16000 MB memory)
 ``-t HH:MM:SS``       the wall-clock time   ``#SBATCH -t=1:00:00`` (the job will run max for 1 hour)
 ``-p <partition>``    partition selection   ``#SBATCH -p normal`` (the job will run max for 120 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
@@ -160,7 +160,7 @@ Here is a job script template for ``$TMPDIR`` usage;
 
    #!/bin/bash
    #SBATCH -N 1      #request 1 node
-   #SBATCH -c 1      #request 1 core and 8GB RAM
+   #SBATCH -c 1      #request 1 core and 8000 MB RAM
    #SBATCH -t 5:00   #request 5 minutes jobs slot
 
    mkdir "$TMPDIR"/myanalysis
@@ -183,7 +183,7 @@ Job types
 =========
 
 * For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider better an HPC facility.
-* On Spider we provide **8 GB RAM per core**.
+* On Spider we provide **8000 MB RAM per core**.
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
   * For example, by specifying ``-c 4`` you request 4 cores and 32 GB RAM
