@@ -107,7 +107,7 @@ description script as well as any local options specified for individual
 Below we provide an example for ``sbatch`` job submission with options. Here we
 submit and execute the above mentioned ``hello_world.py`` script to the
 queue via ``sbatch`` and provide options ``- N 1`` to request only 1 node,
-``-c 1`` to request for 1 core and 8GB memory (coupled) and ``-t 1:00`` to
+``-c 1`` to request for 1 core and 8000 MB memory (coupled) and ``-t 1:00`` to
 request a maximum run time of 1 minute. The job script, ``hello_world.sh``,
 is an executable bash script with the following code;
 
@@ -186,7 +186,7 @@ Job types
 * On Spider we provide **8000 MB RAM per core**.
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
-  * For example, by specifying ``-c 4`` you request 4 cores and 32 GB RAM
+  * For example, by specifying ``-c 4`` you request 4 cores and 32000 MB RAM
 
 
 ================
