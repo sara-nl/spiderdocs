@@ -49,6 +49,7 @@ Past maintenances
 ============  ==================  =======
 Status        Date (start / end)  comment
 ============  ==================  =======
+Unscheduled   19/07, 2019 from 08:00 to 16:00  Worker nodes not available due to DHCP issue 
 Scheduled     03-07/06, 2019      Network maintenance: migration of underlying Ceph system to EVPN
 Scheduled     15-21/04, 2019      Batch system maintenance: redeployment of underlying hypervisors to improve local scratch performance
 ============  ==================  =======
