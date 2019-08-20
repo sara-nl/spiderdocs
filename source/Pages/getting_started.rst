@@ -111,12 +111,25 @@ Home directory
 Project spaces directories
 ==========================
 
-Project space is a POSIX storage place allocated to a certain project. It includes the following shares:
+Project space is a POSIX storage place allocated to each :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` project. It includes the following shares:
 
 * ``/project/[PROJECTNAME]/Data``: any project-specific data. Any member of the project can read data in this directory, but only the data manager(s) can write data
 * ``/project/[PROJECTNAME]/Software``: any project-specific software. Any member of the project can read/execute software in this directory, but only the software manager(s) can install software
 * ``/project/[PROJECTNAME]/Share``: any data to be shared among the project members. Any member of the project can read and write data in this directory
-* ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (not implemented yet).
+* ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (see :ref:`how <web-public-view>`)
+
+The summary table below gives a quick overview of your project space permissions:
+
+============================   ===============================   ===================================   ================================   ==================================
+Directories vs. Access Roles   ``/project/[PROJECTNAME]/Data``   ``/project/[PROJECTNAME]/Software``   ``/project/[PROJECTNAME]/Share``   ``/project/[PROJECTNAME]/Public``
+============================   ===============================   ===================================   ================================   ==================================
+Project Data manager(s)        rwx                               r-x                                   rwx                                rwx
+Project Software manager(s)    r-x                               rwx                                   rwx                                rwx
+Project normal user(s)         r-x                               r-x                                   rwx                                rwx
+Other Spider project user      ---                               ---                                   ---                                r--
+Outside Spider user            ---                               ---                                   ---                                r-- (via the :ref:`web views <web-public-view>`)
+============================   ===============================   ===================================   ================================   ==================================
 
 
 .. _submitting-a-job:
