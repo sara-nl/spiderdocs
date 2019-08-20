@@ -153,8 +153,7 @@ Extraction and Redistribution)` login and inspect the file before submitting it 
 
 .. code-block:: bash
 
-   cd $HOME
-   wget
+   wget https://raw.githubusercontent.com/sara-nl/spiderdocs/master/source/scripts/welcome-to-spider.sh
    chmod u+x welcome-to-spider.sh
 
 * Submit your job to the cluster:
