@@ -119,7 +119,7 @@ Extraction and Redistribution)` project. It includes the following shares:
 * ``/project/[PROJECTNAME]/Share``: any data to be shared among the project members. Any member of the project can read and write data in this directory
 * ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (see :ref:`how <web-public-view>`)
 
-The summary table below gives a quick overview of your project space permissions:
+The summary table below gives a quick overview of your project space permissions ('r'-read/'w'-write/'x'-execute):
 
 ============================   ===============================   ===================================   ================================   ==================================
 Directories vs. Access Roles   ``/project/[PROJECTNAME]/Data``   ``/project/[PROJECTNAME]/Software``   ``/project/[PROJECTNAME]/Share``   ``/project/[PROJECTNAME]/Public``
@@ -146,14 +146,47 @@ scheduling system for Linux clusters. Further information can be found at the
 `Slurm documentation page`_.  You can see the currently installed version of Slurm by typing
 ``sinfo --version`` on the command line.
 
+Let's run our first job on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`. Download the sample job script to your ``home`` account
+on the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` login and inspect the file before submitting it to the cluster:
 
-* Example to submit a job, check status, get output or cancel it:
+.. code-block:: bash
 
-Coming soon ..
+   cd $HOME
+   wget
+   chmod u+x welcome-to-spider.sh
+
+* Submit your job to the cluster:
+
+.. code-block:: bash
+
+   sbatch welcome-to-spider.sh
+   #Submitted batch job [JOBID]
+
+* Check the status of your submitted and not completed job(s):
+
+.. code-block:: bash
+
+   squeue --job [JOBID] # status of [JOBID]
+   squeue -u $USER # status of all my jobs
+   scontrol show jobid [JobID] # detailed info of [JOBID]
+
+* Check your job output:
+
+.. code-block:: bash
+
+   cat slurm-[JOBID].out
+
+* Once your job has completed, you can get job statistics and accounting:
+
+.. code-block:: bash
+
+   sacct -j [JOBID] --format=JobID,JobName,AveCPU,MaxRSS,Elapsed
 
 
-
-Specific HT-related Slurm information and job scheduling can be found in section
+More examples of how to use :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` Slurm can be found in section
 :ref:`compute-on-spider` and more generic info can be found at the
 `Slurm documentation page`_.
 
@@ -171,8 +204,8 @@ Command         What it does
 ============   ============
 ``sinfo``      displays the nodes information
 ``sbatch``     submits a job to the batch system
+``squeue``     displays the state of all submitted jobs
 ``scancel``    cancels a submitted job
-``squeue``     displays the state of submitted jobs
 ``scontrol``   shows detailed job information (useful for debugging)
 ``sacct``      shows detailed accounting information for jobs
 ============   ============
