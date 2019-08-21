@@ -167,7 +167,7 @@ Here is a job script template for ``$TMPDIR`` usage;
    cp -r $HOME/mydata "$TMPDIR"/myanalysis
    cd "$TMPDIR"/myanalysis
 
-   # = Run you analysis here =
+   # = Run your analysis here =
 
    #when done, copy the output to your /home storage
    tar cf output.tar output/
