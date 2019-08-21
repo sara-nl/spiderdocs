@@ -185,7 +185,7 @@ Extraction and Redistribution)` by using ``scp`` and ``rsync`` to transfer data 
 
 .. code-block:: bash
 
-        scp /home/[USERNAME]transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+        scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
         rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
 
 * Retrieve data from Data Archive on Spider:
