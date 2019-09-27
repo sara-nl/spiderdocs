@@ -237,9 +237,9 @@ fulfilled before the job can be executed.
 In terms of Spider-specific constraints, we support the following constraints
 to select specific hardware:
 
-1) cpu architecture constraint labels : 'ivy' , 'skylake'
+1) cpu architecture constraint labels : 'skylake'
 
-2) local scratch constraint labels    ; 'hdd' , 'ssd'
+2) local scratch constraint labels    ; 'ssd'
 
 As an example we provide below a bash shell script ``hello_world.sh`` that executes a compiled C script called 'hello'. In this script the #SBATCH line specifies that this script may only be executed on a node with 2 cpu-cores where the node must have a skylake cpu-architecture and ssd (solid state drive) local scratch disk space.
 
