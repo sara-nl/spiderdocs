@@ -237,7 +237,7 @@ fulfilled before the job can be executed.
 In terms of Spider-specific constraints, we support the following constraints
 to select specific hardware:
 
-1) cpu architecture constraint labels : 'skylake'
+1) cpu architecture constraint labels : 'skylake', 'broadwell'
 
 2) local scratch constraint labels    ; 'ssd'
 
