@@ -133,3 +133,5 @@ Here is a job script template for ``$TMPDIR`` usage;
    echo "SUCCESS"
    exit 0
 Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging). We refer to the Grid documentation on how to `stage`_ data.
+
+ .. _`stage`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_storage.html#staging-groups-of-files

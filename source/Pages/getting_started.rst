@@ -8,9 +8,9 @@ Getting started
 
 .. Tip:: This is a quickstart on the platform. In this page you will learn:
 
-     * how to login Spider
-     * browsing in the project space environment
-     * creating, configuring and submitting a simple job
+     * How to login Spider
+     * Browsing your project space
+     * Submitting simple jobs
 
 
 .. _setting-up-your-account:
@@ -21,7 +21,7 @@ Setting up your account
 
 Access to the cluster is provided via SSH (Secure Shell) Public key
 authentication only. For the highest security of your data and the platform, we
-don't not allow username/password authentication.
+do not allow username/password authentication.
 
 To use this method you will need first to configure your SSH public key on a
 portal provided by SURFsara. Then you can connect and authenticate to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
@@ -43,9 +43,9 @@ Else you have to generate a key-pair by using the following command:
 Finally you have to upload your key to our SURFsara portal. Note that this is
 an *one time* task. Follow these steps:
 
-* **Step1**: Login to the `SURFsara portal`_ with your SURFsara user account
-* **Step2**: Click on the tab "Public ssh keys" on the left pane
-* **Step3**: Add your public key by copying the contents of your file ``id_rsa.pub`` as shown below:
+* **Step 1**: Login to the `SURFsara portal`_ with your SURFsara user account
+* **Step 2**: Click on the tab "Public ssh keys" on the left pane
+* **Step 3**: Add your public key by copying the contents of your file ``id_rsa.pub`` as shown below:
 
 .. image:: /Images/cua-portal-addssh.png
    :align: center
@@ -76,7 +76,7 @@ If you already completed this step once, you are ready to login!
 
 .. code-block:: bash
 
-   ssh [USERNAME]@[Spider HOSTNAME]
+   ssh [USERNAME]@[Spider UI HOSTNAME]
 
 * For example, the user `homer` will login as:
 
@@ -141,7 +141,7 @@ Submitting a job
 On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` you will use Slurm to schedule, manage and execute your
 jobs. Slurm (short for Simple Linux Utility for Resource Management) is
-an open source, fault-tolerant, and highly scalable cluster management and job
+an open source, fault-tolerant, highly scalable, cluster management and job
 scheduling system for Linux clusters. Further information can be found at the
 `Slurm documentation page`_.  You can see the currently installed version of Slurm by typing
 ``sinfo --version`` on the command line.
