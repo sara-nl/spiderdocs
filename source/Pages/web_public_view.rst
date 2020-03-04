@@ -27,8 +27,7 @@ collaborators that are not members of your :abbr:`Spider (Symbiotic Platform(s)
 for Interoperable Data Extraction and Redistribution)` project, thus they don't have
 access to your :ref:`project space <project-space-fs>`. Here is what you need to do:
 
-* Login to  :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, select the files that you
-want to publish and copy them to your project space ``/project/[PROJECTNAME]/Public`` directory, e.g.:
+* Login to  :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, select the files that you want to publish and copy them to your project space ``/project/[PROJECTNAME]/Public`` directory, e.g.:
 
 .. code-block:: bash
 
@@ -44,5 +43,4 @@ https://public.spider.surfsara.nl/project/surfadvisors/hello-world.sh
 
 .. WARNING::
    Be careful with the data you place under your project space ``/project/[PROJECTNAME]/Public`` directory. This data is automatically exposed to the web and anyone that knows the URL can download it!
-
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`

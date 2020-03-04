@@ -106,10 +106,10 @@ Recursive transfer of files (transferring a directory) is not supported with the
 
 
 ==============================================================
-Using local ``/scratch`` with input/output data from/to dCache
+Using local ``scratch`` with input/output data from/to dCache
 ==============================================================
 
-Below we show another example where local ``/scratch`` is used and the input/output data are stored on dCache.
+Below we show another example where local ``scratch`` is used and the input/output data are stored on dCache.
 You need a valid proxy to interact with dCache using the storage clients.
 
 Here is a job script template for ``$TMPDIR`` usage;
