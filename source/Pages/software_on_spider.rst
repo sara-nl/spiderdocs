@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _software-on-spider:
 
 ******************
@@ -92,7 +90,7 @@ Your Singularity image can be viewed as a single file containing all the necessa
 
 .. _submit-a-singularity-command:
 
-Submit a Singularity command
+Singularity in batch jobs
 ========================
 
 Regular commands and Singularity based commands are very similar. In many cases for your job submission

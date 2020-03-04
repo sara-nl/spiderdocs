@@ -1,4 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 .. _compute-on-spider:
 
@@ -38,10 +37,8 @@ iii) the maximum memory used by the programs during execution
 We suggest you, where possible, first debug your job template on the login
 node. In doing so, please take into account that the login node is a shared
 resource and hence any job testing should consume the least demanding set of
-resources. For debugging with high resource demands it is possible to set up
-interactive jobs on other (test) nodes for this specific purpose. If you have
-high resource demands for testing your jobs, please contact
-:ref:`our helpdesk <helpdesk>`.
+resources. If you have high resource demands please contact
+:ref:`our helpdesk <helpdesk>` for support in testing your jobs.
 
 Once you get a rough estimate of the resources above, you are set to go. Create
 your job script to request from the scheduler the estimated resources.
