@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _about:
 
 *****
@@ -8,10 +6,10 @@ About
 
 .. Tip:: We welcome you to our new platform! In this page you will learn:
 
-     * what is :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` all about
+     * what :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` is all about
      * whether it is suitable for your research project
-     * what are the options for collaboration
-     * how to obtain access and work in a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project
+     * what are the collaboration options
+     * how to obtain access and work within a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project
 
 
 .. _spider-at-a-glance:
@@ -23,16 +21,16 @@ Spider at a glance
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is a versatile high-throughput data-processing
 platform aimed at processing large structured data sets. It runs on top of our
-in-house elastic Cloud, allowing for scalable processing of many terabytes of
-data, or even petabytes, utilizing many hundreds of cores simultaneously, in
-exceedingly short timespans. Superb network throughput ensures connectivity to
-external data storage systems.
+in-house elastic Cloud. This allows for processing on spider to scale from many 
+terabytes to even petabytes. Utilizing many hundreds of cores simultaneously 
+Spider can process these datasets in exceedingly short timespans. Superb network
+throughput ensures connectivity to external data storage systems.
 
-Apart from scaling and capacity, the platform is aimed at interoperability with
-other platforms, allowing for a high degree of integration and customization into
-the user domain, and further enhanced by specific features supporting
-collaboration, data (re)distribution, private resources or even private
-Spider instances.
+Apart from scaling and capacity, Spider is aimed at interoperability with
+other platforms. This interoperability allows for a high degree of integration 
+and customization into the user domain. Spider is further enhanced by specific 
+features supporting collaboration, data (re)distribution, private resources or 
+even private Spider instances.
 
 Have a glance here of the main features offered by :abbr:`Spider (Symbiotic Platform(s)
 for Interoperable Data Extraction and Redistribution)`:
@@ -52,10 +50,10 @@ the platform in order to meet the needs of researcher projects working with mass
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 is built on powerful infrastructure and designed with the following components:
-
+[TO BE CLEANED]
 * Batch processing cluster (based on Slurm) for generic data processing applications
 * Batch partitions to enable Single-core, Multi-core, Whole-node, High-memory and Long-running jobs
-* Large data staging area on a POSIX-compliant filesystem (based on CephFS) that scales to PBs without loss of performance or stability
+* Large CephFs data staging area (POSIX-compliant filesystem) scales to PBs without loss of performance or stability
 * Large and fast scratch area’s (NVMe SSDs) on the worker nodes
 * Fast network uplink (1200 Gbit/s) allowing for scalable parallel data transfers from other SURFsara based storage systems (e.g. dCache, SWIFT), or from external storage systems
 * Role-based project spaces tailored for data-centric projects
@@ -96,21 +94,21 @@ Extraction and Redistribution)` if your project reflects some of the following n
 
 Also :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is a viable alternative for current and potential
-medium tail `Grid`_ users. It is a low-threshold platform, as opposed to highly
-complex Grid platforms that take many months of specialist development
+`Grid`_ users who are looking to use a more customizable system. It is a low-threshold platform, 
+as opposed to highly complex Grid platforms that take many months of specialist development
 before they can start. Being built upon the exact same physical data-processing
-infrastructure and sharing the same scalable network connectivity as the classical
+infrastructure and sharing the same scalable network connectivity as the
 Grid-based processing environments, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` offers the same data-parallel processing
 capabilities as the most powerful Grid platforms.
 
-Note though that while it's great for such data-intensive applications,
+Note though that while it's great for data-intensive applications,
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is *not* really aimed at:
 
 * HPC applications where operations per second are critical
 * Processing of simulations that require multi-node execution
-* Applications that cannot be ported on Linux-based system
+* Applications that cannot be ported onto Linux-based system
 
 
 .. _collaboration:
@@ -120,37 +118,26 @@ Collaboration
 =============
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` is designed for Big Science which essentially requires
+Extraction and Redistribution)` is designed for Big Science which requires
 collaboration. :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` supports several ways to collaborate, either
-within your project, or across different projects or by connecting to external sources
-in a seamless manner.
+within your project, across projects, or to external sources.
 
 .. _project-space:
 
 Project space
 =============
 
-When you come to use :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` you do so in the context of a project. Every user
-of the platform is member of a project and every project in :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` gets an individual workspace where the project members
-can collaborate by sharing data, software or workflows. This workspace is called
-*project space* and it is offered by default to every project.
+Project spaces on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` are shared workspaces given to team members that enable collaboration through sharing data, software and workflows. Within your project space there are four folders:
+* * Data: Housing source data from data managers
+* * Share: For sharing between project members
+* * Public: For sharing publicly through webviews
+* * Software: Scripts, libraries and tools
 
-Collaborative groups often have members that have different roles and
-mandates. Although standard unix has basic features to organize groups, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` natively provides templates for sophisticated group
-organization in the context of a project. For example, a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` project may have a leader who decides on privileges
-of other members, members who are designated software developers or administrators,
-or members who manage data dissemination, and of course the scientific users who focus on
-their data analysis and visualization.
 
-At the start of your :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` project, you just need to select the appropriate
-configuration to get going.  As a project member you are assigned at least one
-of the following roles:
+:abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` enables collaboration for your project with granular access control to your project space through project roles, enabling collaboration for any team structure:
 
 * *technical lead* role: the contact person for any technical matters that affect the design and execution of the project and the privileges of other members
 * *data manager* role: designated data dissemination manager; responsible for the management of project-owned data
@@ -165,9 +152,9 @@ Scientific catalog
 Collaboration is also possible across different :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` projects. These are cases where different user groups work
 on projects with different scope and goals but need to (partly) share read-only data
-(such as observations, biobank data). :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+(such as observations or biobank data). :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` offers a place for multiple project teams to
-collaborate. This workspace is called *scientific catalog* and it is *not* offered by default to a project.
+collaborate by sharing data sets or tools. This workspace is called *scientific catalog* and it is *not* offered by default to a project.
 
 The scientific catalog data can be either *open* to everyone on the platform or *private* to
 selected :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
@@ -175,7 +162,7 @@ Extraction and Redistribution)` project groups.
 
 The scientific catalog has only one (but important) role:
 
-* *scientific catalog manager*: designated data dissemination :abbr:`SC (scientific catalog)` manager; responsible for populating the catalog and deciding which :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project groups have read access to the catalog.
+* *scientific catalog manager*: designated data dissemination :abbr:`SC (scientific catalog)` manager; responsible for populating the catalog and deciding which :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project groups have read access to that catalog.
 
 
 .. _  interoperability-hotspot:
@@ -189,7 +176,7 @@ environment, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is exactly the opposite. It aims to be a connecting
 platform in a world that has already a lot to offer in terms of storage systems,
 data distribution and collaboration frameworks, software management and portability
-systems, and pilot job and task management frameworks. The Spider platform hooks
+systems, and pilot job and task management frameworks. The Spider platform can hook
 them all together as an interoperability hotspot to support a variety of data
 processing and data collaboration use cases.
 
@@ -207,11 +194,14 @@ Project lifecycle
 =================
 
 If you decided that :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` sounds suitable for your research work, then you
+Extraction and Redistribution)` sounds suitable for your research project, then you
 can apply to obtain access and start your project or join an existing one.
 
 Starting a project
 ==================
+
+For information about the granting routes on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` please see our `Proposals Page`_
 
 You can apply for a new project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` by contacting :ref:`our helpdesk <helpdesk>`.
@@ -233,10 +223,11 @@ Ending a project
 ================
 
 Once your project ends, all the relevant data and accounts will be removed
-according to the our terms and conditions rules.
+according to the our terms and conditions rules. 
 
 
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. _`Grid`: http://doc.grid.surfsara.nl
+.. _`Proposals Page`: https://userinfo.surfsara.nl/systems/grid/new-users

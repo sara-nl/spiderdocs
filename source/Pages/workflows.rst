@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _workflows:
 
 *********
@@ -63,7 +61,7 @@ If you already have access on PiCaS, then you can use it directly from :abbr:`Sp
 Extraction and Redistribution)`, i.e. you can establish a connection to your `CouchDB`_
 database and use the python `PiCaS client`_ either from the login node or the worker nodes.
 
-To connect with your PiCaS database you need somehow to provide your credentials
+To connect with your PiCaS database you need to provide your credentials
 (username, password, database name). It is possible to specify the password on the
 command line, however for security reasons this should be avoided on shared systems
 (like the login node) because it can allow other local users to read the password (e.g. with

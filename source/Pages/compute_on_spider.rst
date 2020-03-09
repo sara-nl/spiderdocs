@@ -1,4 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
 
 .. _compute-on-spider:
 
@@ -31,17 +30,15 @@ successfully.
 Before submitting your jobs, it is a good practice to run a few tests of your
 programs locally (on the login node or other system) and observe:
 
-i) the time that your programs take to execute and
+i) the time that your programs take to execute
 ii) the amount of cores that your software needs to execute these tasks
 iii) the maximum memory used by the programs during execution
 
-We suggest you, where possible, to first debug your job template on the login
+We suggest you, where possible, first debug your job template on the login
 node. In doing so, please take into account that the login node is a shared
 resource and hence any job testing should consume the least demanding set of
-resources. For debugging with high resource demands it is possible to set up
-interactive jobs on other (test) nodes for this specific purpose. If you have
-high resource demands for testing your jobs, please contact
-:ref:`our helpdesk <helpdesk>`.
+resources. If you have high resource demands please contact
+:ref:`our helpdesk <helpdesk>` for support in testing your jobs.
 
 Once you get a rough estimate of the resources above, you are set to go. Create
 your job script to request from the scheduler the estimated resources.
@@ -62,16 +59,16 @@ SBATCH directive      Functionality         Usage example
 
 
 ==================
-Run your workloads
+Run your jobs
 ==================
 
 
-Running a local Job
+Running a local Job with `srun`
 ===================
 
-The ``srun`` command runs a job on a cluster managed by Slurm. It comes with a
-great deal of options for which help is available by typing ``srun --help`` on
-the command line after logging in to the system. Alternatively, you can also get
+The ``srun`` command creates an allocation and executes an application on a cluster managed by Slurm. 
+It comes with a great deal of options for which help is available by typing ``srun --help`` on
+the login node. Alternatively, you can also get
 help at the `Slurm documentation page`_.
 
 The ``srun`` command when used on the command line is executed locally by Slurm,
@@ -94,12 +91,13 @@ Typically ``srun`` should only be used with a job script that is submitted with
 ``sbatch`` to the Slurm managed job queue.
 
 
-Submitting a Job script
+Submitting a Job Script with `sbatch`
 =======================
 
-The ``sbatch`` command submits a job description script with 1 or more ``srun``
-commands to the batch queue. Slurm manages this queue and schedules the
-individual ``srun`` jobs for execution on the available worker nodes, taking
+The ``sbatch`` command submits ``batch script`` or ``job description script`` with 1 or more ``srun``
+commands to the batch queue. This script is written in bash, and requires SBATCH header lines that define
+all of your jobs global parameters. Slurm then manages this queue and schedules the
+individual ``srun`` jobs for execution on the available worker nodes. Slurm takes
 into account the global options specified with ``#SBATCH <options>`` in the job
 description script as well as any local options specified for individual
 ``srun <options>`` jobs.
@@ -137,16 +135,16 @@ the job is saved in the ascii file ``slurm-808.out``.
 More information on ``sbatch`` can be found at the `Slurm documentation page`_.
 
 
-Using local ``/scratch``
+Using local ``scratch``
 ========================
 
-If you run jobs that require intensive I/O processes, we advise you to use
-``/scratch`` because it is local SSD on every compute node of the the
+If you run jobs that require intensive IO processes, we advise you to use
+``scratch`` because it is local SSD on every compute node of the the
 Spider. This is a temporary storage that can be used only during the
 execution of your job and will be arbitrarily removed at any point once your
 job has finished running.
 
-In order to access the ``/scratch`` filesystem within your jobs, you should
+In order to access the ``scratch`` filesystem within your jobs, you should
 use the ``$TMPDIR`` variable in your job script. We advise you the following
 job workflow:
 

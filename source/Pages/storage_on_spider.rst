@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _storage-on-spider:
 
 *****************
@@ -72,15 +70,34 @@ regularly in an automatic fashion and hence can not used for long term storage.
 Using project spaces
 --------------------
 
-Coming soon ..
+Similarly to home folders Spider's project spaces are also available on all worked nodes, the following paths are
+available on your Spider UI:
+
+* * ``/project/[Project Name]/Data``
+* * ``/project/[Project Name]/Public``
+* * ``/project/[Project Name]/Share``
+* * ``/project/[Project Name]/Software``
+
+This allows you to easily access your software, data and output from the worker nodes from the project spaces. 
+See below for an example of a command that could be executed from a script on a worker node:
+
+.. code-block:: bash
+
+sh /project/[Project Name]/Software/[script].sh /project/[Project Name]/Data/[input file(s)] /home/[USER]/[output]
+
+..
 
 .. _scientific-catalog-fs:
 
 Using scientific catalogs
 -------------------------
 
-Coming soon ..
+Scientific catalogues allow for you to share software and data repositories accross projects. For example if you would
+like to share a large biobank of data with other research projects you could request access
+to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
+folders
 
+To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
 
 
 .. _external-storage:
@@ -121,7 +138,7 @@ SURFsara systems
 
 .. _using-dcache:
 
-Using dCache
+Using dCache 
 ------------
 
 SURFsara hosts a large storage system which consists of magnetic tape storage
@@ -133,8 +150,8 @@ Tape storage.
 
 There are several storage clients that can interact with dCache and we provide
 here some examples with the clients we support on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)`. To use these clients you need to have an
-X509 Grid certificate and be a part of a Virtual Organisation (VO). Please
+Extraction and Redistribution)`. To use these supported clients you need to have an
+X509 Grid certificate uploaded into your .globus directory and be a part of a Virtual Organisation (VO). Please
 refer to our Grid documentation page for instructions on `how to get a certificate`_
 and `join a (VO)`_.
 

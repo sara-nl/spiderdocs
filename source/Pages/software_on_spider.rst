@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _software-on-spider:
 
 ******************
@@ -21,10 +19,12 @@ System software
 ===============
 
 The standard supported login shell on Spider is bash. The standard supported software
-setup is identical on all nodes. Basic unix functionality is installed system-wide,
-i.e. software compilers (e.g., gcc, g++, f95) and editors (e.g., vi, vim, emacs, nano and edit).
-The use of graphical tools is supported via X11 ssh forwarding on the login node.
-The Operating system (OS on Spider is CentOS 7.5.1804 (Core) on login and worker nodes.
+setup is identical on all nodes. Basic unix functionality is installed system-wide:
+
+        * software compilers (e.g., gcc, g++, f95) 
+        * editors (e.g., vi, vim, emacs, nano and edit).
+        * graphical tools is supported via X11 ssh forwarding on the login node.
+        * operating system (OS on Spider is CentOS 7.5.1804 (Core) on login and worker nodes.
 
 
 .. _user-installed-sw:
@@ -88,16 +88,16 @@ Upload your image
 
 Your Singularity image can be viewed as a single file containing all the necessary software for your purpose. When compared to traditionally compiled software it is similar to a binary file containing the executable software. The image can be placed anywhere on Spider, as long as the location is accessible to your processing jobs. However, we strongly recommend that you place your Singularity images in one of the dedicated locations for user space software that are described on the `User installed software`_ page.
 
-.. _submit-a-singularity-job:
+.. _submit-a-singularity-command:
 
-Submit a Singularity job
+Singularity in batch jobs
 ========================
 
-Regular jobs and Singularity based jobs are very similar. In many cases for your job submission
+Regular commands and Singularity based commands are very similar. In many cases for your job submission
 script you simply add ``singularity exec`` in front of the commands to be executed within your job.
 However, please note that in some cases you may need to also use directory binding
 via the ``--bind`` option (see :ref:`bind-directories-singularity`). Below we provide an
-example comparing a regular job with a Singularity job.
+example comparing a regular command in a job with a Singularity command.
 
 * Regular job on Spider:
 
@@ -107,11 +107,11 @@ example comparing a regular job with a Singularity job.
         #SBATCH -n 1
         #SBATCH -t 10:00
         #SBATCH -c 1
-        echo "Hello I am running a regular job using the software installed on the host system"
+        echo "Hello I am running a regular command using the python version installed on the host system"
         echo "I am running on " $HOSTNAME
         python /home/[USERNAME]/hello_world.py
 
-* Singularity job on Spider (in this example the image is placed in the home directory of the user):
+* Singularity command on Spider (in this example the image is placed in the home directory of the user):
 
 .. code-block:: bash
 
@@ -119,9 +119,9 @@ example comparing a regular job with a Singularity job.
         #SBATCH -n 1
         #SBATCH -t 10:00
         #SBATCH -c 1
-        echo "Hello I am running a singularity job using the software installed in my image"
+        echo "Hello I am running a singularity command using the my own python version installed in my image"
         echo "I am running on " $HOSTNAME
-        singularity exec --pwd $PWD /home/[USERNAME]/my-singularity-image.simg python /home/[USERNAME]/hello_world.py
+        singularity exec --pwd $PWD /home/[USERNAME]/my-singularity-python-image.simg python /home/[USERNAME]/hello_world.py
 
 Please note that that the ``--pwd $PWD`` is recommended for use. This is because by default,
 Singularity makes the current working directory within the container the same as on the
@@ -138,16 +138,14 @@ Binding directories
 
 By default Singularity does not `see` the entire directory structure on Spider. This is
 because by default the file system overlap between the host system and the image is only
-partial. Additional directories can be made available by the user in severals ways:
-(i) You can create the directories within the image, see e.g. `Singularity SURFsara`_ (note
-that this requires sudo rights and thus needs to be done outside of Spider), or (ii) you can
-bind new directories at the time of execution via the ``--bind`` option. For binding directories
-it is only necessary to specify the top directory.
+partial. Additional directories can be made available by the user in severals ways:<br>
+        (i) Create the directories within the image, see e.g. `Singularity SURFsara`_ (note that this requires sudo rights and thus needs to be done outside of Spider)
+        (ii) Bind new directories at the time of execution via the ``--bind`` option. For binding directories it is only necessary to specify the top directory.
 
 Below we provide an example for binding the ``cvmfs`` directory. This is necessary if
 your Singularity image is distributed via :ref:`softdrive`.
 
-* Singularity job on Spider (in this example the image is placed in the Softdrive directory):
+* Singularity command on Spider (in this example the image is placed in the Softdrive directory):
 
 .. code-block:: bash
 
@@ -155,7 +153,7 @@ your Singularity image is distributed via :ref:`softdrive`.
         #SBATCH -n 1
         #SBATCH -t 10:00
         #SBATCH -c 1
-        echo "Hello I am running a singularity job using the software installed in my image on Softdrive"
+        echo "Hello I am running a singularity command using the software installed in my image on Softdrive"
         echo "I am running on " $HOSTNAME
         singularity exec --bind /cvmfs --pwd $PWD /cvmfs/softdrive.nl/[USERNAME]/my-singularity-image.simg python /home/[USERNAME]/hello_world.py
 

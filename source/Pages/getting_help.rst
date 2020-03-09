@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 ************
 Getting help
 ************
@@ -57,6 +55,16 @@ If you added or changed your SSH key on the `SURFsara portal <https://portal.sur
 may not be immediately possible. It can take *up to 15 minutes* to be able to login
 to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. In case that it takes longer time, please contact us at :ref:`helpdesk <helpdesk>`.
+ 
+I cannot login and getting a "host key has just changed" message
+================================================
+
+If the host key has changed on the login node recently it will effect the 'known hosts' file that you
+have on your PC. In order to work around this you must:
+
+* remove the spider entry from your `known hosts file` this will be different depending on your operating system of choice
+* try to log back into the login node, you will be prompted to automatically add the new host key to your PC
+
 
 .. _tutorials:
 

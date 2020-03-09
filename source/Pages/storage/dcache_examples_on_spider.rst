@@ -1,5 +1,3 @@
-.. warning:: Please note that Spider is a fresh platform - still in Beta phase - and the documentation here is heavily under construction. If you need any help in these pages, please contact :ref:`our helpdesk <helpdesk>`.
-
 .. _dcache-examples:
 
 ***************
@@ -106,10 +104,10 @@ Recursive transfer of files (transferring a directory) is not supported with the
 
 
 ==============================================================
-Using local ``/scratch`` with input/output data from/to dCache
+Using local ``scratch`` with input/output data from/to dCache
 ==============================================================
 
-Below we show another example where local ``/scratch`` is used and the input/output data are stored on dCache.
+Below we show another example where local ``scratch`` is used and the input/output data are stored on dCache.
 You need a valid proxy to interact with dCache using the storage clients.
 
 Here is a job script template for ``$TMPDIR`` usage;
@@ -133,3 +131,5 @@ Here is a job script template for ``$TMPDIR`` usage;
    echo "SUCCESS"
    exit 0
 Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging). We refer to the Grid documentation on how to `stage`_ data.
+
+ .. _`stage`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_storage.html#staging-groups-of-files
