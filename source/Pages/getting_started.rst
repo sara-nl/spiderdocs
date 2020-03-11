@@ -39,7 +39,8 @@ Else you have to generate a key-pair by using the following command:
    laptop$ ssh-keygen # This will create a key-pair in $HOME/.ssh directory
 
 Finally you have to upload your key to our SURFsara portal. Note that this is
-an *one time* task. Follow these steps:
+an *one time* task.
+Follow these steps:
 
 * **Step 1**: Login to the `SURFsara portal`_ with your SURFsara user account
 * **Step 2**: Click on the tab "Public ssh keys" on the left pane
@@ -51,6 +52,9 @@ an *one time* task. Follow these steps:
 From now on you can login to Spider with your SSH keys from your laptop (or other
 computer where your SSH key was generated/transferred). See next, :ref:`how to login <login>`.
 
+You also need to agree to our usage terms and conditions to be able to gain access to Spider which you can also do via this portal.
+You can perform this action by clicking on the "Usage Agreement" tab in the above image and agreeing to it. Please note that you will be denied
+access to Spider if you do not agree to this agreement.
 
 
 .. _ssh-login:
