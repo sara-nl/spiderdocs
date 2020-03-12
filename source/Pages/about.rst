@@ -50,7 +50,7 @@ the platform in order to meet the needs of researcher projects working with mass
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 is built on powerful infrastructure and designed with the following components:
-[TO BE CLEANED]
+
 * Batch processing cluster (based on Slurm) for generic data processing applications
 * Batch partitions to enable Single-core, Multi-core, Whole-node, High-memory and Long-running jobs
 * Large CephFs data staging area (POSIX-compliant filesystem) scales to PBs without loss of performance or stability
