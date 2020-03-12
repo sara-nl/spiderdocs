@@ -201,16 +201,16 @@ Starting a project
 ==================
 
 For information about the granting routes on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` please see our `Proposals Page`_
+Extraction and Redistribution)` please see our `Proposals Page`_.
 
-You can apply for a new project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` by contacting :ref:`our helpdesk <helpdesk>`.
+Before applying for a new project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` we suggest you to contact :ref:`our helpdesk <helpdesk>` to discuss your project.
 
 Extending a project
 ==================
 
 You can apply for a time or resource capacity extension for an existing project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` by contacting :ref:`our helpdesk <helpdesk>`.
+Extraction and Redistribution)` by requesting extra resources. Please see our `Proposals Page`_ or contact :ref:`our helpdesk <helpdesk>`.
 
 Joining an existing project
 ===========================
@@ -222,8 +222,7 @@ to the project and what your project role would be.
 Ending a project
 ================
 
-Once your project ends, all the relevant data and accounts will be removed
-according to the our terms and conditions rules. 
+Once your project ends, all the relevant data and accounts will be removed according to the our terms and conditions rules. 
 
 
 
