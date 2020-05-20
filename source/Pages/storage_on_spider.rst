@@ -73,19 +73,17 @@ Using project spaces
 Similarly to home folders Spider's project spaces are also available on all worked nodes, the following paths are
 available on your Spider UI:
 
-* * ``/project/[Project Name]/Data``
-* * ``/project/[Project Name]/Public``
-* * ``/project/[Project Name]/Share``
-* * ``/project/[Project Name]/Software``
+* ``/project/[Project Name]/Data``
+* ``/project/[Project Name]/Public``
+* ``/project/[Project Name]/Share``
+* ``/project/[Project Name]/Software``
 
 This allows you to easily access your software, data and output from the worker nodes from the project spaces. 
 See below for an example of a command that could be executed from a script on a worker node:
 
 .. code-block:: bash
 
-sh /project/[Project Name]/Software/[script].sh /project/[Project Name]/Data/[input file(s)] /home/[USER]/[output]
-
-..
+        sh /project/[Project Name]/Software/[script].sh /project/[Project Name]/Data/[input file(s)] /home/[USER]/[output]
 
 .. _scientific-catalog-fs:
 
