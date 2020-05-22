@@ -1,8 +1,8 @@
 .. _docker-install:
 
-******************************
-Setup readthedocs Docker image
-******************************
+**********************************
+Setup the readthedocs Docker image
+**********************************
 
 ===========
 Preparation

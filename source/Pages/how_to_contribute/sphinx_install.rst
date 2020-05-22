@@ -1,7 +1,7 @@
 .. _sphinx-install:
 
 **************
-Sphinx-install
+Install Sphinx
 **************
 
 Spider documentation itself is written in *restructured text*. This page explains how to install

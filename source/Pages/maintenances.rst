@@ -30,12 +30,10 @@ Current status
 Future maintenances
 ===================
 
-============  ==================  =======
-Status        Date (start / end)  comment
-============  ==================  =======
-Scheduled     21/08-02/09, 2019   Overall system maintenance: various improvements
-============  ==================  =======
-
+==============================  ==================  =======
+Status (Scheduled/Unscheduled)  Date (start / end)  comment
+==============================  ==================  =======
+==============================  ==================  =======
 
 .. _past-maintenances:
 
@@ -44,21 +42,19 @@ Past maintenances
 
 (most recent first)
 
-============  ==================  =======
-Status        Date (start / end)  comment
-============  ==================  =======
-Unscheduled   19/07, 2019         Network maintenance: hypervisor lost connection to DHCP  
-Scheduled     03-07/06, 2019      Network maintenance: migration of underlying Ceph system to EVPN
-Scheduled     15-21/04, 2019      Batch system maintenance: redeployment of underlying hypervisors to improve local scratch performance
-============  ==================  =======
+==============================  ==================  =======
+Status (Scheduled/Unscheduled)  Date (start / end)  comment
+==============================  ==================  =======
+==============================  ==================  =======
 
 
 .. _maintenance-policy:
+
 ======
 Policy
 ======
 
-All Spider users are notified in advance for the scheduled maintenance windows.
+All :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` users are notified in advance for the scheduled maintenance windows.
 Exceptions to this policy are made in the following cases:
 
 * Urgent changes are needed for the continuity of the platform

@@ -27,13 +27,14 @@ Spider User Guide
 
 Welcome to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` user guide! :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` is a feature-rich platform based at `SURFsara`_
+Extraction and Redistribution)` is a feature-rich platform based at `SURF`_
 and tailored for data processing and collaboration.
 
 This guide aims to help new users getting started on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`, while it also serves a useful reference for
 existing :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` members. Whether you seek information for Spider in general, or how to
+Extraction and Redistribution)` members. Whether you seek information for :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` in general, or how to
 access and use the available features, or best practices for the efficient use
 of the resources, read on!
 
@@ -69,4 +70,4 @@ Other info:
 
 .. Links:
 
-.. _`SURFsara`: https://surfsara.nl/
+.. _`SURF`: https://surf.nl/

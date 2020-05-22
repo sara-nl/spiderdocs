@@ -173,9 +173,9 @@ value3               42
 
 .. ============== Code ====================
 
-* When you want to display commands, output and comments, use ``.. code-block:: console``. Prefix commands with a ``$`` and prefix comments with ``##``, otherwise they are marked up as a command. Example:
+* When you want to display commands, output and comments, use ``.. code-block:: bash``. Prefix commands with a ``$`` and prefix comments with ``##``, otherwise they are marked up as a command. Example:
 
-  .. code-block:: console
+  .. code-block:: bash
 
      $echo 'Hello World!'
      Hello World!

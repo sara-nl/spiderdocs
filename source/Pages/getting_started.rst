@@ -25,36 +25,60 @@ To use this method you will need first to configure your SSH public key on a
 portal provided by SURFsara. Then you can connect and authenticate to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 with your SSH keys without supplying your username or password at each visit.
 
- .. Add a reference to pages that explain SSH key encryption
+Please follow these steps to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`:
+
+* **Step 1**: Login to the `SURFsara portal`_ with your SURFsara user account
 
 As a member of a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` project you shall have received a SURFsara user account.
-This account is required to access the SURFsara portal in the step below.
+Please use the username and password sent to you and login to the `SURFsara portal`_ .
 
-If you already have an ssh key-pair please proceed to the next section to upload it.
-Else you have to generate a key-pair by using the following command:
+* **Step 2**: Accept the Usage Agreement in the portal
 
-.. code-block:: bash
+Once you login to the portal please agree to our usage terms and conditions to be able to
+gain access to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. You can perform this action on the
+"Usage Agreement" tab as shown in the image below. Please note that you will be denied
+access to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` if you do not accept this agreement.
 
-   laptop$ ssh-keygen # This will create a key-pair in $HOME/.ssh directory
-
-Finally you have to upload your key to our SURFsara portal. Note that this is
-an *one time* task.
-Follow these steps:
-
-* **Step 1**: Login to the `SURFsara portal`_ with your SURFsara user account
-* **Step 2**: Click on the tab "Public ssh keys" on the left pane
-* **Step 3**: Add your public key by copying the contents of your file ``id_rsa.pub`` as shown below:
-
-.. image:: /Images/cua-portal-addssh.png
+.. image:: /Images/usage_agreement.png
    :align: center
 
-From now on you can login to Spider with your SSH keys from your laptop (or other
-computer where your SSH key was generated/transferred). See next, :ref:`how to login <login>`.
+* **Step 3**: Upload your SSH public key to the portal
 
-You also need to agree to our usage terms and conditions to be able to gain access to Spider which you can also do via this portal.
-You can perform this action by clicking on the "Usage Agreement" tab in the above image and agreeing to it. Please note that you will be denied
-access to Spider if you do not agree to this agreement.
+In order to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` you need to have a file on your local computer
+(say, your laptop) with a private SSH key, and you need to upload its matching
+public SSH key on the `SURFsara portal`_. Then, when you are going to connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
+from your laptop, the SSH private and public keys will be compared and, if they successfully relate to one-another,
+your connection will be established. Note that uploading your key to the portal is an *one time* task.
+
+If you already have an SSH key-pair you can proceed to upload it.
+Else you have to generate a key-pair in your laptop or other machine that you use to
+connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see:
+
+.. toctree::
+   :maxdepth: 1
+
+   ssh_keys
+
+Once you have generated your SSH key-pair, upload your public key to our `SURFsara portal`_.
+Click on the tab "Public ssh keys" on the left pane of
+the portal and add your public key by copying the contents of your public key file
+(e.g. ``cat ~/.ssh/id_rsa.pub``) as shown below:
+
+.. image:: /Images/add_ssh_key.png
+   :align: center
+
+Field [1] SSH key: here you paste your public key
+
+Field [2] Password: here you enter your password for your account
+
+Field [3] Add sshkey: press the key for the changes to take effect
+
+From now on you can login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` with your SSH keys from your laptop (or other
+computer where your SSH key was generated/transferred).
+See next, :ref:`how to login <ssh-login>`.
 
 
 .. _ssh-login:
@@ -74,7 +98,7 @@ on the SURFsara portal (see :ref:`setting-up-your-account`)
 
 If you already completed this step once, you are ready to login!
 
-* Login to Spider via a terminal with the following command:
+* Login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` via a terminal with the following command:
 
 .. code-block:: bash
 
@@ -89,7 +113,9 @@ If you already completed this step once, you are ready to login!
 
 Congrats! You've just logged in to Spider.
 
-.. note:: In case that you have multiple keys in your ``.ssh/`` folder, you would need to specify the key that matches the .pub file you :ref:`uploaded on the SURFsara portal <upload-key>`, i.e. ``ssh -i ~/.ssh/surfsarakey homer@spider.surfsara.nl``
+.. note::
+
+   In case that you have multiple keys in your ``.ssh/`` folder, you would need to specify the key that matches the .pub file you uploaded on the SURFsara portal, i.e. ``ssh -i ~/.ssh/surfsarakey homer@spider.surfsara.nl``
 
 
 .. _getting-around:
@@ -98,7 +124,8 @@ Congrats! You've just logged in to Spider.
 Getting around
 ==============
 
-As a user on Spider you are a member of a project, and each project member gets
+As a user on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` you are a member of a project, and each project member gets
 access to the following directories:
 
 .. _home-directory:
@@ -119,7 +146,7 @@ Extraction and Redistribution)` project. It includes the following shares:
 * ``/project/[PROJECTNAME]/Data``: any project-specific data. Any member of the project can read data in this directory, but only the data manager(s) can write data
 * ``/project/[PROJECTNAME]/Software``: any project-specific software. Any member of the project can read/execute software in this directory, but only the software manager(s) can install software
 * ``/project/[PROJECTNAME]/Share``: any data to be shared among the project members. Any member of the project can read and write data in this directory
-* ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on Spider and exposed publicly via http (see :ref:`how <web-public-view>`)
+* ``/project/[PROJECTNAME]/Public``: Any member of the project can write in this directory. Any data stored here will be read-only by all users on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` and exposed publicly via http (see :ref:`how <web-public-view>`)
 
 The summary table below gives a quick overview of your project space permissions ('r'-read/'w'-write/'x'-execute):
 

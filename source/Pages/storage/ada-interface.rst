@@ -1,7 +1,7 @@
 .. _ada-interface:
 
-======================
-ADA User Documentation
-======================
+=============
+ADA interface
+=============
 
 Coming soon ..

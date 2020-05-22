@@ -53,7 +53,12 @@ tags, documentation can be split into multiple files, and you can cross-referenc
 between files and build indexes.
 
 Although Sphinx is quite intuitive, we have created a simple Sphinx cheatsheet
-:ref:`cheatsheet` to help you use the Sphinx syntax.
+to help you use the Sphinx syntax:
+
+.. toctree::
+   :maxdepth: 1
+
+   how_to_contribute/sphinx_cheatsheet
 
 
 .. _preview-changes:
@@ -80,6 +85,8 @@ is the preferred way, as this mimics the ReadTheDocs build system closest.
 GitHub edit/preview on the other hand is good enough for minor, textual changes,
 but is otherwise the least preferred option.
 
+Below you will find information for each of the methods.
+
 
 .. _test-on-docker:
 
@@ -89,7 +96,11 @@ Docker image
 This is the preferred option to build and test your changes. It tries to build
 the documentation the same way as readthedocs.org.
 
-* Setup the Docker image. The instructions are :ref:`here <docker-install>`
+.. toctree::
+   :maxdepth: 1
+
+   how_to_contribute/docker_install
+
 * Once the Docker image is ready, find the following script inside your Github fork and run it to build your documentation::
 
     ./build.sh
@@ -109,7 +120,11 @@ Sphinx local installation
 
 For the Sphinx documentation setup locally you will need to:
 
-* Install Sphinx to your computer. The instructions for different OS are :ref:`here <sphinx-install>`
+.. toctree::
+   :maxdepth: 1
+
+   how_to_contribute/sphinx_install
+
 * To generate HTML documentation, use the command::
 
     make html

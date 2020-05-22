@@ -21,16 +21,21 @@ Spider at a glance
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is a versatile high-throughput data-processing
 platform aimed at processing large structured data sets. It runs on top of our
-in-house elastic Cloud. This allows for processing on spider to scale from many 
-terabytes to even petabytes. Utilizing many hundreds of cores simultaneously 
-Spider can process these datasets in exceedingly short timespans. Superb network
+in-house elastic Cloud. This allows for processing on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` to scale from many
+terabytes to even petabytes. Utilizing many hundreds of cores simultaneously
+:abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` can process these datasets in exceedingly short timespans. Superb network
 throughput ensures connectivity to external data storage systems.
 
-Apart from scaling and capacity, Spider is aimed at interoperability with
-other platforms. This interoperability allows for a high degree of integration 
-and customization into the user domain. Spider is further enhanced by specific 
-features supporting collaboration, data (re)distribution, private resources or 
-even private Spider instances.
+Apart from scaling and capacity, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` is aimed at interoperability with
+other platforms. This interoperability allows for a high degree of integration
+and customization into the user domain. :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` is further enhanced by specific
+features supporting collaboration, data (re)distribution, private resources or
+even private :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` instances.
 
 Have a glance here of the main features offered by :abbr:`Spider (Symbiotic Platform(s)
 for Interoperable Data Extraction and Redistribution)`:
@@ -40,9 +45,9 @@ for Interoperable Data Extraction and Redistribution)`:
 
 .. _platform-components:
 
-==================
+===================
 Platform components
-==================
+===================
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 is a feature-rich platform under continuous development. We keep adding new features to
@@ -94,7 +99,7 @@ Extraction and Redistribution)` if your project reflects some of the following n
 
 Also :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is a viable alternative for current and potential
-`Grid`_ users who are looking to use a more customizable system. It is a low-threshold platform, 
+`Grid`_ users who are looking to use a more customizable system. It is a low-threshold platform,
 as opposed to highly complex Grid platforms that take many months of specialist development
 before they can start. Being built upon the exact same physical data-processing
 infrastructure and sharing the same scalable network connectivity as the
@@ -130,10 +135,11 @@ Project space
 
 Project spaces on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` are shared workspaces given to team members that enable collaboration through sharing data, software and workflows. Within your project space there are four folders:
-* * Data: Housing source data from data managers
-* * Share: For sharing between project members
-* * Public: For sharing publicly through webviews
-* * Software: Scripts, libraries and tools
+
+* Data: Housing source data from data managers
+* Share: For sharing between project members
+* Public: For sharing publicly through webviews
+* Software: Scripts, libraries and tools
 
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
@@ -176,7 +182,8 @@ environment, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is exactly the opposite. It aims to be a connecting
 platform in a world that has already a lot to offer in terms of storage systems,
 data distribution and collaboration frameworks, software management and portability
-systems, and pilot job and task management frameworks. The Spider platform can hook
+systems, and pilot job and task management frameworks. The :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` platform can hook
 them all together as an interoperability hotspot to support a variety of data
 processing and data collaboration use cases.
 
@@ -207,7 +214,7 @@ Before applying for a new project on :abbr:`Spider (Symbiotic Platform(s) for In
 Extraction and Redistribution)` we suggest you to contact :ref:`our helpdesk <helpdesk>` to discuss your project.
 
 Extending a project
-==================
+===================
 
 You can apply for a time or resource capacity extension for an existing project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` by requesting extra resources. Please see our `Proposals Page`_ or contact :ref:`our helpdesk <helpdesk>`.
@@ -222,7 +229,8 @@ to the project and what your project role would be.
 Ending a project
 ================
 
-Once your project ends, all the relevant data and accounts will be removed according to the our terms and conditions rules. 
+Once your project ends, all the relevant data and accounts will be removed according to
+the Usage Agreement terms and conditions.
 
 
 

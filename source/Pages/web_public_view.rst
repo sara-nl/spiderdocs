@@ -35,8 +35,8 @@ access to your :ref:`project space <project-space-fs>`. Here is what you need to
    ls -l /project/surfadvisors/Public/hello-world.sh
    #-rwxrwxrwx  1  surfadvisors-homer  surfadvisors-homer  192 Jul  1 08:53 hello-world.sh
 
-* That's it! Any data located in your ``/project/[PROJECTNAME]/Public`` directory is exposed to the web under the domain: ``https://public.spider.surfsara.nl/project/[PROJECTNAME]/``
-This means that the example file can be downloaded by anyone from link below:
+* That's it! Any data located in your ``/project/[PROJECTNAME]/Public`` directory is exposed to the web under the domain: ``https://public.spider.surfsara.nl/project/[PROJECTNAME]/``. This means that the example file can be downloaded by anyone from link below:
+
 https://public.spider.surfsara.nl/project/surfadvisors/hello-world.sh
 
 .. WARNING::

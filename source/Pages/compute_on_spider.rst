@@ -43,7 +43,8 @@ resources. If you have high resource demands please contact
 Once you get a rough estimate of the resources above, you are set to go. Create
 your job script to request from the scheduler the estimated resources.
 
-In the current setup of Slurm on Spider, we ask you to specify at least
+In the current setup of Slurm on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`, we ask you to specify at least
 the following attributes:
 
 ==================    ===================   =================
@@ -64,9 +65,9 @@ Run your jobs
 
 
 Running a local Job with `srun`
-===================
+===============================
 
-The ``srun`` command creates an allocation and executes an application on a cluster managed by Slurm. 
+The ``srun`` command creates an allocation and executes an application on a cluster managed by Slurm.
 It comes with a great deal of options for which help is available by typing ``srun --help`` on
 the login node. Alternatively, you can also get
 help at the `Slurm documentation page`_.
@@ -92,7 +93,7 @@ Typically ``srun`` should only be used with a job script that is submitted with
 
 
 Submitting a Job Script with `sbatch`
-=======================
+=====================================
 
 The ``sbatch`` command submits ``batch script`` or ``job description script`` with 1 or more ``srun``
 commands to the batch queue. This script is written in bash, and requires SBATCH header lines that define
@@ -140,7 +141,8 @@ Using local ``scratch``
 
 If you run jobs that require intensive IO processes, we advise you to use
 ``scratch`` because it is local SSD on every compute node of the the
-Spider. This is a temporary storage that can be used only during the
+:abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`. This is a temporary storage that can be used only during the
 execution of your job and will be arbitrarily removed at any point once your
 job has finished running.
 
@@ -181,7 +183,7 @@ Job types
 =========
 
 * For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider better an HPC facility.
-* On Spider we provide **8000 MB RAM per core**.
+* On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we provide **8000 MB RAM per core**.
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
   * For example, by specifying ``-c 4`` you request 4 cores and 32000 MB RAM
@@ -191,7 +193,8 @@ Job types
 Slurm partitions
 ================
 
-We have configured two partitions on Spider as shown in the table above:
+We have configured two partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` as shown in the table above:
 
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
   * Infinite queues can run only on two worker nodes with a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
@@ -215,7 +218,8 @@ the example above.
 Many other constraints can also be provided with your job submission. However,
 by adding more constraints it may become more difficult to schedule and execute
 your job. See the Slurm manual (https://slurm.schedmd.com) for more information
-and please note that not all constraint options are implemented on Spider. In
+and please note that not all constraint options are implemented on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`. In
 case you are in doubt then please contact :ref:`our helpdesk <helpdesk>`.
 
 
@@ -224,7 +228,8 @@ Spider-specific constraints
 
 In addition to the regular ``sbatch`` constraints, we also have introduced a
 number of Spider-specific constraints that are tailored to the hardware of our
-compute nodes for the Spider platform.
+compute nodes for the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` platform.
 
 These specific constraints need to be specified via constraint labels to ``sbatch``
 on job submission via the option ``--constraint=<constraint-label-1>,<constraint-label-2>,...,<constraint-label-n>``

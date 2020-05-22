@@ -7,7 +7,8 @@ Grid interface
 
 The Grid interface is recommended in cases that your project data and/or processing
 is tight to the Grid authentication and authorisation. To use the supported Grid clients
-on Spider you need to have an X509 Grid certificate installed into your .globus directory
+on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your .globus directory
 and be a part of a Virtual Organisation (VO). Please refer to our Grid documentation
 page for instructions on `how to get a certificate`_ and `join a (VO)`_.
 
@@ -23,7 +24,7 @@ actions on your behalf without using passwords.
 
 Create a proxy with the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
    voms-proxy-init --voms [YOUR_VO]
 
@@ -35,7 +36,7 @@ You can check this with ``echo X509_USER_PROXY``.
 The default lifetime of a proxy is 12h. If your application runs longer then you can
 create a proxy that is valid up to 7 days with the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
    voms-proxy-init --voms [YOUR_VO] --valid 168:00
 
@@ -50,31 +51,31 @@ There are many Grid clients to interact with dCache. On :abbr:`Spider (Symbiotic
 Extraction and Redistribution)` we support ``globus-url-copy`` and ``gfal``.
 
 In the examples below, a user who is a member of the VO e.g., lsgrid, has the
-certificate installed on to the Spider login node and will copy data from dCache
+certificate installed on to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` login node and will copy data from dCache
 to/from your home directory on Spider.
 
-Globus client
-=============
+**Globus client**
 
 Please note that you need a valid proxy to run the following commands.
 
 * Listing directories on dCache:
 
-  .. code-block:: console
+  .. code-block:: bash
 
      globus-url-copy -list gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
 
 * Copy file from dCache to Spider:
 
-  .. code-block:: console
+  .. code-block:: bash
 
      globus-url-copy \
          gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
          file:///`pwd`/your-data.tar
 
-* Copy file from Spider to dCache:
+* Copy file from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to dCache:
 
-  .. code-block:: console
+  .. code-block:: bash
 
      globus-url-copy \
          file:///$HOME/your-data.tar \
@@ -84,7 +85,7 @@ Please note that you need a valid proxy to run the following commands.
 
  First create the directory locally, e.g. testdir.
 
- .. code-block:: console
+ .. code-block:: bash
 
     globus-url-copy -cd -r \
      gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/testdir/ \
@@ -94,34 +95,33 @@ The ``globus-*`` client does not offer an option to create/delete directories or
 For this purpose you may use the gfal client as described below.
 
 
-gfal client
-===========
+**gfal client**
 
 Please note that you need a valid proxy as described above to run the following commands.
 
 * Listing directories on dCache:
 
-.. code-block:: console
+.. code-block:: bash
 
   gfal-ls -l gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
 
 * Create directory on dCache:
 
-.. code-block:: console
+.. code-block:: bash
 
    gfal-mkdir gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/newdir/
 
 * Copy file from dCache to Spider:
 
-.. code-block:: console
+.. code-block:: bash
 
      gfal-copy \
          gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
          file:///`pwd`/your-data.tar
 
-* Copy file from Spider to dCache:
+* Copy file from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to dCache:
 
-.. code-block:: console
+.. code-block:: bash
 
      gfal-copy \
          file:///$HOME/your-data.tar \
@@ -130,14 +130,14 @@ Please note that you need a valid proxy as described above to run the following 
 
 * Remove a file from dCache:
 
-.. code-block:: console
+.. code-block:: bash
 
      gfal-rm gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar
 
 
 * Remove a whole (non empty) directory from dCache:
 
-.. code-block:: console
+.. code-block:: bash
 
      gfal-rm -r gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/
 
@@ -151,7 +151,8 @@ Grid data processing
 ====================
 
 Below we show an example for I/O intensive applications. In this example you submit a
-job on Spider that performs the following steps:
+job on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` that performs the following steps:
 
 * Creates a runtime directory on local ``scratch`` (or ``$TMPDIR``)
 * Retrieves the input data from dCache
@@ -178,10 +179,10 @@ Here is a job script template for local ``scratch`` usage;
    gfal-copy file:///`pwd`/output.tar gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/path-to-your-data/output.tar
    echo "SUCCESS"
    exit 0
-Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging). We refer to the Grid documentation on how to `stage`_ data.
 
+Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging).
 
 .. Links:
 
- .. _`how to get a certificate`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#get-a-grid-certificate
- .. _`join a (VO)`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#join-a-virtual-organisation
+.. _`how to get a certificate`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#get-a-grid-certificate
+.. _`join a (VO)`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#join-a-virtual-organisation

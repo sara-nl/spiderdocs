@@ -6,8 +6,8 @@ Storage on Spider
 
 .. Tip:: Spider is meant for processing of big data, thus is supports several storage backends. In this page you will learn:
 
-     * which internal and external storage system we support
-     * bbest practices to manage your data
+     * which internal and external storage systems we support
+     * best practices to manage your data
 
 
 .. _internal-storage:
@@ -71,7 +71,7 @@ Using project spaces
 --------------------
 
 Similarly to home folders Spider's project spaces are also available on all worked nodes, the following paths are
-available on your Spider UI:
+available on your :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` UI:
 
 * ``/project/[Project Name]/Data``
 * ``/project/[Project Name]/Public``
@@ -106,72 +106,80 @@ External storage
 
 .. _transfers-to-and-from-spider:
 
-Transfers to/from Spider
-========================
+Transfers from own system
+=========================
 
-If you are logged in as a user on Spider then we support ``scp``, ``rsync``,
-``curl`` or ``wget`` to transfer data between Spider and your own Unix-based system.
+If you are logged in as a user on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` then we support ``scp``, ``rsync``,
+``curl`` or ``wget`` to transfer data between :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` and your own Unix-based system.
 Other options may be available, but these are currently not supported by us.
 
-* Example of transferring data from Spider to your own Unix-based system:
+* Example of transferring data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to your own Unix-based system:
 
 .. code-block:: bash
 
-        scp /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
-        rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+   scp /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+   rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
 
 * Example of retrieving data from own Unix-based system on Spider:
 
 .. code-block:: bash
 
-        scp [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
-        rsync -a -W [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
-
-
-.. _surfsara-systems:
-
-SURFsara systems
-================
-
+   scp [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
+   rsync -a -W [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
 
 .. _using-dcache:
 
-Using dCache
-------------
+SURFsara dCache
+===============
 
 dCache is our large scalable storage system for storing and processing huge volumes of data
 fast. The system runs on `dCache software`_ that is designed for managing scientific data.
 You can use dCache for disk or tape or address both types of storage under a single
 virtual filesystem tree. Our dCache service is a remote storage with extremely fast network
 link to Spider. You may use the storage if your data does not
-fit within the storage allocation on Spider project space or if your application is I/O intensive.
+fit within the storage allocation on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` project space or if your application is I/O intensive.
 
-There are several protocols and storage clients to interact with dCache. On Spider we support
-two main methods to use dCache:
+There are several protocols and storage clients to interact with dCache. On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` we support
+two main methods to use dCache, ADA and Grid interfaces:
 
-* :ref:`ADA (Advanced dCache API) interface <ada-interface>` (soon in production!)
+.. toctree::
+   :maxdepth: 1
 
-The ADA interface is based on the dCache API and the webdav protocol to access and process
-your data on dCache from any platform and with various authentication methods.
+   storage/ada-interface
 
-* :ref:`Grid interface <grid-interface>`
+Our ADA (Advanced dCache API) interface is based on the dCache API and the webdav
+protocol to access and process your data on dCache from any platform and with various authentication methods.
 
-The Grid interface is based on the Grid computing technology and the gridftp protocol
+.. toctree::
+  :maxdepth: 1
+
+  storage/grid-interface
+
+Our Grid interface is based on the Grid computing technology and the gridftp protocol
 to access and process your data on dCache from Grid compliant platforms and with X509
 certificate authentication.
+
+.. * :ref:`ADA (Advanced dCache API) interface <ada-interface>` (soon in production!)
+
+
+.. * :ref:`Grid interface <grid-interface>`
 
 
 .. _using-swift:
 
-Using SWIFT
-------------
+SURFsara SWIFT
+==============
 
 Coming soon ..
 
 .. _using-archive:
 
-Using Central archive
----------------------
+SURFsara Central archive
+========================
 
 For long-term preservation of precious data SURFsara offers the `Data Archive`_.
 Data ingested into the Data Archive is kept in two different tape libraries
@@ -183,16 +191,16 @@ Access on Data Archive is *not* provided by default to the :abbr:`Spider (Symbio
 Extraction and Redistribution)` projects. To request for Data Archive access, please contact our
 :ref:`our helpdesk <helpdesk>`.
 
-If you already have access on Data Archive, then you can use it directly from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` by using ``scp`` and ``rsync`` to transfer data between Spider and Data Archive:
+If you already have access on Data Archive, then you can use it directly from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` by
+using ``scp`` and ``rsync`` to transfer data between :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` and Data Archive:
 
 
-* Transfer data from Spider to Data Archive:
+* Transfer data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to Data Archive:
 
 .. code-block:: bash
 
-        scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
-        rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+   scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+   rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
 
 * Retrieve data from Data Archive on Spider:
 
@@ -201,7 +209,8 @@ Extraction and Redistribution)` by using ``scp`` and ``rsync`` to transfer data 
         scp [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
         rsync -a -W [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
 
-In case that the file to be retrieved from Data Archive to Spider is not
+In case that the file to be retrieved from Data Archive to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` is not
 directly available on disk then the scp/rsync command will hang until the file is
 moved from tape to disk. Data Archive users can query the state of their files by
 logging into the Data Archive user interface and performing a ``dmls -l`` on the files
@@ -209,7 +218,7 @@ of interest. Here the state of the file is either on disk (REG) or on tape (OFL)
 The Data Archive user interface is accessible via ``ssh`` from anywhere for users that
 have a login account and an example is given below:
 
-.. code-block:: console
+.. code-block:: bash
 
         ssh [ARCHIVE_USERNAME]@archive.surfsara.nl
 	      touch test.txt

@@ -69,8 +69,7 @@ the ``ps`` command). Also to avoid having to type these credentials
 every time your client connects to your database or using them within your jobs,
 we advice you to authenticate to PiCaS with the steps below.
 
-* Create a PiCaS configuration directory in your home directory. Here we will call
-this directory ``picas_cfg``, but you are free to give it any other name.
+* Create a PiCaS configuration directory in your home directory. Here we will call this directory ``picas_cfg``, but you are free to give it any other name.
 
 .. code-block:: bash
 
@@ -101,15 +100,17 @@ this directory ``picas_cfg``, but you are free to give it any other name.
         PICAS_USERNAME="[YOUR_USERNAME]"
         PICAS_PASSWORD="[YOUR_PASSWORD]"
 
-* Storing cleartext passwords in any medium is dangerous, so we need to make sure it is not readable by others. Save the ``picasconfig.py`` file and for additional security set it to read-write (rw)
-access for you only:
+
+* Storing cleartext passwords in any medium is dangerous, so we need to make sure it is not readable by others. Save the ``picasconfig.py`` file and for additional security set it to read-write (rw) access for you only:
+
 
 .. code-block:: bash
 
         chmod go-rw /home/[USERNAME]/picas_cfg/picasconfig.py
 
-* Check the permissions of your ``picasconfig.py`` file with ``ls -la``. The output should be
-similar to:
+
+* Check the permissions of your ``picasconfig.py`` file with ``ls -la``. The output should be similar to:
+
 
 .. code-block:: bash
 
