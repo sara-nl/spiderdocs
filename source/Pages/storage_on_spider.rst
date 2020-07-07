@@ -4,7 +4,7 @@
 Storage on Spider
 *****************
 
-.. Tip:: Spider is meant for processing of big data, thus is supports several storage backends. In this page you will learn:
+.. Tip:: Spider is meant for processing of big data, thus it supports several storage backends. In this page you will learn:
 
      * which internal and external storage systems we support
      * best practices to manage your data
@@ -18,8 +18,8 @@ Internal storage
 
 .. _transfers-within-spider:
 
-Transfers transfers within Spider
-=================================
+Transfers within Spider
+=======================
 
 To transfer data between directories located within
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
@@ -90,10 +90,10 @@ See below for an example of a command that could be executed from a script on a 
 Using scientific catalogs
 -------------------------
 
-Scientific catalogues allow for you to share software and data repositories accross projects. For example if you would
+Scientific catalogs allow for you to share software and data repositories accross projects. For example if you would
 like to share a large biobank of data with other research projects you could request access
 to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
-folders
+folders.
 
 To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
 
