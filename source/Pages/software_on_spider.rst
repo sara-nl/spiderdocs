@@ -24,7 +24,7 @@ setup is identical on all nodes. Basic unix functionality is installed system-wi
 
         * software compilers (e.g., gcc, g++, f95)
         * editors (e.g., vi, vim, emacs, nano and edit).
-        * graphical tools is supported via X11 ssh forwarding on the login node.
+        * graphical tools are supported via X11 ssh forwarding on the login node.
         * operating system (OS on Spider is CentOS 7.5.1804 (Core) on login and worker nodes.
 
 
@@ -150,7 +150,7 @@ Binding directories
 
 By default Singularity does not `see` the entire directory structure on Spider. This is
 because by default the file system overlap between the host system and the image is only
-partial. Additional directories can be made available by the user in severals ways:<br>
+partial. Additional directories can be made available by the user in severals ways:
 
 (i) Create the directories within the image, see e.g. `Singularity SURFsara`_ (note that this requires sudo rights and thus needs to be done outside of Spider)
 
