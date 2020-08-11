@@ -6,7 +6,7 @@ Software on Spider
 
 .. Tip:: There are several ways to setup and use your software on Spider. In this page you will learn:
 
-     * which software is provided by default on the system
+     * what is our policy for system software installations
      * how to install your software on the local filesystem
      * using containerization for making your software portable across different platforms
      * distributing your software on different platforms
@@ -17,6 +17,13 @@ Software on Spider
 ===============
 System software
 ===============
+
+There are cases in which a user or project may need extra software not included on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` system. It may require the installation of a new software tool (i.e. emacs editor) or an specific version of a software component that is already on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` (i.e. gcc 9). As a user of this platform you are free to submit a request to :ref:`our helpdesk <helpdesk>` to ask us install a software required for your project system wide. The requests will be evaluated case-by-case, but in general the following policy applies:
+
+    * Stand-alone applications easily available through the official RPM repositories (CentOS, EPEL, ...) are suitable to be installed system wide. Some examples are emacs, joe, jq, ...
+
+    * Alternative versions of core tools (i.e. Python 3.6, gcc 9, ...) will have to be evaluated case by case. We will accept requests of software that can be deployed using well defined and automated procedures.
 
 The standard supported login shell on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is bash. The standard supported software
