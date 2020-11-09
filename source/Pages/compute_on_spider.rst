@@ -264,6 +264,40 @@ combination that is not available you will receive the following error message:
 
 
 
+=================
+Querying compute usage
+=================
+
+
+Overview
+===========================
+
+sacct and sreport are slurm tools that allows users to query their usage from the slurm database. The accounting tools sacct and sreport are both documented on the `Slurm documentation page`_.
+
+These slurm queries result in a users total usage for a user. The sum of Raw CPU times / 3600 gives total core usage for the defined period. `-d Produces delimited results for easier exporting / reporting`
+
+Examples
+===========================
+
+.. code-block:: bash
+
+   # look into the details of your usage by job
+   sacct \
+      -X #sum\
+      -S2020-07-01 -E2020-07-30 \
+      --format=jobid,jobname,cputimeraw,user,alloccpus,state,partition,account,exitcode
+
+.. code-block:: bash
+
+   #view the spexone project usage and your user's usage
+   sreport \
+      -t second \
+      -T cpu cluster \
+      AccountUtilizationByUser \
+      Start="2020-07-01" \
+      End="2020-07-30"
+
+
 
 
 .. srun        runs a job from the command line or from within a job script
