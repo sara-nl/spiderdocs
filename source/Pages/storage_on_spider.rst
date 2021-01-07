@@ -115,7 +115,7 @@ Extraction and Redistribution)` then we support ``scp``, ``rsync``,
 Extraction and Redistribution)` and your own Unix-based system.
 Other options may be available, but these are currently not supported by us.
 
-* Example of transferring data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to your own Unix-based system:
+* Example of transferring data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to your own system:
 
 .. code-block:: bash
 
@@ -125,7 +125,7 @@ Other options may be available, but these are currently not supported by us.
    # Using rsync
    rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
 
-* Example of retrieving data from own Unix-based system on Spider:
+* Example of transferring data from your own system to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
