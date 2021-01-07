@@ -134,10 +134,10 @@ Other options may be available, but these are currently not supported by us.
 SURFsara dCache
 ===============
 
-dCache is our large scalable storage system for storing and processing huge volumes of data
-fast. The system runs on `dCache software`_ that is designed for managing scientific data.
-You can use dCache for disk or tape or address both types of storage under a single
-virtual filesystem tree. Our dCache service is a remote storage with extremely fast network
+dCache is our large scalable storage system for quickly processing huge volumes of data. 
+The system runs on `dCache software`_, that is designed for managing scientific data.
+You can use dCache for disk or tape, or address both types of storage under a single
+virtual filesystem tree. Our dCache service is a remote storage with an extremely fast network
 link to Spider. You may use the storage if your data does not
 fit within the storage allocation on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` project space or if your application is I/O intensive.
