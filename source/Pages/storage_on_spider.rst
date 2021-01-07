@@ -119,14 +119,20 @@ Other options may be available, but these are currently not supported by us.
 
 .. code-block:: bash
 
+   # Using scp
    scp /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+
+   # Using rsync
    rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
 
 * Example of retrieving data from own Unix-based system on Spider:
 
 .. code-block:: bash
 
+   # Using scp
    scp [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
+
+   # Using rsync
    rsync -a -W [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
 
 .. _using-dcache:
