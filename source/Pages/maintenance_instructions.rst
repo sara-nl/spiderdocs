@@ -26,7 +26,7 @@ Testing phase
 **Dates: 03/02/2021 - 12/02/2021**
 
 During the testing phase you can test your pipelines on two new worker nodes, fully configured with the upgrades outlined above and confirm whether or not your work 
-will be impacted by the upgrade. This is optional but highly recommended to ensure that your jobs will be running as expected after the upgrade.
+will be impacted by the upgrade. This is optional but highly recommended to ensure that your jobs will be running as expected after the upgrade of the production cluster.
 
 .. Note::
    Any jobs running on the upgraded nodes during the testing phase will be killed when the testing phase ends, on 12/02/2021 end of the day.
@@ -57,6 +57,7 @@ SBATCH directive            Functionality                                   Usag
 
 - CentOS 8 does not provide to users a python interpreter, only python3. If you still need python2, we advise you to use conda to create an execution environment tailored to your preferred python version or contact us for help.
 - The grid software stack including proxy authentication is not available on the upgraded nodes. We are working on a solution.
+- The ``TMPDIR`` variable is not available on the upgraded nodes. We are working on a solution.
 
 **Feedback**
 
@@ -72,7 +73,7 @@ During the downtime phase the login node will not be reachable and new jobs won'
 
 
 .. Note::
-   On 12/02/2021 end of the day, the cluster will stop accepting new jobs. Any running jobs on the production worker nodes will not be affected. Any jobs running on the upgraded nodes or the infinite queue partition will be killed.
+   On 12/02/2021 end of the day, the cluster will stop accepting new jobs. Any running jobs on the production worker nodes will not be affected. Any jobs running on the upgraded nodes or the ``infinite`` partition will be killed.
    
 
 **Getting in touch**
