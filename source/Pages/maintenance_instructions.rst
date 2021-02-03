@@ -43,8 +43,8 @@ You may submit your jobs on the new nodes by using any of the following directiv
 SBATCH directive            Functionality                                   Usage example
 ========================    =============================================   =================
 ``--partition=revamped``    access to the upgraded nodes                    ``sbatch --partition=revamped <job script>``
-``--constraint=centos8``    access to cluster nodes running Centos 8        ``sbatch --constraint=centos8 <job script>``
-``--constraint=rome``       access to cluster nodes of cpu familiy 'rome'   ``sbatch --constraint=rome <job script>``
+``--constraint=centos8``    access to cluster nodes running Centos 8        ``sbatch --constraint=centos8 --partition=revamped <job script>``
+``--constraint=rome``       access to cluster nodes of cpu familiy 'rome'   ``sbatch --constraint=rome --partition=revamped <job script>``
 ========================    =============================================   =================
 
 **Useful commands**
