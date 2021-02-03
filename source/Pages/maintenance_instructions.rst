@@ -41,11 +41,16 @@ SBATCH directive            Functionality                                   Usag
 ``--partition=revamped``    access to the upgraded nodes                    ``sbatch --partition=revamped <job script>``
 ``--constraint=centos8``    access to cluster nodes running Centos 8        ``sbatch --constraint=centos8 <job script>``
 ``--constraint=rome``       access to cluster nodes of cpu familiy 'rome'   ``sbatch --constraint=rome <job script>``
+========================    =============================================   =================
 
 **Useful commands**
 
 ``sinfo -a``: check all available partitions and the associated nodes
 ``scontrol show node "wn-ca-01"`` or ``scontrol show node "wn-ca-02"``: check the specifications of the upgraded nodes
+
+**Known issues**
+
+- CentOS 8 does not provide to users a python interpreter, only python3. If you still need python2, we advise you to use conda to create an execution environment tailored to your preferred python version or contact us for help.
 
 **Feedback**
 
