@@ -33,7 +33,7 @@ Future maintenances
 ==============================  =====================  =======
 Status (Scheduled/Unscheduled)  Date (start / end)     comment
 ==============================  =====================  =======
-Scheduled                       15/02/2020-19/02/2020  New Spider release
+Scheduled                       15/02/2021-19/02/2021  New Spider release. See :ref:`maintenance-instructions`
 ==============================  =====================  =======
 
 .. _past-maintenances:
