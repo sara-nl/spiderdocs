@@ -1,6 +1,3 @@
-
-.. |ss| raw:: html
-    <strike>
     
 .. _maintenance-instructions:
 
@@ -60,7 +57,7 @@ SBATCH directive            Functionality                                   Usag
 
 - CentOS 8 does not provide to users a python interpreter, only python3. If you still need python2, we advise you to use conda to create an execution environment tailored to your preferred python version or contact us for help.
 - The grid software stack including proxy authentication is not available on the upgraded nodes. We are working on a solution.
-- |ss| The ``TMPDIR`` variable is not available on the upgraded nodes. We are working on a solution.\ |se|\ -> SOLVED
+- ~~The TMPDIR`` variable is not available on the upgraded nodes. We are working on a solution.~~ -> SOLVED
 
 **Feedback**
 
