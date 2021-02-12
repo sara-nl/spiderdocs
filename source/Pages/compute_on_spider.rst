@@ -240,11 +240,16 @@ fulfilled before the job can be executed.
 In terms of Spider-specific constraints, we support the following constraints
 to select specific hardware:
 
-1) cpu architecture constraint labels : 'skylake', 'broadwell', 'rome', 'napels'
 
-2) local scratch constraint labels    : 'ssd'
+==========================    ===================    =================
+SBATCH directive              Functionality          Worker Node
+==========================    ===================    =================
+``--constraint=skylake``      cpu architecture       ``wn-db-[01-06]``
+``--constraint=broadwell``    cpu architecture       ``wn-fa-[02-03]``
+``--constraint=napels``       cpu architecture       ``wn-ha-[01-05]``
+``--constraint=ssd``          local scratch          ``all nodes``
+==========================    ===================    =================
 
-3) OS constraint labels    : 'centos8' 
 
 As an example we provide below a bash shell script ``hello_world.sh`` that executes a compiled C script called 'hello'. In this script the #SBATCH line specifies that this script may only be executed on a node with 2 cpu-cores where the node must have a skylake cpu-architecture and ssd (solid state drive) local scratch disk space.
 
