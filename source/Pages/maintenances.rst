@@ -22,7 +22,7 @@ Maintenance windows
 Current status
 ==============
 
-``Up & Running``
+``In maintentance``
 
 
 .. _future-maintenances:
