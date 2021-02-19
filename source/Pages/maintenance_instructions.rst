@@ -14,7 +14,7 @@ New Spider release Feb 2021
 Highlights in this release:
 
  - OS update of the cluster to CentOS 8
- - SLURM scheduler software update to version 20.02.5
+ - SLURM scheduler software update to version 20.11.3
  - Refactoring our resource provisioning and software deployment practices
  - Optimising our external network interfaces
  - Increasing the cluster capacity with two new worker nodes
@@ -56,7 +56,7 @@ SBATCH directive            Functionality                                   Usag
 **Known issues**
 
 - CentOS 8 does not provide to users a python interpreter, only python3. If you still use python2 in your code, you may want to consider decommissioning your old environment in favor of python3 or use conda or Singularity containers to create an execution environment tailored to your preferred python version.
-- The grid software stack including proxy authentication is not available on the upgraded nodes. We are working on a solution.
+- The grid software stack including proxy authentication is not available on the upgraded nodes. We are working on a solution. -> SOLVED
 - The ``TMPDIR`` variable is not available on the upgraded nodes. We are working on a solution. -> SOLVED
 
 **Feedback**
