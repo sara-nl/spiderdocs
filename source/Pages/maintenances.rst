@@ -22,7 +22,7 @@ Maintenance windows
 Current status
 ==============
 
-``In maintentance``
+``Up and running``
 
 
 .. _future-maintenances:
@@ -33,7 +33,6 @@ Future maintenances
 ==============================  =====================  =======
 Status (Scheduled/Unscheduled)  Date (start / end)     comment
 ==============================  =====================  =======
-Scheduled                       15/02/2021-19/02/2021  New Spider release. See :ref:`maintenance-instructions`
 ==============================  =====================  =======
 
 .. _past-maintenances:
@@ -46,6 +45,7 @@ Past maintenances
 ==============================  ==================  =======
 Status (Scheduled/Unscheduled)  Date (start / end)  comment
 ==============================  ==================  =======
+Scheduled                       15/02/2021-23/02/2021  New Spider release. See :ref:`maintenance-instructions`
 ==============================  ==================  =======
 
 
