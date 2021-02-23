@@ -247,8 +247,9 @@ to select specific hardware:
 SBATCH directive              Functionality          Worker Node
 ==========================    ===================    =================
 ``--constraint=skylake``      cpu architecture       ``wn-db-[01-06]``
-``--constraint=broadwell``    cpu architecture       ``wn-fa-[02-03]``
+``--constraint=broadwell``    cpu architecture       ``wn-fa-[01-02]``
 ``--constraint=napels``       cpu architecture       ``wn-ha-[01-05]``
+``--constraint=rome``         cpu architecture       ``wn-ca-[01-02]``
 ``--constraint=ssd``          local scratch          ``all nodes``
 ==========================    ===================    =================
 
