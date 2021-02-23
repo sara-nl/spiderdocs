@@ -42,11 +42,11 @@ Past maintenances
 
 (most recent first)
 
-==============================  ==================  =======
-Status (Scheduled/Unscheduled)  Date (start / end)  comment
-==============================  ==================  =======
+==============================  =====================  =======
+Status (Scheduled/Unscheduled)  Date (start / end)     comment
+==============================  =====================  =======
 Scheduled                       15/02/2021-23/02/2021  New Spider release. See :ref:`maintenance-instructions`
-==============================  ==================  =======
+==============================  =====================  =======
 
 
 .. _maintenance-policy:
