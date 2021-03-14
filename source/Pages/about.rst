@@ -145,7 +145,6 @@ Extraction and Redistribution)` are shared workspaces given to team members that
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` enables collaboration for your project with granular access control to your project space through project roles, enabling collaboration for any team structure:
 
-* *technical lead* role: the contact person for any technical matters that affect the design and execution of the project and the privileges of other members
 * *data manager* role: designated data dissemination manager; responsible for the management of project-owned data
 * *software manager* role: designated software manager; responsible to install and maintain the project-owned software
 * *normal user* role: scientific users who focus on their data analysis

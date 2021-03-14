@@ -117,6 +117,11 @@ Congrats! You've just logged in to Spider.
 
    In case that you have multiple keys in your ``.ssh/`` folder, you would need to specify the key that matches the .pub file you uploaded on the SURFsara portal, i.e. ``ssh -i ~/.ssh/surfsarakey homer@spider.surfsara.nl``
 
+.. note::
+
+   The first time you login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, you need to accept Spider's SSH key fingerprint. Public key fingerprints can be used to validate a connection to a remote server. Spider's public key fingerprint is:
+   ``SHA256:HO8Cz3Fns+DoiK+VFlILbTGYkAOy5i/izzFYc005z+s (ECDSA)``
+
 
 .. _getting-around:
 
