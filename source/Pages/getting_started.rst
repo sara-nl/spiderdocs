@@ -232,16 +232,17 @@ Slurm has many commands with many options, here you have a list with the most
 common ones. For more information please checkout the
 `Slurm documentation page`_.
 
-============   ============
-Command         What it does
-============   ============
-``sinfo``      displays the nodes information
-``sbatch``     submits a job to the batch system
-``squeue``     displays the state of all submitted jobs
-``scancel``    cancels a submitted job
-``scontrol``   shows detailed job information (useful for debugging)
-``sacct``      shows detailed accounting information for jobs
-============   ============
+======================   ============
+Command                  What it does
+======================   ============
+``sinfo``                displays the nodes information
+``sbatch``               submits a job to the batch system
+``squeue``               displays the state of all submitted jobs
+``scancel``              cancels a submitted job
+``scontrol``             shows detailed job information (useful for debugging)
+``scontrol show node``   shows detailed job information (useful for debugging)
+``sacct``                shows detailed accounting information for jobs
+======================   ============
 
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
