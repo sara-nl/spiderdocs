@@ -115,18 +115,24 @@ Extraction and Redistribution)` then we support ``scp``, ``rsync``,
 Extraction and Redistribution)` and your own Unix-based system.
 Other options may be available, but these are currently not supported by us.
 
-* Example of transferring data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to your own Unix-based system:
+* Example of transferring data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to your own system:
 
 .. code-block:: bash
 
+   # Using scp
    scp /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+
+   # Using rsync
    rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
 
-* Example of retrieving data from own Unix-based system on Spider:
+* Example of transferring data from your own system to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
+   # Using scp
    scp [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
+
+   # Using rsync
    rsync -a -W [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
 
 .. _using-dcache:
@@ -134,10 +140,10 @@ Other options may be available, but these are currently not supported by us.
 SURFsara dCache
 ===============
 
-dCache is our large scalable storage system for storing and processing huge volumes of data
-fast. The system runs on `dCache software`_ that is designed for managing scientific data.
-You can use dCache for disk or tape or address both types of storage under a single
-virtual filesystem tree. Our dCache service is a remote storage with extremely fast network
+dCache is our large scalable storage system for quickly processing huge volumes of data. 
+The system runs on `dCache software`_, that is designed for managing scientific data.
+You can use dCache for disk or tape, or address both types of storage under a single
+virtual filesystem tree. Our dCache service is a remote storage with an extremely fast network
 link to Spider. You may use the storage if your data does not
 fit within the storage allocation on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` project space or if your application is I/O intensive.
@@ -198,16 +204,22 @@ using ``scp`` and ``rsync`` to transfer data between :abbr:`Spider (Symbiotic Pl
 * Transfer data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to Data Archive:
 
 .. code-block:: bash
-
+   
+   # Using scp
    scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+   
+   # Using rsync
    rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
 
-* Retrieve data from Data Archive on Spider:
+* Transfer data from Data Archive to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
-        scp [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
-        rsync -a -W [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
+   # Using scp
+   scp [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
+   
+   # Using rsync
+   rsync -a -W [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
 
 In case that the file to be retrieved from Data Archive to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is not
