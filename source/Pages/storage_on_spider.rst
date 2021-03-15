@@ -97,6 +97,27 @@ folders.
 
 To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
 
+.. _query-internal-storage:
+
+Querying internal storage usage
+-------------------------
+
+As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags. 
+
+The total usage of local spider storage is the total usage of projct home folders and project space together.
+
+Please note that this will show your current usage, not the max, or average for the month.
+
+**Example**
+
+.. code-block:: bash
+
+   # Project folder
+   getfattr -d -m ceph.dir.rbytes /project/[PROJECT]/
+
+   # Home folder
+   getfattr -d -m ceph.dir.rbytes /home/[PROJECT]-[USER]
+
 
 .. _external-storage:
 
