@@ -102,7 +102,7 @@ To request access to add a shared catalogue please reachout to :ref:`our helpdes
 Querying internal storage usage
 -------------------------
 
-As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags. 
+As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags instead of `du` commands that slow down the system. 
 
 The total usage of local spider storage is the total usage of projct home folders and project space together.
 
@@ -161,7 +161,7 @@ Other options may be available, but these are currently not supported by us.
 SURFsara dCache
 ===============
 
-dCache is our large scalable storage system for quickly processing huge volumes of data. 
+dCache is our large scalable storage system for quickly processing huge volumes of data.
 The system runs on `dCache software`_, that is designed for managing scientific data.
 You can use dCache for disk or tape, or address both types of storage under a single
 virtual filesystem tree. Our dCache service is a remote storage with an extremely fast network
@@ -225,10 +225,10 @@ using ``scp`` and ``rsync`` to transfer data between :abbr:`Spider (Symbiotic Pl
 * Transfer data from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to Data Archive:
 
 .. code-block:: bash
-   
+
    # Using scp
    scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
-   
+
    # Using rsync
    rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
 
@@ -238,7 +238,7 @@ using ``scp`` and ``rsync`` to transfer data between :abbr:`Spider (Symbiotic Pl
 
    # Using scp
    scp [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
-   
+
    # Using rsync
    rsync -a -W [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
 

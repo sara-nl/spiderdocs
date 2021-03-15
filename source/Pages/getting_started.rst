@@ -239,7 +239,7 @@ Command                  What it does
 ``sbatch``               submits a job to the batch system
 ``squeue``               displays the state of all submitted jobs
 ``scancel``              cancels a submitted job
-``scontrol``             shows detailed job, node information (useful for debugging), e.g. ``scontrol show [jobID]``, ``scontrol show node [worker node]`` 
+``scontrol``             shows detailed job, node information (useful for debugging), e.g. ``scontrol show job [jobID]``, ``scontrol show node [worker node]`` 
 ``sacct``                shows detailed accounting information for jobs
 ======================   ============
 

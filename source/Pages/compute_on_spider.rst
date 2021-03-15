@@ -92,6 +92,22 @@ This python script can be locally executed as;
 Typically ``srun`` should only be used with a job script that is submitted with
 ``sbatch`` to the Slurm managed job queue.
 
+Running an interactive Job with `srun`
+======================================
+
+You can start an interactive session on a worker node. This helps when you want to debug your pipeline or compile some software directly on the node.
+You will have direct access to your home and project space files from within your interactive session.
+
+The interactive jobs will also be ‘scheduled’ along with batch jobs for resources so they may not always start immediately.
+
+The example below shows how to start an interactive session on a normal partition worker node with maximum time of one hour, one core and one task per node;
+
+.. code-block:: bash
+
+  srun --partition=normal --time=00:60:00 -c 1 --ntasks-per-node=1 --pty bash -i -l
+
+To stop your session and return to the login node, type ``exit``.
+
 
 Submitting a Job Script with `sbatch`
 =====================================
@@ -154,6 +170,8 @@ job workflow:
 * At the start of your job, copy the necessary input files to ``$TMPDIR``
 * Run your analysis and produce your intermediate/output files on ``$TMPDIR``
 * Copy the output files at the end of the job from ``$TMPDIR`` to your home directory
+
+``TMPDIR`` is ``/tmp`` which is a 'bind mount' from ``/scratch/slurm.<JOBID>`` so you will only see your own job files in ``/tmp`` and all files will be removed after the job finishes.
 
 Here is a job script template for ``$TMPDIR`` usage;
 
