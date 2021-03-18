@@ -269,6 +269,8 @@ SBATCH directive              Functionality          Worker Node
 ``--constraint=napels``       cpu architecture       ``wn-ha-[01-05]``
 ``--constraint=rome``         cpu architecture       ``wn-ca-[01-02]``
 ``--constraint=ssd``          local scratch          ``all nodes``
+``--constraint=amd``          cpu family             ``wn-ca-[01-02], wn-ha-[01-05]``
+``--constraint=intel``        cpu family             ``wn-db-[01-06], wn-fa-[01-02]``
 ==========================    ===================    =================
 
 
