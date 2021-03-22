@@ -143,6 +143,7 @@ Please note that you need a valid proxy as described above to run the following 
 
 Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. For this purpose you may use globus-url-copy.
 
+.. Tip:: Need more examples? See `gfal Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/gfal.html#gfal>`_  and `globus Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/globus.html#globus>`_
 
 .. _grid-data-processing:
 

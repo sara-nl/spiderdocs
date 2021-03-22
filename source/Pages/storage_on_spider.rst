@@ -100,9 +100,9 @@ To request access to add a shared catalogue please reachout to :ref:`our helpdes
 .. _query-internal-storage:
 
 Querying internal storage usage
--------------------------
+-------------------------------
 
-As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags instead of `du` commands that slow down the system. 
+As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags instead of `du` commands that slow down the system.
 
 The total usage of local spider storage is the total usage of projct home folders and project space together.
 
@@ -196,12 +196,11 @@ certificate authentication.
 .. * :ref:`Grid interface <grid-interface>`
 
 
-.. _using-swift:
+.. .. _using-swift:
 
-SURFsara SWIFT
-==============
-
-Coming soon ..
+.. SURFsara SWIFT
+.. ==============
+.. Coming soon ..
 
 .. _using-archive:
 

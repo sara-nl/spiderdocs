@@ -294,9 +294,9 @@ combination that is not available you will receive the following error message:
 
 
 
-=================
+======================
 Querying compute usage
-=================
+======================
 
 
 Overview
