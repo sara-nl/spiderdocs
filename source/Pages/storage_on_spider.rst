@@ -113,10 +113,10 @@ Please note that this will show your current usage, not the max, or average for 
 .. code-block:: bash
 
    # Project folder
-   getfattr --name=ceph.dir.rbytes --absolute-names /project/[PROJECT]/
+   getfattr -n=ceph.dir.rbytes --absolute-names /project/[PROJECT]/
 
    # Home folder
-   getfattr --name=ceph.dir.rbytes --absolute-names /home/[PROJECT]-[USER]
+   getfattr -n=ceph.dir.rbytes --absolute-names /home/[PROJECT]-[USER]
 
 
 .. _external-storage:
