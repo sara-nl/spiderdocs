@@ -25,6 +25,8 @@ To use this method you will need first to configure your SSH public key on a
 portal provided by SURFsara. Then you can connect and authenticate to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 with your SSH keys without supplying your username or password at each visit.
 
+Please note that it takes 1 hour from the time you receive your account credentials for your accounts to be able to run jobs on Spider
+
 Please follow these steps to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`:
 
