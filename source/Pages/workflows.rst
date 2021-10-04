@@ -127,8 +127,23 @@ we advice you to authenticate to PiCaS with the steps below.
 You are now ready to start using your PiCaS credentials without having to type them each time you or your jobs need to connect to the PiCaS server.
 Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
 
-
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
+
+=========
+Cron jobs
+=========
+
+If you need to automate (part of) your workflow it is possible to set up cronjobs on Spider.
+Please note that cronjobs on Spider can be used for testing purposes *only* and we do not offer
+this functionality as part of our service. If you wish to use cron jobs for production workflows
+please contact :ref:`our helpdesk <helpdesk>`.
+
+There are some restrictions when setting up a cronjob on Spider. The Spider login ``spider.surfsara.nl``
+is automatically directed to two different login nodes ``ui-01.spider.surfsara.nl`` or
+``ui-02.spider.surfsara.nl`` and cronjobs will be linked to the UI where they where created.
+If you would like to make changes in your cronjob you need to login directly to the login node (ui-01 or ui-02)
+where it was created (tip: to check which node you are on, you can type the command ``hostname``). This
+may also affect your workflows in case of maintenance on the login node you run your cronjobs. 
 
 
 .. Links:
