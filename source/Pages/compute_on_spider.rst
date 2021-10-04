@@ -55,7 +55,8 @@ SBATCH directive      Functionality         Usage example
 ``-t HH:MM:SS``       the wall-clock time   ``#SBATCH -t=1:00:00`` (the job will run max for 1 hour)
 ``-p <partition>``    partition selection   ``#SBATCH -p normal`` (the job will run max for 120 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
-``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 1 hour)
+``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 12 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p interactive`` (the job will run max for 12 hours)
 ==================    ===================   =================
 
 
@@ -212,13 +213,13 @@ Job types
 Slurm partitions
 ================
 
-We have configured three partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+We have configured four partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` as shown in the table above:
 
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
   * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
-  * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 1 hour max walltime.
-
+  * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 12 hours max walltime.
+  * Interactive partition is meant for testing jobs and has 12 hours maximum walltime.
 
 =================
 Slurm constraints
