@@ -52,7 +52,7 @@ SBATCH directive      Functionality         Usage example
 ==================    ===================   =================
 ``-N <number>``       the number of nodes   ``#SBATCH -N 1`` (the job will run on a single node)
 ``-c <number>``       the number of cores   ``#SBATCH -c 2`` (the job will use 2 cores couple to 16000 MB memory)
-``-t HH:MM:SS``       the wall-clock time   ``#SBATCH -t=1:00:00`` (the job will run max for 1 hour)
+``-t HH:MM:SS``       the wall-clock time   ``#SBATCH -t 1:00:00`` (the job will run max for 1 hour)
 ``-p <partition>``    partition selection   ``#SBATCH -p normal`` (the job will run max for 120 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 12 hours)
