@@ -16,6 +16,14 @@ Storage on Spider
 Internal storage
 ================
 
+The available filesystems on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
+are CephFS and SSDs. Home and project spaces are mounted on CephFS, while the batch worker nodes have
+large scratch areas on local SSD.
+
+CephFS is a distibuted parallel filesystem which stores files as objects and it is suitable for workloads
+that deal with comparably large files. Please note that conda/pip packages handling lots of small files can
+slow down the system response. For high I/O performance, we recommend the local scratch of the worker nodes on SSDs.
+
 .. _transfers-within-spider:
 
 Transfers within Spider

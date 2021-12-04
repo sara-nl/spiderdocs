@@ -109,6 +109,12 @@ The example below shows how to start an interactive session on a normal partitio
 
 To stop your session and return to the login node, type ``exit``.
 
+The example below shows how to start an interactive session on a single core of a specific worker node; 
+
+.. code-block:: bash
+
+  srun -c 1 --time=01:00:00 --nodelist=wn-db-02 --x11 --pty bash -i -l
+
 
 Submitting a Job Script with `sbatch`
 =====================================

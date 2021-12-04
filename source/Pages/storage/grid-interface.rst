@@ -97,7 +97,12 @@ For this purpose you may use the gfal client as described below.
 
 **gfal client**
 
-Please note that you need a valid proxy as described above to run the following commands.
+.. note::
+
+   The ``gfal`` commands fail on our centos 8 worker nodes due to the security setup. The workaround is to run the commands below with a centos 7 container, i.e. ``singularity run -B /etc/grid-security/certificates /cvmfs/atlas.cern.ch/repo/containers/fs/singularity/x86_64-centos7 gfal-ls -l [gsiftp://path-to-file]``
+
+
+Please note that you need a valid proxy to run the following commands.
 
 * Listing directories on dCache:
 
