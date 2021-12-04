@@ -6,8 +6,20 @@ Maintenances
 
 .. Tip:: To keep the system healthy we need sometimes to interrupt the platform for maintenance. In this page you will find:
 
+     * our change log
      * the current status of the platform & the maintenances log
      * our downtime policy
+
+.. _change-log:
+
+==========
+Change log
+==========
+
+To make it easier for users to see what notable changes have been made in the system
+between maintenances and releases of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
+we keep a chronologically ordered list of notable changes. The changes can be found in :ref:`change_log_list`.
+
 
 
 .. _maintenance-windows:
