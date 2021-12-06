@@ -7,6 +7,15 @@ Change log list
 List of notable changes with most recent first:
 
 ==========
+Ongoing
+==========
+
+Update
+==========
+
+* Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact in job processing.
+
+==========
 2021-11-17
 ==========
 
