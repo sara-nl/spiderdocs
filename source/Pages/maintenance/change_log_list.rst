@@ -13,7 +13,16 @@ Ongoing
 Update
 ==========
 
-* Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact in job processing.
+* Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact on job processing.
+
+==========
+2021-12-20
+==========
+
+Update
+======
+
+* Updated the underlying CEPH cluster of our CephFS system. No expected impact on the service.
 
 ==========
 2021-11-17
