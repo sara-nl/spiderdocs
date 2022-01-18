@@ -374,10 +374,15 @@ Write data to dCache
 
 Notes on data transfers:
 
+* The rclone 'copy' mode will just copy new/changed files. The rclone 'sync' (one way) mode will create a directory identical to the source so be careful because this can cause data loss and test first with the –dry-run flag to see exactly what would be copied and deleted
 * You can increase the number of parallel transfers with the '--transfers [Number]' option
 * For very large files it is important to set the –timeout' option high enough. As a rule of thumb, set it to 10 minutes for every GB of the biggest file in a collection. This may look ridiculously large, but it provides a safe margin to avoid problems with timeout issues
-* The rclone 'copy' mode will just copy new/changed files. The rclone 'sync' (one way) mode will create a directory identical to the source so be careful because this can cause data loss and test first with the –dry-run flag to see exactly what would be copied and deleted
+* Using --multi-thread-streams 1 increases the performance for large files
 
+.. code-block:: bash
+
+   #example command to upload a big file
+   rclone --timeout=240m  --multi-thread-streams 1 --config=[PROJECT_tokenfile].conf copy ./[SOURCE]/ [PROJECT_tokenfile]:[DESTINATION] -P
 
 .. _dcahce-events:
 
