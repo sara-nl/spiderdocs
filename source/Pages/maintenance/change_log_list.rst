@@ -16,6 +16,15 @@ Update
 * Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact on job processing.
 
 ==========
+2022-01-26
+==========
+
+Interruption
+============
+
+* Wn-ca-01 node down due to hypervisor crash. Jobs running on the node may have failed.
+
+==========
 2021-12-20
 ==========
 
