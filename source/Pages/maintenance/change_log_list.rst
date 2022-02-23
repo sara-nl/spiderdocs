@@ -21,8 +21,7 @@ Update
 
 Interruption
 ============
-
-* Wn-ca-09 node down due to hypervisor crash. Jobs running on the node may have failed.
+* Nodes wn-ca-07 and wn-ca-09 node down due to hypervisor crash. Jobs running on the node may have failed.
 
 ==========
 2022-02-11
