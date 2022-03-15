@@ -13,7 +13,13 @@ Ongoing
 Update
 ==========
 
-* Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact on job processing.
+==========
+2022-03-11
+==========
+
+Interruption
+============
+* Nodes wn-hb-01 and wn-hb-03 nodes failed to reconnect to CephFS client after MDS server crash. Nodes restarted 2022-03-15
 
 ==========
 2022-02-23
