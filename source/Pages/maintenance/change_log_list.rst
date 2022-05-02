@@ -12,6 +12,15 @@ Ongoing
 
 Update
 ==========
+* Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact on job processing.
+
+==========
+2022-05-02
+==========
+
+Interruption
+============
+* Upgrade of the underlying Cloud infrastructure to the next Openstack release. The upgrade of the services can impact the networking on Spider nodes.
 
 ==========
 2022-03-11
