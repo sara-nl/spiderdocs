@@ -180,6 +180,8 @@ job workflow:
 
 ``TMPDIR`` is ``/tmp`` which is a 'bind mount' from ``/scratch/slurm.<JOBID>`` so you will only see your own job files in ``/tmp`` and all files will be removed after the job finishes.
 
+.. Tip:: TMPDIR variable can only be used within the SLURM jobs. It can not be used nor tested on the UI because there is no scratch space. 
+
 Here is a job script template for ``$TMPDIR`` usage;
 
 .. code-block:: bash
