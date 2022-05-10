@@ -14,6 +14,15 @@ Update
 ==========
 * Upgrading cluster from CentOS 8.4 to CentoOS Stream. No expected impact on job processing.
 
+=======================
+2022-05-03 & 2022-05-04
+=======================
+
+Downtime
+========
+* System offline to restore services affected by the underlying system maintenance. 
+
+
 ==========
 2022-05-02
 ==========
