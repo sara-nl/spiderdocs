@@ -9,7 +9,7 @@ AGH Getting Started
 Quick Overview
 ---------------
 
-The Alzheimers Genetics Hub (AGH) is a secure compute environment based largely from the Spider cluster at SURF.
+The Alzheimers Genetics Hub (AGH) is a secure compute environment based largely from a clone of the Spider cluster at SURF.
 
 -----------------------------------
 Join the Collaborative Organization
