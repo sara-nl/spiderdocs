@@ -83,3 +83,16 @@ In order to view the respective usage of projects
       --end 2022-06-20
 
 
+=======================
+Creating New Catalogues
+=======================
+
+Scientific catalogs on AGHub are similar to project spaces, but used for sharing data accross users. In order to create a catalog administrators can use the following command:
+
+.. code-block:: bash
+
+  facl catalog \
+      --name "data-release-1" \
+      --data-provider admin_group \ #users with read and write access to the catalog
+      --data-users group1,group2 \ #users with read access to the catalog
+      --apply
