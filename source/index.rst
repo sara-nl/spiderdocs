@@ -55,6 +55,10 @@ Table of contents:
    Pages/maintenances
    Pages/getting_help
 
+The Frequently Asked Questions can be found at:
+
+   :ref:`10.3 <FAQ>`.
+
 Other info:
 
 .. toctree::
