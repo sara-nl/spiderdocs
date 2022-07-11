@@ -80,6 +80,21 @@ Create a macaroon
         --output rclone [PROJECT_tokenfile]
 
 
+These permissions can be given comma separated upon creation of the macaroon:
+
+===================  ===============================  
+Permission           Function                    
+===================  ===============================  
+DOWNLOAD             Read a file
+UPLOAD               Write a file
+DELETE               Delete a file or directory
+MANAGE               Rename or move a file or directory
+LIST                 List objects in a directory
+READ_METADATA        Read file status
+UPDATE_METADATA      Stage/unstage a file, change QoS
+===================  ===============================  
+
+
 Share macaroons
 ===============
 
