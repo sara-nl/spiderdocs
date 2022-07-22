@@ -57,8 +57,11 @@ SBATCH directive      Functionality         Usage example
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 12 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p interactive`` (the job will run max for 12 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_v100`` (the job will run on V100 nodes with a max of 120 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100`` (the job will run on A100 nodes with a max of 120 hours)
 ==================    ===================   =================
 
+The specifics of each partition can be found with ``scontrol show paritions``.
 
 
 ==================
@@ -210,24 +213,35 @@ Here is a job script template for ``$TMPDIR`` usage;
 Job types
 =========
 
+CPU jobs
+========
+
 * For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider better an HPC facility.
 * On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we provide **8000 MB RAM per core**.
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
   * For example, by specifying ``-c 4`` you request 4 cores and 32000 MB RAM
 
+GPU jobs
+========
+* For jobs that require GPU resources a specific partition is available (see :ref:`partitions <partitions>` for all the different partitions).
+
+
+.. _partitions:
 
 ================
 Slurm partitions
 ================
 
-We have configured four partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+We have configured four CPU and two GPU partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` as shown in the table above:
 
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
   * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
   * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 12 hours max walltime.
   * Interactive partition is meant for testing jobs and has 12 hours maximum walltime.
+  * GPU V100 contains V100 Nvidia cards
+  * GPU A100 contains A100 Nvidia cards
 
 =================
 Slurm constraints
