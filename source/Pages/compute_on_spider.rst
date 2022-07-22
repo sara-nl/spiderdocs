@@ -315,6 +315,171 @@ combination that is not available you will receive the following error message:
 
    'sbatch: error: Batch job submission failed: Requested node configuration is not available'
 
+===============
+Using GPU nodes
+===============
+
+To run your code on GPU nodes some guidelines for the user have to be taken into account. All GPU nodes run Nvidia hardware and as such, CUDA software is necessary. The CUDA drivers are installed on the relevant machines, but the CUDA interface and other programs need to be run in a singularity container. Nvidia has containers available on the internet for CUDA use, that can be built upon. These can be found `here <https://catalog.ngc.nvidia.com/containers>`_. Alternatively, you can build your own container from scratch, which is also show in the next section. The version of the drivers available on the GPU nodes can be found with:
+
+.. code-block:: bash
+
+   srun -p gpu_v100 nvidia-smi
+
+To compile your code, go to the gpu node, as the CUDA drivers are only available on these machines. The compilation has to be done in a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers`. Once the container is available, the program can be run. If compiling is not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
+
+Here some short examples for building and running commands are shown.
+
+Building can be done as follows:
+
+
+.. code-block:: bash
+
+   singularity build nvhpc_22.5_devel.sif docker://nvcr.io/nvidia/nvhpc:22.5-devel-cuda_multi-ubuntu20.04
+
+In this example, the Nvidia HPC SDK (software development kit) image is used (found `here <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`_), which is a very large image containing the entire toolchain needed to develop CUDA code. For running libraries like tensorflow or pytorch, use the appropriate (and much smaller) containers.
+
+To *interactively* log in to a GPU node run:
+
+.. code-block:: bash
+
+   srun --partition=gpu_v100 --time=00:60:00 -c 1 --ntasks-per-node=1 --pty bash -i -l
+
+This will open a bash sessions on a machine in the ``gpu_v100`` partition for 60 minutes.
+After the singularity image has been sucessfully built, the user can enter a shell in the container with:
+
+.. code-block:: bash
+
+   singularity shell --nv nvhpc_22.5_devel.sif
+
+In the shell, commands can be run which are executed in the container environment. As the image is the HPC SDK, most if not all possible compilers and libraries for running your CUDA based code should be available. You can also run a command directly in the container and get the output using
+
+.. code-block:: bash
+   singularity exec --nv nvhpc_22.5_devel.sif echo "hello world"
+
+.. WARNING::
+   The ``--nv`` flag is necessary to expose the GPUs on the host the to container.
+
+Here follows an example for running the container in batch mode with a shell script:
+
+.. code-block:: bash
+
+   #!/bin/bash
+
+   #SBATCH -p gpu_v100
+   #SBATCH -e slurm-%j.out
+   #SBATCH -o slurm-%j.out
+
+   singularity exec --nv nvhpc_22.5_devel.sif echo "hello world"
+
+The flags ``-e`` and ``-o`` instruct SLURM in which files to write respectively *stderr* and *stdout* of the job. In this case they are both sent to the same file, this is for comparison in the next step. If you now run this shell script on the ``ui-[01-02]`` nodes with ``bash script.sh``, it will result in:
+
+.. code-block:: bash
+
+   INFO:    Could not find any nv files on this host!
+   hello world
+
+as the UI nodes do not have access to GPUs and thus do not have an nv file to point the container to the required libraries. Running the script in batch mode with ``sbatch script.sh``, the ``-p`` flag is used, and the job ends up on a GPU node. The output becomes:
+
+.. code-block:: bash
+
+   hello world
+
+Now you are ready to build on top of a base container and run your code on a GPU!
+
+================================
+Building a singularity container
+================================
+
+In this section an example is given on how to build a singularity container and run some code in it. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
+
+There are multiple ways to build a container, here we show the method of using a definition file. First the contents of the file are shown, then these contents are explained.
+Start by making the file called ``cuda_example.def`` containing all the steps we want to take to make a container:
+
+.. code-block:: bash
+   
+   Bootstrap: docker
+   From: nvidia/cuda:11.6.2-devel-centos7
+
+   # based on the tutorial from https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/
+
+   %post
+   yum -y install git make
+   mkdir /test_repo
+   cd /test_repo
+   git clone https://github.com/NVIDIA/cuda-samples.git
+   cd /test_repo/cuda-samples/Samples/2_Concepts_and_Techniques/eigenvalues/
+   make
+
+   %runscript
+   #Executes when the "singularity run" command is used
+   #Useful when you want the container to run as an executable
+ 
+   cd /test_repo/cuda-samples/Samples/2_Concepts_and_Techniques/eigenvalues/
+   ./eigenvalues
+
+   %help
+   This is demo container to show how to build and run a CUDA application
+   on an GPU node
+
+This container will take a base image from `docker-hubh <https://hub.docker.com/>`_ and use pre-built `nvidia/cuda <https://hub.docker.com/r/nvidia/cuda>`_ container of a specific version. This container also contains necessary CUDA tools to compile binaries that run on GPUs. After starting from this base-image, in the next steps some tools are installed, directories are created and filled with a git repository. In this repository a single example of a CUDA applictation is compiled. When running the container on the command line, this application is run automatically.
+
+Now that we have the definitions file, we can build the singularity image with:
+
+.. code-block:: bash
+   
+   singularity build --fakeroot --nv --sandbox cuda_example.sif cuda_example.def
+
+In this command some flags are used, these are explained in the table below.
+
+===============   =================================================================================
+Flag              Functionality         
+===============   =================================================================================
+``--fakeroot``    raises permissions inside the container to ``sudo``, used for installing packages
+``--nv``          exposes the nvidia drivers of the host to the container (makes them available)
+``--sandbox``     flag used during building, allows the final container changed in *write-mode*
+``--writable``    allows writing into a sandboxed container when invoking ``singularity shell``
+===============   =================================================================================
+
+``--fakeroot`` is needed for installing ``git`` and ``make`` in the container. ``--nv`` is necessary to access the GPU from within the container, and ``--sandbox`` is used to allow the user after running this example to go into the container and make changes to folders, files or run other commands.
+
+Once the container is built - which can take a few minutes as multiple base containers have to be pulled from the internet - you can run it using 
+
+.. code-block:: bash
+
+   singularity run --nv cuda_example.sif
+
+which will output the result of the *eigenvalues-test* that was compiled as instructed by the definitions file. To run commands from within a shell in the container that allow for making changes, do
+
+.. code-block:: bash
+
+   singularity shell --nv --writable gpu_test.sif
+
+The container was exposed to the GPU at build-time, and at run-time it also has to be exposed with ``--nv``, otherwise it can not find the drivers! The ``--writable`` flag is needed for writing into the container.
+
+Building directly from dockerhub
+================================
+
+To build directly from docker hub, for example the latest version of tensorflow, one can invoke:
+
+.. code-block:: bash
+   
+   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
+
+and the image will be built at ``tensor_latest.sif``, which can then be run using 
+
+.. code-block:: bash
+
+   singularity run tensor_latest.sif
+
+
+
+Resources on singularity and containers
+=======================================
+
+https://docs.sylabs.io/guides/3.10/user-guide/  
+https://hub.docker.com/r/nvidia/cuda  
+https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc  
+https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity (slightly outdated)  
 
 
 ======================
