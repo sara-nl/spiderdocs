@@ -1,4 +1,3 @@
-
 .. _compute-on-spider:
 
 *****************
@@ -405,7 +404,6 @@ Start by making the file called ``cuda_example.def`` and add all the steps we wa
    From: nvidia/cuda:11.6.2-devel-centos7
 
    # based on the tutorial from https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/
-
    %post
    yum -y install git make
    mkdir /test_repo
@@ -417,13 +415,12 @@ Start by making the file called ``cuda_example.def`` and add all the steps we wa
    %runscript
    #Executes when the "singularity run" command is used
    #Useful when you want the container to run as an executable
- 
    cd /test_repo/cuda-samples/Samples/2_Concepts_and_Techniques/eigenvalues/
    ./eigenvalues
 
    %help
    This is demo container to show how to build and run a CUDA application
-   on an GPU node
+   on a GPU node
 
 This container will take a base image from `docker-hub <https://hub.docker.com/>`_ and use pre-built `nvidia/cuda <https://hub.docker.com/r/nvidia/cuda>`_ container of a specific version. This container also contains necessary CUDA tools to compile binaries that run on GPUs. After starting from this base-image, in the next steps some tools are installed, directories are created and filled with a git repository. From this repository a single example of a CUDA applictation is compiled. When running the container on the command line, this application is run automatically.
 
