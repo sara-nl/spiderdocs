@@ -567,18 +567,18 @@ To build directly from docker hub, for example the latest version of tensorflow,
    
    singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
 
-and the image ``tensor_latest.sif`` will be built, which can then be run using 
+and the image ``tensor_latest.sif`` will be built. Or to directly run the container without writing to disk:
 
 .. code-block:: bash
 
-   singularity run tensor_latest.sif
+   singularity run docker://tensorflow/tensorflow:latest
 
 Resources on singularity and containers
 =======================================
 
 | https://docs.sylabs.io/guides/3.10/user-guide/
 | https://hub.docker.com/r/nvidia/cuda
-| https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc
+| https://catalog.ngc.nvidia.com/orgs/nvidia/containers/
 | https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity (slightly outdated)
 
 
