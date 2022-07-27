@@ -437,7 +437,7 @@ Flag              Functionality
 ===============   ======================================================================================
 ``--fakeroot``    raises permissions inside the container to ``sudo``, necessary for installing packages
 ``--nv``          exposes the nvidia drivers of the host to the container (makes them available)
-``--sandbox``     flag used during building, allows the final container to be changed in *write-mode*
+``--sandbox``     allows the final container to be changed in *write-mode*, should only be used for debugging!
 ``--writable``    allows writing into a sandboxed container when invoking ``singularity shell``
 ===============   ======================================================================================
 
@@ -453,9 +453,104 @@ which will output the result of the *eigenvalues-test* that was compiled as inst
 
 .. code-block:: bash
 
-   singularity shell --nv --writable gpu_test.sif
+   singularity shell --nv gpu_test.sif
 
-The container was exposed to the GPU at build-time, and at run-time it also has to be exposed with ``--nv``, otherwise it can not find the drivers! The ``--writable`` flag is needed for writing into the container.
+The container was exposed to the GPU at build-time, and at run-time it also has to be exposed with ``--nv``, otherwise it can not find the drivers! In case the container is still under development and needs debugging, use the ``--writable`` flag so that missing packages/libs can be added to the container at runtime. These packages have to be added in the definitions file for the final singularity build.
+
+
+Running python in the container
+===============================
+
+Popular python interfaces for modelling are tensorflow, keras, pytorch, and more. An example for using tensorflow in singularity is provided below, but some warnings have to be taken into account, due to the default behaviour of singularity with the host machine. 
+
+Starting on a machine in the GPU partition, we create a definitions file ``tf-latest.def`` containing:
+
+.. code-block:: bash
+
+  Bootstrap: docker
+  From: tensorflow/tensorflow:latest
+
+  %post
+    pip install matplotlib
+
+  %help
+    This is demo container to show how to run a tensorflow model
+
+and build the container using the usual 
+
+.. code-block:: bash
+
+   singularity build --nv --fakeroot tf-latest.sif tf-latest.def
+
+.. WARNING::
+   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the `$HOME`-folder of `$USER`, and so pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the `$HOME` in the container. For information on this, read ``man singularity-shell`` and `singularity docs <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
+
+.. WARNING::
+   As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
+
+.. tip::
+   Use singularity only to encapsulate your libraries in the container and thus control their versioning. Code and data files can be fed to singularity, so keep such files external to the container.
+
+In this example, matplotlib is installed in the definitions file, not only to show how to do this, but also as it is a required package in the example we will follow. The example comes from the tensorflow library: `classifying pieces of clothing <https://www.tensorflow.org/tutorials/keras/classification>`_. Now create a file to run ``fashion.py``, set it to executable with ``chmod 755 fashion.py`` and add the following:
+
+.. code-block:: python
+
+  #!/usr/bin/env python
+
+  # TensorFlow and tf.keras
+  import tensorflow as tf
+
+  # Helper libraries
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  print(tf.__version__)
+
+  fashion_mnist = tf.keras.datasets.fashion_mnist
+
+  (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
+  class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
+                 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+
+  train_images = train_images / 255.0
+  test_images = test_images / 255.0
+
+  model = tf.keras.Sequential([
+      tf.keras.layers.Flatten(input_shape=(28, 28)),
+      tf.keras.layers.Dense(128, activation='relu'),
+      tf.keras.layers.Dense(10)
+  ])
+
+  model.compile(optimizer='adam',
+                loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                metrics=['accuracy'])
+
+  model.fit(train_images, train_labels, epochs=10)
+
+  test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+  print('\nTest accuracy:', test_acc)
+
+  probability_model = tf.keras.Sequential([model,
+                                           tf.keras.layers.Softmax()])
+
+  predictions = probability_model.predict(test_images)
+  print(predictions[0])
+
+Now you can run this code interactively with:
+
+.. code-block:: bash
+
+   singularity exec --nv tf-latest.sif ./fashion.py
+
+Or go interactively and run it line-by-line with:
+
+.. code-block:: bash
+
+   singularity shell --nv tf-latest.sif 
+
+The matplotlib output is omitted in this example for simplicity.
+
 
 Building directly from dockerhub
 ================================
