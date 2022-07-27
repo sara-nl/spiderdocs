@@ -393,7 +393,7 @@ Now you are ready to build on top of a base container and run your code on a GPU
 Building a singularity container
 ================================
 
-In this section an example is given on how to build a singularity container and run some code in it. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
+In this section an example is given on how to build a singularity container use it to run some code. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
 
 There are multiple ways to build a container, here we show the method of using a definition file. First the contents of the file are shown, then these contents are explained.
 Start by making the file called ``cuda_example.def`` and add all the steps we want to take to make a container:
@@ -403,7 +403,7 @@ Start by making the file called ``cuda_example.def`` and add all the steps we wa
    Bootstrap: docker
    From: nvidia/cuda:11.6.2-devel-centos7
 
-   # based on the tutorial from https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/
+   # based on https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/
    %post
    yum -y install git make
    mkdir /test_repo
@@ -430,7 +430,7 @@ Now that we have the definitions file, we can build the singularity image with:
    
    singularity build --fakeroot --nv --sandbox cuda_example.sif cuda_example.def
 
-In this command some flags are used, these are explained in the table below.
+In this command some flags are used, these and more are explained in the table below.
 
 ===============   ======================================================================================
 Flag              Functionality         
@@ -449,13 +449,17 @@ Once the container is built - which can take a few minutes as multiple base cont
 
    singularity run --nv cuda_example.sif
 
-which will output the result of the *eigenvalues-test* that was compiled as instructed by the definitions file. To run commands from within a shell in the container that allow for making changes, do
+which will output the result of the *eigenvalues-test*, as was instructed in the definitions file under ``%runscript``. To run commands from within a shell in the container that allow for making changes, do
 
 .. code-block:: bash
 
-   singularity shell --nv gpu_test.sif
+   singularity shell --nv --writable gpu_test.sif
 
 The container was exposed to the GPU at build-time, and at run-time it also has to be exposed with ``--nv``, otherwise it can not find the drivers! In case the container is still under development and needs debugging, use the ``--writable`` flag so that missing packages/libs can be added to the container at runtime. These packages have to be added in the definitions file for the final singularity build.
+
+.. tip::
+  
+   Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container and distribute it as-is for maximum stability.
 
 
 Running python in the container
@@ -483,13 +487,13 @@ and build the container using the usual
    singularity build --nv --fakeroot tf-latest.sif tf-latest.def
 
 .. WARNING::
-   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the `$HOME`-folder of `$USER`, and so pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the `$HOME` in the container. For information on this, read ``man singularity-shell`` and `singularity docs <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
+   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``, and so pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
 
 .. WARNING::
    As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
 
 .. tip::
-   Use singularity only to encapsulate your libraries in the container and thus control their versioning. Code and data files can be fed to singularity, so keep such files external to the container.
+   Use singularity only to encapsulate your libraries in the container and thus control their versioning and that of the environment. Code and data files can be fed to singularity, so keep such files external to the container.
 
 In this example, matplotlib is installed in the definitions file, not only to show how to do this, but also as it is a required package in the example we will follow. The example comes from the tensorflow library: `classifying pieces of clothing <https://www.tensorflow.org/tutorials/keras/classification>`_. Now create a file to run ``fashion.py``, set it to executable with ``chmod 755 fashion.py`` and add the following:
 
@@ -537,13 +541,15 @@ In this example, matplotlib is installed in the definitions file, not only to sh
   predictions = probability_model.predict(test_images)
   print(predictions[0])
 
-Now you can run this code interactively with:
+This example will create a model that recognizes the clothes in a picture, and a prediction of a set of test images is done at the end. The result can be compared to the `official example <https://www.tensorflow.org/tutorials/keras/classification>`_. 
+
+Now this code can be run with:
 
 .. code-block:: bash
 
    singularity exec --nv tf-latest.sif ./fashion.py
 
-Or go interactively and run it line-by-line with:
+Or run it interactively in the container line-by-line with:
 
 .. code-block:: bash
 
