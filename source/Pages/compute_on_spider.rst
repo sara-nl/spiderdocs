@@ -215,7 +215,11 @@ Job types
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
   * For example, by specifying ``-c 4`` you request 4 cores and 32000 MB RAM
+* On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we provide **80 GB scratch disk per core**.
 
+  * This means that your scratch disk requirements can be specified via the number of cores *without* an extra directive for storage
+  * For example, by specifying ``-c 2`` you request 2 cores and 160 GB scratch disk
+  * When you target specifically our fat nodes with 12TB available scratch, the provided scratch disk per requested core is 200 GB
 
 ================
 Slurm partitions
