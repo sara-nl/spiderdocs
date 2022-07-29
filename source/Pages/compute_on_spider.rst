@@ -1,5 +1,4 @@
 .. _compute-on-spider:
-
 *****************
 Compute on Spider
 *****************
@@ -318,7 +317,7 @@ combination that is not available you will receive the following error message:
 Using GPU nodes
 ===============
 
-To run your program on GPU nodes some guidelines for the user have to be taken into account. All GPU nodes run Nvidia hardware and as such, CUDA software is necessary. The CUDA drivers are installed on the relevant machines, but the CUDA interface and other programs need to be run in a singularity container. Nvidia has containers available on the internet for CUDA use, that can be built upon. These can be found `here <https://catalog.ngc.nvidia.com/containers>`_. Alternatively, you can build your own container from scratch, which is also show in the next section. Before building the container, the user needs to know the version of the drivers available on the GPU nodes. The version can be found with:
+To run your program on GPU nodes some guidelines for the user have to be taken into account. First of all, GPUs are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware and as such, CUDA software is necessary. The CUDA drivers are installed on the relevant machines, but the CUDA interface and other programs need to be run in a singularity container. Nvidia has containers available on the internet for CUDA use, that can be built upon. These can be found `here <https://catalog.ngc.nvidia.com/containers>`_. Alternatively, you can build your own container from scratch, which is also show in the next section. Before building the container, the user needs to know the version of the drivers available on the GPU nodes. The version can be found with:
 
 .. code-block:: bash
 
@@ -390,13 +389,15 @@ Now you are ready to build on top of a base container and run your code on a GPU
 .. _singularity-building:
 
 ================================
-Building a singularity container
+Building and running a singularity container
 ================================
 
-In this section an example is given on how to build a singularity container use it to run some code. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
+In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
 
-There are multiple ways to build a container, here we show the method of using a definition file. First the contents of the file are shown, then these contents are explained.
-Start by making the file called ``cuda_example.def`` and add all the steps we want to take to make a container:
+Running CUDA code 
+=================
+
+There are multiple ways to build a container. First, we show the method of using a definitions file. Later, directly building from a repository is shown. The contents of the definitions file are shown before these contents are explained. Start by making the file called ``cuda_example.def`` and add all the steps we want to take to make a container:
 
 .. code-block:: bash
    
@@ -461,9 +462,24 @@ The container was exposed to the GPU at build-time, and at run-time it also has 
   
    Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container and distribute it as-is for maximum stability.
 
+Building directly from dockerhub
+================================
 
-Running python in the container
-===============================
+To build directly from docker hub, for example the latest version of tensorflow, one can invoke:
+
+.. code-block:: bash
+   
+   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
+
+and the image ``tensor_latest.sif`` will be built. Or to directly run the container without writing to disk:
+
+.. code-block:: bash
+
+   singularity run docker://tensorflow/tensorflow:latest
+
+
+Running python
+==============
 
 Popular python interfaces for modelling are tensorflow, keras, pytorch, and more. An example for using tensorflow in singularity is provided below, but some warnings have to be taken into account, due to the default behaviour of singularity with the host machine. 
 
@@ -487,7 +503,7 @@ and build the container using the usual
    singularity build --nv --fakeroot tf-latest.sif tf-latest.def
 
 .. WARNING::
-   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``, and so pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
+   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``. As such, pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image in de the definitions file, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
 
 .. WARNING::
    As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
@@ -555,8 +571,9 @@ Or run it interactively in the container line-by-line with:
 
    singularity shell --nv tf-latest.sif 
 
-The matplotlib output is omitted in this example for simplicity.
+The matplotlib output is omitted in this example for simplicity. This output can be seen in the section on `jupyter notebooks <jupyter-notebooks>`_.
 
+.. _jupyter-notebooks:
 
 Building directly from dockerhub
 ================================
