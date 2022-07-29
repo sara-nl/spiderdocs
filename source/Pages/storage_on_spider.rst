@@ -292,6 +292,18 @@ replicated three times for redundancy. For disk-only data there is **no backup**
 If you cannot afford to lose this data, we advise you to copy it elsewhere as well.
 
 
+=====================
+Data Ownership Policy
+=====================
+
+The data stored in the /project folder is owned by the grant's signing authority. If data is owned by a user who has
+left the project in the /project folder we ask that you request that user change the ownership to an active project 
+member before leaving. 
+
+The data stored in the /home folders is owned by individual users of those folders and can not be transferred to
+another user without their consent. We are also obligated to remove a users data no more than 6 months after 
+they have left the project.
+
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
