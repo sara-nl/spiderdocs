@@ -575,20 +575,56 @@ The matplotlib output is omitted in this example for simplicity. This output can
 
 .. _jupyter-notebooks:
 
-Building directly from dockerhub
-================================
+Running jupyter notebooks
+=========================
 
-To build directly from docker hub, for example the latest version of tensorflow, one can invoke:
+Many users prefer working in interactive notebooks during development of their models. Here an example is shown of running tensorflow in a jupyter notebook. 
+
+.. tip::
+   Make sure you use the GPU version and not the CPU version of your software in the container.
+
+We start by pulling the GPU version of the tensorflow container from the official repository, and name it ``tf-jup-gpu.sif``:
 
 .. code-block:: bash
-   
-   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
 
-and the image ``tensor_latest.sif`` will be built. Or to directly run the container without writing to disk:
+    singularity build --nv tf-jup-gpu.sif docker://tensorflow/tensorflow:latest-gpu-jupyter
+
+Before starting the notebook, we have open a tunnel to forward the port on which the python kernel communicates to the local machine where the user works. In this way, the notebook can be openened in the browser:
 
 .. code-block:: bash
 
-   singularity run docker://tensorflow/tensorflow:latest
+   ssh -NL 8888:wn-gp-01:8888 USERNAME@spider.surfsara.nl
+
+where USERNAME is your username and ``wn-gp-01`` should changed to the node on which the python kernel is running. This tunneling command has to be running in a seperate terminal, and ensures the communication from port 8888 on the remote machine is forwarded to port 8888 on the local machine. The number 8888 on the right-hand side has to correspond to the port that is given when you start the jupyter notebook, which defaults to 8888.
+
+Once the tunnel is open, start the notebook in a new terminal with:
+
+.. code-block:: bash
+
+   ssh USERNAME@spider.surfsara.nl
+   srun --partition=gpu_v100 --time=12:00:00 -c 1 --ntasks-per-node=1 --x11 --pty bash -i -l
+   singularity run --nv tf-jup-gpu.sif
+
+where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100`` or ``gpu_a100`` depending on your project. The ``singularity run`` command will in this case open a jupyter notebook in the ``/tf/`` folder, where some tutorials are stored. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``.
+
+Alternatively, to have write permission, you can mount your home folder and start the notebook with:
+
+.. code-block:: bash
+
+   cd /path/to/container
+   singularity shell --nv tf-jup-gpu.sif
+   jupyter notebook --ip=0.0.0.0
+
+The python output will return an address like ``http://127.0.0.1:8888/?token=abc123``. Opening this address in your browser will give you access to the notebook. Now you can run an example on the GPU by going to ``/tf/``. 
+
+If there is an output in the terminal running the notebook similar to:
+
+.. code-block:: bash
+
+   2022-07-29 11:53:24.017428: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1532] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 30987 MB memory:  -> device: 0, name: Tesla V100-PCIE-32GB, pci bus id: 0000:00:06.0, compute capability: 7.0
+ 
+this means the GPU is being used for your computations. Now you can run the notebook and compare with the output of the repository.
+
 
 Resources on singularity and containers
 =======================================
