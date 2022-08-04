@@ -388,6 +388,13 @@ Of course this ubuntu image does not have any of the tools needed to build GPU-n
 
 Now you are ready to build on top of a base container and run your code on a GPU!
 
+.. _accounting-gpu:
+
+Accounting of GPU usage
+=======================
+
+Currently the usage of GPU nodes is accounted for in GPU hours. This means that even though multiple cores are used simultaneously, one hour of use of a GPU node is billed as 1 GPU-hour. Unlike CPUs where one hour of multi-core usage is billed as multiple CPU hours, depending on the number of cores.
+
 .. _singularity-building:
 
 ================================
