@@ -317,13 +317,13 @@ combination that is not available you will receive the following error message:
 Using GPU nodes
 ===============
 
-To run your program on GPU nodes some guidelines for the user have to be taken into account. First of all, GPUs are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware and as such, CUDA software is necessary. The CUDA drivers are installed on the relevant machines, but the CUDA interface and other programs need to be run in a singularity container. Nvidia has containers available on the internet for CUDA use, that can be built upon. These can be found `here <https://catalog.ngc.nvidia.com/containers>`_. Alternatively, you can build your own container from scratch, which is also show in the next section. Before building the container, the user needs to know the version of the drivers available on the GPU nodes. The version can be found with:
+To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware and as such, CUDA software is necessary. The CUDA drivers are installed on the relevant machines, but the CUDA interface and other programs need to be run in a singularity container. Nvidia has containers available on the internet for CUDA use, that can be built upon. These can be found `here <https://catalog.ngc.nvidia.com/containers>`_. Alternatively, you can build your own container from scratch, which is also shown in the next section. Before building the container, the user needs to know the version of the drivers available on the GPU nodes. The version can be found with:
 
 .. code-block:: bash
 
-   srun -p gpu_v100 nvidia-smi
+   srun -p GPU_PARTITION nvidia-smi
 
-To compile your code, connect to a gpu node, as the CUDA drivers are only available on these machines. The compilation has to be done in a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run. If container building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
+where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. To compile your code, connect to a gpu node, as the CUDA drivers are only available on these machines. The compilation has to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run. If container building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
 
 Next, some short examples for building and running commands are shown. A more in-depth container build procedure is shown :ref:`here <singularity-building>`.
 
@@ -340,21 +340,21 @@ Building can be done as follows:
 
 .. code-block:: bash
 
-   singularity build nvhpc_22.5_devel.sif docker://nvcr.io/nvidia/nvhpc:22.5-devel-cuda_multi-ubuntu20.04
+   singularity build ubuntu.sif docker://ubuntu
 
-In this example, the Nvidia HPC SDK (software development kit) image is used (found `here <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`_), which is a very large image containing the entire toolchain needed to develop CUDA code. For running libraries like tensorflow or pytorch, use the appropriate (and much smaller) containers.
+In this example, the latest stable version of ubuntu is used (found `here <https://hub.docker.com/_/ubuntu>`_). For running libraries like tensorflow or pytorch or CUDA tools, use the appropriate containers found on the internet. A few links to more resources are given :ref:`here <resources-singularity>`_.
 
 After the singularity image has been sucessfully built, the user can enter a shell in the container with:
 
 .. code-block:: bash
 
-   singularity shell --nv nvhpc_22.5_devel.sif
+   singularity shell --nv ubuntu.sif
 
-In the shell, commands can be run which are executed in the container environment. As the image is the HPC SDK, most if not all possible compilers and libraries for running your CUDA based code should be available. You can also run a command directly in the container and get the output using
+In the shell, commands can be run which are executed in the container environment. You can also run a command directly in the container and get the output using ``exec``.
 
 .. code-block:: bash
 
-   singularity exec --nv nvhpc_22.5_devel.sif echo "hello world"
+   singularity exec --nv ubuntu.sif echo "hello world"
 
 .. WARNING::
    The ``--nv`` flag is necessary to expose the GPUs on the host the to container.
@@ -369,7 +369,7 @@ Here follows an example for running the container in batch mode with a shell scr
    #SBATCH -e slurm-%j.out
    #SBATCH -o slurm-%j.out
 
-   singularity exec --nv nvhpc_22.5_devel.sif echo "hello world"
+   singularity exec --nv ubuntu.sif echo "hello world"
 
 The flags ``-e`` and ``-o`` instruct SLURM in which files to write respectively *stderr* and *stdout* of the job. In this case they are both sent to the same file, this is for comparison in the next step. If you now run this shell script on the ``ui-[01-02]`` nodes with ``bash script.sh``, it will result in:
 
@@ -383,6 +383,8 @@ as the UI nodes do not have access to GPUs and thus do not have an nv file to po
 .. code-block:: bash
 
    hello world
+
+Of course this ubuntu image does not have any of the tools needed to build GPU-native code or libraries that can run on the GPU. Refer to :ref:`this section <resources-singularity>`_ for more resources.
 
 Now you are ready to build on top of a base container and run your code on a GPU!
 
