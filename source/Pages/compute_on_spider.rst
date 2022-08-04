@@ -403,6 +403,23 @@ Building and running a singularity container
 
 In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
 
+Building directly from dockerhub
+================================
+
+There are multiple ways to build a container. To build directly from docker hub, for example the latest version of tensorflow, one can invoke:
+
+.. code-block:: bash
+   
+   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
+
+and the image ``tensor_latest.sif`` will be built, containing the contents of the latest ``tensorflow/tensorflow`` image. To directly run the container without writing to disk:
+
+.. code-block:: bash
+
+   singularity run docker://tensorflow/tensorflow:latest
+
+In the examples below, both "pulling from the internet" and using *definition* files are used to build singularity containers.
+
 Running CUDA code 
 =================
 
@@ -470,21 +487,6 @@ The container was exposed to the GPU at build-time, and at run-time it also has 
 .. tip::
   
    Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container and distribute it as-is for maximum stability.
-
-Building directly from dockerhub
-================================
-
-To build directly from docker hub, for example the latest version of tensorflow, one can invoke:
-
-.. code-block:: bash
-   
-   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
-
-and the image ``tensor_latest.sif`` will be built. Or to directly run the container without writing to disk:
-
-.. code-block:: bash
-
-   singularity run docker://tensorflow/tensorflow:latest
 
 
 Running python
