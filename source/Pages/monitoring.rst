@@ -43,4 +43,4 @@ Spider Node exporter
 ====================
 
 On this very extensive dashboard you can select at the top each machine in Spider under "host" and get a general overview at the top of the page, and below in different folds you can see very detailed information on the selected host.
-This information ranges from CPU and memory usage to storage IO and disk usage to network traffic statistics. There is a lot of information on this page for the interested user.
+This information ranges from CPU and memory usage to storage IO and disk usage to network traffic statistics. This page provides a lot of information for the interested user.
