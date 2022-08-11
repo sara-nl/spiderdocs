@@ -321,9 +321,9 @@ To run your program on GPU nodes some guidelines for the user have to be taken i
 
 .. code-block:: bash
 
-   srun -p GPU_PARTITION nvidia-smi
+   srun -p GPU_PARTITION --gpus GPU:N_GPUS nvidia-smi
 
-where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. To compile your code, connect to a gpu node, as the CUDA drivers are only available on these machines. The compilation has to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run. If container building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
+where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. The compilation and running of code has to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run. If container building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
 
 Next, some short examples for building and running commands are shown. A more in-depth container build procedure is shown :ref:`here <singularity-building>`.
 
@@ -331,9 +331,16 @@ To *interactively* log in to a GPU node run:
 
 .. code-block:: bash
 
-   srun --partition=gpu_v100 --time=00:60:00 -c 1 --ntasks-per-node=1 --pty bash -i -l
+   srun --partition=gpu_v100 --time=00:60:00 --gpus v100:1 --pty bash -i -l
 
 This will open a bash sessions on a machine in the ``gpu_v100`` partition for 60 minutes.
+
+.. tip::
+
+   Asking for more GPUs than the total available on a node does not give an error, your jobs will run on the maximum number.
+
+Simple building example
+=======================
 
 Building can be done as follows:
 
@@ -366,6 +373,7 @@ Here follows an example for running the container in batch mode with a shell scr
    #!/bin/bash
 
    #SBATCH -p gpu_v100
+   #SBATCH -G v100:1
    #SBATCH -e slurm-%j.out
    #SBATCH -o slurm-%j.out
 
@@ -574,13 +582,23 @@ Now this code can be run with:
 
 .. code-block:: bash
 
-   singularity exec --nv tf-latest.sif ./fashion.py
+   singularity exec --nv nv-tf-22.07.sif ./fashion.py
 
 Or run it interactively in the container line-by-line with:
 
 .. code-block:: bash
 
-   singularity shell --nv tf-latest.sif 
+   singularity shell --nv nv-tf-22.07.sif 
+
+If there is an output in the terminal running the python code similar to:
+
+.. code-block:: bash
+
+   2022-07-29 11:53:24.017428: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1532] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 30987 MB memory:  -> device: 0, name: Tesla V100-PCIE-32GB, pci bus id: 0000:00:06.0, compute capability: 7.0
+
+this means the GPU is being used for your computations.
+
+Also, by wrapping the singularity command in a shell script called ``fashion.sh`` and adding the appropriate ``#SBATCH`` commands at the top, the script can be submitted to the batch system with ``sbatch fashion.sh``.
 
 The matplotlib output is omitted in this example for simplicity. This output can be seen in the section on `jupyter notebooks <jupyter-notebooks>`_.
 
@@ -594,11 +612,11 @@ Many users prefer working in interactive notebooks during development of their m
 .. tip::
    Make sure you use the GPU version and not the CPU version of your software in the container.
 
-We start by pulling the GPU version of the tensorflow container from the official repository, and name it ``tf-jup-gpu.sif``:
+We start with the image from the previous subsection, the tensorflow container from the Nvidia repository with the added examples: ``nv-tf-22.07.sif``. This image also contains jupyter by default.
 
 .. code-block:: bash
 
-    singularity build --nv tf-jup-gpu.sif docker://tensorflow/tensorflow:latest-gpu-jupyter
+    singularity shell --nv nv-tf-22.07.sif
 
 Before starting the notebook, we have open a tunnel to forward the port on which the python kernel communicates to the local machine where the user works. In this way, the notebook can be openened in the browser:
 
@@ -613,17 +631,16 @@ Once the tunnel is open, start the notebook in a new terminal with:
 .. code-block:: bash
 
    ssh USERNAME@spider.surfsara.nl
-   srun --partition=gpu_v100 --time=12:00:00 -c 1 --ntasks-per-node=1 --x11 --pty bash -i -l
-   singularity run --nv tf-jup-gpu.sif
+   srun --partition=gpu_v100 -gpus v100:1 --time=12:00:00 --x11 --pty bash -i -l
+   singularity shell --nv nv-tf-22.07.sif
 
-where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100`` or ``gpu_a100`` depending on your project. The ``singularity run`` command will in this case open a jupyter notebook in the ``/tf/`` folder, where some tutorials are stored. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``.
+where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100`` or ``gpu_a100`` depending on your project. The ``singularity shell`` command is needed to start jupyter from the command inside the container. The tutorials were cloned during the building of the image. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``.
 
 Alternatively, to have write permission, you can mount your home folder and start the notebook with:
 
 .. code-block:: bash
 
-   cd /path/to/container
-   singularity shell --nv tf-jup-gpu.sif
+   cd /tmp/docs/site/en/tutorials/keras
    jupyter notebook --ip=0.0.0.0
 
 The python output will return an address like ``http://127.0.0.1:8888/?token=abc123``. Opening this address in your browser will give you access to the notebook. Now you can run an example on the GPU by going to ``/tf/``. 
