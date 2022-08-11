@@ -424,28 +424,37 @@ There are multiple ways to build a container. To build directly from docker hub,
 
 .. code-block:: bash
    
-   singularity build tensor_latest.sif docker://tensorflow/tensorflow:latest
+   singularity build --nv tf_latest.sif docker://tensorflow/tensorflow:latest
 
-and the image ``tensor_latest.sif`` will be built, containing the contents of the latest ``tensorflow/tensorflow`` image. To directly run the container without writing to disk:
+and the image ``tf_latest.sif`` from `dockerhub <https://hub.docker.com>`_ will be built, containing the contents of the latest ``tensorflow`` image from the makers of tensorflow. You can also get an image from a different source, such as the Nvidia container repository:
 
 .. code-block:: bash
 
-   singularity run docker://tensorflow/tensorflow:latest
+   singularity build --nv nvidia-tf.sif docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
 
-In the examples below, both "pulling from the internet" and using *definition* files are used to build singularity containers.
+Such an image will contain all the necessary drivers and compile flags to run on Nvidia GPUs, which is preferable on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`.
+
+To directly run the container without writing to disk invoke:
+
+.. code-block:: bash
+
+   singularity run --nv docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
+
+In the examples below, the base images are taken from the internet and expanded upon using *definition* files, to build custom singularity containers.
 
 Running CUDA code 
 =================
 
-There are multiple ways to build a container. First, we show the method of using a definitions file. Later, directly building from a repository is shown. The contents of the definitions file are shown before these contents are explained. Start by making the file called ``cuda_example.def`` and add all the steps we want to take to make a container:
+
+Here, we show the method of using a definitions file, as opposed to above, where directly building from a repository is shown. The contents of the definitions file are shown before these contents are explained. Start by making the file called ``cuda_example.def`` and add all the steps we want to take to make a container:
 
 .. code-block:: bash
    
    Bootstrap: docker
-   From: nvidia/cuda:11.6.2-devel-centos7
+   From: nvidia/cuda:11.7.0-devel-centos7
 
-   # based on https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/
    %post
+   #This section is run inside the container 
    yum -y install git make
    mkdir /test_repo
    cd /test_repo
@@ -460,10 +469,10 @@ There are multiple ways to build a container. First, we show the method of using
    ./eigenvalues
 
    %help
-   This is demo container to show how to build and run a CUDA application
+   This is a demo container to show how to build and run a CUDA application
    on a GPU node
 
-This container will take a base image from `docker-hub <https://hub.docker.com/>`_ and use pre-built `nvidia/cuda <https://hub.docker.com/r/nvidia/cuda>`_ container of a specific version. This container also contains necessary CUDA tools to compile binaries that run on GPUs. After starting from this base-image, in the next steps some tools are installed, directories are created and filled with a git repository. From this repository a single example of a CUDA applictation is compiled. When running the container on the command line, this application is run automatically.
+This container will take a base image from `docker-hub <https://hub.docker.com/>`_ and use pre-built `nvidia/cuda <https://hub.docker.com/r/nvidia/cuda>`_ container of a specific version. This container also contains the necessary CUDA tools to compile binaries that run on GPUs. After starting from this base-image, in the next steps some tools are installed, directories are created and filled with a git repository. From this repository a single example of a CUDA applictation is compiled. When running the container on the command line, this application is run automatically.
 
 Now that we have the definitions file, we can build the singularity image with:
 
@@ -484,7 +493,7 @@ Flag              Functionality
 
 ``--fakeroot`` is needed for installing ``git`` and ``make`` in the container. ``--nv`` is necessary to access the GPU from within the container, and ``--sandbox`` is used to allow the user after running this example to go into the container and make changes to folders, files or run other commands that change the state of the container.
 
-Once the container is built - which can take a few minutes as multiple base containers have to be pulled from the internet - you can run it using 
+Once the container is built - which can take a few minutes as multiple base containers have to be retrieved from the internet - you can run it using 
 
 .. code-block:: bash
 
@@ -500,32 +509,40 @@ The container was exposed to the GPU at build-time, and at run-time it also has 
 
 .. tip::
   
-   Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container and distribute it as-is for maximum stability.
+   Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container with a definitions file and distribute it as-is for maximum stability.
 
+There is also a full HPC development image made available by Nvidia, called "HPC SDK", which is the software development kit that contains all the compilers, libraries and tools necessary to build efficient code that runs on GPUs. This image can be found `here <Https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`_.
 
 Running python
 ==============
 
 Popular python interfaces for modelling are tensorflow, keras, pytorch, and more. An example for using tensorflow in singularity is provided below, but some warnings have to be taken into account, due to the default behaviour of singularity with the host machine. 
 
-Starting on a machine in the GPU partition, we create a definitions file ``tf-latest.def`` containing:
+Starting on a machine in the GPU partition, we create a definitions file ``nv-tf-22.07.def`` containing:
 
 .. code-block:: bash
 
   Bootstrap: docker
-  From: tensorflow/tensorflow:latest
+  From: nvcr.io/nvidia/tensorflow:22.07-tf2-py3
 
   %post
-    pip install matplotlib
-
+  cd /tmp
+  git clone https://github.com/tensorflow/docs
+ 
+  %runscript
+  cd /tmp/docs/site/en/tutorials/keras
+  python
+ 
   %help
-    This is demo container to show how to run a tensorflow model
+  This is a demo container to show how to run tensorflow in python
 
 and build the container using the usual 
 
 .. code-block:: bash
 
-   singularity build --nv --fakeroot tf-latest.sif tf-latest.def
+   singularity build --nv --fakeroot nv-tf-22.07.sif nv-tf-22.07.def
+
+In this definitions file, the tensorflow docs and tutorials are installed as an example to show how to do it. 
 
 .. WARNING::
    Running ``pip`` inside the container using ``singularity shell`` when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``. As such, pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image in the definitions file, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. 
@@ -533,12 +550,13 @@ and build the container using the usual
    For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
 
 .. WARNING::
-   As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
+   As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host machine are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
 
 .. tip::
-   Use singularity only to encapsulate your libraries in the container and thus control their versioning and that of the environment. Code and data files can be fed to singularity, so keep such files external to the container.
+   Use singularity only to control the versioning of the environment and encapsulate your libraries in the container and thus control their versioning. Code and data files can be fed to singularity, so keep such files external to the container.
 
-In this example, matplotlib is installed in the definitions file, not only to show how to do this, but also as it is a required package in the example we will follow. The example comes from the tensorflow library: `classifying pieces of clothing <https://www.tensorflow.org/tutorials/keras/classification>`_. Now create a file to run ``fashion.py``, set it to executable with ``chmod 755 fashion.py`` and add the following:
+
+The example we are about to execute in the container comes from the tensorflow library: `classifying pieces of clothing <https://www.tensorflow.org/tutorials/keras/classification>`_. Now create a file to run ``fashion.py``, set it to executable with ``chmod 755 fashion.py`` and add the following:
 
 .. code-block:: python
 
@@ -631,7 +649,7 @@ Before starting the notebook, we have open a tunnel to forward the port on which
 
    ssh -NL 8888:wn-gp-01:8888 USERNAME@spider.surfsara.nl
 
-where USERNAME is your username and ``wn-gp-01`` should changed to the node on which the python kernel is running. This tunneling command has to be running in a seperate terminal, and ensures the communication from port 8888 on the remote machine is forwarded to port 8888 on the local machine. The number 8888 on the right-hand side has to correspond to the port that is given when you start the jupyter notebook, which defaults to 8888.
+where USERNAME is your username and ``wn-gp-01`` should changed to the node on which the python kernel is running. This tunneling command has to be running in a seperate terminal, and ensures the communication from port 8888 (right hand side) on the remote machine is forwarded to port 8888 (left hand side) on the local machine. The port that is given when you start the jupyter notebook defaults to 8888, but if it is already in use, the value will be different.
 
 Once the tunnel is open, start the notebook in a new terminal with:
 
@@ -643,16 +661,19 @@ Once the tunnel is open, start the notebook in a new terminal with:
 
 where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100`` or ``gpu_a100`` depending on your project. The ``singularity shell`` command is needed to start jupyter from the command inside the container. The tutorials were cloned during the building of the image. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``.
 
-Alternatively, to have write permission, you can mount your home folder and start the notebook with:
+Start the notebook with:
 
 .. code-block:: bash
 
    cd /tmp/docs/site/en/tutorials/keras
    jupyter notebook --ip=0.0.0.0
 
-The python output will return an address like ``http://127.0.0.1:8888/?token=abc123``. Opening this address in your browser will give you access to the notebook. Now you can run an example on the GPU by going to ``/tf/``. 
+The python output will return an address like ``http://127.0.0.1:8888/?token=abc123``. Opening this address in your browser will give you access to the notebook. Now you can run an example from the ``keras`` folder. 
 
-If there is an output in the terminal running the notebook similar to:
+.. WARNING::
+   Some jupyter instances provide a link of that contains ``hostname:8888``. Replace ``hostname`` with ``localhost`` or ``127.0.0.1`` to properly fetch the notebook.
+
+The terminal will now have CUDA output, while the notebook contains all the python and graphical output. Again, if there is an output in the terminal running the notebook similar to:
 
 .. code-block:: bash
 
