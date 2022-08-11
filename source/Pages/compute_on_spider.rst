@@ -645,6 +645,30 @@ Resources on singularity and containers
 | https://catalog.ngc.nvidia.com/orgs/nvidia/containers/
 | https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity (slightly outdated)
 
+Advanced GPU querying
+=====================
+
+Some of the GPU nodes in spider have multiple GPUs installed. This opens up the avenue where multiple users use the same node simultaneously. Here are some more advanced commands to explore a few options.
+
+To get one GPU and leave the other GPU on the node will available to someone else, do:
+
+.. code-block:: bash
+
+   srun -p gpu_a100 --gpus=a100:1 --pty bash
+
+To run on 2 GPUs simultaneously and have no other users on the nodes do:
+
+.. code-block:: bash
+
+   srun -p gpu_a100 --nodes=1 --exclusive --gpus=a100:2 --pty bash
+
+By default, half the cores of the node (22) are used when you use 1 out of 2 GPUs. To use only a single CPU core while using GPU do:
+
+.. code-block:: bash
+   
+   srun -p gpu_a100 --cpus-per-task=1 --gpus=a100:1 --pty bash
+
+For more information read the man-pages of SLURM.
 
 ======================
 Querying compute usage
