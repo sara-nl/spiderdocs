@@ -1,3 +1,4 @@
+.. _jupyter-notebook-section:
 *****************
 Jupyter Notebooks
 *****************
