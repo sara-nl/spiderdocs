@@ -32,7 +32,7 @@ setup is identical on all nodes. Basic unix functionality is installed system-wi
         * software compilers (e.g., gcc, g++, f95)
         * editors (e.g., vi, vim, emacs, nano and edit).
         * graphical tools are supported via X11 ssh forwarding on the login node.
-        * operating system (OS on Spider is CentOS 7.5.1804 (Core) on login and worker nodes.
+        * operating system (OS on Spider is CentOS 8.5.2111 (Core) on login and worker nodes.
 
 
 .. _user-installed-sw:
@@ -87,7 +87,7 @@ Singularity containers
 On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` we support Singularity. Singularity is a container solution
 for building software stacks in the form of images. Singularity enables these
-images to be run in user space. We dot not provide a space for building
+images to be run in the user space. We dot not provide a space for building
 Singularity images, but we do support the execution of these images by users
 on Spider.
 
@@ -142,9 +142,9 @@ example comparing a regular command in a job with a Singularity command.
         echo "I am running on " $HOSTNAME
         singularity exec --pwd $PWD /home/[USERNAME]/my-singularity-python-image.simg python /home/[USERNAME]/hello_world.py
 
-Please note that that the ``--pwd $PWD`` is recommended for use. This is because by default,
-Singularity makes the current working directory within the container the same as on the
-host system (Spider). For resolving the current working directory, Singularity looks up the
+Please note that that the ``--pwd $PWD`` is recommended for use. By default, Singularity makes 
+the current working directory within the container the same as on the host system (Spider), and
+this path is not always available. For resolving the current working directory, Singularity looks up the
 physical absolute path (see ``man pwd`` for more info). However, some directories on Spider
 may be symbolic links and the current working directory would then resolve differently
 than expected. This would then result in your files not being where you expected them to
