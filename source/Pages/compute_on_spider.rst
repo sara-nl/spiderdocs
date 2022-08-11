@@ -636,13 +636,14 @@ If there is an output in the terminal running the notebook similar to:
  
 this means the GPU is being used for your computations. Now you can run the notebook and compare with the output of the repository.
 
+.. _resources-singularity: 
 
 Resources on singularity and containers
 =======================================
 
-| https://docs.sylabs.io/guides/3.10/user-guide/
+| https://docs.sylabs.io/guides/latest/user-guide/
 | https://hub.docker.com/r/nvidia/cuda
-| https://catalog.ngc.nvidia.com/orgs/nvidia/containers/
+| https://catalog.ngc.nvidia.com/
 | https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity (slightly outdated)
 
 Advanced GPU querying
