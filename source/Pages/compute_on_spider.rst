@@ -349,7 +349,7 @@ Building can be done as follows:
 
    singularity build ubuntu.sif docker://ubuntu
 
-In this example, the latest stable version of ubuntu is used (found `here <https://hub.docker.com/_/ubuntu>`_). For running libraries like tensorflow or pytorch or CUDA tools, use the appropriate containers found on the internet. A few links to more resources are given :ref:`here <resources-singularity>`_.
+In this example, the latest stable version of ubuntu is used (found `here <https://hub.docker.com/_/ubuntu>`_). For running libraries like tensorflow or pytorch or CUDA tools, use the appropriate containers found on the internet. A few links to more resources are given :ref:`here <resources-singularity>`.
 
 After the singularity image has been sucessfully built, the user can enter a shell in the container with:
 
@@ -392,7 +392,11 @@ as the UI nodes do not have access to GPUs and thus do not have an nv file to po
 
    hello world
 
-Of course this ubuntu image does not have any of the tools needed to build GPU-native code or libraries that can run on the GPU. Refer to :ref:`this section <resources-singularity>`_ for more resources.
+Of course, this ubuntu image does not have any of the tools needed to build GPU-native code or libraries that can run on the GPU. Refer to :ref:`this section <resources-singularity>` for more resources.
+
+.. tip::
+
+   While you do not get the warning about finding the nv file when using the ``--nv`` flag, you also have to specify which GPU to use, otherwise none are allocated to you! This can be done with the ``-G`` flag, as can be seen in the example shell script. 
 
 Now you are ready to build on top of a base container and run your code on a GPU!
 
@@ -409,7 +413,9 @@ Currently the usage of GPU nodes is accounted for in GPU hours. This means that 
 Building and running a singularity container
 ================================
 
-In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_. 
+In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/latest/user-guide/index.html>`_. 
+
+The steps in this section are done on GPU nodes, to ensure availability of the drivers, which may be needed in some compilation steps.
 
 Building directly from dockerhub
 ================================
@@ -522,7 +528,9 @@ and build the container using the usual
    singularity build --nv --fakeroot tf-latest.sif tf-latest.def
 
 .. WARNING::
-   Running ``pip`` inside the container when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``. As such, pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image in de the definitions file, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
+   Running ``pip`` inside the container using ``singularity shell`` when it is in ``--writable`` mode will write the python libraries to the default **mounted** location. This location is the ``$HOME``-folder of ``$USER``. As such, pip packages will end up on the host machine and not in the container. To avoid this behaviour, only run ``pip`` during the building of the image in the definitions file, or change the mounting behaviour of singularity when entering the shell. For example, mount the local path of your project as working directory as the ``$HOME`` in the container. 
+
+   For information on this, read ``man singularity-shell`` and `bind mounts <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_.
 
 .. WARNING::
    As the home folder is mounted by default in singularity, and python searches certain folders by default, it is possible that inside the container packages from the host are called, instead of what is inside the container. For example, the ``~/.local`` folder on the host machine can have presedence over site-packages in the container. If errors appear relating to CUDA ``.so`` files, or versions of packages are mismatching, ensure that the user-space is not accidentally providing libraries to the container.
@@ -576,7 +584,7 @@ In this example, matplotlib is installed in the definitions file, not only to sh
   predictions = probability_model.predict(test_images)
   print(predictions[0])
 
-This example will create a model that recognizes the clothes in a picture, and a prediction of a set of test images is done at the end. The result can be compared to the `official example <https://www.tensorflow.org/tutorials/keras/classification>`_. 
+This example will create a model that recognizes the clothes in a picture, and a prediction of a set of test images is done at the end. The result can be compared to the `official example <https://www.tensorflow.org/tutorials/keras/classification>`_. The matplotlib output is omitted in this example for simplicity. This output can be seen in the section on :ref:`jupyter notebooks <jupyter-notebooks>`.
 
 Now this code can be run with:
 
@@ -600,14 +608,13 @@ this means the GPU is being used for your computations.
 
 Also, by wrapping the singularity command in a shell script called ``fashion.sh`` and adding the appropriate ``#SBATCH`` commands at the top, the script can be submitted to the batch system with ``sbatch fashion.sh``.
 
-The matplotlib output is omitted in this example for simplicity. This output can be seen in the section on `jupyter notebooks <jupyter-notebooks>`_.
 
 .. _jupyter-notebooks:
 
 Running jupyter notebooks
 =========================
 
-Many users prefer working in interactive notebooks during development of their models. Here an example is shown of running tensorflow in a jupyter notebook. 
+Many users prefer working in interactive notebooks during development of their models. Here an example is shown of running tensorflow in a jupyter notebook. There is also a more general section on jupyter notebooks :ref:`here <jupyter-notebook-section>`.
 
 .. tip::
    Make sure you use the GPU version and not the CPU version of your software in the container.
@@ -651,7 +658,7 @@ If there is an output in the terminal running the notebook similar to:
 
    2022-07-29 11:53:24.017428: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1532] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 30987 MB memory:  -> device: 0, name: Tesla V100-PCIE-32GB, pci bus id: 0000:00:06.0, compute capability: 7.0
  
-this means the GPU is being used for your computations. Now you can run the notebook and compare with the output of the repository.
+this means the GPU is being used for your computations. Now you can run the classification (fashion) notebook and compare with the output of the `repository <https://www.tensorflow.org/tutorials/keras/classification>`_ to see if you get similar results.
 
 .. _resources-singularity: 
 
