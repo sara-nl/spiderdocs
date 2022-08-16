@@ -80,6 +80,21 @@ Create a macaroon
         --output rclone [PROJECT_tokenfile]
 
 
+These permissions can be given comma separated upon creation of the macaroon:
+
+===================  ===============================  
+Permission           Function                    
+===================  ===============================  
+DOWNLOAD             Read a file
+UPLOAD               Write a file
+DELETE               Delete a file or directory
+MANAGE               Rename or move a file or directory
+LIST                 List objects in a directory
+READ_METADATA        Read file status
+UPDATE_METADATA      Stage/unstage a file, change QoS
+===================  ===============================  
+
+
 Share macaroons
 ===============
 
@@ -296,6 +311,8 @@ storage. If your quota allocation includes tape storage, then the data stored
 on magnetic tape has to be copied to a hard drive before it can be used.
 This action is called Staging files or ‘bringing a file online’.
 
+Your macaroon needs to be created with UPDATE_METADATA permissions to allow for staging operations.
+
 **--stage <file>**
 
 **--stage <directory>**
@@ -321,6 +338,8 @@ This action is called Staging files or ‘bringing a file online’.
 
 Unstaging
 ---------
+
+Your macaroon needs to be created with UPDATE_METADATA permissions to allow for unstaging operations.
 
 **--unstage <file>**
 
