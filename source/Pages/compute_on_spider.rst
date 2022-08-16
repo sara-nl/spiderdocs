@@ -400,7 +400,7 @@ as the UI nodes do not have access to GPUs and thus do not have an nv file to po
 
    hello world
 
-Of course, this ubuntu image does not have any of the tools needed to build GPU-native code or libraries that can run on the GPU. Refer to :ref:`this section <resources-singularity>` for more resources and :ref:` <cuda-example>` for an example.
+Of course, this ubuntu image does not have any of the tools needed to build GPU-native code or libraries that can run on the GPU. Refer to :ref:`this section <resources-singularity>` for more resources and :ref:`this section <cuda-example>` for an example.
 
 .. tip::
 
