@@ -12,7 +12,7 @@ Below these buttons are the actual properties of Spider being shown, which is ei
 Public dashboard
 ================
 
-The public dashboard can be found `here <https://jobsview.grid.surfsara.nl/grafana/d/i289WluZz/spider?orgId=1>`_ and shows 4 views of running jobs, pending jobs, core usage and queue times for different projects.
+The public dashboard can be found `here <https://jobsview.grid.surfsara.nl/grafana/d/i289WluZz/spider?orgId=1>`_ and shows 4 views of running jobs, pending jobs, queue times and reserved number of cores for the cluster for different projects.
 
 User dashboards
 ===============
@@ -42,5 +42,4 @@ The cluster overview shows the general status of the nodes in Spider and for eac
 Spider Node exporter
 ====================
 
-On this very extensive dashboard you can select at the top each machine in Spider under "host" and get a general overview at the top of the page, and below in different folds you can see very detailed information on the selected host.
-This information ranges from CPU and memory usage to storage IO and disk usage to network traffic statistics. This page provides a lot of information for the interested user.
+On this extensive dashboard you can select at the top each machine in Spider under "host" and get a general overview at the top of the page. Below, in a variety of panels (note that these can be folded) additional detailed system information is available for the selected node. This information ranges from CPU and memory usage to storage IO and disk usage to network traffic statistics.
