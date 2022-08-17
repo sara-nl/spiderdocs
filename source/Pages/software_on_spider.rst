@@ -32,7 +32,7 @@ setup is identical on all nodes. Basic unix functionality is installed system-wi
         * software compilers (e.g., gcc, g++, f95)
         * editors (e.g., vi, vim, emacs, nano and edit).
         * graphical tools are supported via X11 ssh forwarding on the login node.
-        * operating system (OS on Spider is CentOS 8.5.2111 (Core) on login and worker nodes.
+        * operating system (OS on Spider is CentOS 8) on login and worker nodes.
 
 
 .. _user-installed-sw:
@@ -87,7 +87,7 @@ Singularity containers
 On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` we support Singularity. Singularity is a container solution
 for building software stacks in the form of images. Singularity enables these
-images to be run in the user space. We dot not provide a space for building
+images to be run in user space. We do not provide a space for building
 Singularity images, but we do support the execution of these images by users
 on Spider.
 

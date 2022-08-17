@@ -49,9 +49,11 @@ Table of contents:
    Pages/storage_on_spider
    Pages/software_on_spider
    Pages/compute_on_spider
+   Pages/gpu_on_spider
    Pages/workflows
    Pages/web_public_view
    Pages/jupyter_notebooks
+   Pages/monitoring
    Pages/maintenances
    Pages/getting_help
 

@@ -1,6 +1,4 @@
-
 .. _compute-on-spider:
-
 *****************
 Compute on Spider
 *****************
@@ -57,8 +55,11 @@ SBATCH directive      Functionality         Usage example
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 12 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p interactive`` (the job will run max for 12 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_v100`` (the job will run on V100 nodes with a max of 120 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100`` (the job will run on A100 nodes with a max of 120 hours)
 ==================    ===================   =================
 
+The specifics of each partition can be found with ``scontrol show partitions``, the information per machine can be found with ``scontrol show node NAME``, where NAME is the name of the worker node and for a simple overview use ``sinfo``.
 
 
 ==================
@@ -164,7 +165,7 @@ Using local ``scratch``
 ========================
 
 If you run jobs that require intensive IO processes, we advise you to use
-``scratch`` because it is local SSD on every compute node of the the
+``scratch`` because it is the local SSD on every compute node of the the
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. This is a temporary storage that can be used only during the
 execution of your job and will be arbitrarily removed at any point once your
@@ -204,11 +205,12 @@ Here is a job script template for ``$TMPDIR`` usage;
    exit 0
 
 
-
-
 =========
 Job types
 =========
+
+CPU jobs
+========
 
 * For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider better an HPC facility.
 * On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we provide **8000 MB RAM per core**.
@@ -221,17 +223,28 @@ Job types
   * For example, by specifying ``-c 2`` you request 2 cores and 160 GB scratch disk
   * When you target specifically our fat nodes with 12TB available scratch, the provided scratch disk per requested core is 200 GB
 
+GPU jobs
+========
+* For more information on using GPUs on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, see the :ref:`dedicated section <gpu-on-spider>`.
+* For jobs that require GPU resources a specific partition is available (see :ref:`partitions <partitions>` for all the different partitions).
+* Access to the GPU paritions needs to be requested and received.
+
+
+.. _partitions:
+
 ================
 Slurm partitions
 ================
 
-We have configured four partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` as shown in the table above:
+We have configured four CPU and two GPU partitions on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` as shown in the :ref:`table above <prepare-workloads>`:
 
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
   * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
   * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 12 hours max walltime.
   * Interactive partition is meant for testing jobs and has 12 hours maximum walltime.
+  * GPU V100 contains 1 Nvidia V100 (32GB) card per node.
+  * GPU A100 contains 2 Nvidia A100 (40GB) cards per node.
 
 =================
 Slurm constraints
@@ -298,14 +311,13 @@ As an example we provide below a bash shell script ``hello_world.sh`` that execu
    echo "end hello script"
 
 From the command line interface the above script may be submitted to Slurm via:
+
 ``sbatch hello_world.sh``
 
 Please note that not all combinations will be supported. In case you submit a
 combination that is not available you will receive the following error message:
 
    'sbatch: error: Batch job submission failed: Requested node configuration is not available'
-
-
 
 ======================
 Querying compute usage
@@ -315,7 +327,7 @@ Querying compute usage
 Overview
 ===========================
 
-sacct and sreport are slurm tools that allows users to query their usage from the slurm database. The accounting tools sacct and sreport are both documented on the `Slurm documentation page`_.
+``sacct`` and ``sreport`` are slurm tools that allows users to query their usage from the slurm database. The accounting tools ``sacct`` and ``sreport`` are both documented on the `Slurm documentation page`_.
 
 These slurm queries result in a users total usage for a user. The sum of Raw CPU times / 3600 gives total core usage for the defined period. `-d Produces delimited results for easier exporting / reporting`
 
@@ -341,16 +353,7 @@ Examples
       End="2020-07-30"
 
 
-
-
-.. srun        runs a job from the command line or from within a job script
-.. example with
- sacct -u homer --format=JobID,JobName,MaxRSS,Elapsed
- sacct -j 810 --format=JobID,JobName,MaxRSS,Elapsed
- scontrol  show jobid -dd 810
-
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
-
 
 .. Links:
 
