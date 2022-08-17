@@ -3,12 +3,21 @@
 GPUs on Spider
 *****************
 
+.. Tip:: This is a quickstart for using GPUs. In this page you will learn:
+
+     * how to access GPU nodes
+     * how to build and run a singularity container that:
+
+        * uses GPUs
+        * runs CUDA code
+        * runs python code
+        * runs jupyter notebooks
 
 ===============
 Using GPU nodes
 ===============
 
-To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware. The CUDA drivers are available on the GPU nodes. Other GPU software needs to be obtained and deployed by the user. We suggest users to :ref:`create <singularity-building>` or make use of `pre-build Singularity containers <https://catalog.ngc.nvidia.com/containers>_`. The Spider team can provide assistance to users who are not familiar with container. In this case please submit your request for assistance via our :ref:`our helpdesk <helpdesk>`.
+To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware and the CUDA drivers are available on the GPU nodes. Other GPU software needs to be obtained and deployed by the user. We suggest users to :ref:`create <singularity-building>` or make use of `pre-build Singularity containers <https://catalog.ngc.nvidia.com/containers>`_. The Spider team can provide assistance to users who are not familiar with container. In this case please submit your request for assistance via our :ref:`our helpdesk <helpdesk>`.
 
 In case the version number of the drivers has to be known, the user can find the version number and other information on the GPU hardware with:
 
@@ -16,7 +25,9 @@ In case the version number of the drivers has to be known, the user can find the
 
    srun -p GPU_PARTITION --gpus GPU:N_GPUS nvidia-smi
 
-where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. The compilation and running of code is recommended to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run.
+where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. 
+
+The compilation and running of code is recommended to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run.
 
 Next, some short examples for building and running commands are shown. A more in-depth container build procedure is shown :ref:`here <singularity-building>`.
 
@@ -340,7 +351,7 @@ Also, by wrapping the singularity command in a shell script called ``fashion.sh`
 Running jupyter notebooks
 =========================
 
-Many users prefer working in interactive notebooks during development of their models. Here an example is shown of running tensorflow in a jupyter notebook. There is also a more general section on jupyter notebooks :ref:`here <jupyter-notebook-section>`.
+Many users prefer working in interactive notebooks during development of their models. Here an example is shown of running tensorflow in a jupyter notebook. There is also a more general section in this documentation on jupyter notebooks :ref:`here <jupyter-notebook-section>`.
 
 .. tip::
    Make sure you use the GPU version and not the CPU version of your software in the container.
@@ -368,7 +379,7 @@ The python output will return an address like ``http://127.0.0.1:8888/?token=abc
 
    ssh -NL 8888:wn-gp-01:8888 USERNAME@spider.surfsara.nl
 
-where USERNAME is your username and ``wn-gp-01`` should changed to the node on which the python kernel is running. This tunneling command has to be running in a separate terminal, and ensures the communication from port 8888 (right hand side) on the remote machine is forwarded to port 8888 (left hand side) on the local machine. The port that is given when you start the jupyter notebook defaults to 8888, but if it is already in use, the value will be different. The used value can be seen in the jupyter output in the terminal.
+where USERNAME is your username and ``wn-gp-01`` should changed to the node on which the python kernel is running. This tunneling command has to be running in **a separate terminal**, and ensures the communication from port 8888 (right hand side) on the remote machine is forwarded to port 8888 (left hand side) on the local machine. The port that is given when you start the jupyter notebook defaults to 8888, but if it is already in use, the value will be different. The used value can be seen in the jupyter output in the terminal.
 
 Now you can run an example from the ``keras`` folder by going to the http-address provided by jupyter.
 
@@ -409,7 +420,7 @@ By default, half the cores of the node (22) are used when you use 1 out of 2 GPU
    
    srun -p gpu_a100 --cpus-per-task=1 --gpus=a100:1 --pty bash
 
-For more information read the `man-pages of SLURM <https://www.mankier.com/1/slurm>`.
+For more information read the `man-pages of SLURM <https://slurm.schedmd.com/man_index.html>`_.
 
 .. _resources-singularity: 
 
