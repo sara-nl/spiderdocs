@@ -8,7 +8,7 @@ Job dependencies
 
 In this example it is shown how to run a job that depends on another job to finish before it starts.
  
-First make two files. ``hello.sh`` which contains:
+First make two files, ``hello.sh`` which contains
  
 .. code-block:: bash
 
@@ -19,7 +19,7 @@ First make two files. ``hello.sh`` which contains:
    date
    echo "hello world"
     
-and ``bye.sh`` which contains:
+and ``bye.sh`` which contains
     
 .. code-block:: bash
 
@@ -42,7 +42,7 @@ Now you can submit the jobs with:
 
    Submitted batch job 2560644
 
-The first command submits a job that returns only the JobID value with ``--parsable``, and saves this value to a variable called ``jobid``. The second command only starts after the job with jobid has finished in a success state with ``afterok``. For more information on the dependency flag, see `the SLURM man-pages <https://slurm.schedmd.com/sbatch.html>`_. 
+The first command submits a job and returns only the JobID value with ``--parsable``, and saves this value to a variable called ``jobid``. The second command only starts after the job with jobid has finished in a success state with ``afterok``. For more information on the dependency flag, see `the SLURM man-pages <https://slurm.schedmd.com/sbatch.html>`_. 
 
 Now you can see your jobs in the queue with:
  
