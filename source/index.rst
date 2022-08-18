@@ -56,6 +56,7 @@ Table of contents:
    Pages/monitoring
    Pages/maintenances
    Pages/getting_help
+   Pages/advanced_commands
 
 The Frequently Asked Questions can be found at:
 
