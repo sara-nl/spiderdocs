@@ -432,3 +432,4 @@ Resources on singularity and containers
 | https://catalog.ngc.nvidia.com/
 | https://gpucomputing.shef.ac.uk/education/creating_gpu_singularity
 
+.. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
