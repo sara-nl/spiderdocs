@@ -149,20 +149,21 @@ Other options may be available, but these are currently not supported by us.
 .. code-block:: bash
 
    # Using scp
-   scp /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+   scp [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
 
    # Using rsync
-   rsync -a -W /home/[USERNAME]/transferdata.tar.gz [own-system-user]@own_system.nl:/home/[own-system-user]/
+   rsync -a -W [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
 
 * Example of transferring data from your own system to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
    # Using scp
-   scp [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
+   scp [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/ 
 
    # Using rsync
-   rsync -a -W [own-system-user]@own_system.nl:/home/[own-system-user]/transferdata.tar.gz /home/[USERNAME]/
+   rsync -a -W [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/ 
+
 
 .. _using-dcache:
 
