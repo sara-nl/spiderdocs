@@ -20,17 +20,11 @@ User dashboards
 The user dashboards show information at different levels, and can be found `here <https://monitor.spider.surfsara.nl/grafana/dashboards>`_.
 The user dashboards include:
 
- - Spider SLURM 
  - Spider Cluster overview
  - Spider Node exporter
+ - Spider SLURM dashboard
 
  and are described below.
-
-============
-Spider SLURM
-============
-
-This board shows at the top the general job submissions and pending jobs on SLURM, node status and CPU allocation. Next, the running and pending jobs are visible per project and per user. Finally, a section is shown containing per machine, the load, memory usage, disk usage and network IO traffic.
 
 =======================
 Spider Cluster Overview
@@ -43,3 +37,11 @@ Spider Node exporter
 ====================
 
 On this extensive dashboard you can select at the top each machine in Spider under "host" and get a general overview at the top of the page. Below, in a variety of panels (note that these can be folded) additional detailed system information is available for the selected node. This information ranges from CPU and memory usage to storage IO and disk usage to network traffic statistics.
+
+======================
+Spider SLURM dashboard
+======================
+
+This board shows at the top the general job submissions and pending jobs on SLURM, node status and CPU allocation. Next, the running and pending jobs are visible per project and per user. Finally, a section is shown containing per machine, the load, memory usage, disk usage and network IO traffic.
+
+.. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
