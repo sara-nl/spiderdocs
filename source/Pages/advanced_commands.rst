@@ -79,3 +79,12 @@ And now we can see the output of the log files:
    bye!
  
 And we see that the first job slept for 30 seconds and the second job waited until the first was finished!
+
+Recurring jobs
+==============
+
+If there is a recurring job you want run on a certain schedule, in principle there is ``cron`` available on Spider. However, cron is tied to a single machine, which in the case of Spider would be either a user-interface (ui) node, or a worker node (wn). If a cron job is setup on one of these machines and this machine is not available, your job will not run. 
+
+For more robust recurring jobs, there is ``scrontab``, a SLURM integration of cron. ``scrontab`` has identical syntax to ``cron``. However, the job you submit is added to the SLURM database and run on the defined schedule when the resources are available. The job will only start once the resources are available, so your job may not always run at the exact same time (unlike ``cron``). Your job will be scheduled to run on a worker node, regardless of where it was submitted. 
+
+Therefore we advice users to use ``scrontab`` instead of ``crontab`` when they want to set up cron jobs. The ``scrontab`` documentation can be found `here <https://slurm.schedmd.com/scrontab.html>`_.
