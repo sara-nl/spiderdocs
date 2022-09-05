@@ -60,7 +60,7 @@ Table of contents:
 
 The Frequently Asked Questions can be found at:
 
-   :ref:`10.3 <FAQ>`.
+   :ref:`12.3 <FAQ>`.
 
 Other info:
 
