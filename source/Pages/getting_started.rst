@@ -55,6 +55,9 @@ from your laptop, the SSH private and public keys will be compared and, if they 
 your connection will be established. Note that uploading your key to the portal is an *one time* task.
 
 If you already have an SSH key-pair you can proceed to upload it.
+
+**NOTE: Please give your keys and account about 45 minutes to sync after uploading your public key in the portal**
+
 Else you have to generate a key-pair in your laptop or other machine that you use to
 connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see:
 
