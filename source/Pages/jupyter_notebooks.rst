@@ -22,7 +22,7 @@ Interactive notebooks should be run on the worker nodes mentioned in :ref:`prepa
 
 Which will open an interactive session on a machine in the short partition for 12 hours. In this way, the other users on the UI machines will not be disadvantaged by resources being used up by the notebook users.
 
-.. WARNING:
+.. WARNING::
    If all resources (worker nodes in the selected partition) are in use, the ``srun`` command will hang until the resource becomes available. 
 
 
