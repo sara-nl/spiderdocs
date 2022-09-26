@@ -72,7 +72,7 @@ Please note that you should only use the scratch space to temporarily store and
 process data for the duration of the submitted job. The scratch space is cleaned
 regularly in an automatic fashion and hence can not used for long term storage.
 
-
+For more information about how to use scratch during your compute jobs, please see the compute section.
 .. _project-space-fs:
 
 Using project spaces
