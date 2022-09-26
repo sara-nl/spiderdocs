@@ -56,10 +56,11 @@ Table of contents:
    Pages/monitoring
    Pages/maintenances
    Pages/getting_help
+   Pages/advanced_commands
 
 The Frequently Asked Questions can be found at:
 
-   :ref:`10.3 <FAQ>`.
+   :ref:`12.3 <FAQ>`.
 
 Other info:
 

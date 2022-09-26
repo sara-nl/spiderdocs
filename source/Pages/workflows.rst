@@ -145,6 +145,7 @@ If you would like to make changes in your cronjob you need to login directly to 
 where it was created (tip: to check which node you are on, you can type the command ``hostname``). This
 may also affect your workflows in case of maintenance on the login node you run your cronjobs. 
 
+For a more sustainable option for automated jobs, see the recurring subsection in the :ref:`Advanced Spider commands section<advanced-usage>`.
 
 .. Links:
 

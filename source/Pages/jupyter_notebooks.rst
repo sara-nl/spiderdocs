@@ -30,7 +30,7 @@ Which will open an interactive session on a machine in the short partition for 1
 Virtual environment 
 ===================
 
-Starting with python *virtual environments* called ``venv``s, these are a contained python environment you can create and load that has all the python modules and packages installed that the user needs. This ensures no componentes leak into the system environment. 
+Starting with python *virtual environments* called a ``venv``, these are a contained python environment you can create and load that has all the python modules and packages installed that the user needs. This ensures no componentes leak into the system environment. 
 
 You can create a virtual environment (or venv) at a path by doing:
 
