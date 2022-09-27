@@ -411,7 +411,7 @@ To run on 2 GPUs simultaneously and have no other users on the nodes do:
 
    srun -p gpu_a100 --nodes=1 --exclusive --gpus=a100:2 --pty bash
 
-.. WARNING:
+.. WARNING::
    Do not request multiple GPUs unless you are sure your code can run on multiple GPUs. If you need exclusive acces to the node, use the ``--exclusive`` flag.
 
 By default, half the cores of the node (22) are used when you use 1 out of 2 GPUs. To use only a single CPU core while using GPU do:
