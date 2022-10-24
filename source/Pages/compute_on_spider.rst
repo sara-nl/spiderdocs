@@ -291,12 +291,11 @@ to select specific hardware:
 SBATCH directive              Functionality          Worker Node
 ==========================    ===================    =================
 ``--constraint=skylake``      cpu architecture       ``wn-db-[01-06]``
-``--constraint=broadwell``    cpu architecture       ``wn-fa-[01-02]``
-``--constraint=napels``       cpu architecture       ``wn-ha-[01-05]``
-``--constraint=rome``         cpu architecture       ``wn-ca-[01-02]``
+``--constraint=napels``       cpu architecture       ``wn-hb-[01-05]``
+``--constraint=rome``         cpu architecture       ``wn-ca-[01-25], wn-ha-[01-05]``
 ``--constraint=ssd``          local scratch          ``all nodes``
-``--constraint=amd``          cpu family             ``wn-ca-[01-02], wn-ha-[01-05]``
-``--constraint=intel``        cpu family             ``wn-db-[01-06], wn-fa-[01-02]``
+``--constraint=amd``          cpu family             ``wn-ca-[01-25], wn-ha-[01-05], wn-hb-[01-05]``
+``--constraint=intel``        cpu family             ``wn-db-[01-06], wn-gb-[01-04], wn-gp-[01-02]``
 ==========================    ===================    =================
 
 
