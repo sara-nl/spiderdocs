@@ -76,7 +76,7 @@ Create a macaroon
         --chroot \
         --user [PROJECT]-[USER] \
         --permissions DOWNLOAD,UPLOAD,DELETE,MANAGE,LIST,READ_METADATA,UPDATE_METADATA \
-        --ip '0.0.0.0/0' #totally open example \
+        --ip [IP RANGE] \
         --output rclone [PROJECT_tokenfile]
 
 
