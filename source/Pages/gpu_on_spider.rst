@@ -109,7 +109,7 @@ Now you are ready to build on top of a base container and run your code on a GPU
 Accounting of GPU usage
 =======================
 
-Currently the usage of GPU nodes is accounted for in GPU hours. This means that even though multiple cores are used simultaneously, one hour of use of a GPU node is billed as 1 GPU-hour. By default, half the cores of the node (22) are used when you use half of the available GPUs. When using GPUs the CPU cores are not counted and fall under the GPU hours. In contrast to generic CPU use in a 'regular' job, where one hour of multi-core usage is billed as multiple CPU hours, depending on the number of cores. 
+Currently the usage of GPU nodes is accounted for in GPU hours. This means that even though multiple cores are used simultaneously, one hour of use of a GPU node is billed as 1 GPU-hour. By default, half the CPU cores of the node (22) are used when you use half of the available GPUs. When using GPUs the CPU cores are not counted and fall under the GPU hours. In contrast to generic CPU use in a 'regular' job, where one hour of multi-core usage is billed as multiple CPU hours, depending on the number of cores. 
 
 
 .. _singularity-building:
