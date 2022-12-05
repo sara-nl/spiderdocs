@@ -236,4 +236,4 @@ the Usage Agreement terms and conditions.
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. _`Grid`: http://doc.grid.surfsara.nl
-.. _`Proposals Page`: https://userinfo.surfsara.nl/systems/grid/new-users
+.. _`Proposals Page`: https://www.surf.nl/onderzoek-ict/toegang-tot-rekendiensten-aanvragen
