@@ -12,6 +12,8 @@ Maintenances
 
 .. _change-log:
 
+As the dCache instance of SURF falls under the Grid components, the maintenance of dCache is announced on the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
+
 ==========
 Change log
 ==========
