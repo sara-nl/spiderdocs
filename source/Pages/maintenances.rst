@@ -12,8 +12,6 @@ Maintenances
 
 .. _change-log:
 
-As the dCache instance of SURF falls under the Grid components, the maintenance of dCache is announced on the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
-
 ==========
 Change log
 ==========
@@ -48,6 +46,14 @@ Future maintenances
 Status (Scheduled/Unscheduled)  Date (start / end)     comment
 ==============================  =====================  =======
 ==============================  =====================  =======
+
+.. _dcache-maintenances:
+
+dcache maintenances
+===================
+
+The dCache instance of SURF falls under the Grid components, thus dCache maintenances are not announced via the Spider notifications. If you want to receive notifications and be prepared for upcoming downtimes and maintenances of dCache, you can create personal subscriptions in the EGI operations portal by following the instructions in the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
+
 
 .. _past-maintenances:
 
