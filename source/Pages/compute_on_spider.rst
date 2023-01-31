@@ -57,6 +57,7 @@ SBATCH directive      Functionality         Usage example
 ``-p <partition>``    partition selection   ``#SBATCH -p interactive`` (the job will run max for 12 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p gpu_v100`` (the job will run on V100 nodes with a max of 120 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100`` (the job will run on A100 nodes with a max of 120 hours)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100_amd`` (the job will run on A100 nodes, with fewer CPU cores, with a max of 120 hours)
 ==================    ===================   =================
 
 The specifics of each partition can be found with ``scontrol show partitions``, the information per machine can be found with ``scontrol show node NAME``, where NAME is the name of the worker node and for a simple overview use ``sinfo``.

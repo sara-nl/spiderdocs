@@ -25,7 +25,7 @@ In case the version number of the drivers has to be known, the user can find the
 
    srun -p GPU_PARTITION --gpus GPU:N_GPUS nvidia-smi
 
-where the GPU_PARTITION is either ``gpu_v100`` or ``gpu_a100`` depending on which one you are planning to use. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. 
+where the GPU_PARTITION is either ``gpu_v100``, ``gpu_a100`` or ``gpu_a100_amd`` depending on which one you are planning to use. The ``amd`` partition has the exact same A100 cards, but an AMD CPU with fewer cores than the Intel A100 nodes. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. 
 
 The compilation and running of code is recommended to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run.
 
@@ -364,7 +364,7 @@ We start with the image from the :ref:`previous subsection <nv-tf-22.07>`, the t
    srun --partition=gpu_v100 --gpus v100:1 --time=12:00:00 --x11 --pty bash -i -l
    singularity shell --nv nv-tf-22.07.sif
 
-where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100`` or ``gpu_a100`` depending on your project. The ``singularity shell`` command is needed to start jupyter from the command inside the container. The tutorials were cloned during the building of the image. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``, as mentioned in :ref:`this section <cuda-example>`.
+where USERNAME is your username and the partition is a GPU partition, like ``gpu_v100``, ``gpu_a100`` or ``gpu_a100_amd`` depending on your project. The ``singularity shell`` command is needed to start jupyter from the command inside the container. The tutorials were cloned during the building of the image. The container is read-only, and some of the examples will require to download and store some files. To have writing functionality available for the examples, build the image with ``--sandbox`` and run it with ``--writable``, as mentioned in :ref:`this section <cuda-example>`.
 
 Start the notebook with:
 
