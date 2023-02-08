@@ -22,7 +22,7 @@ authentication only. For the highest security of your data and the platform, we
 do not allow username/password authentication.
 
 To use this method you will need first to configure your SSH public key on a
-portal provided by SURFsara. Then you can connect and authenticate to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
+portal provided by SURF. Then you can connect and authenticate to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 with your SSH keys without supplying your username or password at each visit.
 
 Please note that it takes 1 hour from the time you receive your account credentials for your accounts to be able to run jobs on Spider
@@ -30,11 +30,11 @@ Please note that it takes 1 hour from the time you receive your account credenti
 Please follow these steps to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`:
 
-* **Step 1**: Login to the `SURFsara portal`_ with your SURFsara user account
+* **Step 1**: Login to the `SURF CUA portal`_ with your SURF user account
 
 As a member of a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` project you shall have received a SURFsara user account.
-Please use the username and password sent to you and login to the `SURFsara portal`_ .
+Extraction and Redistribution)` project you shall have received a SURF user account.
+Please use the username and password sent to you and login to the `SURF CUA portal`_ .
 
 * **Step 2**: Accept the Usage Agreement in the portal
 
@@ -50,7 +50,7 @@ access to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction
 
 In order to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` you need to have a file on your local computer
 (say, your laptop) with a private SSH key, and you need to upload its matching
-public SSH key on the `SURFsara portal`_. Then, when you are going to connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
+public SSH key on the `SURF CUA portal`_. Then, when you are going to connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 from your laptop, the SSH private and public keys will be compared and, if they successfully relate to one-another,
 your connection will be established. Note that uploading your key to the portal is an *one time* task.
 
@@ -66,7 +66,7 @@ connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extractio
 
    ssh_keys
 
-Once you have generated your SSH key-pair, upload your public key to our `SURFsara portal`_.
+Once you have generated your SSH key-pair, upload your public key to our `SURF CUA portal`_.
 Click on the tab "Public ssh keys" on the left pane of
 the portal and add your public key by copying the contents of your public key file
 (e.g. ``cat ~/.ssh/id_rsa.pub``) as shown below:
@@ -99,7 +99,7 @@ environment very similar to the worker nodes where your submitted jobs will run.
 
 In order to login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` you must have already uploaded your SSH public key
-on the SURFsara portal (see :ref:`setting-up-your-account`)
+on the SURF CUA portal (see :ref:`setting-up-your-account`)
 
 If you already completed this step once, you are ready to login!
 
@@ -120,7 +120,7 @@ Congrats! You've just logged in to Spider.
 
 .. note::
 
-   In case that you have multiple keys in your ``.ssh/`` folder, you would need to specify the key that matches the .pub file you uploaded on the SURFsara portal, i.e. ``ssh -i ~/.ssh/surfsarakey homer@spider.surfsara.nl``
+   In case that you have multiple keys in your ``.ssh/`` folder, you would need to specify the key that matches the .pub file you uploaded on the SURF CUA portal, i.e. ``ssh -i ~/.ssh/surfsarakey homer@spider.surfsara.nl``
 
 .. note::
 
@@ -253,5 +253,5 @@ Command                  What it does
 
 .. Links:
 
-.. _`SURFsara portal`: https://portal.surfsara.nl/
+.. _`SURF CUA portal`: https://portal.cua.surf.nl/home/ 
 .. _`Slurm documentation page`: https://slurm.schedmd.com/
