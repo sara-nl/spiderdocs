@@ -43,7 +43,7 @@ gain access to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extra
 "Usage Agreement" tab as shown in the image below. Please note that you will be denied
 access to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` if you do not accept this agreement.
 
-.. image:: /Images/usage_agreement.png
+.. image:: /Images/usage_agreement2.png
    :align: center
 
 * **Step 3**: Upload your SSH public key to the portal
@@ -71,7 +71,7 @@ Click on the tab "Public ssh keys" on the left pane of
 the portal and add your public key by copying the contents of your public key file
 (e.g. ``cat ~/.ssh/id_rsa.pub``) as shown below:
 
-.. image:: /Images/add_ssh_key.png
+.. image:: /Images/add_ssh_key2.png
    :align: center
 
 Field [1] SSH key: here you paste your public key
