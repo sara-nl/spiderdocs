@@ -78,7 +78,7 @@ Groups can be added or removed to catalogues by editing the facl script, for exa
 
   sudo /usr/local/bin/facl catalog \
     --name "test" \
-    --provider-group aghub_adm \
+    --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
     --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
     --user-groups sram-aghub-amsterdamumc-aghub-test2_cuser \
     --apply
@@ -89,7 +89,7 @@ Then to remove the second group you would execute the following command:
 
   sudo /usr/local/bin/facl catalog \
       --name "test" \
-      --provider-group aghub_adm \
+      --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
       --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
       --apply
       
