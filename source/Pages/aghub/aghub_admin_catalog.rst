@@ -15,6 +15,7 @@ Overview of the facl
 ---------------------------------------------------------
 
 .. code-block:: bash
+
   $ facl --help
     Usage: facl [OPTIONS] COMMAND [ARGS]...
 
@@ -40,8 +41,14 @@ Catalogues require two groups to be managed the first is the administrator who w
 
   - Name - for clarity please create the name as [catalogue-name]_cuser e.g. test_cuser
   - Short name - must be [catalogue-name]_cuser e.g. test_cuser
-  - Description - long free text description of the group e.g. test group for aghub data release
+  - Description - long free text description of the group e.g. test user group for aghub data release
 
+
+Please also create a data manager group who will have write permissions to the catalogue:
+  - Name - for clarity please create the name as [catalogue-name]_cuser e.g. test_cdata
+  - Short name - must be [catalogue-name]_cdata e.g. test_cdata
+  - Description - long free text description of the group e.g. test user group for aghub data release
+  
 From SRAM you can map users to these groups in order to grant their access. It is also possible to create multiple groups / catalogue, the syntax is below.
 
 
@@ -52,9 +59,10 @@ Creating the Catalogue in Spider
 Following the example with a test catalogue, please see below for an example command to create a test catalogue with the test user group created above, please NOTE, the group in SRAM does not perfectly map, and instead follows quite a verbose syntax and so the group above will look like the group below:
 
 .. code-block:: bash
-  sudo facl catalog \
+
+  sudo /usr/local/bin/facl catalog \
     --name "test" \
-    --provider-group aghub_adm \
+    --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
     --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
     --user-groups sram-aghub-amsterdamumc-aghub-test2_cuser \
     --apply
@@ -67,7 +75,8 @@ Users can be added to catalogues in SRAM by adding them to the cuser group
 Groups can be added or removed to catalogues by editing the facl script, for example if you created a catalogue with the following command:
 
 .. code-block:: bash
-  sudo facl catalog \
+
+  sudo /usr/local/bin/facl catalog \
     --name "test" \
     --provider-group aghub_adm \
     --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
@@ -77,10 +86,13 @@ Groups can be added or removed to catalogues by editing the facl script, for exa
 Then to remove the second group you would execute the following command:
 
 .. code-block:: bash
-  sudo facl catalog \
-    --name "test" \
-    --provider-group aghub_adm \
-    --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
-    --apply
+
+  sudo /usr/local/bin/facl catalog \
+      --name "test" \
+      --provider-group aghub_adm \
+      --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
+      --apply
+      
+
 
 
