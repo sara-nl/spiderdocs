@@ -41,13 +41,14 @@ Catalogues require two groups to be managed the first is the administrator who w
 
   - Name - for clarity please create the name as [catalogue-name]_cuser e.g. test_cuser
   - Short name - must be [catalogue-name]_cuser e.g. test_cuser
-  - Description - long free text description of the group e.g. test user group for aghub data release
+  - Description - long free text description of the group e.g. test user group for aghub data release to have read-only access
 
 
 Please also create a data manager group who will have write permissions to the catalogue:
+
   - Name - for clarity please create the name as [catalogue-name]_cuser e.g. test_cdata
   - Short name - must be [catalogue-name]_cdata e.g. test_cdata
-  - Description - long free text description of the group e.g. test user group for aghub data release
+  - Description - long free text description of the group e.g. test data provider / data manager group for aghub data release to have write access to the catalogue.
   
 From SRAM you can map users to these groups in order to grant their access. It is also possible to create multiple groups / catalogue, the syntax is below.
 
