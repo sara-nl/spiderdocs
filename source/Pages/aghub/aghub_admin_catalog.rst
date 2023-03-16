@@ -62,7 +62,7 @@ Following the example with a test catalogue, please see below for an example com
 .. code-block:: bash
 
   sudo /usr/local/bin/facl catalog \
-    --name "test" \
+    --name test \
     --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
     --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
     --user-groups sram-aghub-amsterdamumc-aghub-test2_cuser \
@@ -78,7 +78,7 @@ Groups can be added or removed to catalogues by editing the facl script, for exa
 .. code-block:: bash
 
   sudo /usr/local/bin/facl catalog \
-    --name "test" \
+    --name test \
     --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
     --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
     --user-groups sram-aghub-amsterdamumc-aghub-test2_cuser \
@@ -89,7 +89,7 @@ Then to remove the second group you would execute the following command:
 .. code-block:: bash
 
   sudo /usr/local/bin/facl catalog \
-      --name "test" \
+      --name test \
       --provider-group sram-aghub-amsterdamumc-aghub-test_cdata \
       --user-groups sram-aghub-amsterdamumc-aghub-test_cuser \
       --apply
