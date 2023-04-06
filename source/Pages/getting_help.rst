@@ -56,6 +56,11 @@ may not be immediately possible. It can take *up to 15 minutes* to be able to lo
 to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. In case that it takes longer time, please contact us at :ref:`helpdesk <helpdesk>`.
 
+The FACL permissions on my file do not match the folder the files are stored in
+===============================================================================
+
+This type permissions mismatch can occur when ``mv`` is used, as the move command keeps the original ACL entries from the original file. This behaviour is part of ``mv`` and can not be changed. The permission mismatch occurs when a file with no extra ACL entries is moved to a folder that has some non-trivial ACL entries set up. Using the ``cp`` command will allow the user to preserve the original ACL entries or accept the ACL entries from the destination folder to be enforced onto the copied files. This will ensure that no such permission mismatch occurs. Similarly, the ``rsync`` command will also allow the user to control what kind of ACL is applied to the files in the destination.
+
 
 .. I cannot login and getting a "host key has just changed" message
 .. ================================================================
