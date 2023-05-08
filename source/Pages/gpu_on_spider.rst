@@ -17,7 +17,23 @@ GPUs on Spider
 Using GPU nodes
 ===============
 
-To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. All GPU nodes run Nvidia hardware and the CUDA drivers are available on the GPU nodes. Other GPU software needs to be obtained and deployed by the user. We suggest users to :ref:`create <singularity-building>` or make use of `pre-build Singularity containers <https://catalog.ngc.nvidia.com/containers>`_. The Spider team can provide assistance to users who are not familiar with container. In this case please submit your request for assistance via our :ref:`our helpdesk <helpdesk>`.
+To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. 
+
+
+To *interactively* log in to a GPU node run:
+
+.. code-block:: bash
+
+   srun --partition=gpu_v100 --time=00:60:00 --gpus v100:1 --pty bash -i -l
+
+This will open a bash session on a machine in the ``gpu_v100`` partition for 60 minutes.
+
+.. tip::
+
+   Asking for more GPUs than the total available on a node does not give an error, your jobs will run on the maximum number.
+
+
+All GPU nodes run Nvidia hardware and the CUDA drivers are available on the GPU nodes. Other GPU software needs to be obtained and deployed by the user. We suggest users to :ref:`create <singularity-building>` or make use of `pre-build Singularity containers <https://catalog.ngc.nvidia.com/containers>`_. The Spider team can provide assistance to users who are not familiar with container. In this case please submit your request for assistance via our :ref:`our helpdesk <helpdesk>`.
 
 In case the version number of the drivers has to be known, the user can find the version number and other information on the GPU hardware with:
 
@@ -31,17 +47,6 @@ The compilation and running of code is recommended to be done inside of a singul
 
 Next, some short examples for building and running commands are shown. A more in-depth container build procedure is shown :ref:`here <singularity-building>`.
 
-To *interactively* log in to a GPU node run:
-
-.. code-block:: bash
-
-   srun --partition=gpu_v100 --time=00:60:00 --gpus v100:1 --pty bash -i -l
-
-This will open a bash session on a machine in the ``gpu_v100`` partition for 60 minutes.
-
-.. tip::
-
-   Asking for more GPUs than the total available on a node does not give an error, your jobs will run on the maximum number.
 
 Simple building example
 =======================
