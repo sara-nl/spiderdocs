@@ -7,8 +7,70 @@ Compute on Spider
 
      * how to prepare and run your workloads
      * about job types, partitions and Slurm constraints
+     
+The table below lists the available* Spider node types.
 
+.. list-table::
 
+ * - **Number of nodes**
+   - **Node name**
+   - **CPU SKU**
+   - **CPU cores per node**
+   - **Total memory per node (per core)**
+   - **Other characteristics**
+   - **Included in the partition**
+
+ * - 25
+   - wn-ca-[01-25]
+   - AMD Rome 64 Cores/Socket
+   - 64
+   - 480 GB (7,5 GB)
+   - Local scratch 6TB SSD
+   - normal, infinite
+ * - 6
+   - wn-db-[01-06]
+   - Intel Xeon Gold 6148 Processor(2x) 20 Cores/Socket
+   - 40
+   - 352 GB (8,8 GB)
+   - Local scratch 3TB SSD
+   - normal, infinite, short, interactive
+ * - 5
+   - wn-ha-[01-05]
+   - AMD Rome 64 Cores/Socket
+   - 64
+   - 950 GB (14,85 GB)
+   - Local scratch 12TB SSD
+   - normal, infinite
+ * - 5
+   - wn-hb-[01-05]
+   - AMD Naples 64 Cores/Socket
+   - 64
+   - 950 GB (14,85 GB)
+   - Local scratch 12TB SSD
+   - normal
+ * - 2
+   - wn-gp-[01,02]
+   - Intel Cascade Lake 22 Cores/Socket
+   - 22
+   - 720 GB (32,77 GB)
+   - Local scratch 6TB SSD
+   - gpu_v100 
+ * - 3
+   - wn-ga-[01-03]
+   - AMD Rome (2x) 7 Cores/Socket
+   - 14
+   - 229 GB (16,38 GB)
+   - Local scratch 6TB SSD
+   - gpu_a100_7c
+ * - 5
+   - wn-gb-[01-05]
+   - Intel Ice Lake(2x) 22 Cores/Socket
+   - 44
+   - 353 GB (8 GB)
+   - Local scratch 6TB SSD
+   - gpu_a100_22c
+
+* Updated on the 10th May, 2023.
 .. _prepare-workloads:
 
 =======================
