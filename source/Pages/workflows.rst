@@ -206,6 +206,40 @@ Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
+
+.. _snakemake-on-spider:
+
+=========
+Snakemake
+=========
+
+Under construction, to be added.
+
+.. _dask-on-spider:
+
+====
+Dask
+====
+
+Dask is not a workflow management tool, but it does help in automating some parts of your analysis when you want to *scale up*. 
+Dask helps you split up work and scale to an arbitrary amount of machines. It helps you manage data that is too large for a single machine and run your code in parallel on multiple machines.
+
+The basic idea is that you define your analysis steps first. Dask takes the data shapes and operations, and prepares a schema of steps that are to be performed by your cluster. When all is ready, you submit your calculation and dask deploys it on a cluster. After the calculation is done, the data and output are aggregated into files that can be handled for post-processing.
+
+Dask has excellent tutorials, which can be found `here <https://tutorial.dask.org/>`_. The full documentation can be found `here <https://docs.dask.org/en/stable/>`_.
+
+RS-DAT
+======
+
+RS-DAT or Remote Sensing Data Analysis Tools, created by the `NLeSC <https://www.esciencecenter.nl/>`_, integrates Dask, Jupyter and the dCache storage system of SURF into one contained framework. 
+
+The package can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM>`_ and the installation instruction can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM/blob/main/user-guide.md>`_. Note that this is designed around the SURF platforms Snellius and Spider.
+
+The examples are available `here <https://github.com/RS-DAT/JupyterDask-Examples>`_, but be aware that only the first of the three examples works without an access token to the data stored on dCache. The example, however, does give a good impression of the power or RS-DAT.
+
+
+.. _cron-jobs:
+
 =========
 Cron jobs
 =========
