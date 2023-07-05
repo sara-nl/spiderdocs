@@ -213,7 +213,14 @@ Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
 Snakemake
 =========
 
-Under construction, to be added.
+Snakemake is a workflow management tool that uses `makefiles <https://en.wikipedia.org/wiki/Make_(software)>`_ to define analyses and provide reproducable and scalable results. The workflow can be developed locally and then moved to server, cluster, cloud or grid to scale up the data size and computational needs.
+
+Snakemake has integrations with `Slurm <https://slurm.schedmd.com/>`_, `PBS <https://adaptivecomputing.com/cherry-services/torque-resource-manager/>`_ and `SGE <https://en.wikipedia.org/wiki/Oracle_Grid_Engine>`_ for deploying to compute clusters, see the documentation `here <https://snakemake.readthedocs.io/en/stable/executing/cluster.html>`_.
+
+For a showcase that demonstrates the power of snakemake, we advise you to go through the tutorial found `here <https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html>`_.
+
+You can find the full documentation located at the `read the docs page <https://snakemake.readthedocs.io/en/stable/index.html>`_.
+
 
 .. _dask-on-spider:
 
