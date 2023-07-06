@@ -238,7 +238,7 @@ Dask has excellent tutorials, which can be found `here <https://tutorial.dask.or
 RS-DAT
 ======
 
-RS-DAT or Remote Sensing Data Analysis Tools, created by the `NLeSC <https://www.esciencecenter.nl/>`_, integrates Dask, Jupyter and the dCache storage system of SURF into one contained framework. 
+RS-DAT or Remote Sensing Data Analysis Tools, created by the `NLeSC <https://www.esciencecenter.nl/>`_, integrates Dask, Jupyter and the dCache storage system of SURF into one contained framework, which is then run from your local machine while deploying to a cluster.
 
 The package can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM>`_ and the installation instruction can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM/blob/main/user-guide.md>`_. Note that RS-DAT is designed around the `Spider data processing platform <https://spiderdocs.readthedocs.io>`_ and the `Snellius supercomputer <https://servicedesk.surf.nl/wiki/display/WIKI/Snellius>`_, but can be run on any Slurm cluster. The instructions for running on a generic cluster are available in the project documentation.
 
