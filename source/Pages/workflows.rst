@@ -240,7 +240,7 @@ RS-DAT
 
 RS-DAT or Remote Sensing Data Analysis Tools, created by the `NLeSC <https://www.esciencecenter.nl/>`_, integrates Dask, Jupyter and the dCache storage system of SURF into one contained framework. 
 
-The package can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM>`_ and the installation instruction can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM/blob/main/user-guide.md>`_. Note that this is designed around the SURF platforms Snellius and Spider.
+The package can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM>`_ and the installation instruction can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM/blob/main/user-guide.md>`_. Note that RS-DAT is designed around the `Spider data processing platform <https://spiderdocs.readthedocs.io>`_ and the `Snellius supercomputer <https://servicedesk.surf.nl/wiki/display/WIKI/Snellius>`_, but can be run on any Slurm cluster. The instructions for running on a generic cluster are available in the project documentation.
 
 The examples are available `here <https://github.com/RS-DAT/JupyterDask-Examples>`_, but be aware that only the first of the three examples works without an access token to the data stored on dCache. The example, however, does give a good impression of the power or RS-DAT.
 
