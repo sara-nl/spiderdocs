@@ -6,8 +6,9 @@ Installation of software packages
 
 The AGH is a unique environment, as there is no direct internet connection.
 
-In general, to install software, one can upload a package to the AGH through the 
-research drive, and then install it using standard approaches. 
+To install software, one can upload a package to the AGH through the 
+research drive (see :ref:`_agh_research_drive`), and then install it using standard 
+approaches. 
 
 However, some software packages require large number of dependencies, which can be 
 a hassle to install. Conda is a recommended method for installing such software
@@ -19,6 +20,8 @@ Install custom conda environments on the AGH
 
 In :ref:`_agh_getting_started`, we describe how you can install a default conda environment
 within your home directory by running the script `/project/aghub/Share/init/init.sh`.
+
+
 This will contain many of the normally used software packages. However, if you need to
 install additional software, you can use conda-pack to transfer a conda environment from
 your local machine to the AGH. This is a convenient way to install software.
@@ -54,12 +57,14 @@ Steps:
 -----------------------------------------------
 Using Singularity to run software in containers
 -----------------------------------------------
+
 Singularity is a containerization software that allows users to run software packages
 from an image file. It is similar to Docker, but is more suitable for HPC.
 It is an alternative method for installing software packages on the AGH.
 
 
 On AGH, we already have pre-built image that contains commonly used software packages.
+
 To use this image, you can load the module and then run the image as a command. For example, 
 to run the image as a bash shell, you can do:
 
@@ -71,7 +76,7 @@ This will modify your environment to include the conda environment. You can see 
 modified shell prompt ('Apptainer>').  Now e.g. you can start ipython by running the command `ipython`. 
 
 
-Alternatively, you can also directly  execute a specific command:
+Alternatively, you can also directly  execute a specific command from the image. For example, to run ipython, you can do:
 
 .. code-block:: bash
 

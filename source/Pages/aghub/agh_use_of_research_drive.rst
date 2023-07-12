@@ -19,10 +19,9 @@ Setting up an account
 To this end, you should have received an invitation mail for the Research Drive. Within this mail there is a link to
 create an account. After following this link, there are two options: 
 
-- If your organization allows logging in through Surfconext, you are advised to use that option. You can then login with 
-your institutional account credentials.
-- Alternatively, you can select the option to set up a password directly. Note that you will _not_ be guided to a new page, 
-but instead directly receive a (temporary) password in the mail. 
+* If your organization allows logging in through Surfconext, you are advised to use that option. You can then login with  your institutional account credentials.
+
+* Alternatively, you can select the option to set up a password directly. Note that you will *not* be guided to a new page, but instead directly receive a (temporary) password in the mail. 
 
 After you have created an account, an AGHub Admin has to create and give you access to your own AGHub folder. This can take
 up to a day during working days. If you have not received permissions after a day, please contact an AGH Admin.
@@ -36,14 +35,14 @@ Accessing the Research Drive from your local machine
 
 The research drive can be accessed in multiple ways:
 
-1. The web browser: `Research Drive <https://amsterdamumc.data.surfsara.nl/>`_.
+* The web browser: `Research Drive <https://amsterdamumc.data.surfsara.nl/>`_.
 
-2. A sync client on your local machine. This will automatically sync the contents of the
+* A sync client on your local machine. This will automatically sync the contents of the
 Research Drive to a folder on your local machine. This way, you can easily transfer data to and from the cluster. 
 This client is available for Windows, Mac and Linux. The following page describes how to set up the client:
 `ownCloud client <https://wiki.surfnet.nl/display/RDRIVE/ownCloud+desktop+client>`_.
 
-3. RClone. This is a command line tool that allows you to sync the Research Drive to a folder 
+* RClone. This is a command line tool that allows you to sync the Research Drive to a folder 
 on your local machine. This is especially useful if you want to automate the syncing process. RClone also allows you to
 mount the research drive folder on your local machine. Setting up RClone is described on the following page:
 `rClone access <https://wiki.surfnet.nl/display/RDRIVE/Access+Research+Drive+via+Rclone>`_.
@@ -69,6 +68,7 @@ Now, tClone can be used to transfer data to and from the AGH cluster to the rese
 This can be done in two ways:
 
 1. A direct copy command: 
+
 .. code-block:: bash
     rclone copy /path/to/local/file RD:your_folder_name/file
     rclone ls RD:your_folder_name
@@ -77,9 +77,12 @@ This can be done in two ways:
 
 
 2. By mounting the research drive to a folder on the cluster. This can be done by the following command:
+
 .. code-block:: bash
-    mkdir ~/rd
     rclone mount RD:your_folder_name ~/rd
+
+(This assumes there is already a folder named `rd` in your home directory, as this
+folder is created by the init script (see :ref:`_agh_getting_started`)).
 
 You can now move the rclone process to the background by pressing CTRL+Z and then typing 'bg'.
 
@@ -103,8 +106,6 @@ Recommended rclone mount options
 For day to day use, we recommend a few options to make the connection more reliable:
 
 .. code-block:: bash
-    mkdir ~/rd
-    mkdir ~/.rd_cache
     rclone mount --use-cookies --timeout 15m --cache-dir ~/.rd_cache --vfs-cache-mode full --no-modtime RD:your_folder_name  ~/rd
 
 The option '--use-cookies' will make sure that you get connected to the same backend to prevent file locking issues. 
