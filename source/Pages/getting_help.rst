@@ -61,6 +61,12 @@ The FACL permissions on my file do not match the folder the files are stored in
 
 This type permissions mismatch can occur when ``mv`` is used, as the move command keeps the original ACL entries from the original file. This behaviour is part of ``mv`` and can not be changed. The permission mismatch occurs when a file with no extra ACL entries is moved to a folder that has some non-trivial ACL entries set up. Using the ``cp`` command will allow the user to preserve the original ACL entries or accept the ACL entries from the destination folder to be enforced onto the copied files. This will ensure that no such permission mismatch occurs. Similarly, the ``rsync`` command will also allow the user to control what kind of ACL is applied to the files in the destination.
 
+My apptainer container is failing to build on a worker node
+===========================================================
+.. see https://jira.ia.surf.nl/browse/SPD-157
+
+This is a known bug triggered when a user is allowed to use ``--fakeroot`` and uses fakeroot in a Slurm job to build the container. The error you expect in this case is the container is allowed to write in ``/tmp`` during building. To avoid this issue, build the container on the UI machines instead.
+
 
 .. I cannot login and getting a "host key has just changed" message
 .. ================================================================
