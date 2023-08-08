@@ -206,6 +206,47 @@ Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
+
+.. _snakemake-on-spider:
+
+=========
+Snakemake
+=========
+
+Snakemake is a workflow management tool that uses `makefiles <https://en.wikipedia.org/wiki/Make_(software)>`_ to define analyses and provide reproducable and scalable results. The workflow can be developed locally and then moved to server, cluster, cloud or grid to scale up the data size and computational needs.
+
+Snakemake has integrations with `Slurm <https://slurm.schedmd.com/>`_, `PBS <https://adaptivecomputing.com/cherry-services/torque-resource-manager/>`_ and `SGE <https://en.wikipedia.org/wiki/Oracle_Grid_Engine>`_ for deploying to compute clusters, see the documentation `here <https://snakemake.readthedocs.io/en/stable/executing/cluster.html>`_.
+
+For a showcase that demonstrates the power of snakemake, we advise you to go through the tutorial found `here <https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html>`_.
+
+You can find the full documentation located at the `read the docs page <https://snakemake.readthedocs.io/en/stable/index.html>`_.
+
+
+.. _dask-on-spider:
+
+====
+Dask
+====
+
+Dask is not a workflow management tool, but it does help in automating some parts of your analysis when you want to *scale up*. 
+Dask helps you split up work and scale to an arbitrary amount of machines. It helps you manage data that is too large for a single machine and run your code in parallel on multiple machines.
+
+The basic idea is that you define your analysis steps first. Dask takes the data shapes and operations, and prepares a schema of steps that are to be performed by your cluster. When all is ready, you submit your calculation and dask deploys it on a cluster. After the calculation is done, the data and output are aggregated into files that can be handled for post-processing.
+
+Dask has excellent tutorials, which can be found `here <https://tutorial.dask.org/>`_. The full documentation can be found `here <https://docs.dask.org/en/stable/>`_.
+
+RS-DAT
+======
+
+RS-DAT or Remote Sensing Data Analysis Tools, created by the `NLeSC <https://www.esciencecenter.nl/>`_, integrates Dask, Jupyter and the dCache storage system of SURF into one contained framework, which is then run from your local machine while deploying to a cluster.
+
+The package can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM>`_ and the installation instruction can be found `here <https://github.com/RS-DAT/JupyterDaskOnSLURM/blob/main/user-guide.md>`_. Note that RS-DAT is designed around the `Spider data processing platform <https://spiderdocs.readthedocs.io>`_ and the `Snellius supercomputer <https://servicedesk.surf.nl/wiki/display/WIKI/Snellius>`_, but can be run on any Slurm cluster. The instructions for running on a generic cluster are available in the project documentation.
+
+The examples are available `here <https://github.com/RS-DAT/JupyterDask-Examples>`_, but be aware that only the first of the three examples works without an access token to the data stored on dCache. The example, however, does give a good impression of the power or RS-DAT.
+
+
+.. _cron-jobs:
+
 =========
 Cron jobs
 =========
