@@ -16,22 +16,6 @@ AGHub's authentication is managed using SRAM, for more information on adding new
 
 `SRAM Documentation <https://wiki.surfnet.nl/display/SRAM/Invite+admins+and+members+to+a+collaboration/>`_ 
 
-Also, an AGHub user will require a Research Drive account. Users can be added through the Research drive Dashboard.
-
-The research drive can be accessed here:
-https://amsterdamumc.data.surfsara.nl/index.php/login
-
-Follow the steps below to add a new user to the AGH CO:
-- Go to Menu->Dashboard
-- Click the 'Gebruiksaccounts' tab, and then the 'Uitnodigen' button.
-
-Next, create an a subfolder for the user in the 'AGHub' folder. 
-
-Once the user has created their account, you will receive a mail notification. At that point,
-you can give the user permission to access his/her folder by clicking the 'Sharing' icon behind the folder name
-and entering the user's email address (as indiciated in the notification email). 
-
-
 ---------------------
 Add Groups for Access
 ---------------------
