@@ -273,7 +273,7 @@ Later if you use EasyBuild installing a software, EasyBuild will generate a modu
 
 .. code-block:: bash
 
-	module use /project/<project-name>/Software/modules/all
+	module use /project/<project-name>/Software/easybuild/modules/all
 
 If you may use EasyBuild to install Python packages, you also need to update the Python search path environment variable ``$PYTHONPATH`` to instruct Python where it can find the EasyBuild Python packages:
 
@@ -295,7 +295,7 @@ Next, add the environment changes to the ``.bashrc`` file and save.
 	export PATH=/project/<project-name>/Software/bin:$PATH
 	export EB_PYTHON=python3.9
 	export PYTHONPATH=/project/<project-name>/Software/lib/python3.9/site-packages:$PYTHONPATH
-	module use /project/<project-name>/Software/modules/all
+	module use /project/<project-name>/Software/easybuild/modules/all
 
 Now you are good to explore the EasyBuild world!
 
@@ -403,15 +403,60 @@ First update $MODULEPATH so you can find the modules:
 
 .. code-block:: bash
 
-	module use /project/<project-name>/Software/modules/all
+	module use /project/<project-name>/Software/easybuild/modules/all
 
-Now you view available software modules and load them:
+IMPORTANT: keep in mind that you will have to run the ``module use`` command again if you start a new shell session in Spider. To avoid this, you can update one of the shell startup scripts in your home directory. For example you can edit the ``.bashrc`` file found in a users' home directory:
+
+.. code-block:: bash
+
+	cd /home/<user-name>
+	nano /home/<user-name>/.bashrc
+
+Next, add the command below to the ``.bashrc`` file and save. 
+
+.. code-block:: bash
+
+	module use /project/<project-name>/Software/easybuild/modules/all
+
+
+Now you can view available software modules and load them:
 
 .. code-block:: bash
 
 	module avail
 	module load matplotlib/3.3.3-foss-2020b
 
+Below is how you can use the modules in a job script:
+
+.. code-block:: bash
+
+        #!/bin/bash
+        #SBATCH -n 1
+        #SBATCH -t 10:00
+        #SBATCH -c 1
+	module use /project/<project-name>/Software/easybuild/modules/all
+	module load matplotlib/3.3.3-foss-2020b
+	module load Python/3.8.6-GCCcore-10.2.0
+        echo "I am using the matplotlib module installed by EasyBuild"
+        echo "I am running on " $HOSTNAME
+        python /home/[USERNAME]/draw_a_plot.py
+
+The draw_a_plot.py can be, for example:
+
+.. code-block:: bash
+
+	import numpy as np
+	import matplotlib.pyplot as plt
+	x = np.arange(0, 5, 0.1)
+	y = np.sin(x)
+	plt.plot(x, y)
+	plt.savefig("output.jpg")
+
+To view the result jpg in your terminal, run
+
+.. code-block:: bash
+
+	display output.jpg
 
 
 
