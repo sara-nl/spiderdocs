@@ -238,7 +238,7 @@ Installing EasyBuild for the project team
 
 Install EasyBuild as a software manager. Note that you need to have write access to directory ``/project/<project-name>/Software`` to be able to follow the instructions below. Please change the ``<project-name>`` in the commands to your project name.
 
-After logging into Spider-UI node, run the following commands:
+After logging into Spider worker node, run the following commands:
 
 .. code-block:: bash
 
@@ -315,7 +315,7 @@ To get an overview of the current EasyBuild configuration, run command:
 
 It then shows a couple of selected important configuration settings with default values: build path, install path, path to easyconfigs repository, the robot search path, source path. 
 
-Configure EasyBuild via the environemt variable ``$EASYBUILD_PREFIX`` which changes all inportant configueration settings. To significantly speed up the builds, you can also change the build path to ``/tmp``. Note that the build directories are emptied and removed by EasyBuild when the installation is completed (by default).
+Configure EasyBuild via the environment variable ``$EASYBUILD_PREFIX`` which changes all inportant configuration settings. To significantly speed up the builds, you can also change the build path to ``/tmp``. Note that the build directories are emptied and removed by EasyBuild when the installation is completed (by default).
 
 .. code-block:: bash
 
@@ -373,7 +373,8 @@ If necessary, use ``--force/-f`` to force the reinstallation of a given easyconf
 
 	eb matplotlib-3.3.3-foss-2020b.eb --robot --force
 
-Please note that for the first time installation may take longer than you expect, because toolchain dependencies such as GCCcore need to be installed. Once one sofware/package is installed, it can be used later in resolving the dependency of other software installations.
+.. note::  
+	Please only run this command in a worker node. Note that for the first time installation may take longer than you expect, because toolchain dependencies such as GCCcore need to be installed. Once one software/package is installed, it can be used later in resolving the dependency of other software installations.
 
 To check if the installation is successful and use the software, run commands:
 
@@ -394,7 +395,7 @@ In case you are not familiar with using modules, here is a simple cheatsheet of 
 
 .. _use-software-module:
 
-Use software moduels
+Use software modules
 =========================
 
 As a user of the project to make use of the software installed by EasyBuild, you need read access to ``/project/<project-name>/Software``.
@@ -409,8 +410,8 @@ IMPORTANT: keep in mind that you will have to run the ``module use`` command aga
 
 .. code-block:: bash
 
-	cd /home/<user-name>
-	nano /home/<user-name>/.bashrc
+	cd /home/$USER
+	nano /home/$USER/.bashrc
 
 Next, add the command below to the ``.bashrc`` file and save. 
 
@@ -439,7 +440,7 @@ Below is how you can use the modules in a job script:
 	module load Python/3.8.6-GCCcore-10.2.0
         echo "I am using the matplotlib module installed by EasyBuild"
         echo "I am running on " $HOSTNAME
-        python /home/[USERNAME]/draw_a_plot.py
+        python /home/$USER/draw_a_plot.py
 
 The draw_a_plot.py can be, for example:
 
