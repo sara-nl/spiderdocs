@@ -70,7 +70,7 @@ The table below lists the available* Spider node types.
    - Local scratch 6TB SSD
    - gpu_a100_22c
 
-* Updated on the 10th May, 2023.
+* Updated on the 29th November, 2023.
 .. _prepare-workloads:
 
 =======================
