@@ -26,14 +26,14 @@ The table below lists the available* Spider node types.
    - 64
    - 480 GB (7,5 GB)
    - Local scratch 6TB SSD
-   - normal, infinite
- * - 6
-   - wn-db-[01-06]
-   - Intel Xeon Gold 6148 Processor(2x) 20 Cores/Socket
-   - 40
-   - 352 GB (8,8 GB)
-   - Local scratch 3TB SSD
    - normal, infinite, short, interactive
+ * - 18
+   - wn-dc-[01-18]
+   - AMD Rome 64 Cores/Socket
+   - 64
+   - 960 GB (15 GB)
+   - Local scratch 12TB SSD
+   - normal
  * - 5
    - wn-ha-[01-05]
    - AMD Rome 64 Cores/Socket
