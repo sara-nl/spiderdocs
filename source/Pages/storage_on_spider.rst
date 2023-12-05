@@ -167,20 +167,20 @@ Other options may be available, but these are currently not supported by us.
 
 .. _using-dcache:
 
-SURFsara dCache
+SURF grid storage / dCache
 ===============
 
-dCache is our large scalable storage system for quickly processing huge volumes of data.
+SURF grid storage / dCache is our large scalable storage system for quickly processing huge volumes of data.
 The system runs on `dCache software`_, that is designed for managing scientific data.
-You can use dCache for disk or tape, or address both types of storage under a single
-virtual filesystem tree. Our dCache service is a remote storage with an extremely fast network
+You can use grid storage for disk or tape, or address both types of storage under a single
+virtual filesystem tree. Our grid storage / dCache service is a remote storage with an extremely fast network
 link to Spider. You may use the storage if your data does not
 fit within the storage allocation on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` project space or if your application is I/O intensive.
 
-There are several protocols and storage clients to interact with dCache. On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+There are several protocols and storage clients to interact with grid storage. On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` we support
-two main methods to use dCache, ADA and Grid interfaces:
+two main methods to use grid storage, ADA and Grid interfaces:
 
 .. toctree::
    :maxdepth: 1
