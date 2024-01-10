@@ -39,6 +39,9 @@ Help on these commands can be found by (i) typing ``man cp`` or ``man rsync``
 on the command line after logging into the system, or (ii) by contacting
 :ref:`our helpdesk <helpdesk>`.
 
+.. WARNING::
+   When copying data on the local filesystem and accross different project space folders we suggest you to copy your data and then remove the source files instead of moving the data. This will ensure that the new copy inherits the permissions of the destination project folder. 
+
 
 .. _filesystems:
 
