@@ -73,10 +73,17 @@ processing pipelines that can be split up into many parallel independent jobs.
 
 Please note that you should only use the scratch space to temporarily store and
 process data for the duration of the submitted job. The scratch space is cleaned
-regularly in an automatic fashion and hence can not used for long term storage.
+regularly in an automatic fashion and hence can not used for long term storage. 
+You may use ``/tmp`` to use the scratch space in worker nodes as it is mapped to the directory ``/scratch``.
 
 For more information about how to use scratch during your compute jobs, please see the compute section.
 .. _project-space-fs:
+
+.. WARNING::
+   The local directories in the Spider login node UI, such as /tmp and /var/tmp, should not be used by the users. They are slow and small to be used for any tasks. Furthermore, the local directories in login node are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. 
+In addition, If the user fill up /tmp on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will experience issues too. It is strongly advised to calculate the temporary space needed by the software in advance,  and request enough cores for your jobs to avoid filling up the /tmp of a node.
+
+
 
 Using project spaces
 --------------------
