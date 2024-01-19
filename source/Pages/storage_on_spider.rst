@@ -61,30 +61,8 @@ This is also the directory that you as a user will find yourself in :ref:`upon f
 login <getting-around>` into this system. The data stored in the home folder will
 remain available for the duration of your project.
 
-.. _scratch-fs:
 
-Using scratch
--------------
-
-Each of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` worker nodes has a large scratch area on local SSD.
-These scratch directories enable particularly efficient data I/O for large data
-processing pipelines that can be split up into many parallel independent jobs.
-
-Please note that you should only use the scratch space to temporarily store and
-process data for the duration of the submitted job. The scratch space is cleaned
-regularly in an automatic fashion and hence can not used for long term storage. 
-You may use ``/tmp`` to use the scratch space in worker nodes as it is mapped to the directory ``/scratch``.
-
-For more information about how to use scratch during your compute jobs, please see the compute section.
 .. _project-space-fs:
-
-.. WARNING::
-   The local directories in the Spider login node UI, such as /tmp and /var/tmp, should not be used by the users. They are slow and small to be used for any tasks. Furthermore, the local directories in login node are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. 
-In addition, If the user fill up /tmp on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will experience issues too. It is strongly advised to calculate the temporary space needed by the software in advance,  and request enough cores for your jobs to avoid filling up the /tmp of a node.
-
-
-
 Using project spaces
 --------------------
 
@@ -102,6 +80,31 @@ See below for an example of a command that could be executed from a script on a 
 .. code-block:: bash
 
         sh /project/[Project Name]/Software/[script].sh /project/[Project Name]/Data/[input file(s)] /home/[USER]/[output]
+
+
+
+.. _scratch-fs:
+
+Using scratch
+-------------
+
+Each of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` worker nodes has a large scratch area on local SSD.
+These scratch directories enable particularly efficient data I/O for large data
+processing pipelines that can be split up into many parallel independent jobs.
+
+Please note that you should only use the scratch space to temporarily store and
+process data for the duration of the submitted job. The scratch space is cleaned
+regularly in an automatic fashion and hence can not used for long term storage. 
+
+For more information about how to use scratch during your compute jobs, please refer to `using local scratch`_
+
+
+.. WARNING::
+   The local directories in the Spider, such as ``/tmp`` and ``/var/tmp``, should not be used by the users. They are slow and small to be used for any tasks. Furthermore, the local directories in either login nodes or worker nodes are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. 
+In addition, if an user fill up ``/tmp`` on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will also experience issues. It is strongly advised to calculate the temporary space needed by the software in advance, and request enough cores for your jobs to avoid filling up the ``/tmp`` of a node.
+
+
 
 .. _scientific-catalog-fs:
 
@@ -233,7 +236,7 @@ to all compute infrastructures, including :abbr:`Spider (Symbiotic Platform(s) f
 Extraction and Redistribution)`.
 
 Access on Data Archive is *not* provided by default to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` projects. To request for Data Archive access, please contact our
+Extraction and Redistribution)` projects. To request for Data Archive access, please contact
 :ref:`our helpdesk <helpdesk>`.
 
 If you already have access on Data Archive, then you can use it directly from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` by
@@ -322,3 +325,4 @@ they have left the project.
 .. _`Data Archive`: https://userinfo.surfsara.nl/systems/data-archive
 .. _`Sylabs documentation`:  https://www.sylabs.io/docs/
 .. _`dCache software`: https://www.dcache.org/
+.. _`using local scratch`: https://doc.spider.surfsara.nl/en/latest/Pages/compute_on_spider.html#using-local-scratch
