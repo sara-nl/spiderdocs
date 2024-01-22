@@ -83,6 +83,20 @@ See below for an example of a command that could be executed from a script on a 
 
 
 
+
+.. _scientific-catalog-fs:
+
+Using scientific catalogs
+-------------------------
+
+Scientific catalogs allow for you to share software and data repositories accross projects. For example if you would
+like to share a large biobank of data with other research projects you could request access
+to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
+folders.
+
+To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
+
+
 .. _scratch-fs:
 
 Using scratch
@@ -97,26 +111,15 @@ Please note that you should only use the scratch space to temporarily store and
 process data for the duration of the submitted job. The scratch space is cleaned
 regularly in an automatic fashion and hence can not used for long term storage. 
 
-For more information about how to use scratch during your compute jobs, please refer to `using local scratch`_
+For more information about how to use scratch during your compute jobs, please refer to `using local scratch`_.
 
 
 .. WARNING::
    The local directories in the Spider, such as ``/tmp`` and ``/var/tmp``, should not be used by the users. They are slow and small to be used for any tasks. Furthermore, the local directories in either login nodes or worker nodes are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. 
-In addition, if an user fill up ``/tmp`` on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will also experience issues. It is strongly advised to calculate the temporary space needed by the software in advance, and request enough cores for your jobs to avoid filling up the ``/tmp`` of a node.
+In addition, if a user fill up ``/tmp`` on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will also experience issues. It is strongly advised to calculate the temporary space needed by the software in advance, and request enough cores for your jobs to avoid filling up the ``/tmp`` of a node.
 
 
 
-.. _scientific-catalog-fs:
-
-Using scientific catalogs
--------------------------
-
-Scientific catalogs allow for you to share software and data repositories accross projects. For example if you would
-like to share a large biobank of data with other research projects you could request access
-to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
-folders.
-
-To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
 
 .. _query-internal-storage:
 
