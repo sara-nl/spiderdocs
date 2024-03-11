@@ -53,6 +53,7 @@ Table of contents:
    Pages/workflows
    Pages/web_public_view
    Pages/jupyter_notebooks
+   Pages/best_practices
    Pages/monitoring
    Pages/maintenances
    Pages/getting_help
