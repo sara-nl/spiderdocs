@@ -10,7 +10,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2024
 ==========
 
-* 2024-03-19 from 9:00am till 17:00pm: Maintenance on the underlying Cloud infrastructure. The compute nodes may experience small disruptions. 
+* 2024-03-19 from 9:00am till 12:30pm: Maintenance on the underlying Cloud infrastructure. The compute nodes may experience small disruptions. 
 * 2024-02-15 from 11:00am till 17:00pm: Issues on CephFS with many queued operations. The nodes wn-ca-14, wn-dc-12, wn-hb-04, wn-dc-16, wn-dc-18 had to be rebooted. Jobs affected by the reboots will show up as failed.
 * 2024-02-08 to 2024-02-09: Interruption of service due to CephFS issues. Some running user jobs had to be cancelled or failed.
 
