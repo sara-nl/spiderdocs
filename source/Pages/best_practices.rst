@@ -46,12 +46,53 @@ LUMI Container Wrapper
 What is the LUMI Container Wrapper
 =============================
 
+The LUMI Container Wrapper (LCW) is a tool that wraps containers such that you can install conda and pip environments in a container and hides the container from the user. By writing the whole software stack into a file and mounting this into the container, you can update the software without rebuilding the base container which runs in the background. Allowing for faster load- and run-times on distributed file systems (such as Spider), while maintaining the ability to update.
+For more information, see the [full LCW documentation](https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/)
+
 When to use LCW
 ===============
+
+When you use conda- and/or pip-based virtual environments, consider using LCW instead.
 
 Caveats to LCW
 ==============
 
+You can only run a single apptainer container at once, so if you have LCW running in your terminal, you can not run a second cotainer in the same terminal. Recursive containerization is also disallowed in apptainer.
+When using very specific **large** containers, such as GPU containers (Nvidia, AMD, Intel), use the container directly instead of user LCW, as you have to build on top of the container contents.
+
 Example code
 ============
 
+Clone the code-base at [github](https://github.com/CSCfi/hpc-container-wrapper/) and set up the Spider environment. You can do this by adding `spider.yaml <spider.yaml>` to the ``hpc-container-wrapper/configs`` folder of the repository.
+
+Run the following commands:
+
+.. code-block:: bash
+
+    cd hpc-container-wrapper
+    bash install.sh spider
+
+The spider in the second command refers to the ``spider.yaml`` file in ``hpc-container-wrapper/configs``. Once the base installation is setup, you can create a wrapper with:
+
+.. code-block:: bash
+
+    mkdir /path/to/install_dir/
+    conda-containerize new --prefix /path/to/install_dir/ conda.yaml
+
+where ``conda.yaml`` contains your installation, for example:
+
+.. code-block:: bash
+
+    channels:
+      - conda-forge
+    dependencies:
+      - python=3.8.8
+      - scipy
+      - nglview
+
+Once the wrapper is created you need to add it to your path to run, and all relevant binaries (such as ``python``) will be called from the container wrapper: ``export PATH="/path/to/install_dir/bin:$PATH"``. You can either put the export in your ``.bash_rc``, or setup a module or load it by hand each time you want to use the container wrapper.
+
+.. Tip:: There are more options that can be set in the ``spider.yaml`` file and while building / updating the wrapper. See the documentation and repository for more information:
+
+    `LUMI Documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`
+    `GitHub repository <https://github.com/CSCfi/hpc-container-wrapper/>`
