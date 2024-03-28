@@ -40,5 +40,5 @@ access to your :ref:`project space <project-space-fs>`. Here is what you need to
 https://public.spider.surfsara.nl/project/surfadvisors/hello-world.sh
 
 .. WARNING::
-   Be careful with the data you place under your project space ``/project/[PROJECTNAME]/Public`` directory. This data is automatically exposed to the web and anyone that knows the URL can download it!
+   Be careful with the data you place under your project space ``/project/[PROJECTNAME]/Public`` directory. This data is automatically exposed to the web and can be downloaded by anyone, even if they don't know the URL explicitly: the URL can be found through webcrawling!
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
