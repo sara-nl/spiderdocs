@@ -95,4 +95,5 @@ Once the wrapper is created you need to add it to your path to run, and all rele
 .. Tip:: There are more options that can be set in the ``spider.yaml`` file and while building / updating the wrapper. See the documentation and repository for more information:
 
     `LUMI Documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_  
+
     `GitHub repository <https://github.com/CSCfi/hpc-container-wrapper/>`_  
