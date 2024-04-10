@@ -6,7 +6,7 @@ Grid interface
 **************
 
 The Grid interface is recommended in cases that your project data and/or processing
-is tight to the Grid authentication and authorisation. To use the supported Grid clients
+is tied to the Grid authentication and authorisation. To use the supported Grid clients
 on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your .globus directory
 and be a part of a Virtual Organisation (VO). Please refer to our Grid documentation
