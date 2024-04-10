@@ -43,12 +43,12 @@ The ``analysis.py`` script takes arguments ``filename.in parameter`` and writes 
 .. code-block:: bash
    
    #!/bin/bash
-   #SBATCH -N 1      #request 1 node
-   #SBATCH -c 1      #request 1 core and 8000 MB RAM
-   #SBATCH -t 5:00   #request 5 minutes jobs slot
-   #SBATCH --array=24-40:2
+   #SBATCH -N 1            #request 1 node
+   #SBATCH -c 1            #request 1 core and 8000 MB RAM
+   #SBATCH -t 5:00         #request 5 minutes jobs slot
+   #SBATCH --array=24-40:2 #go over parameters 24-40 in steps of 2
 
-   # the parameter goes over 24-40 in steps of 2, set the value in PARAM
+   # the array goes over 24-40 in steps of 2, save the value in PARAM for clarity
    PARAM=$((SLURM_ARRAY_TASK_ID))
 
    # copy the input data to scratch
@@ -65,7 +65,7 @@ The ``analysis.py`` script takes arguments ``filename.in parameter`` and writes 
    echo "SUCCESS"
    exit 0
 
-This example uses many options simultaneously to show the power of combining containers, slurm job arrays, scratch space for an analysis.
+This example uses many options simultaneously to show the power of combining containers, slurm job arrays and scratch space for an analysis.
 
 
 LUMI Container Wrapper
@@ -122,6 +122,6 @@ Once the wrapper is created you need to add it to your path to run, and all rele
 
 .. Tip:: There are more options that can be set in the ``spider.yaml`` file and while building / updating the wrapper. See the documentation and repository for more information:
 
-    `LUMI Documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_  
+    `LUMI Documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_
 
-    `GitHub repository <https://github.com/CSCfi/hpc-container-wrapper/>`_  
+    `GitHub repository <https://github.com/CSCfi/hpc-container-wrapper/>`_
