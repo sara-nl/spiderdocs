@@ -25,7 +25,7 @@ As shared memory is in RAM there are some considerations:
 Example
 -------
 
-Here is a job script template for ``/dev/shm`` usage;
+Here is a job script template for ``/dev/shm`` usage:
 
 .. code-block:: bash
    

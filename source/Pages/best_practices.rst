@@ -37,7 +37,35 @@ Apptainer requires some training, as you need to run, mount and bind paths with 
 Example code
 ============
 
-To be added
+Here is a job script template for ``apptainer`` usage. It assumes the container is already built and ready to be used.
+The ``analysis.py`` script takes arguments ``filename.in parameter`` and writes output into ``[filename]_[parameter].out``. The Slurm JobArray goes over values 24 to 40 in steps of 2: we do a parameter sweep over these values and feed the values to the script.
+
+.. code-block:: bash
+   
+   #!/bin/bash
+   #SBATCH -N 1      #request 1 node
+   #SBATCH -c 1      #request 1 core and 8000 MB RAM
+   #SBATCH -t 5:00   #request 5 minutes jobs slot
+   #SBATCH --array=24-40:2
+
+   # the parameter goes over 24-40 in steps of 2, set the value in PARAM
+   PARAM=$((SLURM_ARRAY_TASK_ID))
+
+   # copy the input data to scratch
+   mkdir "$TMPDIR"/myanalysis
+   cp -r $HOME/mydata "$TMPDIR"/myanalysis
+   cd "$TMPDIR"/myanalysis
+
+   # mount the analysis folder into the container at /mnt and run the analysis on a file using 'exec'
+   apptainer exec --bind $TMPDIR/myanalysis:/mnt python analysis.py /mnt/file1.in $PARAM
+   
+   # copy the output back as TMPDIR is cleaned after the job
+   cp $TMPDIR/file1_{24..40..2}.out $HOME/myoutput 
+
+   echo "SUCCESS"
+   exit 0
+
+This example uses many options simultaneously to show the power of combining containers, slurm job arrays, scratch space for an analysis.
 
 
 LUMI Container Wrapper
