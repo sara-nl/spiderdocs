@@ -8,7 +8,7 @@ Grid interface
 The Grid interface is recommended in cases that your project data and/or processing
 is tied to the Grid authentication and authorisation. To use the supported Grid clients
 on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your .globus directory
+Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your local directory
 and be a part of a Virtual Organisation (VO). Please refer to our Grid documentation
 page for instructions on `how to get a certificate`_ and `join a (VO)`_.
 
@@ -48,51 +48,12 @@ Grid clients
 ============
 
 There are many Grid clients to interact with dCache. On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` we support ``globus-url-copy`` and ``gfal``.
+Extraction and Redistribution)` we support ``gfal``.
 
 In the examples below, a user who is a member of the VO e.g., lsgrid, has the
 certificate installed on to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` login node and will copy data from dCache
 to/from your home directory on Spider.
-
-**Globus client**
-
-Please note that you need a valid proxy to run the following commands.
-
-* Listing directories on dCache:
-
-  .. code-block:: bash
-
-     globus-url-copy -list gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
-
-* Copy file from dCache to Spider:
-
-  .. code-block:: bash
-
-     globus-url-copy \
-         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
-         file:///`pwd`/your-data.tar
-
-* Copy file from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to dCache:
-
-  .. code-block:: bash
-
-     globus-url-copy \
-         file:///$HOME/your-data.tar \
-         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar
-
-* Copy directory from dCache to Spider:
-
- First create the directory locally, e.g. testdir.
-
- .. code-block:: bash
-
-    globus-url-copy -cd -r \
-     gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/testdir/ \
-     file:///$HOME/testdir/
-
-The ``globus-*`` client does not offer an option to create/delete directories or delete files.
-For this purpose you may use the gfal client as described below.
 
 
 **gfal client**
@@ -146,10 +107,9 @@ Please note that you need a valid proxy to run the following commands.
 
      gfal-rm -r gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/
 
-Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. For this purpose you may use globus-url-copy.
+Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. 
 
-.. Tip:: Need more examples? See `gfal Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/gfal.html#gfal>`_  and `globus Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/globus.html#globus>`_
-
+.. Tip:: Need more examples? See `gfal Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/gfal.html#gfal>`_ 
 .. _grid-data-processing:
 
 ====================
