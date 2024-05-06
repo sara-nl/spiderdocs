@@ -10,6 +10,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2024
 ==========
 
+* 2024-05-06 from 9.00 am till 10.30am: ui-01 has crashed and was not accessible until it was rebooted.
 * 2024-04-16 from 6.05am till 12.55pm: transient behaviour for ssh access via ui-01 and ui-02
 * 2024-03-28: User application causing a lot of Out of Memory events on the following nodes: wn-ca-08, wn-ca-13, wn-ca-15, wn-ca-21, wn-ca-23, wn-ha-01, wn-ha-04, wn-ha-05. The nodes were rebooted and jobs running on them failed.
 * 2024-03-19 from 9:00am till 12:30pm: Maintenance on the underlying Cloud infrastructure. The compute nodes may experience small disruptions. 
