@@ -31,7 +31,7 @@ chmod 2777 ${TEMP_BUILD_DIR}
 # Build the documentation in a docker container
 SCRIPT=$(cat <<EOF
 umask 0002
-virtualenv ~/venv
+virtualenv -p python3.6 ~/venv
 source ~/venv/bin/activate
 # modified to support the sphinx default theme and markdown
 pip install sphinx recommonmark sphinx_rtd_theme

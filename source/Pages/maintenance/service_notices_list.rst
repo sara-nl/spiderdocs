@@ -10,6 +10,9 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2024
 ==========
 
+* 2024-04-16 from 6.05am till 12.55pm: transient behaviour for ssh access via ui-01 and ui-02
+* 2024-03-28: User application causing a lot of Out of Memory events on the following nodes: wn-ca-08, wn-ca-13, wn-ca-15, wn-ca-21, wn-ca-23, wn-ha-01, wn-ha-04, wn-ha-05. The nodes were rebooted and jobs running on them failed.
+* 2024-03-19 from 9:00am till 12:30pm: Maintenance on the underlying Cloud infrastructure. The compute nodes may experience small disruptions. 
 * 2024-02-15 from 11:00am till 17:00pm: Issues on CephFS with many queued operations. The nodes wn-ca-14, wn-dc-12, wn-hb-04, wn-dc-16, wn-dc-18 had to be rebooted. Jobs affected by the reboots will show up as failed.
 * 2024-02-08 to 2024-02-09: Interruption of service due to CephFS issues. Some running user jobs had to be cancelled or failed.
 
@@ -17,7 +20,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2023
 ==========
 
-* 2023-12-07: High load on CephFS triggered by user activity. Some operations are slower but jobs are not affected.
+* 2023-12-07: High load on CephFS triggered by user activity. Some operations are slower but jobs are not affected. 
 * 2023-11-24 at 17:00 till 2023-11-27: Problematic hardware causing slow connection and multiple failures on half the cluster. The affected nodes were rebooted and the jobs running on the nodes may have failed. 
 * 2023-11-07 from 16:00pm till 19:00pm : CephFS overload triggered by user activity causing connectivity issues to the local filesystem. The nodes were rebooted and the jobs running on the nodes may have failed.
 * 2023-07-13 to 2023-07-14 at 13:15pm : Problematic hardware causing slow operations on CephFS (/home and /project folders). Some users experience connection issues.

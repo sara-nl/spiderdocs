@@ -202,7 +202,7 @@ Flag              Functionality
 ``--writable``    allows writing into a sandboxed container when invoking ``singularity shell``
 ===============   ======================================================================================
 
-``--fakeroot`` is needed for installing ``git`` and ``make`` in the container. ``--nv`` is necessary to access the GPU from within the container, and ``--sandbox`` is used to allow the user after running this example to go into the container and make changes to folders, files or run other commands that change the state of the container. If container ``--fakeroot`` building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
+``--fakeroot`` was needed for installing ``git`` and ``make`` in the container, as of 2024 it is not strictly necessary. ``--nv`` is necessary to access the GPU from within the container, and ``--sandbox`` is used to allow the user after running this example to go into the container and make changes to folders, files or run other commands that change the state of the container. If container ``--fakeroot`` building permissions are not enabled for you on the GPU nodes, please contact us at :ref:`our helpdesk <helpdesk>`.
 
 Once the container is built - which can take a few minutes as multiple base containers have to be retrieved from the internet - you can run it using 
 
@@ -253,7 +253,7 @@ and build the container using the usual
 
 .. code-block:: bash
 
-   singularity build --nv --fakeroot nv-tf-22.07.sif nv-tf-22.07.def
+   singularity build --nv nv-tf-22.07.sif nv-tf-22.07.def
 
 In this definition file, the tensorflow docs and tutorials are installed as an example to show how to do it. 
 
