@@ -148,7 +148,33 @@ Here is a job script template for local ``scratch`` usage;
 
 Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging).
 
+
+.. _sharing_data_macaroon:
+
+==============================
+Sharing data with macaroons
+==============================
+
+Macaroons are bearer tokens that authorize someone to access certain directories or files. With this technique, you can share (some of) your data with anyone else. The other person does not need to have a user account or a certificate; only a WebDAV client that supports bearer tokens. Clients that support this are Curl, Rclone and (read only) ordinary browsers such as Firefox. 
+
+You can get a Macaroon with X509 authentication. Please note, that port 2883 is used for this. The lifetime of your proxy does not limit the lifetime of the macaroon.
+
+.. code-block:: bash
+
+   [xxxx@ui-01 ~]$ voms-proxy-init -voms lsgrid:/lsgrid
+   Enter GRID pass phrase for this identity:
+   ....
+   Your proxy is valid until Fri Jul 06 01:37:31 CEST 2018
+
+   [xxxx@ui-01 ~]$ get-macaroon --url https://webdav.grid.surfsara.nl:2883/pnfs/grid.sara.nl/data/lsgrid/homer/Shared --proxy --chroot --duration PT1H --permissions DOWNLOAD,LIST 
+   https://webdav.grid.surfsara.nl:2883/?authz=MDAxY2xvY2F0aW9uIE9wdGlvbmFsLmVtcHR5CjAwMThpZGVudGlmaWVyIGNOMDBnRHRSCjAwMzZjaWQgaWQ6MzY0OTQ7MzE4ODMsNDQ0MzYsNDEzODUsMzEwNDAsMzAwMTM7bHNncmlkCjAwMjhjaWQgYmVmZ3JlOjIwMTgtMDctMDVUMTI6Mzg6MDAuODg5WgowMDM5Y2lkIHJvb3Q6L3BuZnMvZ3JpZC5zYXJhLm5sL2RhdGEvbHNncmlkL2hvbWVyL1NoYXJlZAowMDFmY2lkIGFjdGl2aXR5OkRPV05MT0FELExJU1QKMDAyZnNpZ25hdHVyZSBwshmIGsGrEfDt0Mg1wdK00Wgt6lGyps9IQX_zh2OGkwo
+
+
+For more information, see the `dCache User Guide`_.
+
+
 .. Links:
 
 .. _`how to get a certificate`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#get-a-grid-certificate
 .. _`join a (VO)`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#join-a-virtual-organisation
+.. _`dCache User Guide`: https://dcache.org/manuals/UserGuide-7.2/webdav.shtml#requesting-macaroons
