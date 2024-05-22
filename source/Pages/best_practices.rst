@@ -3,30 +3,63 @@
 Best practices
 *****************
 
-.. Tip:: This is a best practices section to improve the data I/O performance of your application on the Spider. In this page you will learn:
+.. Tip:: This is a best practices section to help you as a Spider user achieve maximum performance for your jobs and the system. In this page you will learn:
 
-     * Which options are available for your software installation
-     * Which options are available for your data processing
-     * Which options are available for scheduling many tasks 
+     * Which options are most efficient for your software installation
+     * Which options are most efficient for your data transfers and data processing
+     * Which options are most efficient for running a large amount of jobs 
 
 
-============     
-Introduction
-============
-
-While Spider is continuously expanding as a unique data processing and collaboration platform, some of the challenges we encounter are the growing demand for storage space and the increasing diversity of data. In order to accommodate the ever-growing storage needs and improve the performance of scientific workflows on Spider's storage, we have prepared this best practices guide that includes several tips to improve the user experience on the platform.
-
-============
+==========     
 Background
-============
+==========
 
-The local file system of Spider is CephFS and is suitable as a staging area for your data before or after analysing it. Our currect configuration is not optimised for handling small files because this system involves many disks to store the data itself and metadata servers to store the files metadata. As a result, when you operate on many small files or run code from python environments, the system response can be slow for you and other users on the platform. Below you will find other storage option and techniques to install, store and analyse your data.
+Spider is continuously expanding as a unique data processing and collaboration platform. The growing demand for storage space, the increasing diversity of data and type of system usage brings some technical challenges. For example, if you're doing a lot of IO-operations (reading and writing files) in your workflows, you should pay special attention to where these operations are performed as it can make the system response slow for you and other users on the platform.. 
+
+our local file system on Spider,CephFS, can suffer from slow operations when not used efficienly. CephFS hosts both your home and project directories on Spider. It is suitable as a staging area for your data before or after analysing it. Our currect configuration is not optimised for handling small files because this system involves many disks to store the data itself and metadata servers to store the files metadata. As a result, when you operate on many small files or run code from python environments, the system response can be slow for you and other users on the platform. 
+
+Below you will find other storage option and techniques
+
+In order to improve the performance of scientific workflows on Spider's storage, we have prepared this best practices guide that includes several tips to  to install, store and analyse your data efficiently.
+
+
 
 
 .. _software-practices:
 
 Software installation practices
 ===============================
+
+An overview of the features and capabilities of some of the software installation options supported on Spider is presented below.
+
+============================================   =============   =============   =============   =============
+                                               CephFS          Apptainer       Lumi            Softdrive
+============================================   =============   =============   =============   =============
+Software packages with many files              No              Yes             Yes             Yes  
+Conda- and/or pip-based virtual environments   No              Yes             Yes             Yes
+Easy to setup                                  Yes             Somewhat        Somewhat        Yes                             
+Software update changes                        No(static sw)   No (static sw)  Yes             Somewhat       
+Faster execution times                         No              Yes             Yes             Yes
+Lower load on the system                       No              Yes             Yes             Yes
+Portability                                    No              Somewhat        Somewhat        Yes   
+Software access can be restricted              Yes             Yes             Yes             No (repos are public)         
+Extensively used in production                 Yes             Yes             No              Yes  
+============================================   ==============  ==============  ==============  ==============
+
+
+============================================   =============   =============   =============   =============
+                                               CephFS          Apptainer       Lumi            Softdrive
+============================================   =============   =============   =============   =============
+Software packages with many files              -               vvv             vvv             vvv   
+Conda- and/or pip-based virtual environments   -               vvv             vvv             vvv 
+Easy to setup                                  vvv             vv              vv              vvv                             
+Software update changes                        v               -               vvv             vv
+Fast execution times & Low load on the system  -               vv              vv              vvv
+Portability                                    -               vv              vv              vvv   
+Software access can be restricted              vvv             vvv             vvv             - (repos are public)         
+Extensively used in production                 vv              vv              -               vvv  
+============================================   ==============  ==============  ==============  ==============
+
 
 .. add comparison table
 :ref:`Apptainer <singularity-containers>` 
@@ -39,8 +72,11 @@ Software installation practices
 
 .. _data-practices:
 
-Data processing practices
-=========================
+Data transfers and processing
+=============================
+
+An overview of the features and capabilities of some of the data transfers and processing options supported on Spider is presented below.
+
 
 .. add comparison table
 :ref:`How to use the temporary disk space <scratch-fs>`
@@ -54,10 +90,10 @@ Data processing practices
 :ref:`Shared memory <shared-memory>`
 
 
-.. _scheduling-many-tasks:
+.. _running-many-jobs:
 
-.. Scheduling many tasks 
-.. =====================
+Running a large amount of jobs 
+=====================
 .. Picas
 
 

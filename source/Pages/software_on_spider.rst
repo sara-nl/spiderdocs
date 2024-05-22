@@ -35,6 +35,7 @@ setup is identical on all nodes. Basic unix functionality is installed system-wi
         * graphical tools are supported via X11 ssh forwarding on the login node.
         * operating system (OS on Spider is CentOS 8) on login and worker nodes.
 
+
 .. _user-installed-sw:
 
 =======================
@@ -59,8 +60,8 @@ Extraction and Redistribution)` project. This can be placed in the location ``/h
 Software on project space
 =========================
 
-For software that you want to install and share with other project members, we advice
-you to use the ``/project/[PROJECTNAME]/Software`` in your :ref:`project-spaces-directories`.
+For software that you want to install and share with other project members, you can 
+use the ``/project/[PROJECTNAME]/Software`` in your :ref:`project-spaces-directories`.
 
 Only dedicated software managers have permissions to write in this directory, and all members
 in the project have read and execute permissions in this space.
@@ -73,6 +74,7 @@ exporting the right path in ``$HOME/.bashrc``.
    If you wish to install conda environments or other software that handles many small files, we suggest 
    you to use one of the other software installation methods below, because the home or project spaces 
    installations lie on CephFS and loading such software can be very slow.
+
 
 .. _singularity-containers:
 
@@ -102,7 +104,7 @@ If you have multiple programs, they should live in their own containers and not 
 Apptainer requires some training, as you need to run, mount and bind paths with containers to get the full potential of the technology.  
 
 
-.. _:upload-your-image:
+.. _upload-your-image:
 
 Upload your image
 ==================
@@ -147,6 +149,7 @@ separated list to the ``--bind`` option, e.g. ``--bind /cvmfs,/project``. Additi
 information can be found in the `Sylabs documentation`_.
 
 
+.. _lumi-containers:
 
 =======================
 LUMI Container Wrapper
@@ -224,8 +227,7 @@ CVMFS is a network file system based on HTTP. The CVMFS software repositories ar
 available and can be mounted read-only on multiple compute clusters, including :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. 
 
-Simply put, systems with the CVMFS installed
-have instant access to the Softdrive software repositories via the command line.
+Simply put, systems with the CVMFS installed have instant access to the Softdrive software repositories via the command line.
 This is very handy when you work on multiple platforms to solve the problem of
 installing and maintaining the software in different places. It is also very efficient when your software handles many 
 smalls files, e.g. conda environments.
