@@ -1,14 +1,14 @@
 
-.. _mpifileutils:
+.. _mpi-file-utils:
 *****************
 MPI File Utils
 *****************
 
-The `mpiFileUtils <https://mpifileutils.readthedocs.io/en/v0.11.1/index.html>`_ is a MPI-based tool for manageing datasets using multiple processes. The mpiFileUtils has been proven to copy, delete, and compare data sets with significantly performance improvement compared to traditional single-process tools such as cp and rm. 
+The `mpiFileUtils <https://mpifileutils.readthedocs.io/en/v0.11.1/index.html>`_ is a MPI-based tool for managing datasets using multiple processes. The mpiFileUtils has been proven to copy, delete, and compare data sets with significantly performance improvement compared to traditional single-process tools such as cp and rm. 
 
 .. note::
 
-	If you wish to try the mpiFileUtils on Spider, please contact at :ref:`our helpdesk <helpdesk>`us to provide you further information about the tools installation.  
+	If you wish to try the mpiFileUtils on Spider, please contact us at :ref:`our helpdesk <helpdesk>` to provide you with further information about the tools installation.  
    
 
 *****************
