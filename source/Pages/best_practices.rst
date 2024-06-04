@@ -130,22 +130,22 @@ High-throughput workflows that execute a specific application for many different
 
 An overview of the features and suitability of some of the options for running a large amount of jobs on Spider is presented below.
 
-==============================================   ===============================================================   ==============================   ======================================
-Feature                                          `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`_    :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
-==============================================   ===============================================================   ==============================   ======================================  
-High speed & low load on the system              No                                                                Yes                              Moderate
-Scales to hundreds, thousands of jobs and more   No                                                                Yes                              Moderate
-Transcends spider                                No                                                                Yes                              No
-Easy setup                                       Yes                                                               Moderate                         Moderate    
-Handles easily dependencies between tasks        No                                                                Moderate                         Yes
-Error recovery                                   No                                                                Yes                              Moderate
-==============================================   ===============================================================   ==============================   ======================================
+==============================================   ================   ==============================   ======================================
+Feature                                          Slurm job arrays   :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
+==============================================   ================   ==============================   ======================================  
+High speed & low load on the system              No                 Yes                              Moderate
+Scales to hundreds, thousands of jobs and more   No                 Yes                              Moderate
+Transcends spider                                No                 Yes                              No
+Easy setup                                       Yes                Moderate                         Moderate    
+Handles easily dependencies between tasks        No                 Moderate                         Yes
+Error recovery                                   No                 Yes                              Moderate
+==============================================   ================   ==============================   ======================================
 
 
 Which practice for running a large amount of jobs should I use?
 ---------------------------------------------------------------
 
-The first option to check when running a large amount of jobs is whether the software you're using comes with a built-in option for managing your workloads on a Slurm-based cluster. Alternatively, an easy way to submit several independent jobs with one command is the use of Job arrays. Job arrays, however do not scale well for more than a few hundreds of jobs. In this case, you can use external tools for managing your workloads, such as PiCaS or Snakemake.
+The first option to check when running a large amount of jobs is whether the software you're using comes with a built-in option for managing your workloads on a Slurm-based cluster. Alternatively, an easy way to submit several independent jobs with one command is the use of `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`_. Job arrays, however do not scale well for more than a few hundreds of jobs. In this case, you can use external tools for managing your workloads, such as PiCaS or Snakemake.
 
 
 PiCaS works as a queue, providing a mechanism to step through the work one task at a time. It is also a `pilot job <https://doc.grid.surfsara.nl/en/latest/Pages/Practices/pilot_jobs.html>`_  system, indicating that the client communicates with the PiCaS server to fetch work, instead of having that work specified in a job (or similar) file.  As every application needs different parameters, PiCaS has a flexible data structure that allows users to save different types of data. PiCaS can handle thousands or millions of tasks, it has an easy query mechanism to search among your tasks and is accessible from any platform via a Restful HTTP API. Here you can find instructions for using :ref:`PiCaS <picas-on-spider>`.
