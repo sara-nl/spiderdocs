@@ -88,7 +88,7 @@ For bulk data storage we recommend dCache. dCache is highly connected to Spider 
 
 We also advice you to use the scratch file systems as fast temporary storage while running a job. Each of the Spider worker nodes has a large scratch area on local SSD. Any data that you wish to keep should be written to other storage backends such as dCache before the end of the job. The scratch areas are ideal for retrieving the input of a job from dCache during execution or for applications that generate lots of intermediate files that are consumed by other parts of the processing or for generating the job output before copying it back to dCache. More about how to use the temporary disk space can be found in our section :ref:`Using scratch <scratch-fs>`.
 
-In cases that you have multiple jobs that need to access a single set of files that is too large to copy over to scratch, it is possible to use CephFS on home or project space locations for temporarily storing your data, but take into account its limitations compared to dCache in terms of throughput and capacity.
+In cases that you have multiple jobs that need to access a single set of files that is too large to copy over to scratch, it is possible to use CephFS on home or project space locations for temporarily storing your data, but take into account its limitations compared to dCache in terms of throughput and capacity. It is highly recommended that you do not store more than *10,000* files in a single directory on CephFS. In terms of file sizes, CephFS is most efficient when you deal with files that are larger than *4MB*. Files that are less than *32KB* can be very inefficient.
 
 
 .. _managing-data-practices:
@@ -129,16 +129,17 @@ High-throughput workflows that execute a specific application for many different
 
 
 An overview of the features and suitability of some of the options for running a large amount of jobs on Spider is presented below.
-==============================================   ==============================================================   ==============================   ======================================
-Feature                                          `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`    :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
-==============================================   ==============================================================   ==============================   ======================================  
-High speed & low load on the system              No                                                               Yes                              Moderate
-Scales to hundreds, thousands of jobs and more   No                                                               Yes                              Moderate
-Transcends spider                                No                                                               Yes                              No
-Easy setup                                       Yes                                                              Moderate                         Moderate    
-Handles easily dependencies between tasks        No                                                               Moderate                         Yes
-Error recovery                                   No                                                               Yes                              Moderate
-==============================================   ==============================================================   ==============================   ======================================
+
+==============================================   ===============================================================   ==============================   ======================================
+Feature                                          `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`_    :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
+==============================================   ===============================================================   ==============================   ======================================  
+High speed & low load on the system              No                                                                Yes                              Moderate
+Scales to hundreds, thousands of jobs and more   No                                                                Yes                              Moderate
+Transcends spider                                No                                                                Yes                              No
+Easy setup                                       Yes                                                               Moderate                         Moderate    
+Handles easily dependencies between tasks        No                                                                Moderate                         Yes
+Error recovery                                   No                                                                Yes                              Moderate
+==============================================   ===============================================================   ==============================   ======================================
 
 
 Which practice for running a large amount of jobs should I use?
@@ -153,8 +154,3 @@ PiCaS works as a queue, providing a mechanism to step through the work one task 
 When your application involves several steps connected in a workflow that each need to be submitted as independent tasks, you may consider using :ref:`Snakemake <snakemake-on-spider>`. Snakemake is a python-based workflow managment tool for defining, managing and executing workflows with multiple steps and complex dependencies. There are possibilities to combine PiCaS and Snakemake to enable workflow automation and run many jobs and subtasks efficiently and fast. Please contact our :ref:`our helpdesk <helpdesk>` if you need help with automating your workloads on Spider.
 
 
-
-.. TODO's:
-.. Number of files in a single directory: it is highly recommended that you do not exceed more than 100,000 (?) files in a single directory on Spider. Large numbers of files can be the source of slow performance for you and others storage volumes in the system. To count the number of files, please note that  `ls` can be slow, so we advice you to use an alternative command e.g. find.
-.. SquashFS: If your application can be run as a Singularity container, another good option is to mount your datasets with SquashFS
-.. Picas examples: add new content
