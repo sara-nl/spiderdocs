@@ -15,7 +15,7 @@ Best practices
 Background
 ==========
 
-Spider is continuously expanding as a unique data processing and collaboration platform. The growing demand for storage space, the diversity in applications and the various ways the system is used, all bring some technical challenges. For example, if you're doing a lot of IO-operations (reading and writing files) in your workflows, you should be mindful where these operations are performed as some options can significantly affect the performance of your jobs and the system load. 
+Spider is continuously expanding as a unique data processing and collaboration platform. The growing demand for storage space, the diversity in applications and the various ways the system is used, all bring some technical challenges. For example, if you're doing a lot of IO-operations (reading and writing files) in your workflows, you should be mindful on which systems these operations are performed as some options can significantly affect the performance of your jobs and the system load. 
 
 Our local file system on Spider is CephFS and is suitable as a staging area for your data before or after analysing it. CephFS hosts both your home and project directories on Spider. It is designed for efficient IO of large files, but when dealing with many small files the file system performance can be degraded. This is because CephFS relies on a parallel distributed system that involves many disks to store the data itself and metadata servers to store the files metadata. As a result, when you operate on many small files or run code from python environments, the system response can become slow for you and other users on the platform. 
 
