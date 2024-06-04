@@ -6,9 +6,9 @@ Grid interface
 **************
 
 The Grid interface is recommended in cases that your project data and/or processing
-is tight to the Grid authentication and authorisation. To use the supported Grid clients
+is tied to the Grid authentication and authorisation. To use the supported Grid clients
 on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your .globus directory
+Extraction and Redistribution)` you need to have an X509 Grid certificate installed into your local directory
 and be a part of a Virtual Organisation (VO). Please refer to our Grid documentation
 page for instructions on `how to get a certificate`_ and `join a (VO)`_.
 
@@ -48,51 +48,12 @@ Grid clients
 ============
 
 There are many Grid clients to interact with dCache. On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` we support ``globus-url-copy`` and ``gfal``.
+Extraction and Redistribution)` we support ``gfal``.
 
 In the examples below, a user who is a member of the VO e.g., lsgrid, has the
 certificate installed on to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` login node and will copy data from dCache
 to/from your home directory on Spider.
-
-**Globus client**
-
-Please note that you need a valid proxy to run the following commands.
-
-* Listing directories on dCache:
-
-  .. code-block:: bash
-
-     globus-url-copy -list gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/
-
-* Copy file from dCache to Spider:
-
-  .. code-block:: bash
-
-     globus-url-copy \
-         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar \
-         file:///`pwd`/your-data.tar
-
-* Copy file from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` to dCache:
-
-  .. code-block:: bash
-
-     globus-url-copy \
-         file:///$HOME/your-data.tar \
-         gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/your-data.tar
-
-* Copy directory from dCache to Spider:
-
- First create the directory locally, e.g. testdir.
-
- .. code-block:: bash
-
-    globus-url-copy -cd -r \
-     gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/testdir/ \
-     file:///$HOME/testdir/
-
-The ``globus-*`` client does not offer an option to create/delete directories or delete files.
-For this purpose you may use the gfal client as described below.
 
 
 **gfal client**
@@ -146,10 +107,9 @@ Please note that you need a valid proxy to run the following commands.
 
      gfal-rm -r gsiftp://gridftp.grid.sara.nl:2811/pnfs/grid.sara.nl/data/lsgrid/path-to-your-data/
 
-Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. For this purpose you may use globus-url-copy.
+Recursive transfer of files (transferring a directory) is not supported with the gfal-copy command. 
 
-.. Tip:: Need more examples? See `gfal Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/gfal.html#gfal>`_  and `globus Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/globus.html#globus>`_
-
+.. Tip:: Need more examples? See `gfal Grid documentation <http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/gfal.html#gfal>`_ 
 .. _grid-data-processing:
 
 ====================
@@ -188,7 +148,33 @@ Here is a job script template for local ``scratch`` usage;
 
 Please note that in the above example, it is assumed that the data is present on the disk storage on dCache. If the data is stored on Tape, it may need to be copied to disk first (called as staging).
 
+
+.. _sharing_data_macaroon:
+
+==============================
+Sharing data with macaroons
+==============================
+
+Macaroons are bearer tokens that authorize someone to access certain directories or files. With this technique, you can share (some of) your data with anyone else. The other person does not need to have a user account or a certificate; only a WebDAV client that supports bearer tokens. Clients that support this are Curl, Rclone and (read only) ordinary browsers such as Firefox. 
+
+You can get a Macaroon with X509 authentication. Please note, that port 2883 is used for this. The lifetime of your proxy does not limit the lifetime of the macaroon.
+
+.. code-block:: bash
+
+   [xxxx@ui-01 ~]$ voms-proxy-init -voms lsgrid:/lsgrid
+   Enter GRID pass phrase for this identity:
+   ....
+   Your proxy is valid until Fri Jul 06 01:37:31 CEST 2018
+
+   [xxxx@ui-01 ~]$ get-macaroon --url https://webdav.grid.surfsara.nl:2883/pnfs/grid.sara.nl/data/lsgrid/homer/Shared --proxy --chroot --duration PT1H --permissions DOWNLOAD,LIST 
+   https://webdav.grid.surfsara.nl:2883/?authz=MDAxY2xvY2F0aW9uIE9wdGlvbmFsLmVtcHR5CjAwMThpZGVudGlmaWVyIGNOMDBnRHRSCjAwMzZjaWQgaWQ6MzY0OTQ7MzE4ODMsNDQ0MzYsNDEzODUsMzEwNDAsMzAwMTM7bHNncmlkCjAwMjhjaWQgYmVmZ3JlOjIwMTgtMDctMDVUMTI6Mzg6MDAuODg5WgowMDM5Y2lkIHJvb3Q6L3BuZnMvZ3JpZC5zYXJhLm5sL2RhdGEvbHNncmlkL2hvbWVyL1NoYXJlZAowMDFmY2lkIGFjdGl2aXR5OkRPV05MT0FELExJU1QKMDAyZnNpZ25hdHVyZSBwshmIGsGrEfDt0Mg1wdK00Wgt6lGyps9IQX_zh2OGkwo
+
+
+For more information, see the `dCache User Guide`_.
+
+
 .. Links:
 
 .. _`how to get a certificate`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#get-a-grid-certificate
 .. _`join a (VO)`: http://doc.grid.surfsara.nl/en/latest/Pages/Basics/prerequisites.html#join-a-virtual-organisation
+.. _`dCache User Guide`: https://dcache.org/manuals/UserGuide-7.2/webdav.shtml#requesting-macaroons
