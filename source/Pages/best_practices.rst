@@ -29,7 +29,7 @@ Software installation practices
 
 If your software loads a large number of small files upon execution in your jobs then you may see poor I/O performance even if the total software size is not that big. There are ways to mitigate potential bottlenecks, such as the use of CVMFS or containers technology.
 
-Here is an overview of the features and capabilities of some of the software installation options supported on Spider followed by some general guidelines:
+Here is an overview of the features and suitability of some of the software installation options supported on Spider:
 
 ==============================================   ==============   ==============   =============   ======================
 Feature                                          CephFS           Apptainer        Lumi            Softdrive
