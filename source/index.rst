@@ -58,7 +58,7 @@ Table of contents:
    Pages/maintenances
    Pages/getting_help
 
-The Frequently Asked Questions can be found at :numref:FAQ.
+The Frequently Asked Questions can be found at :numref:`FAQ`.
 
 Other info:
 
