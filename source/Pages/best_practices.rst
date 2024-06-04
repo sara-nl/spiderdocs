@@ -17,7 +17,7 @@ Background
 
 Spider is continuously expanding as a unique data processing and collaboration platform. The growing demand for storage space, the diversity in applications and the various ways the system is used, all bring some technical challenges. For example, if you're doing a lot of IO-operations (reading and writing files) in your workflows, you should be mindful on which systems these operations are performed as some options can significantly affect the performance of your jobs and the system load. 
 
-Our local file system on Spider is CephFS and is suitable as a staging area for your data before or after analysing it. CephFS hosts both your home and project directories on Spider. It is designed for efficient IO of large files, but when dealing with many small files the file system performance can be degraded. This is because CephFS relies on a parallel distributed system that involves many disks to store the data itself and metadata servers to store the files metadata. As a result, when you operate on many small files or run code from python environments, the system response can become slow for you and other users on the platform. 
+Our local file system on Spider is CephFS and is suitable as a staging area for your data before or after analysing it. CephFS hosts both your home and project directories on Spider. It is designed for efficient IO of large files, but when dealing with many small files the file system performance can be degraded. This is because CephFS relies on a parallel distributed system that involves many disks to store the data itself and metadata servers to store the files metadata. As a result, when you operate on many small files e.g. run code from python environments, the system response can become slow for you and other users on the platform. 
 
 In order to improve the performance of scientific workflows on Spider's storage, we have prepared this best practices guide that includes several tips to install, store and analyse your data efficiently.
 
@@ -31,17 +31,17 @@ If your software loads a large number of small files upon execution in your jobs
 
 Here is an overview of the features and suitability of some of the software installation options supported on Spider:
 
-==============================================   =================================   =========================================   =============================   ============================
-Feature                                          :ref:`CephFS <user-installed-sw>`   :ref:`Apptainer <singularity-containers>`   :ref:`Lumi <lumi-containers>`   :ref:`Softdrive <softdrive>`
-==============================================   =================================   =========================================   =============================   ============================
-Software with many files (eg. Conda, pip env)    No                                  Yes                                         Yes                             Yes  
-Fast execution times & Low load on the system    No                                  Yes                                         Yes                             Yes
-Extensively used in production                   Yes                                 Yes                                         No                              Yes  
-Easy to setup                                    Yes                                 Moderate                                    Moderate                        Yes                             
-Portability                                      No                                  Moderate                                    Moderate                        Yes   
-Frequent software updates                        No                                  No                                          Yes                             Moderate       
-Software access can be restricted                Yes                                 Yes                                         Yes                             No (repos are public)         
-==============================================   =================================   =========================================   =============================   ============================
+==============================================   =================================   =========================================   ===============================================   ============================
+Feature                                          :ref:`CephFS <user-installed-sw>`   :ref:`Apptainer <singularity-containers>`   :ref:`Lumi Container Wrapper <lumi-containers>`   :ref:`Softdrive <softdrive>`
+==============================================   =================================   =========================================   ===============================================   ============================
+Software with many files (eg. Conda, pip env)    No                                  Yes                                         Yes                                               Yes  
+Fast execution times & Low load on the system    No                                  Yes                                         Yes                                               Yes
+Extensively used in production                   Yes                                 Yes                                         No                                                Yes  
+Easy to setup                                    Yes                                 Moderate                                    Moderate                                          Yes                             
+Portability                                      No                                  Moderate                                    Moderate                                          Yes   
+Frequent software updates                        No                                  No                                          Yes                                               Moderate       
+Software access can be restricted                Yes                                 Yes                                         Yes                                               No (repos are public)         
+==============================================   =================================   =========================================   ===============================================   ============================
 
 
 
@@ -130,14 +130,14 @@ High-throughput workflows that execute a specific application for many different
 
 An overview of the features and suitability of some of the options for running a large amount of jobs on Spider is presented below.
 ==============================================   ==============================================================   ==============================   ======================================
-Feature                                          `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`_   :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
+Feature                                          `Slurm job arrays <https://slurm.schedmd.com/job_array.html>`    :ref:`PiCaS <picas-on-spider>`   :ref:`Snakemake <snakemake-on-spider>`
 ==============================================   ==============================================================   ==============================   ======================================  
 High speed & low load on the system              No                                                               Yes                              Moderate
 Scales to hundreds, thousands of jobs and more   No                                                               Yes                              Moderate
-Available outside Spider                         No                                                               Yes                              No
+Transcends spider                                No                                                               Yes                              No
 Easy setup                                       Yes                                                              Moderate                         Moderate    
 Handles easily dependencies between tasks        No                                                               Moderate                         Yes
-Error recovery                                   No                                                               Yes                              No
+Error recovery                                   No                                                               Yes                              Moderate
 ==============================================   ==============================================================   ==============================   ======================================
 
 
