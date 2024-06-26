@@ -7,9 +7,9 @@ ADA interface
 Our ADA (Advanced dCache API) interface is based on the dCache API and the webdav
 protocol to access and process your data on dCache from any platform and with various authentication methods.
 
-**rclone** is a webdav client that supports by default 4 parallel streams of data, and is installed on the spider platform.
+**rclone** is a webdav client that supports by default 4 parallel streams of data, and is installed on Spider.
 
-**macaroons** are a token based authentication method supported by dCache. Macaroons can be used to give access to dCache data in a very granular way. This enables data managers autonomously share their data in dCache without having to reach out to SURFsara to request access.
+**macaroons** are a token based authentication method supported by dCache. Macaroons can be used to give access to dCache data in a very granular way. This enables data managers to autonomously share their data in dCache without having to reach out to SURF to request access.
 
 A quick start up guide for ADA is captured in the video below:
 
@@ -31,7 +31,7 @@ using the web client, this is just one additional way you can explore the storag
 space.
 
 As a Data manager you have direct credentials on dCache and it is possible
-to access the browser view using you Spider credentials [project-username]
+to access the browser view using your Spider credentials [project-username]
 in the following link:
 
 https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
@@ -44,7 +44,7 @@ https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
 Using ADA
 =========
 
-ADA is a wrapper of tools created by SURFsara to simplify your interactions
+ADA is a wrapper of tools created by SURF to simplify your interactions
 with dCache. Rclone can support uploading and downloading data but other
 operations such as listing or deleting files and directories can be performed
 directly on the dCache API. ADA wraps all of this functionality into one clean
@@ -157,9 +157,9 @@ This section describes how to work with your files.
 * Requirements: the rclone tokenfile `[PROJECT_tokenfile].conf`
 * Spider role: Normal user
 
-.. Tip:: If you want to use an environment variable to set the token file, rather than having to pass it on the command line every time then you can do: ``$export ada_tokenfile=/path-to-mytoken/[PROJECT_tokenfile].conf`` and then you can omit the option '--tokenfile' from all of the ada commands
+.. Tip:: You can use an environment variable to set the token file, rather than having to pass it on the command line every time. Enter the command:``$export ada_tokenfile=/path-to-mytoken/[PROJECT_tokenfile].conf`` and then you can omit the option '--tokenfile' from all of the ADA commands.
 
-.. Tip:: You can get extra information about the submitted command and the rest call details by using the `--debug` option in your ada command.
+.. Tip:: You can get extra information about the submitted command and the REST API call details by using the `--debug` option in your ADA command.
 
 Check your access to the system
 -------------------------------
@@ -306,7 +306,7 @@ View your usage
 Staging
 -------
 
-The dCache storage at SURFsara consists of magnetic tape storage and hard disk
+The dCache storage at SURF consists of magnetic tape storage and hard disk
 storage. If your quota allocation includes tape storage, then the data stored
 on magnetic tape has to be copied to a hard drive before it can be used.
 This action is called Staging files or ‘bringing a file online’.
@@ -442,8 +442,8 @@ When all files have been listed, the command will keep listening and reporting a
 Authentication
 ==============
 
-In this page we gave an extended example on using ada with macaroons authentication.
-Ada can be used with multiple authentication options.
+In this page we gave an extended example on using ADA with macaroons authentication.
+ADA can be used with multiple authentication options.
 
 ===================  ===============================  ===================
 Authentication       ADA commands                     When to use
@@ -470,8 +470,8 @@ Here is an example of a .netrc file that you can create in your home to use user
 Run ADA anywhere
 ================
 
-In this page we gave an extended example on using ada on the Spider platform.
-Ada is portable and can be used on any platform. On the SURFsara UIs ADA is already
+In this page we gave an extended example on using ADA on Spider.
+ADA is portable and can be used on any platform. On the Spider UIs ADA is already
 on board. If you want to interact with the dCache API and transfer files from your
 own machine then you need to install the following prerequisites:
 
@@ -486,7 +486,7 @@ local machine, then you need to install the following `get-macaroon` and `view-m
 * And their dependencies: ``pymacaroons, python3-html2text``
 
 =======================
-Ada configuration files
+ADA configuration files
 =======================
 
 The user specific configuration files are written in ~/.ada/

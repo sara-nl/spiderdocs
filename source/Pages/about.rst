@@ -60,11 +60,11 @@ is built on powerful infrastructure and designed with the following components:
 * Batch partitions to enable Single-core, Multi-core, Whole-node, High-memory and Long-running jobs
 * Large CephFs data staging area (POSIX-compliant filesystem) scales to PBs without loss of performance or stability
 * Large and fast scratch area’s (NVMe SSDs) on the worker nodes
-* Fast network uplink (1200 Gbit/s) allowing for scalable parallel data transfers from other SURFsara based storage systems (e.g. dCache, SWIFT), or from external storage systems
+* Fast network uplink (1200 Gbit/s) allowing for scalable parallel data transfers from SURF based storage systems (dCache, Object Store, Data Archive), or from external storage systems
 * Role-based project spaces tailored for data-centric projects
 * Scientific catalogs for cross-project collaboration
 * Web access over HTTPS for public data distribution and sharing with external collaborators
-* Singularity containers for software portability
+* Apptainer containers for software portability
 * CVMFS/Softdrive support for software distribution
 * Jupyter Notebooks
 * Interactive jobs and direct visualization from within jobs
@@ -136,18 +136,19 @@ Project space
 Project spaces on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` are shared workspaces given to team members that enable collaboration through sharing data, software and workflows. Within your project space there are four folders:
 
-* Data: Housing source data from data managers
-* Share: For sharing between project members
-* Public: For sharing publicly through webviews
-* Software: Scripts, libraries and tools
-
+* Data: for housing source data from data managers
+* Share: for sharing between project members
+* Public: for sharing publicly through webviews
+* Software: for scripts, libraries and tools
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` enables collaboration for your project with granular access control to your project space through project roles, enabling collaboration for any team structure:
 
-* *data manager* role: designated data dissemination manager; responsible for the management of project-owned data
-* *software manager* role: designated software manager; responsible to install and maintain the project-owned software
-* *normal user* role: scientific users who focus on their data analysis
+* *data manager* role: responsible for the management of project-owned data
+* *software manager* role: responsible to install and maintain the project-owned software
+* *normal user* role: scientific users who focus on data analysis
+
+See :numref:`project-spaces-directories` for more information on the project spaces and access permissions for the different roles.
 
 .. _scientific-catalog:
 
@@ -159,15 +160,16 @@ Extraction and Redistribution)` projects. These are cases where different user g
 on projects with different scope and goals but need to (partly) share read-only data
 (such as observations or biobank data). :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` offers a place for multiple project teams to
-collaborate by sharing data sets or tools. This workspace is called *scientific catalog* and it is *not* offered by default to a project.
+collaborate by sharing data sets or tools. This workspace is called *scientific catalog* and it is *not* offered by default to a project but can be set up on request.
 
-The scientific catalog data can be either *open* to everyone on the platform or *private* to
+The scientific catalog data can be either *open* to everyone on the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` platform or *private* to
 selected :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` project groups.
 
 The scientific catalog has only one (but important) role:
 
-* *scientific catalog manager*: designated data dissemination :abbr:`SC (scientific catalog)` manager; responsible for populating the catalog and deciding which :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project groups have read access to that catalog.
+* *scientific catalog manager*: responsible for populating the catalog and deciding which :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` project groups have read access to that catalog.
 
 
 .. _  interoperability-hotspot:
@@ -176,7 +178,7 @@ Interoperability hotspot
 ========================
 
 In contrast to many of the processing platforms already available,
-typically offering an all-inclusive solution within the boundaries of the their
+typically offering an all-inclusive solution within the boundaries of their
 environment, :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is exactly the opposite. It aims to be a connecting
 platform in a world that has already a lot to offer in terms of storage systems,
@@ -186,10 +188,10 @@ Extraction and Redistribution)` platform can hook
 them all together as an interoperability hotspot to support a variety of data
 processing and data collaboration use cases.
 
-For all external services supported, even services owned by the users themselves,
+For all supported external services, sometimes even services owned by the users themselves,
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` offers optimized configurations
-and practical guidelines how to connect to these services together
+and practical guidelines how to connect these services together
 into a practical processing environment tailored specifically to each project.
 
 
@@ -207,7 +209,7 @@ Starting a project
 ==================
 
 For information about the granting routes on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` please see our `Proposals Page`_.
+Extraction and Redistribution)` please see our page `Access to compute services`_.
 
 Before applying for a new project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` we suggest you to contact :ref:`our helpdesk <helpdesk>` to discuss your project.
@@ -216,7 +218,7 @@ Extending a project
 ===================
 
 You can apply for a time or resource capacity extension for an existing project on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` by requesting extra resources. Please see our `Proposals Page`_ or contact :ref:`our helpdesk <helpdesk>`.
+Extraction and Redistribution)` by requesting extra resources. Please see our page `Access to compute services`_ or contact :ref:`our helpdesk <helpdesk>`.
 
 Joining an existing project
 ===========================
@@ -229,11 +231,11 @@ Ending a project
 ================
 
 Once your project ends, all the relevant data and accounts will be removed according to
-the Usage Agreement terms and conditions.
+the `Usage Agreement <https://portal.cua.surf.nl/user/eua>`_.
 
 
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. _`Grid`: http://doc.grid.surfsara.nl
-.. _`Proposals Page`: https://www.surf.nl/onderzoek-ict/toegang-tot-rekendiensten-aanvragen
+.. _`Access to compute services`: https://www.surf.nl/en/access-to-compute-services
