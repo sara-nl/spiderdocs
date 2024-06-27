@@ -52,19 +52,10 @@ In order to access :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data E
 (say, your laptop) with a private SSH key, and you need to upload its matching
 public SSH key on the `SURF CUA portal`_. Then, when you are going to connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`
 from your laptop, the SSH private and public keys will be compared and, if they successfully relate to one-another,
-your connection will be established. Note that uploading your key to the portal is an *one time* task.
+your connection will be established. Note that uploading your key to the portal is a *one time* task.
 
-If you already have an SSH key-pair you can proceed to upload it.
-
-**NOTE: Please give your keys and account about 45 minutes to sync after uploading your public key in the portal**
-
-Else you have to generate a key-pair in your laptop or other machine that you use to
-connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see:
-
-.. toctree::
-   :maxdepth: 1
-
-   ssh_keys
+If you already have an SSH key-pair you can proceed to upload it. Else you have to generate a key-pair in your laptop or other machine that you use to
+connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see :numref:`ssh_keys`
 
 Once you have generated your SSH key-pair, upload your public key to our `SURF CUA portal`_.
 Click on the tab "Public ssh keys" on the left pane of
@@ -80,7 +71,9 @@ Field [2] Password: here you enter your password for your account
 
 Field [3] Add sshkey: press the key for the changes to take effect
 
-From now on you can login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+**NOTE: Please give your keys and account about 45 minutes to sync after uploading your public key in the portal**
+
+After that you can login to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` with your SSH keys from your laptop (or other
 computer where your SSH key was generated/transferred).
 See next, :ref:`how to login <ssh-login>`.

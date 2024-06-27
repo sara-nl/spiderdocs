@@ -54,8 +54,8 @@ Using Home
 ----------
 
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` provides to each user with a globally mounted
-home directory that is listed as ``/home/[USERNAME]``. This directory is
+Extraction and Redistribution)` provides each user with a globally mounted
+home directory named ``/home/[USERNAME]``. This directory is
 accessible from all nodes.
 This is also the directory that you as a user will find yourself in :ref:`upon first
 login <getting-around>` into this system. The data stored in the home folder will
@@ -66,16 +66,16 @@ remain available for the duration of your project.
 Using project spaces
 --------------------
 
-Similarly to home folders Spider's project spaces are also available on all worked nodes, the following paths are
-available on your :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` UI:
+Similarly to home folders, Spider's project spaces are also available on all worker nodes and login node. The following paths are
+available:
 
 * ``/project/[Project Name]/Data``
 * ``/project/[Project Name]/Public``
 * ``/project/[Project Name]/Share``
 * ``/project/[Project Name]/Software``
 
-This allows you to easily access your software, data and output from the worker nodes from the project spaces.
-See below for an example of a command that could be executed from a script on a worker node:
+This allows you to easily access your software, data and output from the project spaces on the worker nodes.
+See below for an example of a command that could be executed on a worker node (from a job submitted with SLURM):
 
 .. code-block:: bash
 
@@ -89,12 +89,12 @@ See below for an example of a command that could be executed from a script on a 
 Using scientific catalogs
 -------------------------
 
-Scientific catalogs allow for you to share software and data repositories accross projects. For example if you would
+Scientific catalogs allows you to share software and data repositories accross projects. For example if you would
 like to share a large biobank of data with other research projects you could request access
 to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
 folders.
 
-To request access to add a shared catalogue please reachout to :ref:`our helpdesk <helpdesk>`.
+To request access to add a shared catalogue please reach out to :ref:`our helpdesk <helpdesk>`.
 
 
 .. _scratch-fs:
@@ -102,21 +102,20 @@ To request access to add a shared catalogue please reachout to :ref:`our helpdes
 Using scratch
 -------------
 
-Each of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` worker nodes has a large scratch area on local SSD.
+Each of the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)` worker nodes has a large scratch area on local SSD, which can be accessed via ``$TMPDIR``.
 These scratch directories enable particularly efficient data I/O for large data
 processing pipelines that can be split up into many parallel independent jobs.
 
 Please note that you should only use the scratch space to temporarily store and
 process data for the duration of the submitted job. The scratch space is cleaned
-regularly in an automatic fashion and hence can not used for long term storage. 
+regularly in an automatic fashion and hence cannot used for long term storage. 
 
 For more information about how to use scratch during your compute jobs, please refer to `using local scratch`_.
 
 
 .. WARNING::
-   The local directories in the Spider, such as ``/tmp`` and ``/var/tmp``, should not be used by the users. They are slow and small to be used for any tasks. Furthermore, the local directories in either login nodes or worker nodes are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. 
-In addition, if a user fill up ``/tmp`` on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will also experience issues. It is strongly advised to calculate the temporary space needed by the software in advance, and request enough cores for your jobs to avoid filling up the ``/tmp`` of a node.
+   The local directories in Spider, such as ``/tmp`` and ``/var/tmp``, should not be used directly by the users. These are too slow and small to be used for any tasks. Furthermore, the local directories in either login nodes or worker nodes are needed by the operating system itself and is cleaned up sometimes, for example when the system is rebooted. In addition, if a user fill up ``/tmp`` on a node, the operating system will experience serious problems due to lack of space. Eventually the jobs submitted by you and other users who share the same node will also experience issues. It is strongly advised to calculate the temporary space needed by the software in advance, and request enough cores for your jobs to avoid filling up the ``/tmp`` of a node.
 
 
 
@@ -126,11 +125,7 @@ In addition, if a user fill up ``/tmp`` on a node, the operating system will exp
 Querying internal storage usage
 -------------------------------
 
-As a mounted filesystem spider storage can be queried with local linux commands, but for optimal performance we recommend querying some preconfigured `fattr` tags instead of `du` commands that slow down the system.
-
-The total usage of local spider storage is the total usage of projct home folders and project space together.
-
-Please note that this will show your current usage, not the max, or average for the month.
+The total usage of local spider storage is the total usage of project home folders and project space together. As a mounted filesystem, spider storage can be queried with local linux commands. However, we advice against using `du` commands to query disk usage because that slows down the system. Instead, you can use `gettfattr` to query the preconfigured extended file attribute `ceph.dir.rbytes`.
 
 **Example**
 
@@ -141,6 +136,8 @@ Please note that this will show your current usage, not the max, or average for 
 
    # Home folder
    getfattr -n ceph.dir.rbytes --absolute-names /home/[PROJECT]-[USER]
+
+Please note that this will only show your current usage, not the maximum or monthly average.
 
 
 .. _external-storage:
@@ -229,10 +226,10 @@ certificate authentication.
 
 .. _using-archive:
 
-SURFsara Central archive
+SURF Data Archive
 ========================
 
-For long-term preservation of precious data SURFsara offers the `Data Archive`_.
+For long-term preservation of precious data SURF offers the `Data Archive`_.
 Data ingested into the Data Archive is kept in two different tape libraries
 at two different locations in The Netherlands. The Data Archive is connected
 to all compute infrastructures, including :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
@@ -325,7 +322,7 @@ they have left the project.
 
 .. Links:
 
-.. _`Data Archive`: https://userinfo.surfsara.nl/systems/data-archive
+.. _`Data Archive`: https://servicedesk.surf.nl/wiki/display/WIKI/Data+Archive
 .. _`Sylabs documentation`:  https://www.sylabs.io/docs/
 .. _`dCache software`: https://www.dcache.org/
 .. _`using local scratch`: https://doc.spider.surfsara.nl/en/latest/Pages/compute_on_spider.html#using-local-scratch

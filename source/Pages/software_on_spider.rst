@@ -19,16 +19,16 @@ Software on Spider
 System software
 ===============
 
-There are cases in which a user or project may need extra software not included on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` system. It may require the installation of a new software tool (i.e. emacs editor) or an specific version of a software component that is already on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` (i.e. gcc 9). As a user of this platform you are free to submit a request to :ref:`our helpdesk <helpdesk>` to ask us install a software required for your project system wide. The requests will be evaluated case-by-case, but in general the following policy applies:
+There are cases in which a user or project may need extra software that is not included on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`. It may require the installation of a new software tool (i.e. emacs editor) or a specific version of a software component that is already on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` (i.e. gcc 9). As a user of this platform you are free to submit a request to :ref:`our helpdesk <helpdesk>` to ask us install software required for your project system-wide. The requests will be evaluated case-by-case, but in general the following policy applies:
 
-    * Stand-alone applications easily available through the official RPM repositories (CentOS, EPEL, ...) are suitable to be installed system wide. Some examples are emacs, joe, jq, ...
+    * Stand-alone applications easily available through the official RPM repositories (CentOS, EPEL, ...) are suitable to be installed system-wide. Some examples are emacs, joe, jq, ...
 
-    * Alternative versions of core tools (i.e. Python 3.6, gcc 9, ...) will have to be evaluated case by case. We will accept requests of software that can be deployed using well defined and automated procedures.
+    * Alternative versions of core tools (i.e. Python 3.6, gcc 9, ...) will have to be evaluated case-by-case. We will accept requests of software that can be deployed using well defined and automated procedures.
 
 The standard supported login shell on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is bash. The standard supported software
-setup is identical on all nodes. Basic unix functionality is installed system-wide:
+setup is identical on all nodes. Basic Unix functionality is installed system-wide:
 
         * software compilers (e.g., gcc, g++, f95)
         * editors (e.g., vi, vim, emacs, nano and edit).
@@ -63,17 +63,16 @@ Software on project space
 For software that you want to install and share with other project members, you can 
 use the ``/project/[PROJECTNAME]/Software`` in your :ref:`project-spaces-directories`.
 
-Only dedicated software managers have permissions to write in this directory, and all members
-in the project have read and execute permissions in this space.
+Only dedicated software managers have permissions to write in this directory, and all project members have read and execute permissions in this space.
 
 The project members can use the software installed by the software manager, simply by
 exporting the right path in ``$HOME/.bashrc``.
 
 .. note::
 
-   If you wish to install conda environments or other software that handles many small files, we suggest 
-   you to use one of the other software installation methods below, because the home or project spaces 
-   installations lie on CephFS and loading such software can be very slow.
+   If you wish to install Conda environments or other software that handles many small files, we recommend 
+   that you do not install directly on your home or project spaces but use one of the other software installation methods below. This is because the home and project spaces 
+   are located on CephFS, a distributed file system, and loading many small files from there can be very slow.
 
 
 .. _singularity-containers:
@@ -87,14 +86,14 @@ What is Apptainer
 
 Apptainer (formerly Singularity) is a container technology specifically designed for HPC/HTC systems. As such it properly controls the permissions of the container during build- and runtime, while allowing access to host components when needed. Apptainer allows putting whole software stacks into a single container file, which can then execute code that depend on this software. Examples include GPU software stacks such as Nvidia/CUDA and AMD/ROCm or entire programs such as MATLAB.
 
-When to use apptainer
+When to use Apptainer
 =====================
 
-Apptainer works best in this scenario if you have a large software stack does not change. For example using a static version of GPU drivers together with static python modules that stay at one version works best. This is because upgrading components is relatively hard and it is advised to completely rebuild the container when one updates a component. As the build can take up to 20 minutes, this may work for some, especially for students that only need reliable software: a static container that does not change during their project works best.
+Apptainer works best when you have a large software stack does not change. For example, if you use a static version of GPU drivers together with static python modules that stay at one version. This is because upgrading components is relatively hard and it is advised to completely rebuild the container when one updates a component, which can take up to 20 minutes. Hence, Apptainer is best suited for users that only need reliable software, for example, students using a static container that does not change during their project.
 
 A single image file is created containing everything in the container, resulting in faster execution times and lower load on the system. Moreover, these "image"-files are portable to machines with the same architecture, so the built file can be moved to different systems running the same Linux flavour.
 
-Large software packages with many files (such as conda) will run relatively slow on distributed file systems, which is used on Spider. So if you have a **large software stack** that **does not change**, using **apptainer** instead of running directly from the disks is preferred.
+Large software packages with many files (such as Conda) will run relatively slow on distributed file systems, which is used on Spider. So if you have a **large software stack** that **does not change**, using **Apptainer** instead of running directly from the disks is preferred.
 
 Caveats to apptainer
 ====================
@@ -114,8 +113,8 @@ Your Apptainer image can be viewed as a single file containing all the necessary
 Example code
 ============
 
-Here is a job script template for ``apptainer`` usage. It assumes the container is already built and ready to be used.
-The ``analysis.py`` script takes arguments ``filename.in parameter`` and writes output into ``[filename]_[parameter].out``. The Slurm JobArray goes over values 24 to 40 in steps of 2: we do a parameter sweep over these values and feed the values to the script.
+Here is a job script template for Apptainer usage. It assumes the container is already built and ready to be used.
+The ``analysis.py`` script takes arguments ``filename.in`` and ``parameter`` and writes output into ``[filename]_[parameter].out``. The Slurm JobArray goes over values 24 to 40 in steps of 2: we do a parameter sweep over these values and feed the values to the script.
 
 .. code-block:: bash
    
@@ -142,7 +141,7 @@ The ``analysis.py`` script takes arguments ``filename.in parameter`` and writes 
    echo "SUCCESS"
    exit 0
 
-This example uses many options simultaneously to show the power of combining containers, slurm job arrays and scratch space for an analysis.
+This example uses many options simultaneously to show the power of combining containers, Slurm job arrays and scratch space for an analysis.
 
 Please note that it is possible to bind several directories by providing a comma
 separated list to the ``--bind`` option, e.g. ``--bind /cvmfs,/project``. Additional
@@ -158,7 +157,7 @@ LUMI Container Wrapper
 What is the LUMI Container Wrapper
 =============================
 
-The LUMI Container Wrapper (LCW) is a tool that wraps containers such that you can install conda and pip environments in a container and allows running the binaries in the container easily for the user. By writing the whole software stack into an external file and mounting this file into the container, you can update the software without rebuilding the base container. Allowing for faster load- and run-times on distributed file systems (such as Spider), while maintaining the ability to update software stored in the external file.
+The LUMI Container Wrapper (LCW) is a tool that wraps containers such that you can install conda and pip environments in a container and allows running the binaries in the container easily for the user. By writing the whole software stack into an external file and mounting this file into the container, you can update the software without rebuilding the base container. Allowing for faster load- and run-times on distributed file systems (such as on Spider), while maintaining the ability to update software stored in the external file.
 For more information, see the `full LCW documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_.
 
 When to use LCW
@@ -184,7 +183,7 @@ Run the following commands:
     cd hpc-container-wrapper
     bash install.sh spider
 
-The spider in the second command refers to the ``spider.yaml`` file in ``hpc-container-wrapper/configs``. Once the base installation is setup, you can create a wrapper with:
+The ``spider`` in the second command refers to the ``spider.yaml`` file in ``hpc-container-wrapper/configs``. Once the base installation is setup, you can create a wrapper with:
 
 .. code-block:: bash
 
@@ -263,7 +262,7 @@ Installation your software
 2. Prepare your software somewhere in your Softdrive home directory. Compile your software tree in your home directory. When you want to run your workflows over multiple system types, it may be worthwhile and good practice to build your software independent of local libraries as much as possible. Try to build static binaries whenever you
 can.
 
-3. When satisfied, install your software under /cvmfs/softdrive.nl/$USER
+3. When satisfied, install your software under ``/cvmfs/softdrive.nl/$USER``
 
 4. Then trigger publication by executing the following command:
 
@@ -271,18 +270,18 @@ can.
 
     publish-my-softdrive
 
-After a couple of minutes your new software becomes available on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data.
+After a couple of minutes your new software becomes available on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`.
 
 .. note::
 
-   Another possible method for the user Software installatuon is EasyBuild. EasyBuild is offered on multiple HPC systems. If you are familiar with EasyBuild or wish to try it on Spider, follow our instuctions :ref:`here <easyBuild>`.
+   Another possible method for the user Software installation is EasyBuild. EasyBuild is offered on multiple HPC systems. If you are familiar with EasyBuild or wish to try it on Spider, follow our instuctions :ref:`here <easyBuild>`.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
 
 .. _`Slurm documentation page`: https://slurm.schedmd.com/
-.. _`Singularity SURFsara`: https://userinfo.surfsara.nl/systems/shared/software/Singularity
 .. _`Sylabs documentation`:  https://www.sylabs.io/docs/
 .. _`Softdrive SURFsara`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_software.html#softdrive
 
