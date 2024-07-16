@@ -150,22 +150,22 @@ we advice you to authenticate to PiCaS with the steps below.
 
 .. code-block:: bash
 
-        mkdir /home/[USERNAME]/picas_cfg
-        chmod go-rwx /home/[USERNAME]/picas_cfg
+        mkdir $HOME/picas_cfg
+        chmod go-rwx $HOME/picas_cfg
 
 * Check the settings of your directory with ``ls -la``. The output should be similar to:
 
 .. code-block:: bash
 
-        ls -la /home/homer/picas_cfg
-        drwx------ 1 homer homer  3  May  7 08:33 picas_cfg
+        ls -la $HOME/picas_cfg
+        drwx------ 1 [USERNAME] [USERNAME]  3  May  7 08:33 picas_cfg
 
 
 * Create a new file called ``picasconfig.py`` inside the ``picas_cfg`` directory:
 
 .. code-block:: bash
 
-        cd /home/[USERNAME]]/picas_cfg
+        cd $HOME/picas_cfg
         touch picasconfig.py
 
 * Add the following lines to the ``picasconfig.py`` file:
@@ -183,7 +183,7 @@ we advice you to authenticate to PiCaS with the steps below.
 
 .. code-block:: bash
 
-        chmod go-rw /home/[USERNAME]/picas_cfg/picasconfig.py
+        chmod go-rw $HOME/picas_cfg/picasconfig.py
 
 
 * Check the permissions of your ``picasconfig.py`` file with ``ls -la``. The output should be similar to:
@@ -191,14 +191,14 @@ we advice you to authenticate to PiCaS with the steps below.
 
 .. code-block:: bash
 
-        ls -la /home/homer/picas_cfg/picasconfig.py
-        -rw------- 1 homer homer  126 May  7 08:33 picasconfig.py
+        ls -la $HOME/picas_cfg/picasconfig.py
+        -rw------- 1 [USERNAME] [USERNAME]  126 May  7 08:33 picasconfig.py
 
-* Finally, add the ``picas_cfg`` directory to your PYTHONPATH environment variable so that python can locate it. We recommend that you set this variable in your /home/[USERNAME]]/.bashrc file by adding the following lines to it:
+* Finally, add the ``picas_cfg`` directory to your PYTHONPATH environment variable so that python can locate it. We recommend that you set this variable in your $HOME/.bashrc file by adding the following lines to it:
 
 .. code-block:: bash
 
-        PYTHONPATH=/home/[USERNAME]/picas_cfg:$PYTHONPATH
+        PYTHONPATH=$HOME/picas_cfg:$PYTHONPATH
         export PYTHONPATH
 
 You are now ready to start using your PiCaS credentials without having to type them each time you or your jobs need to connect to the PiCaS server.
