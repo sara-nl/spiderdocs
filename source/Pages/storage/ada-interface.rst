@@ -5,11 +5,12 @@ ADA interface
 *************
 
 Our ADA (Advanced dCache API) interface is based on the dCache API and the webdav
-protocol to access and process your data on dCache from any platform and with various authentication methods.
-
-**rclone** is a webdav client that supports by default 4 parallel streams of data, and is installed on Spider.
+protocol to access and process your data on dCache from any platform and with various authentication methods. In the example below, we will use macaroons as authentication method. 
 
 **macaroons** are a token based authentication method supported by dCache. Macaroons can be used to give access to dCache data in a very granular way. This enables data managers to autonomously share their data in dCache without having to reach out to SURF to request access.
+
+In addition to ADA, **rclone** is used for data transfers from/to dCache. rclone is a webdav client that supports by default 4 parallel streams of data, and is installed on Spider.
+
 
 A quick start up guide for ADA is captured in the video below:
 
@@ -26,17 +27,16 @@ A quick start up guide for ADA is captured in the video below:
 Browser view
 ============
 
-dCache storage can be viewed both through the Ada tools or through your browser
-using the web client, this is just one additional way you can explore the storage
+dCache storage can be viewed both through the ADA tools or through the browser
+using the web client. The browser view is available only for Data managers, and is just an additional way to explore the storage
 space.
 
 As a Data manager you have direct credentials on dCache and it is possible
-to access the browser view using your Spider credentials [project-username]
-in the following link:
+to access the browser view using your SURFcua credentials in the following link:
 
 https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
 
-.. note:: You may be asked for a browser certificate, just select cancel and you will be asked for your credentials
+.. note:: You may be asked for a browser certificate, just select cancel and you will be asked for your credentials. These are the same credentials used for logging in to the SURF CUA portal in :numref:`setting-up-your-account`)
 
 .. _using-ada:
 
@@ -45,11 +45,9 @@ Using ADA
 =========
 
 ADA is a wrapper of tools created by SURF to simplify your interactions
-with dCache. Rclone can support uploading and downloading data but other
-operations such as listing or deleting files and directories can be performed
-directly on the dCache API. ADA wraps all of this functionality into one clean
+with dCache. ADA wraps operations that can be performed directly on the dCache REST API, such as listing or deleting files and directories. ADA wraps all of this functionality into one clean
 package saving you the hassle of having to download and troubleshoot multiple
-packages and dependencies. ADA is installed on Spider.
+packages and dependencies. ADA does not support uploading and downloading data, for this you need to use rclone. To simplify matters, ADA and rclone can use the same config file. Both ADA and rclone are installed on Spider.
 
 This section provides examples and the steps to start using ADA to interact
 with your dCache storage.
@@ -57,14 +55,14 @@ with your dCache storage.
 Create a macaroon
 =================
 
-* Requirements: credential to dCache
+* Requirements: credentials to dCache
 
   * username/pwd or
   * x509 proxy
 
 * Spider role: Data manager
-* Action: Create a macaroon
-* Output: rclone tokenfile `[PROJECT_tokenfile].conf`. You can share this file with any member in the project in next step.
+* Action: create a macaroon
+* Output: rclone config file `[PROJECT_tokenfile].conf`. You can share this file with any member of the project in next step.
 * Description: the DM creates a macaroon for a shared directory (including the sub-directories & files). In the next step he will share the macaroon with the project team in a non-public space, either user's home directories, or the 'shared' or 'data' project space directories.
 * Example:
 
@@ -74,13 +72,14 @@ Create a macaroon
         --url https://webdav.grid.surfsara.nl:2880/pnfs/grid.sara.nl/data/[PROJECT] \
         --duration P7D \
         --chroot \
-        --user [PROJECT]-[USER] \
+        --user [USERNAME] \
         --permissions DOWNLOAD,UPLOAD,DELETE,MANAGE,LIST,READ_METADATA,UPDATE_METADATA \
         --ip [IP RANGE] \
         --output rclone [PROJECT_tokenfile]
 
+You will be asked for your CUA password after submitting this command. This example creates a macaroon that is valid for 7 days for the given url. The argument `chroot` ensures that the url is taken as the root directory when the macaroon is used later. 
 
-These permissions can be given comma separated upon creation of the macaroon:
+The following permissions can be given comma-separated upon creation of the macaroon:
 
 ===================  ===============================  
 Permission           Function                    
@@ -94,20 +93,21 @@ READ_METADATA        Read file status
 UPDATE_METADATA      Stage/unstage a file, change QoS
 ===================  ===============================  
 
+You can explore the other commandline arguments with ``get-macaroon --help``.
 
 Share macaroons
 ===============
 
 The config file generated in the step above can be shared with project members
-and collaborators for them to access their data. The holder of this config file
+and collaborators so they can access the data. The holder of this config file
 can operate on the dCache project data directly and thus, the config file should
 be shared with the project team in a non-public space, for example user's home
 directories, or the 'Shared' or 'Data' project space directories on Spider.
 
-* Requirements: the rclone tokenfile `[PROJECT_tokenfile].conf`
+* Requirements: the rclone config file `[PROJECT_tokenfile].conf`
 * Spider role: Data manager
-* Actions: Share [PROJECT_tokenfile].conf in a project space that can be read by other project users
-* Output: the tokenfile `tokenfile.conf` is stored in a shared space
+* Actions: share [PROJECT_tokenfile].conf in a project space that can be read by other project users
+* Output: the config file `tokenfile.conf` is stored in a shared space
 * Example:
 
 .. code-block:: bash
@@ -118,10 +118,10 @@ directories, or the 'Shared' or 'Data' project space directories on Spider.
 Inspect the macaroon
 ====================
 
-* Requirements: the rclone tokenfile `[PROJECT_tokenfile].conf`
-* Spider role: Normal user
-* Actions: View macaroon
-* Output: the list activities and directories that you can use on dCache
+* Requirements: the rclone config file `[PROJECT_tokenfile].conf`
+* Spider role: normal user
+* Actions: view macaroon
+* Output: the list of activities and directories that you can use on dCache
 * Example:
 
 .. code-block:: bash
@@ -154,17 +154,17 @@ Use the macaroon
 
 This section describes how to work with your files.
 
-* Requirements: the rclone tokenfile `[PROJECT_tokenfile].conf`
-* Spider role: Normal user
+* Requirements: the rclone config file `[PROJECT_tokenfile].conf`. For ADA this is referred to as tokenfile.
+* Spider role: normal user
 
-.. Tip:: You can use an environment variable to set the token file, rather than having to pass it on the command line every time. Enter the command:``$export ada_tokenfile=/path-to-mytoken/[PROJECT_tokenfile].conf`` and then you can omit the option '--tokenfile' from all of the ADA commands.
+.. Tip:: You can use an environment variable to set the tokenfile, rather than having to pass it on the command line every time. Enter the command:``$export ada_tokenfile=/path-to-mytoken/[PROJECT_tokenfile].conf`` and then you can omit the option '--tokenfile' from all of the ADA commands.
 
 .. Tip:: You can get extra information about the submitted command and the REST API call details by using the `--debug` option in your ADA command.
 
 Check your access to the system
 -------------------------------
 
-**--whoami**
+``--whoami``
 
 * Action: request authentication details
 * Output: information about the token owner and permissions
@@ -190,27 +190,28 @@ Check your access to the system
 Listing files
 -------------
 
-**--list <directory>**
+``--list <directory>``
 
-**--longlist <file|directory>**
+``--longlist <file|directory>``
 
-**--longlist --from-file <file-list>**
+``--longlist --from-file <file-list>``
 
-* Action: List files or directories
-* Output: List or long list of the files from the directory that the macaroon allows permission
+* Action: list files or directories
+* Output: list or long-list of the files from the directory that the macaroon allows permission for
 * Example:
 
 .. code-block:: bash
 
    ada --tokenfile [PROJECT_tokenfile].conf --longlist /[DIRECTORY]
 
+Note that because we added the commandline argument `chroot` when creating the macaroon, we do not need to specify the full url to the directory on dCache.
 
 Get file or directory details
 -----------------------------
 
-**--stat <file|directory>**
+``--stat <file|directory>``
 
-* Action: Show all details of a file or directory
+* Action: show all details of a file or directory
 * Output: metadata information
 * Example:
 
@@ -222,10 +223,10 @@ Get file or directory details
 Create a directory on dCache
 ----------------------------
 
-**--mkdir <directory>**
+``--mkdir <directory>``
 
-* Action: Create directories
-* Output: New directory created
+* Action: create directories
+* Output: new directory created
 * Example:
 
 .. code-block:: bash
@@ -236,9 +237,9 @@ Create a directory on dCache
 Moving or renaming files
 ------------------------
 
-**--mv <file|directory> <destination>**
+``--mv <file|directory> <destination>``
 
-* Action: Move file or directory. This can be used as an option also to rename a directory if the move is done in the same directory. Specify the full path and name to the source and target directory
+* Action: Move file or directory. This can be used as an option also to rename a directory if the move is done in the same directory. Specify the path and name to the source and target directory
 * Output: File or Directory moved to a different dCache location or renamed
 * Example:
 
@@ -250,11 +251,11 @@ Moving or renaming files
 Recursively remove folders
 --------------------------
 
-**--delete <file|directory> [--recursive [--force]]**
+``--delete <file|directory> [--recursive [--force]]``
 
-* Action: Delete files or directories
-* Output: File or Directory is deleted
-* Recursive deletion: To recursively delete a directory and ALL of its contents, add --recursive. You will need to confirm deletion of each subdir, unless you add --force.
+* Action: delete files or directories
+* Output: file or Directory is deleted
+* Recursive deletion: to recursively delete a directory and ALL of its contents, add ``--recursive``. You will need to confirm deletion of each subdir, unless you add ``--force``.
 * Alternative: `rclone purge`
 * Example:
 
@@ -264,20 +265,20 @@ Recursively remove folders
    ada --tokenfile [PROJECT_tokenfile].conf --delete /[FILE or DIRECTORY] --recursive
    ada --tokenfile [PROJECT_tokenfile].conf --delete /[DIRECTORY] --recursive --force
    # alternative
-   $ rclone --config=[PROJECT_tokenfile].conf purge PROJECT_tokenfile]:/disk/rec-delete/
+   $ rclone --config=[PROJECT_tokenfile].conf purge [PROJECT_tokenfile]:[FILE or DIRECTORY]
 
 
 Checksum
 --------
 
-**--checksum <file>**
+``--checksum <file>``
 
-**--checksum <directory>**
+``--checksum <directory>``
 
-**--checksum --from-file <file-list>**
+``--checksum --from-file <file-list>``
 
-* Action: Get the checksum of a files or files inside a directory or list of files
-* Output: Show MD5/Adler32 checksums for files
+* Action: get the checksum of a files or files inside a directory or list of files
+* Output: show MD5/Adler32 checksums for files
 * Example:
 
 .. code-block:: bash
@@ -295,7 +296,7 @@ Checksum
 View your usage
 ---------------
 
-* Action: get your storage usage with Rclone
+* Action: get your storage usage with rclone
 * Example:
 
 .. code-block:: bash
@@ -309,17 +310,17 @@ Staging
 The dCache storage at SURF consists of magnetic tape storage and hard disk
 storage. If your quota allocation includes tape storage, then the data stored
 on magnetic tape has to be copied to a hard drive before it can be used.
-This action is called Staging files or ‘bringing a file online’.
+This action is called 'staging files' or ‘bringing a file online’.
 
 Your macaroon needs to be created with UPDATE_METADATA permissions to allow for staging operations.
 
-**--stage <file>**
+``--stage <file>``
 
-**--stage <directory>**
+``--stage <directory>``
 
-**--stage --from-file <file-list>**
+``--stage --from-file <file-list>``
 
-* Action: Stage a file from tape or files in directory or a list of files (restore, bring it online)
+* Action: stage a file from tape or files in directory or a list of files (restore, bring it online)
 * Output: the file or list of files comes online on disk
 * Example:
 
@@ -341,13 +342,13 @@ Unstaging
 
 Your macaroon needs to be created with UPDATE_METADATA permissions to allow for unstaging operations.
 
-**--unstage <file>**
+``--unstage <file>``
 
-**--unstage <directory>**
+``--unstage <directory>``
 
-**--unstage --from-file <file-list>**
+``--unstage --from-file <file-list>``
 
-* Action: Unstage/Release a file from tape or files in directory or a list of files
+* Action: unstage/release a file from tape or files in directory or a list of files
 * Output: the file or list of files is unstaged and may be removed for the disk any time so dCache may purge its online replica.
 
 .. code-block:: bash

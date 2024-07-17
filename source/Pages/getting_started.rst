@@ -33,8 +33,8 @@ Extraction and Redistribution)`:
 * **Step 1**: Login to the `SURF CUA portal`_ with your SURF user account
 
 As a member of a :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` project you shall have received a SURF user account.
-Please use the username and password sent to you and login to the `SURF CUA portal`_ .
+Extraction and Redistribution)` project you shall have received a SURF user account with `CUA`_ credentials.
+Please use the CUA username and password sent to you and login to the `SURF CUA portal`_ .
 
 * **Step 2**: Accept the Usage Agreement in the portal
 
@@ -246,5 +246,6 @@ Command                  What it does
 
 .. Links:
 
+.. _`CUA`: https://servicedesk.surf.nl/wiki/display/WIKI/SURFcua
 .. _`SURF CUA portal`: https://portal.cua.surf.nl/home/ 
 .. _`Slurm documentation page`: https://slurm.schedmd.com/

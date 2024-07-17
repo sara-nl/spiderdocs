@@ -154,7 +154,7 @@ This python script can be locally executed as;
    srun python hello_world.py
    #Hello World
 
-Typically ``srun`` should only be used with a job script that is submitted with
+Typically, ``srun`` should only be used with a job script that is submitted with
 ``sbatch`` to the Slurm managed job queue.
 
 Running an interactive Job with `srun`
@@ -165,7 +165,7 @@ You will have direct access to your home and project space files from within you
 
 The interactive jobs will also be ‘scheduled’ along with batch jobs for resources so they may not always start immediately.
 
-The example below shows how to start an interactive session on a normal partition worker node with maximum time of one hour, one core and one task per node;
+The example below shows how to start an interactive session on a normal partition worker node with maximum time of one hour, one core and one task per node:
 
 .. code-block:: bash
 
@@ -173,11 +173,11 @@ The example below shows how to start an interactive session on a normal partitio
 
 To stop your session and return to the login node, type ``exit``.
 
-The example below shows how to start an interactive session on a single core of a specific worker node; 
+The example below shows how to start an interactive session on a single core of a specific worker node: 
 
 .. code-block:: bash
 
-  srun -c 1 --time=01:00:00 --nodelist=wn-db-02 --x11 --pty bash -i -l
+  srun --partition=interactive -c 1 --time=01:00:00 --nodelist=wn-ca-06 --x11 --pty bash -i -l
 
 
 Submitting a Job Script with `sbatch`
@@ -290,7 +290,7 @@ GPU jobs
 ========
 * For more information on using GPUs on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, see the :ref:`dedicated section <gpu-on-spider>`.
 * For jobs that require GPU resources a specific partition is available (see :ref:`partitions <partitions>` for all the different partitions).
-* Access to the GPU paritions needs to be requested and received.
+* Access to the GPU partitions needs to be requested and granted before you can make use of them.
 
 
 .. _partitions:
@@ -353,7 +353,6 @@ to select specific hardware:
 ==========================    ===================    =================
 SBATCH directive              Functionality          Worker Node
 ==========================    ===================    =================
-``--constraint=skylake``      cpu architecture       ``wn-db-[01-06]``
 ``--constraint=napels``       cpu architecture       ``wn-hb-[01-05]``
 ``--constraint=rome``         cpu architecture       ``wn-ca-[01-25], wn-ha-[01-05]``
 ``--constraint=ssd``          local scratch          ``all nodes``
@@ -362,12 +361,12 @@ SBATCH directive              Functionality          Worker Node
 ==========================    ===================    =================
 
 
-As an example we provide below a bash shell script ``hello_world.sh`` that executes a compiled C script called 'hello'. In this script the #SBATCH line specifies that this script may only be executed on a node with 2 cpu-cores where the node must have a skylake cpu-architecture and ssd (solid state drive) local scratch disk space.
+As an example we provide below a bash shell script ``hello_world.sh`` that executes a compiled C script called 'hello'. In this script the #SBATCH line specifies that this script may only be executed on a node with 2 cpu-cores where the node must have an AMD cpu-architecture and ssd (solid state drive) local scratch disk space.
 
 .. code-block:: bash
 
    #!/bin/bash
-   #SBATCH -c 2 --constraint=skylake,ssd
+   #SBATCH -c 2 --constraint=amd,ssd
    echo "start hello script"
    /home/[USERNAME]/[path-to-script]/hello
    echo "end hello script"
@@ -391,7 +390,7 @@ Overview
 
 ``sacct`` and ``sreport`` are slurm tools that allows users to query their usage from the slurm database. The accounting tools ``sacct`` and ``sreport`` are both documented on the `Slurm documentation page`_.
 
-These slurm queries result in a users total usage for a user. The sum of Raw CPU times / 3600 gives total core usage for the defined period. `-d Produces delimited results for easier exporting / reporting`
+These slurm queries result in a total usage for a user. The sum of Raw CPU times / 3600 gives total core-hr usage for the defined period.
 
 Examples
 ===========================
@@ -406,7 +405,7 @@ Examples
 
 .. code-block:: bash
 
-   #view the spexone project usage and your user's usage
+   #view your user's total usage
    sreport \
       -t second \
       -T cpu cluster \
