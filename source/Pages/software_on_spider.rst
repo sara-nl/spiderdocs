@@ -11,6 +11,7 @@ Software on Spider
      * using containerization for making your software portable across different platforms
      * distributing your software on different platforms
      * installing software using EasyBuild
+     * using EESSI software repository
 
 
 .. _system-software:
@@ -277,6 +278,10 @@ Extraction and Redistribution)`.
 
    Another possible method for the user Software installation is EasyBuild. EasyBuild is offered on multiple HPC systems. If you are familiar with EasyBuild or wish to try it on Spider, follow our instuctions :ref:`here <easyBuild>`.
 
+.. note::
+
+   If you wish to use software modules but don't want to go through the steps of installing the software using EasyBuild yourself, `EESSI website`_ software repository may be a solution for you. Follow our instuctions :ref:`here <eessi>` to find out how to use EESSI in Spider.
+
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
 .. Links:
@@ -284,4 +289,4 @@ Extraction and Redistribution)`.
 .. _`Slurm documentation page`: https://slurm.schedmd.com/
 .. _`Sylabs documentation`:  https://www.sylabs.io/docs/
 .. _`Softdrive SURFsara`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_software.html#softdrive
-
+.. _`EESSI website`: https://www.eessi.io/docs/
