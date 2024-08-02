@@ -206,7 +206,7 @@ To properly forward the Jupyter session to your local machine, a second terminal
 
 .. code-block:: bash
 
-   ssh -NL 8888:wn-db-06:8888 login@spider.surfsara.nl
+   ssh -NL 8888:wn-db-06:8888 username@spider.surfsara.nl
 
 
 Adjust ``wn-db-06:8888``, if necessary, with actual node name and *Spider-port-number*.
