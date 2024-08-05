@@ -1,0 +1,30 @@
+.. _pilotjobspicas:
+
+*************
+Pilot jobs and PiCaS
+*************
+
+
+.. _pilot-jobs:
+
+===============
+Pilot job framework
+===============
+
+A common problem many users of HPC systems face nowadays is that with the number of jobs submmited to the job scheduler increasing, the overhead for managing these jobs becomes larger. 
+Think of checking the status of all those jobs, finding out which jobs have succeed and which jobs need to be resubmitted.
+
+Pilot job framework is a solution to this problem. Such framework starts by user submitting a number of pilot jobs to the job scheduler. These pilot jobs are unlike normal jobs which executes the task directly. 
+Once a pilot job is running on the work nodes, it will contact a central server to be assigned a task and get all the information needed for executing this task. 
+Once the assigned task is finished, the pilot job will report the successful completion and request a new task.
+In the meantime, the central server handles the request from pilot jobs and keeps a log of what tasks are being handled, are finished, and can still be handed out. 
+When the task server doesn’t hear about the progress or completion of a task it has distributed, it will assume the pilot job is either dead or the job has failed. 
+As a result, the task will be automatically reassigned to another pilot job which equals to job resubmission. 
+
+Besides reducing the overhead for job management including tracking and resubmission, the pilot job framework also has the advantage of minimizing data transfer workload to the work nodes if many jobs works on the same datasets.
+
+The picture below illustrates the workflow of pilot job systems: 
+(1), the user uploads work to the central database. This could be a list of parameter settings that need to be executed using some application on a computational resource. 
+The user then (2) submits jobs just containing the application to the Grid, which handles retrieving from (3) and updating of (4) the job database. 
+This process continues until all the work present in the database has been done, the application has crashed or the job has run out of time on the computational resource. 
+When all work has been done, the user retrieves (5) the results from the database.
