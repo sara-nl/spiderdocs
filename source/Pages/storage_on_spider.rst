@@ -182,7 +182,7 @@ Other options may be available, but these are currently not supported by us.
 .. _using-dcache:
 
 SURF grid storage / dCache
-===============
+==========================
 
 SURF grid storage / dCache is our large scalable storage system for quickly processing huge volumes of data.
 The system runs on `dCache software`_, that is designed for managing scientific data.

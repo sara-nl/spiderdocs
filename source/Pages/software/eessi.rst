@@ -7,9 +7,9 @@ EESSI
 
 .. _eessi-repository:
 
-===============
+================
 EESSI repository
-===============
+================
 
 EESSI, short for the European Environment for Scientific Software Installations, is a collaborated project between different European partners in HPC community to build a common stack of scientific software installations for HPC systems and beyond. 
 Through the EESSI project, a shared stack of scientific software installations is distributed via CVMFS. 
@@ -70,9 +70,9 @@ You can directly load the modules that you need. For example, to load Python mod
 
 .. _eessi-job-script:
 
-===============
+====================================
 Using EESSI software in a job script
-===============
+====================================
 
 You can also use the EESSI software stack in a job script in Spider by inclduing the source command and loading the modules. Below is an example job script:
 

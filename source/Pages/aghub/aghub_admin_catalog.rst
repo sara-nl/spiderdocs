@@ -1,12 +1,12 @@
 .. _agh_admin_catalog:
 
-***************
+************************
 AGH Creating a Catalogue
-***************
+************************
 
-====================
+=============================
 Creating a Catalogue in AGHub
-====================
+=============================
 
 The facl tool is available to administrators on the AGHub system. This tool can be run using sudo on the UI.
 
@@ -33,9 +33,9 @@ Overview of the facl
       catalog   Apply the default ACL scheme to a given catalog
       project   Apply the default ACL scheme to a given project
 
----------------------
+-----------------------------------
 Creating a catalogue groups in SRAM
----------------------
+-----------------------------------
 
 Catalogues require two groups to be managed the first is the administrator who will be uploading the data, and the second will be the users who you want to grant access to the data. It is important to create the user group in SRAM before creating the cataglogue so that it can be mapped. For creating the group in SRAM, please see below for an example in a test catalogue:
 
@@ -53,9 +53,9 @@ Please also create a data manager group who will have write permissions to the c
 From SRAM you can map users to these groups in order to grant their access. It is also possible to create multiple groups / catalogue, the syntax is below.
 
 
----------------------
+--------------------------------
 Creating the Catalogue in Spider
----------------------
+--------------------------------
 
 Following the example with a test catalogue, please see below for an example command to create a test catalogue with the test user group created above, please NOTE, the group in SRAM does not perfectly map, and instead follows quite a verbose syntax and so the group above will look like the group below:
 

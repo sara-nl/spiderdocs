@@ -120,9 +120,9 @@ Currently the usage of GPU nodes is accounted for in GPU hours. This means that 
 
 .. _singularity-building:
 
-================================
+============================================
 Building and running a singularity container
-================================
+============================================
 
 In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/latest/user-guide/index.html>`_. 
 

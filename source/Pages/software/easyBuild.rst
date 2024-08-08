@@ -7,9 +7,9 @@ EasyBuild
 
 .. _easybuild-software:
 
-===============
+=================================
 Use EasyBuild installing software
-===============
+=================================
 
 EasyBuild is a software build and installation framework that allows you to manage scientific software on high performance computing systems in an efficient way.
 The official website of EasyBuild can be found in `EasyBuild website`_. Below we give instructions on how to make use of EasyBuild in Spider.
@@ -26,7 +26,7 @@ A full list of supported software packages is available in `Supported software`_
 .. _installing-easybuild-project:
 
 Installing EasyBuild for the project team
-=========================
+=========================================
 
 Install EasyBuild as a software manager. Note that you need to have write access to directory ``/project/<project-name>/Software`` to be able to follow the instructions below. Please change the ``<project-name>`` in the commands to your project name.
 

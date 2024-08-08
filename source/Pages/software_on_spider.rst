@@ -155,8 +155,8 @@ information can be found in the `Sylabs documentation`_.
 LUMI Container Wrapper
 =======================
 
-What is the LUMI Container Wrapper
-=============================
+What is the LUMI Container Wrapper?
+===================================
 
 The LUMI Container Wrapper (LCW) is a tool that wraps containers such that you can install conda and pip environments in a container and allows running the binaries in the container easily for the user. By writing the whole software stack into an external file and mounting this file into the container, you can update the software without rebuilding the base container. Allowing for faster load- and run-times on distributed file systems (such as on Spider), while maintaining the ability to update software stored in the external file.
 For more information, see the `full LCW documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_.
