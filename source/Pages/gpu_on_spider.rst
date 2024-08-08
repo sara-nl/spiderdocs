@@ -59,7 +59,7 @@ Building can be done as follows:
 
    singularity build ubuntu.sif docker://ubuntu
 
-In this example, the latest stable version of ubuntu is used (found `here <https://hub.docker.com/_/ubuntu>`_). For running libraries like tensorflow or pytorch or CUDA tools, please create or obtain appropriately compiled containers. A few links to more resources are given :ref:`here <resources-singularity>`.
+In this example, the latest stable version of ubuntu is used (found `here <https://hub.docker.com/_/ubuntu>`__). For running libraries like tensorflow or pytorch or CUDA tools, please create or obtain appropriately compiled containers. A few links to more resources are given :ref:`here <resources-singularity>`.
 
 After the singularity image has been sucessfully built, the user can enter a shell in the container with:
 
@@ -124,7 +124,7 @@ Currently the usage of GPU nodes is accounted for in GPU hours. This means that 
 Building and running a singularity container
 ============================================
 
-In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/latest/user-guide/index.html>`_. 
+In this section we show how to build a singularity container use it to run code in its environment. There is extensive documentation from singularity itself `here <https://docs.sylabs.io/guides/latest/user-guide/index.html>`__. 
 
 The steps in this section are done on GPU nodes, to ensure availability of the drivers, which may be needed in some compilation steps.
 
@@ -151,7 +151,7 @@ To directly run the container in memory without writing an image to disk invoke:
 
    singularity run --nv docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
 
-In the examples below, the base images are taken from the internet and expanded upon using *definition* files, to build custom singularity containers. The singularity documentation on definition files can be found `here <https://docs.sylabs.io/guides/latest/user-guide/quick_start.html#singularityce-definition-files>`_.
+In the examples below, the base images are taken from the internet and expanded upon using *definition* files, to build custom singularity containers. The singularity documentation on definition files can be found `here <https://docs.sylabs.io/guides/latest/user-guide/quick_start.html#singularityce-definition-files>`__.
 
 .. _cuda-example:
 
@@ -223,7 +223,7 @@ The container was exposed to the GPU at build-time, and at run-time it also has 
   
    Only use ``--sandbox`` and ``--writable`` when developing the image. Once the build is settled, create the container with a definition file and distribute it as-is for maximum stability.
 
-There is also a full HPC development image made available by Nvidia, called "HPC SDK", which is the software development kit that contains all the compilers, libraries and tools necessary to build efficient code that runs on GPUs. This image can be found `here <Https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`_.
+There is also a full HPC development image made available by Nvidia, called "HPC SDK", which is the software development kit that contains all the compilers, libraries and tools necessary to build efficient code that runs on GPUs. This image can be found `here <Https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`__.
 
 Running python
 ==============

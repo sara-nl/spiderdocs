@@ -30,14 +30,14 @@ Maintenance windows
 Current status
 ==============
 
-The current status of Spider can be found in our service status page `here <https://servicedesk.surf.nl/wiki/display/WIKI/Service+status>`_.
+The current status of Spider can be found in our service status page `here <https://servicedesk.surf.nl/wiki/display/WIKI/Service+status>`__.
 
 .. _dcache-maintenances:
 
 dcache maintenance
 ==================
 
-The dCache instance of SURF falls under the Grid components, thus dCache maintenance are not announced via the Spider notifications. If you want to receive notifications and be prepared for upcoming downtimes and maintenances of dCache, you can create personal subscriptions in the EGI operations portal by following the instructions in the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
+The dCache instance of SURF falls under the Grid components, thus dCache maintenance are not announced via the Spider notifications. If you want to receive notifications and be prepared for upcoming downtimes and maintenances of dCache, you can create personal subscriptions in the EGI operations portal by following the instructions in the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`__.
 
 
 .. _maintenance-policy:
