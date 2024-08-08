@@ -1,4 +1,5 @@
 .. _compute-on-spider:
+
 *****************
 Compute on Spider
 *****************
@@ -71,6 +72,7 @@ The table below lists the available* Spider node types.
    - gpu_a100_22c
 
 * Updated on the 29th November, 2023.
+
 .. _prepare-workloads:
 
 =======================

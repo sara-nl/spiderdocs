@@ -63,6 +63,7 @@ remain available for the duration of your project.
 
 
 .. _project-space-fs:
+
 Using project spaces
 --------------------
 
