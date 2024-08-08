@@ -11,8 +11,8 @@ EESSI
 EESSI repository
 ================
 
-EESSI, short for the European Environment for Scientific Software Installations, is a collaborated project between different European partners in HPC community to build a common stack of scientific software installations for HPC systems and beyond. 
-Through the EESSI project, a shared stack of scientific software installations is distributed via CVMFS. 
+EESSI, short for the European Environment for Scientific Software Installations, is a collaborated project between different European partners in HPC community to build a common stack of scientific software installations for HPC systems and beyond.
+Through the EESSI project, a shared stack of scientific software installations is distributed via CVMFS.
 
 The official website of EESSI can be found in `EESSI website`_. To get an overview of all the available software in EESSI per specific CPU target, please check `EESSI available software`_.
 Below we give instructions on how to make use of EESSI repository in Spider.
@@ -60,7 +60,7 @@ To find a specific software module, run command
 .. code-block:: bash
 
   module spider python
-  
+
 You can directly load the modules that you need. For example, to load Python module
 
 .. code-block:: bash
@@ -83,8 +83,8 @@ You can also use the EESSI software stack in a job script in Spider by inclduing
   #SBATCH -t 10:00
   #SBATCH -c 1
   #SBTACH -p normal
-  
-  # source the EESSI environment 
+
+  # source the EESSI environment
   source /cvmfs/software.eessi.io/versions/2023.06/init/bash
 
   # load the modules in EESSI

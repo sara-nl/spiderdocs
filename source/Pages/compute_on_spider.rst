@@ -8,7 +8,7 @@ Compute on Spider
 
      * how to prepare and run your workloads
      * about job types, partitions and Slurm constraints
-     
+
 The table below lists the available* Spider node types.
 
 .. list-table::
@@ -55,7 +55,7 @@ The table below lists the available* Spider node types.
    - 22
    - 720 GB (32,77 GB)
    - Local scratch 6TB SSD
-   - gpu_v100 
+   - gpu_v100
  * - 3
    - wn-ga-[01-03]
    - AMD Rome (2x) 7 Cores/Socket
@@ -175,7 +175,7 @@ The example below shows how to start an interactive session on a normal partitio
 
 To stop your session and return to the login node, type ``exit``.
 
-The example below shows how to start an interactive session on a single core of a specific worker node: 
+The example below shows how to start an interactive session on a single core of a specific worker node:
 
 .. code-block:: bash
 
@@ -230,7 +230,7 @@ Using local ``scratch``
 ========================
 
 If you run jobs that require intensive IO processes, we advise you to use
-``scratch`` because it is the local SSD on every compute node of the the
+``scratch`` because it is the local SSD on every compute node of the
 :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. This is a temporary storage that can be used only during the
 execution of your job and will be arbitrarily removed at any point once your
@@ -246,7 +246,7 @@ job workflow:
 
 ``TMPDIR`` is ``/tmp`` which is a 'bind mount' from ``/scratch/slurm.<JOBID>`` so you will only see your own job files in ``/tmp`` and all files will be removed after the job finishes.
 
-.. Tip:: TMPDIR variable can only be used within the SLURM jobs. It can not be used nor tested on the UI because there is no scratch space. 
+.. Tip:: TMPDIR variable can only be used within the SLURM jobs. It can not be used nor tested on the UI because there is no scratch space.
 
 Here is a job script template for ``$TMPDIR`` usage;
 

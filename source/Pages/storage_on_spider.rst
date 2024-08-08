@@ -9,7 +9,6 @@ Storage on Spider
      * which internal and external storage systems we support
      * best practices to manage your data
 
-
 .. _internal-storage:
 
 ================
@@ -40,7 +39,7 @@ on the command line after logging into the system, or (ii) by contacting
 :ref:`our helpdesk <helpdesk>`.
 
 .. WARNING::
-   When copying data on the local filesystem and accross different project space folders we suggest you to copy your data and then remove the source files instead of moving the data. This will ensure that the new copy inherits the permissions of the destination project folder. 
+   When copying data on the local filesystem and accross different project space folders we suggest you to copy your data and then remove the source files instead of moving the data. This will ensure that the new copy inherits the permissions of the destination project folder.
 
 
 .. _filesystems:
@@ -82,9 +81,6 @@ See below for an example of a command that could be executed on a worker node (f
 
         sh /project/[Project Name]/Software/[script].sh /project/[Project Name]/Data/[input file(s)] /home/[USER]/[output]
 
-
-
-
 .. _scientific-catalog-fs:
 
 Using scientific catalogs
@@ -110,7 +106,7 @@ processing pipelines that can be split up into many parallel independent jobs.
 
 Please note that you should only use the scratch space to temporarily store and
 process data for the duration of the submitted job. The scratch space is cleaned
-regularly in an automatic fashion and hence cannot used for long term storage. 
+regularly in an automatic fashion and hence cannot used for long term storage.
 
 For more information about how to use scratch during your compute jobs, please refer to `using local scratch`_.
 
@@ -126,7 +122,7 @@ For more information about how to use scratch during your compute jobs, please r
 Querying internal storage usage
 -------------------------------
 
-The total usage of local spider storage is the total usage of project home folders and project space together. As a mounted filesystem, spider storage can be queried with local linux commands. However, we advice against using `du` commands to query disk usage because that slows down the system. Instead, you can use `gettfattr` to query the preconfigured extended file attribute `ceph.dir.rbytes`.
+The total usage of local spider storage is the total usage of project home folders and project space together. As a mounted filesystem, spider storage can be queried with local Linux commands. However, we advice against using `du` commands to query disk usage because that slows down the system. Instead, you can use `gettfattr` to query the preconfigured extended file attribute `ceph.dir.rbytes`.
 
 **Example**
 
@@ -173,10 +169,10 @@ Other options may be available, but these are currently not supported by us.
 .. code-block:: bash
 
    # Using scp
-   scp [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/ 
+   scp [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/
 
    # Using rsync
-   rsync -a -W [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/ 
+   rsync -a -W [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/
 
 
 .. _using-dcache:
@@ -312,11 +308,11 @@ Data Ownership Policy
 =====================
 
 The data stored in the /project folder is owned by the grant's signing authority. If data is owned by a user who has
-left the project in the /project folder we ask that you request that user change the ownership to an active project 
-member before leaving. 
+left the project in the /project folder we ask that you request that user change the ownership to an active project
+member before leaving.
 
 The data stored in the /home folders is owned by individual users of those folders and can not be transferred to
-another user without their consent. We are also obligated to remove a users data no more than 6 months after 
+another user without their consent. We are also obligated to remove a users data no more than 6 months after
 they have left the project.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
