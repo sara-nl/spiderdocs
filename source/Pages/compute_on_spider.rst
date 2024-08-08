@@ -303,7 +303,7 @@ We have configured four CPU and two GPU partitions on :abbr:`Spider (Symbiotic P
 Extraction and Redistribution)` as shown in the :ref:`table above <prepare-workloads>`:
 
   * If no partition is specified, the jobs will be scheduled on the normal partition  which has a maximum walltime of 120 hours and can run on any worker nodes.
-  * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenances and we will not be responsible for data loss or loss of compute hours.
+  * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenance and we will not be responsible for data loss or loss of compute hours.
   * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 12 hours max walltime.
   * Interactive partition is meant for testing jobs and has 12 hours maximum walltime.
   * GPU V100 contains 1 Nvidia V100 (32GB) card per node.

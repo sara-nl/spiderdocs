@@ -1,13 +1,13 @@
 .. _maintenances:
 
-************
-Maintenances
-************
+***********
+Maintenance
+***********
 
 .. Tip:: To keep the system healthy we need sometimes to interrupt the platform for maintenance. In this page you will find:
 
      * our service notices logging changes or incidents on the platform
-     * the current status of the platform & the maintenances log
+     * the current status of the platform & the maintenance log
      * our downtime policy
 
 .. _service-notices:
@@ -16,7 +16,7 @@ Maintenances
 Service notices
 ===============
 
-To make it easier for users to see what notable changes have been made in the system between maintenances and releases of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we keep a chronologically ordered list of notable changes and incidents. The service notices can be found in :ref:`service-notices-list`.
+To make it easier for users to see what notable changes have been made in the system between maintenance and releases of :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we keep a chronologically ordered list of notable changes and incidents. The service notices can be found in :ref:`service-notices-list`.
 
 
 .. _maintenance-windows:
@@ -34,10 +34,10 @@ The current status of Spider can be found in our service status page `here <http
 
 .. _dcache-maintenances:
 
-dcache maintenances
-===================
+dcache maintenance
+==================
 
-The dCache instance of SURF falls under the Grid components, thus dCache maintenances are not announced via the Spider notifications. If you want to receive notifications and be prepared for upcoming downtimes and maintenances of dCache, you can create personal subscriptions in the EGI operations portal by following the instructions in the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
+The dCache instance of SURF falls under the Grid components, thus dCache maintenance are not announced via the Spider notifications. If you want to receive notifications and be prepared for upcoming downtimes and maintenances of dCache, you can create personal subscriptions in the EGI operations portal by following the instructions in the Grid page `here <https://doc.grid.surfsara.nl/en/latest/Pages/Service/downtimes_maintenances.html>`_.
 
 
 .. _maintenance-policy:

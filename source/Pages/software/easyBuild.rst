@@ -15,12 +15,12 @@ EasyBuild is a software build and installation framework that allows you to mana
 The official website of EasyBuild can be found in `EasyBuild website`_. Below we give instructions on how to make use of EasyBuild in Spider.
 
 
-.. _list-of-supported-softwares:
+.. _list-of-supported-software:
 
-List of supported softwares
-=========================
+List of supported software
+==========================
 
-A full list of supported software packages is available in `Supported softwares`_.
+A full list of supported software packages is available in `Supported software`_.
 
 
 .. _installing-easybuild-project:
@@ -258,4 +258,4 @@ To view the result jpg in your terminal, run
 
 .. _`EasyBuild website`: https://easybuild.io/
 .. _`Demo on configuing EasyBuild`: https://docs.easybuild.io/configuration/
-.. _`Supported softwares`: https://docs.easybuild.io/version-specific/supported-software/
+.. _`Supported software`: https://docs.easybuild.io/version-specific/supported-software/
