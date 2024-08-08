@@ -1,4 +1,4 @@
-.. _agh_admin_guide:
+.. _agh_admin_catalog:
 
 ***************
 AGH Creating a Catalogue
