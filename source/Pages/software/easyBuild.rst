@@ -37,7 +37,7 @@ After logging into Spider worker node, run the following commands:
 	python3.9 -m pip install wheel
         python3.9 -m pip install --prefix /project/<project-name>/Software easybuild
 
-Wheel is a necessary package for installation if it is not already installed. Because of the compatibility with Python, it is recommended to use newer version of Python, such as Python3.9. Next update the ``$PATH`` environment variable to make sure the eb command is available:
+Wheel is a necessary package for installation if it is not already installed. Because of the compatibility with Python, it is recommended to use newer version of Python, such as Python3.9. Next update the ``$PATH`` environment variable to make sure the ``eb`` command is available:
 
 .. code-block:: bash
 
@@ -55,7 +55,7 @@ You should see something like
 
 	/project/<project-name>/Software/bin/eb
 
-Next specify the name or the full path to the python command that should be used by the eb command via the ``$EB_PYTHON`` environment variable:
+Next specify the name or the full path to the python command that should be used by the ``eb`` command via the ``$EB_PYTHON`` environment variable:
 
 .. code-block:: bash
 
