@@ -68,6 +68,23 @@ Other info:
    Pages/contributing_howto
    Pages/cookie_policy
 
+.. toctree::
+   :hidden:
+
+   Pages/aghub/agh_admin_guide
+   Pages/aghub/agh_getting_started
+   Pages/aghub/aghub_admin_catalog
+   Pages/aghub/aghub_admin_projects
+   Pages/maintenance/maintenance_instructions
+   Pages/maintenance/service_notices_list
+   Pages/software/easyBuild
+   Pages/software/eessi
+   Pages/software/installing_miniconda_on_project_space
+   Pages/software/installing_samtools_on_project_space
+   Pages/ssh_keys
+   Pages/storage/mpifileutils
+   Pages/storage/shared_memory
+
 **Happy Spidering!..**
 
 
