@@ -55,7 +55,7 @@ from your laptop, the SSH private and public keys will be compared and, if they 
 your connection will be established. Note that uploading your key to the portal is a *one time* task.
 
 If you already have an SSH key-pair you can proceed to upload it. Else you have to generate a key-pair in your laptop or other machine that you use to
-connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see :numref:`ssh_keys`
+connect to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`. If you need help to generate an SSH key-pair, see :ref:`here <ssh-keys>`
 
 Once you have generated your SSH key-pair, upload your public key to our `SURF CUA portal`_.
 Click on the tab "Public ssh keys" on the left pane of
@@ -237,7 +237,7 @@ Command                  What it does
 ``sbatch``               submits a job to the batch system
 ``squeue``               displays the state of all submitted jobs
 ``scancel``              cancels a submitted job
-``scontrol``             shows detailed job, node information (useful for debugging), e.g. ``scontrol show job [jobID]``, ``scontrol show node [worker node]`` 
+``scontrol``             shows detailed job, node information (useful for debugging), e.g. ``scontrol show job [jobID]``, ``scontrol show node [worker node]``
 ``sacct``                shows detailed accounting information for jobs
 ======================   ============
 
@@ -247,5 +247,5 @@ Command                  What it does
 .. Links:
 
 .. _`CUA`: https://servicedesk.surf.nl/wiki/display/WIKI/SURFcua
-.. _`SURF CUA portal`: https://portal.cua.surf.nl/home/ 
+.. _`SURF CUA portal`: https://portal.cua.surf.nl/home/
 .. _`Slurm documentation page`: https://slurm.schedmd.com/

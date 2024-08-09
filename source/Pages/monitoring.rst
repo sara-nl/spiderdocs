@@ -1,4 +1,5 @@
 .. _monitoring-spider:
+
 *****************
 Monitoring Spider
 *****************
@@ -12,12 +13,12 @@ Below these buttons are the actual properties of Spider being shown, which is ei
 Public dashboard
 ================
 
-The public dashboard can be found `here <https://jobsview.grid.surfsara.nl/grafana/d/i289WluZz/spider?orgId=1>`_ and shows 4 views of running jobs, pending jobs, queue times and reserved number of cores for the cluster for different projects.
+The public dashboard can be found `here <https://jobsview.grid.surfsara.nl/grafana/d/i289WluZz/spider?orgId=1>`__ and shows 4 views of running jobs, pending jobs, queue times and reserved number of cores for the cluster for different projects.
 
 User dashboards
 ===============
 
-The user dashboards show information at different levels, and can be found `here <https://monitor.spider.surfsara.nl/grafana/dashboards>`_.
+The user dashboards show information at different levels, and can be found `here <https://monitor.spider.surfsara.nl/grafana/dashboards>`__.
 The user dashboards include:
 
  - Spider Cluster overview

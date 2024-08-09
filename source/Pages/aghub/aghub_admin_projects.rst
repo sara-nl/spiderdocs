@@ -1,12 +1,12 @@
-.. _agh_admin_guide:
+.. _agh_admin_projects:
 
-***************
+**************************
 AGH Creating a new Project
-***************
+**************************
 
-====================
+=================================
 Creating a Project space in AGHub
-====================
+=================================
 
 The facl tool is available to administrators on the AGHub system. This tool can be run using sudo on the UI.
 
@@ -33,9 +33,9 @@ Overview of the facl
       catalog   Apply the default ACL scheme to a given catalog
       project   Apply the default ACL scheme to a given project
 
----------------------
+-------------------------------
 Creating project groups in SRAM
----------------------
+-------------------------------
 
 Projects require three groups to be managed the first is the administrator who will be uploading the data. These groups are described here in the Spider documentation:
 https://spiderdocs.readthedocs.io/en/latest/Pages/about.html#project-space
@@ -62,9 +62,9 @@ Examples for the three groups are below:
   
 From SRAM you can map users to these groups in order to grant / manage their access. 
 
----------------------
+------------------------------
 Creating the Project in Spider
----------------------
+------------------------------
 
 Following the example with a test project, please see below for an example command to create a test catalogue with the test user group created above, please NOTE, the group in SRAM does not perfectly map, and instead follows quite a verbose syntax and so the group above will look like the group below:
 
@@ -77,9 +77,9 @@ Following the example with a test project, please see below for an example comma
     --user-group sram-aghub-amsterdamumc-aghub-test_user \
     --apply
 
----------------------
+-------------------
 Managing Catalogues
----------------------
+-------------------
 
 Users can be added to projects in SRAM by adding them to the respective user groups
 

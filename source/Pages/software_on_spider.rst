@@ -61,7 +61,7 @@ Extraction and Redistribution)` project. This can be placed in the location ``/h
 Software on project space
 =========================
 
-For software that you want to install and share with other project members, you can 
+For software that you want to install and share with other project members, you can
 use the ``/project/[PROJECTNAME]/Software`` in your :ref:`project-spaces-directories`.
 
 Only dedicated software managers have permissions to write in this directory, and all project members have read and execute permissions in this space.
@@ -71,8 +71,8 @@ exporting the right path in ``$HOME/.bashrc``.
 
 .. note::
 
-   If you wish to install Conda environments or other software that handles many small files, we recommend 
-   that you do not install directly on your home or project spaces but use one of the other software installation methods below. This is because the home and project spaces 
+   If you wish to install Conda environments or other software that handles many small files, we recommend
+   that you do not install directly on your home or project spaces but use one of the other software installation methods below. This is because the home and project spaces
    are located on CephFS, a distributed file system, and loading many small files from there can be very slow.
 
 
@@ -99,9 +99,9 @@ Large software packages with many files (such as Conda) will run relatively slow
 Caveats to apptainer
 ====================
 
-The stability of the software stack is important, as build-times can go up to 20 minutes for a single container.  
-If you have multiple programs, they should live in their own containers and not be merged into a single container.  
-Apptainer requires some training, as you need to run, mount and bind paths with containers to get the full potential of the technology.  
+The stability of the software stack is important, as build-times can go up to 20 minutes for a single container.
+If you have multiple programs, they should live in their own containers and not be merged into a single container.
+Apptainer requires some training, as you need to run, mount and bind paths with containers to get the full potential of the technology.
 
 
 .. _upload-your-image:
@@ -109,7 +109,7 @@ Apptainer requires some training, as you need to run, mount and bind paths with 
 Upload your image
 ==================
 
-Your Apptainer image can be viewed as a single file containing all the necessary software for your purpose. When compared to traditionally compiled software it is similar to a binary file containing the executable software. The image can be placed anywhere on Spider, as long as the location is accessible to your processing jobs. 
+Your Apptainer image can be viewed as a single file containing all the necessary software for your purpose. When compared to traditionally compiled software it is similar to a binary file containing the executable software. The image can be placed anywhere on Spider, as long as the location is accessible to your processing jobs.
 
 Example code
 ============
@@ -118,7 +118,7 @@ Here is a job script template for Apptainer usage. It assumes the container is a
 The ``analysis.py`` script takes arguments ``filename.in`` and ``parameter`` and writes output into ``[filename]_[parameter].out``. The Slurm JobArray goes over values 24 to 40 in steps of 2: we do a parameter sweep over these values and feed the values to the script.
 
 .. code-block:: bash
-   
+
    #!/bin/bash
    #SBATCH -N 1            #request 1 node
    #SBATCH -c 1            #request 1 core and 8000 MB RAM
@@ -135,9 +135,9 @@ The ``analysis.py`` script takes arguments ``filename.in`` and ``parameter`` and
 
    # mount the analysis folder into the container at /mnt and run the analysis on a file using 'exec'
    apptainer exec --bind $TMPDIR/myanalysis:/mnt python analysis.py /mnt/file1.in $PARAM
-   
+
    # copy the output back as TMPDIR is cleaned after the job
-   cp $TMPDIR/file1_{24..40..2}.out $HOME/myoutput 
+   cp $TMPDIR/file1_{24..40..2}.out $HOME/myoutput
 
    echo "SUCCESS"
    exit 0
@@ -155,8 +155,8 @@ information can be found in the `Sylabs documentation`_.
 LUMI Container Wrapper
 =======================
 
-What is the LUMI Container Wrapper
-=============================
+What is the LUMI Container Wrapper?
+===================================
 
 The LUMI Container Wrapper (LCW) is a tool that wraps containers such that you can install conda and pip environments in a container and allows running the binaries in the container easily for the user. By writing the whole software stack into an external file and mounting this file into the container, you can update the software without rebuilding the base container. Allowing for faster load- and run-times on distributed file systems (such as on Spider), while maintaining the ability to update software stored in the external file.
 For more information, see the `full LCW documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_.
@@ -169,7 +169,7 @@ When using conda- and/or pip-based virtual environments, consider using LCW inst
 Caveats to LCW
 ==============
 
-You can only run a single apptainer container simultaneously, so if you have LCW running in your terminal, you can not run a second container in the same terminal. Recursive containerization is also disallowed in apptainer.  
+You can only run a single apptainer container simultaneously, so if you have LCW running in your terminal, you can not run a second container in the same terminal. Recursive containerization is also disallowed in apptainer.
 When using very specific **large** containers, such as GPU containers (Nvidia, AMD, Intel), use the container directly instead of user LCW, as you have to build on top of the container contents.
 
 Example code
@@ -225,11 +225,11 @@ Softdrive is a software distribution service based on CVMFS, which has been deve
 being used extensively in production environments since several years.
 CVMFS is a network file system based on HTTP. The CVMFS software repositories are publicly
 available and can be mounted read-only on multiple compute clusters, including :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)`. 
+Extraction and Redistribution)`.
 
 Simply put, systems with the CVMFS installed have instant access to the Softdrive software repositories via the command line.
 This is very handy when you work on multiple platforms to solve the problem of
-installing and maintaining the software in different places. It is also very efficient when your software handles many 
+installing and maintaining the software in different places. It is also very efficient when your software handles many
 smalls files, e.g. conda environments.
 
 Access on Softdrive is *not* provided by default to the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data

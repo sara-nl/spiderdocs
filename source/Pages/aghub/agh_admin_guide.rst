@@ -47,9 +47,9 @@ In order to use the AGH external storage with the use of an additional client, y
   curl -u $USER https://webdav-agh.grid.surfsara.nl/tape/get-macaroon.sh
 
 
-----------------------------------------
+---------------------------------------------------
 Granting access to storage - create a token for AGH
-----------------------------------------
+---------------------------------------------------
 
 AGH end-point and caveat requirements here, the wedav-agh end point is dedicated for the AGH project.
 

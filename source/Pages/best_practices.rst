@@ -1,4 +1,5 @@
 .. _best-practices:
+
 *****************
 Best practices
 *****************

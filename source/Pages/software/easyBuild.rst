@@ -7,26 +7,26 @@ EasyBuild
 
 .. _easybuild-software:
 
-===============
+=================================
 Use EasyBuild installing software
-===============
+=================================
 
 EasyBuild is a software build and installation framework that allows you to manage scientific software on high performance computing systems in an efficient way.
 The official website of EasyBuild can be found in `EasyBuild website`_. Below we give instructions on how to make use of EasyBuild in Spider.
 
 
-.. _list-of-supported-softwares:
+.. _list-of-supported-software:
 
-List of supported softwares
-=========================
+List of supported software
+==========================
 
-A full list of supported software packages is available in `Supported softwares`_.
+A full list of supported software packages is available in `Supported software`_.
 
 
 .. _installing-easybuild-project:
 
 Installing EasyBuild for the project team
-=========================
+=========================================
 
 Install EasyBuild as a software manager. Note that you need to have write access to directory ``/project/<project-name>/Software`` to be able to follow the instructions below. Please change the ``<project-name>`` in the commands to your project name.
 
@@ -37,7 +37,7 @@ After logging into Spider worker node, run the following commands:
 	python3.9 -m pip install wheel
         python3.9 -m pip install --prefix /project/<project-name>/Software easybuild
 
-Wheel is a necessary package for installation if it is not already installed. Because of the compatibility with Python, it is recommended to use newer version of Python, such as Python3.9. Next update the ``$PATH`` environment variable to make sure the eb command is available:
+Wheel is a necessary package for installation if it is not already installed. Because of the compatibility with Python, it is recommended to use newer version of Python, such as Python3.9. Next update the ``$PATH`` environment variable to make sure the ``eb`` command is available:
 
 .. code-block:: bash
 
@@ -55,7 +55,7 @@ You should see something like
 
 	/project/<project-name>/Software/bin/eb
 
-Next specify the name or the full path to the python command that should be used by the eb command via the ``$EB_PYTHON`` environment variable:
+Next specify the name or the full path to the python command that should be used by the ``eb`` command via the ``$EB_PYTHON`` environment variable:
 
 .. code-block:: bash
 
@@ -258,4 +258,4 @@ To view the result jpg in your terminal, run
 
 .. _`EasyBuild website`: https://easybuild.io/
 .. _`Demo on configuing EasyBuild`: https://docs.easybuild.io/configuration/
-.. _`Supported softwares`: https://docs.easybuild.io/version-specific/supported-software/
+.. _`Supported software`: https://docs.easybuild.io/version-specific/supported-software/
