@@ -9,7 +9,7 @@ Jupyter Notebooks
      * how to use Jupyter notebooks on Spider
      * which available flavors to choose
 
-Two methods of running jupyter notebooks in jupyter lab are discussed here: with virtual environments and with singularity containers. Some of this has also been covered in :ref:`the compute section <compute-on-spider>`.
+Three methods of running jupyter notebooks in jupyter lab are discussed here: with virtual environments, with singularity containers and with EESSI software module. Some of this has also been covered in :ref:`the compute section <compute-on-spider>`.
 
 ======================
 Where to run notebooks
@@ -163,4 +163,64 @@ A few resources on prebuilt images and documentation:
 | https://hub.docker.com
 | https://docs.sylabs.io/guides/latest/user-guide/
 
+
+===================
+EESSI software module 
+===================
+
+`EESSI`_ software repository is a common stack of scientific software installations for HPC systems. You can use Jupyter Notebook software module from EESSI repository combined with SSH port forwarding. 
+After starting an interactive session on a work node, to set up the EESSI environment simply run the command:
+
+.. code-block:: bash
+
+   source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+
+Please check `EESSI`_ website for newer repository release than 2023.06.
+
+Next load module
+
+.. code-block:: bash
+
+   module load nodejs/18.17.1-GCCcore-12.3.0
+   module load JupyterNotebook/7.0.2-GCCcore-12.3.0 
+
+The nodejs module is necessary for resolving an error message caused by older nodejs version. The module load commands will load JupyterNotebook and all its dependencies automatically. You can check this by running command 
+
+.. code-block:: bash
+
+   module list
+
+Next start jupyter lab by running command
+
+.. code-block:: bash
+
+   jupyter lab --ip="*" --no-browser --port=8888 
+
+Note that if port 8888 is already in use by another JupyterNootbook program, you will be assigned the next port number, such as 8889, 8890... Let's call this *Spider-port-number*.
+The terminal output contains a link you can use to open the Jupyter Notebook in the web browser. The link looks like this
+
+.. code-block:: bash
+
+   http://localhost:8888/lab?token=xxxxxxxxxxxxx  
+
+To properly forward the Jupyter session to your local machine, a second terminal needs to be opened in your laptop running
+
+.. code-block:: bash
+
+   ssh -NL 8888:wn-db-06:8888 username@spider.surfsara.nl
+
+
+Adjust ``wn-db-06:8888``, if necessary, with actual node name and *Spider-port-number*.
+
+Once the connection is successful, open the link in your web browser. Note that if the link contains port number other than 8888, you need to adjust it to 8888 as this is the number you set in the port forwarding for your local machine.
+
+To stop the Jupyter Notebook and port forwarding, simply close the web page and exit all the terminals.
+ 
+
+
+
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
+
+.. Links:
+
+.. _`EESSI`: https://www.eessi.io/docs/
