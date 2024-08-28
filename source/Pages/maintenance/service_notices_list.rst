@@ -9,7 +9,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 ==========
 2024
 ==========
-
+* 2024-8-27 from 16.40 till 2024-8-28 at 09.00 am: The service is down due to network prooblem during a network maintenance. 
 * 2024-06-12 from 7.00 am till 2024-06-14 at 17.00 am: The service is down due to network problem. 
 * 2024-05-06 from 9.00 am till 10.30am: ui-01 has crashed and was not accessible until it was rebooted.
 * 2024-04-16 from 6.05am till 12.55pm: transient behaviour for ssh access via ui-01 and ui-02
