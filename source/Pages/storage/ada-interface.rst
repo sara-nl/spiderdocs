@@ -307,6 +307,8 @@ View your usage
 Staging
 -------
 
+.. note:: Currently staging via ada is not supported. We are working on an updated version using the bulk staging functionality and you may contact us for support until it is released.
+
 The dCache storage at SURF consists of magnetic tape storage and hard disk
 storage. If your quota allocation includes tape storage, then the data stored
 on magnetic tape has to be copied to a hard drive before it can be used.
