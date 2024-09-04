@@ -28,3 +28,19 @@ The picture below illustrates the workflow of pilot job systems:
 The user then (2) submits jobs just containing the application to the Grid, which handles retrieving from (3) and updating of (4) the job database. 
 This process continues until all the work present in the database has been done, the application has crashed or the job has run out of time on the computational resource. 
 When all work has been done, the user retrieves (5) the results from the database.
+
+
+.. image:: /Images/pilot_job.png
+   :align: center
+
+
+.. _picas:
+
+===============
+PiCaS
+===============
+
+PiCaS is a pilot job system where PiCaS server use toekns to communicate tasks with PiCaS clients on the work nodes.
+
+Let’s say that you have a number of tasks to be processed on the Grid Worker Nodes. Each task requires a set of parameters to run. 
+The parameters of each task (run id, input files, etc) construct an individual piece of work, called token, which is just a description - not the task itself.
