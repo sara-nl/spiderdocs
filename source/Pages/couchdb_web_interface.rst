@@ -72,4 +72,4 @@ Query an advanced view with reduce functions
 
 
 
-.. _`Picas CouchDB web interface`: https://github.com/sara-nl/spiderdocs
+.. _`Picas CouchDB web interface`: https://picas.surfsara.nl:6984/_utils/#login
