@@ -80,6 +80,17 @@ Save the changes and you will find the token in the todo view:
 
 Query a simple view
 ===============================
+There are some standard views already available, such as done, error, locked, overview_total, todo. 
+You can find these views under `Monitor > Views`.
+
+.. image:: /Images/picas_query_a_view_1.png
+   :align: center
+
+If you click on one view, you will see all the tokens which belong to this view:
+
+.. image:: /Images/picas_query_a_view_2.png
+   :align: center
+
 
 
 .. _Query-an-advanced-view:
