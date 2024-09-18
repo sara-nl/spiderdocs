@@ -18,12 +18,12 @@ Create a token
 ===============================
 After logging in, choose your Picas database by clicking on the database name:
 
-.. image:: /Images/picas_create_a_view_1.png
+.. image:: /Images/picas_create_a_token_1.png
    :align: center
 
 Next. click on the '+' button next to 'All Documents' and add a new doc:
 
-.. image:: /Images/picas_create_a_view_2.png
+.. image:: /Images/picas_create_a_token_2.png
    :align: center
 
 For creating a new token, a few key-value pair needs to be defined. You can use the following template
@@ -43,12 +43,12 @@ For creating a new token, a few key-value pair needs to be defined. You can use 
 
 Adjust the `_id` and if necessary `input`:
 
-.. image:: /Images/picas_create_a_view_3.png
+.. image:: /Images/picas_create_a_token_3.png
    :align: center
 
-Click on create document and you will find the newly created token in the Views todo:
+Click on create document and you will find the newly created token in the todo view:
 
-.. image:: /Images/picas_create_a_view_4.png
+.. image:: /Images/picas_create_a_token_4.png
    :align: center
 
 
@@ -56,6 +56,24 @@ Click on create document and you will find the newly created token in the Views 
 
 Update a token
 ===============================
+
+You may want to update a token, for example moving a token from locked to todo. 
+
+Token_7 is in the locked view:
+
+.. image:: /Images/picas_update_a_token_1.png
+   :align: center
+
+Click on the token and adjust the value of key `"lock"` to 0:
+
+.. image:: /Images/picas_update_a_token_2.png
+   :align: center
+
+Save the changes and you will find the token in the todo view:
+
+.. image:: /Images/picas_update_a_token_3.png
+   :align: center
+
 
 
 .. _Query a simple view:
