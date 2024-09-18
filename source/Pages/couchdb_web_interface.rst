@@ -17,29 +17,40 @@ First of all, login to the `Picas CouchDB web interface`_ with your Picas userna
 Create a token
 ===============================
 After logging in, choose your Picas database by clicking on the database name:
+
 .. image:: /Images/picas_create_a_view_1.png
    :align: center
 
 Next. click on the '+' button next to 'All Documents' and add a new doc:
+
 .. image:: /Images/picas_create_a_view_2.png
    :align: center
 
 For creating a new token, a few key-value pair needs to be defined. You can use the following template
-```
-{
-  "_id": "token_xx",
-  "type": "token",
-  "lock": 0,
-  "done": 0,
-  "hostname": "",
-  "scrub_count": 0,
-  "input": "",
-  "exit_code": ""
-}
-```
-Ajust the `_id` and if necessary `input`:
+
+.. code-block:: bash
+
+   {
+    "_id": "token_xx",
+    "type": "token",
+    "lock": 0,
+    "done": 0,
+    "hostname": "",
+    "scrub_count": 0,
+    "input": "",
+    "exit_code": ""
+   }
+
+Adjust the `_id` and if necessary `input`:
+
 .. image:: /Images/picas_create_a_view_3.png
    :align: center
+
+Click on create document and you will find the newly created token in the Views todo:
+
+.. image:: /Images/picas_create_a_view_4.png
+   :align: center
+
 
 .. _update-a-token:
 
