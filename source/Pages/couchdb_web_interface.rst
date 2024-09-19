@@ -98,7 +98,18 @@ If you click on one view, you will see all the tokens which belong to this view:
 Query an advanced view with reduce functions
 ===============================
 
+Additionaly, you can query the reduce function for a certain view.
+Click on the view you want to query:
 
+.. image:: /Images/picas_reduce_function_1.png
+   :align: center
+
+Next, click on `options` on the top right corner. Select `reduce` in the query options and run query:
+
+.. image:: /Images/picas_reduce_function_2.png
+   :align: center
+
+Then you can see the overview of the tokens.
 
 
 .. _`Picas CouchDB web interface`: https://picas.surfsara.nl:6984/_utils/#login
