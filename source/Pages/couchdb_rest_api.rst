@@ -10,12 +10,11 @@ In this page you will learn how to use Picas CouchDB from the command line using
      * get info of specific documents
      * get all documents in a database
      * get all design documents in a database
-     * find a document based on a value and return the whole document
-     * find a document based on a value and return the required fields
      * get all documents in a specific view
      * get document in a specific view in descending by key order
      * get the view/reduce output 
-
+     * find a document based on a value and return the whole document
+     * find a document based on a value and return the required fields
 
 
 First of all, create and configure the `.netrc` file which contains login and initialization information used by the auto-login process. 
@@ -78,7 +77,7 @@ Run the `user_info` to see the output. You can use `jq` to transform the JSON da
 
 Get database info
 ===============================
-To get the database information, similarly create the get-database-info command:
+To get the database information, similarly create the get-database-info command. Note that you need to specify at the end of the command which database you are interested in. 
   
 .. code-block:: bash
   
@@ -99,13 +98,107 @@ Run the `db_info` to see the output. You can use `jq` to transform the JSON data
 
 
 
+.. _get-specific-document-info:
+
+Get info of specific documents
+===============================
+To get the information of specific documents, create the get-document-info command. Note that you need to specify at the end of this command which document/token you are interested in:
+  
+.. code-block:: bash
+  
+   doc_info_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/token_0"
+
+You can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias doc_info='echo -e "\n$doc_info_cmd\n" && $doc_info_cmd'
+
+Run the `doc_info` to see the output. You can use `jq` to transform the JSON data to a more readable format:
+  
+.. code-block:: bash
+  
+   doc_info
+   doc_info | jq .
 
 
 
 
+.. _get-all-document:
+
+Get all documents in a database
+===============================
+To get the information of all documents in a database, create the get-all-document command. Adjust the web address to your database name.
+  
+.. code-block:: bash
+  
+   all_docs_db_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/_all_docs/"
+
+You can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias all_docs_db='echo -e "\n$all_docs_db_cmd\n" && $all_docs_db_cmd'
+
+Run the `all_docs_db` to see the output. You can use `jq` to transform the JSON data to a more readable format:
+  
+.. code-block:: bash
+  
+   all_docs_db
+   all_docs_db | jq .
+
+
+
+.. _get-design-document:
+
+Get all design documents in a database
+===============================
+If you only want to check the design documents in a database, adjust the previous command slightly:
+  
+.. code-block:: bash
+  
+   all_design_docs_db_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/_design_docs"
+
+You can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias all_design_docs_db='echo -e "\n$all_design_docs_db_cmd\n" && $all_design_docs_db_cmd'
+
+Run the `all_design_docs_db` to see the output. You can use `jq` to transform the JSON data to a more readable format:
+  
+.. code-block:: bash
+  
+   all_design_docs_db
+   all_design_docs_db | jq .
 
 
 
 
+.. _get-docs-specific-view:
 
-.. _`Picas CouchDB web interface`: https://picas.surfsara.nl:6984/_utils/#login
+Get all documents in a specific view
+===============================
+To get documents only in a specific view, create the command by running:
+  
+.. code-block:: bash
+  
+   view_docs_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/_design/Monitor/_view/todo"
+
+Note that you can adjust the view name in the web address of the command.
+
+Next, you can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias view_docs='echo -e "\n$view_docs_cmd\n" && $view_docs_cmd'
+
+Run the `view_docs` to see the output. You can use `jq` to transform the JSON data to a more readable format:
+  
+.. code-block:: bash
+  
+   view_docs
+   view_docs | jq .
+
+
+get document in a specific view in descending by key order
