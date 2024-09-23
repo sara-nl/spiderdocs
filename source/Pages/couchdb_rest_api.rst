@@ -201,4 +201,54 @@ Run the `view_docs` to see the output. You can use `jq` to transform the JSON da
    view_docs | jq .
 
 
-get document in a specific view in descending by key order
+
+
+.. _get-docs-descending:
+
+Get document in a specific view in descending by key order
+===============================
+To get documents only in a specific view and list in descending by key order, create the command by running:
+  
+.. code-block:: bash
+  
+   view_docs_desc_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/_design/Monitor/_view/todo?descending=true"
+
+Note that you can adjust the view name in the web address of the command.
+
+Next, you can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias view_docs_desc='echo -e "\n$view_docs_desc_cmd\n" && $view_docs_desc_cmd'
+
+Run the `view_docs_desc` to see the output. 
+  
+.. code-block:: bash
+  
+   view_docs_desc
+
+
+
+.. _get-reduce-output:
+
+Get the view/reduce output
+===============================
+To get the view with reduced output, create the command by running:
+  
+.. code-block:: bash
+  
+   view_reduce_cmd="curl --silent --netrc-file .netrc-picas-user-myawesomedb -X GET https://picas.surfsara.nl:6984/myawesomedb/_design/Monitor/_view/overview_total?group=true"
+
+Note that you can adjust the view name in the web address of the command.
+
+Next, you can create an alias for the command to use it easily, by running the command: 
+
+.. code-block:: bash
+  
+   alias view_reduce='echo -e "\n$view_reduce_cmd\n" && $view_reduce_cmd'
+
+Run the `view_reduce` to see the output. 
+  
+.. code-block:: bash
+  
+   view_reduce
