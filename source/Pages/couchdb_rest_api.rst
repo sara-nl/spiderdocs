@@ -197,7 +197,7 @@ Find a document based on a value and return the whole document
 ===============================
 
 To find a document based on a value and return the whole document, CouchDB API provides find documents function using a declarative JSON querying syntax, see `CouchDB find expressions`_.
-For example to find document which has 0 exit_code, run the following command:
+For example to find documents which have 0 exit_code, run the following command:
   
 .. code-block:: bash
   
@@ -205,6 +205,20 @@ For example to find document which has 0 exit_code, run the following command:
 
 
 
+.. _find_return_fields:
+
+Find a document based on a value and return the required fields
+===============================
+
+Do you want to limit which fields are returned for a document? To Find a document based on a value and return the required fields, you can add fields in the data body, see `CouchDB filtering fields`_.
+For example to find documents which have 0 exit_code and return only a few fields, run the following command:
+  
+.. code-block:: bash
+  
+   curl --silent --netrc-file .netrc-picas-user-myawesomedb -X  POST --header "Content-Type:application/json" --data '{"selector": {"exit_code": {"$eq": 0}}, "fields": ["_id", "lock", "done", "input", "exit_code"]}' https://picas.surfsara.nl:6984/myawesomedb/_find
+
+
 .. Links:
 
 .. _`CouchDB find expressions`: https://docs.couchdb.org/en/stable/api/database/find.html#find-expressions
+.. _`CouchDB filtering fields`: https://docs.couchdb.org/en/stable/api/database/find.html#filtering-fields
