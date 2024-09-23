@@ -13,7 +13,8 @@ In this page you will learn how to use Picas CouchDB from the command line using
      * get all documents in a specific view
      * get document in a specific view in descending by key order
      * get the view/reduce output 
-
+     * find a document based on a value and return the whole document
+     * find a document based on a value and return the required fields
 
 First of all, create and configure the `.netrc` file which contains login and initialization information used by the auto-login process. 
 In your working environment, create a `.netrc` file for connecting to your database (in this example the database is myawesomedb).
@@ -189,3 +190,21 @@ To get the view with reduced output, run the following command:
 
 Note that you can adjust the view name in the web address of the command.
 
+
+.. _find_return_doc:
+
+Find a document based on a value and return the whole document
+===============================
+
+To find a document based on a value and return the whole document, CouchDB API provides find documents function using a declarative JSON querying syntax, see `CouchDB find expressions`_.
+For example to find document which has 0 exit_code, run the following command:
+  
+.. code-block:: bash
+  
+   curl --silent --netrc-file .netrc-picas-user-myawesomedb -X  POST --header "Content-Type:application/json" --data '{"selector": {"exit_code": {"$eq": 0}}}' https://picas.surfsara.nl:6984/myawesomedb/_find
+
+
+
+.. Links:
+
+.. _`CouchDB find expressions`: https://docs.couchdb.org/en/stable/api/database/find.html#find-expressions
