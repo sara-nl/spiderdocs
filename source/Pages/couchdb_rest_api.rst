@@ -13,8 +13,6 @@ In this page you will learn how to use Picas CouchDB from the command line using
      * get all documents in a specific view
      * get document in a specific view in descending by key order
      * get the view/reduce output 
-     * find a document based on a value and return the whole document
-     * find a document based on a value and return the required fields
 
 
 First of all, create and configure the `.netrc` file which contains login and initialization information used by the auto-login process. 
