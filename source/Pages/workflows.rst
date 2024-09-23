@@ -203,6 +203,7 @@ we advice you to authenticate to PiCaS with the steps below.
 
 You are now ready to start using your PiCaS credentials without having to type them each time you or your jobs need to connect to the PiCaS server.
 Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
+You can also use Picas CouchDB from the command line using REST API calls with `curl`, see :ref:`CouchDB-REST-API`.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
