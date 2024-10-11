@@ -307,12 +307,26 @@ View your usage
 Staging
 -------
 
-.. note:: Currently staging via ada is not supported. We are working on an updated version using the bulk staging functionality and you may contact us for support until it is released.
-
 The dCache storage at SURF consists of magnetic tape storage and hard disk
 storage. If your quota allocation includes tape storage, then the data stored
 on magnetic tape has to be copied to a hard drive before it can be used.
-This action is called 'staging files' or ‘bringing a file online’.
+This action is called 'staging files' or ‘bringing a file online’. ADA supports 
+bulk staging which significantly improves performance compared to staging files 
+one by one.
+
+The files remain online as long as there is free space on the disk pools. When a 
+pool group is full (maximum of assigned quota on staging area) and free space is 
+needed, dCache will purge the least recently used cached files. The tape replica 
+will remain on tape. 
+
+The amount of time that a file is requested to stay on disk is called pin lifetime. 
+The file will not be purged until the pin lifetime has expired. You can specify the 
+pin lifetime with the argument `--lifetime` in your staging commands. The pin lifetime 
+can be set to SECONDS, MINUTES, HOURS or DAYS. If --lifetime is not given, default is 7 DAYS.
+
+For each staging request a reference is added in a log file in your home directory. 
+The log file can be found in ` ~/.ada/requests.log` and it saves the request IDs, 
+target paths and stage request timestamps.  
 
 Your macaroon needs to be created with UPDATE_METADATA permissions to allow for staging operations.
 
@@ -334,15 +348,26 @@ Your macaroon needs to be created with UPDATE_METADATA permissions to allow for 
    #file2  1635     2018-10-24 15:34 UTC  tape  NEARLINE
 
    #stage a single file
-   ada --tokenfile [PROJECT_tokenfile].conf --stage /[PROJECT_tape_dir]/file1
+   ada --tokenfile [PROJECT_tokenfile].conf --stage /[PROJECT_tape_dir]/file1   
+
+   #stage a single file with pin lifetime two weeks
+   ada --tokenfile [PROJECT_tokenfile].conf --stage /[PROJECT_tape_dir]/file1 --lifetime 14D   
+
+   #stage a directory (optionally recursively with --recursive)
+   ada --tokenfile [PROJECT_tokenfile].conf --stage /[PROJECT_tape_dir]/dirname/ 
 
    #stage a list of files
-   ada --tokenfile [PROJECT_tokenfile].conf --stage --from-file files-to-unstage
+   ada --tokenfile [PROJECT_tokenfile].conf --stage --from-file files-to-stage
+
 
 Unstaging
 ---------
 
 Your macaroon needs to be created with UPDATE_METADATA permissions to allow for unstaging operations.
+
+For each unstaging request a reference is added in a log file in your home directory. 
+The log file can be found in ` ~/.ada/requests.log` and it saves the request IDs, 
+target paths and unstage request timestamps. 
 
 ``--unstage <file>``
 
@@ -358,10 +383,11 @@ Your macaroon needs to be created with UPDATE_METADATA permissions to allow for 
    #unstage a single file
    ada --tokenfile [PROJECT_tokenfile].conf --unstage /[PROJECT_tape_dir]/file1
 
+   # unstage dir (optionally recursively with --recursive)
+   ada --tokenfile [PROJECT_tokenfile].conf --unstage /[PROJECT_tape_dir]/dirname/ 
+
    #unstage a list of files
-   ada --tokenfile [PROJECT_tokenfile].conf  --list /tape > files-to-unstage
-   sed -i -e 's/^/\/tape\//' files-to-unstage
-   ada --tokenfile [PROJECT_tokenfile].conf  --unstage --from-file files-to-unstage
+   ada --tokenfile [PROJECT_tokenfile].conf --unstage --from-file files-to-unstage 
 
 
 .. _transfer-data-rclone:
@@ -418,6 +444,11 @@ Event-driven processing
 Events are useful when you want to know something you’re interested in happened in your dCache project
 space, such as when new data is available or when files are staged from tape, etc.
 
+For debugging purposes, additional information is stored in your home directory under `~/.ada`:
+
+* The channel names are stored in `~/.ada/channels/channel-name-XXXXX` for reference
+* The channels in `~/.ada/channels/channel-status-XXXXXX` store a number with the last event ID so that when a competing client takes over, the client uses this ID to resume missed events
+
 * Subscribe to changes in a given directory:
 
 .. code-block:: bash
@@ -432,9 +463,9 @@ space, such as when new data is available or when files are staged from tape, et
 
 * Report staging events
 
-When you start this channel, all files in the scope will be listed, including their locality and QoS.
+When you start this channel, all files in the scope will be listed, including their locality and staging status.
 This allows your event handler to take actions, like starting jobs to process the files that are online.
-When all files have been listed, the command will keep listening and reporting all locality and QoS changes.
+When all files have been listed, the command will keep listening and reporting all locality and staging changes.
 
 .. code-block:: bash
 
