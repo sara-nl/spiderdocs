@@ -31,7 +31,8 @@ chmod 2777 ${TEMP_BUILD_DIR}
 # Build the documentation in a docker container
 SCRIPT=$(cat <<EOF
 umask 0002
-virtualenv -p python3.6 ~/venv # adding the version to avoid py2.7: 3.7+ breaks due to ssl version clash with python lib, so we use 3.6
+apt install -y python3.12-venv
+python3 -m venv ~/venv
 source ~/venv/bin/activate
 # modified to support the sphinx default theme and markdown
 pip install sphinx recommonmark sphinx_rtd_theme

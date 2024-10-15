@@ -361,11 +361,10 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'python': ('https://docs.python.org/3': None)}
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 # Set and import theme if building docs locally.
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 if not on_rtd:
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
