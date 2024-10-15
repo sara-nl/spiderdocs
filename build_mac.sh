@@ -12,7 +12,7 @@ fi
 if [[ "xx" != "x${2}x" ]]; then
   DOCKER_IMAGE="${2}"
 else
-  DOCKER_IMAGE="readthedocs/build:latest"
+  DOCKER_IMAGE="readthedocs/build:ubuntu-24.04-2024.06.17"
 fi
 
 # Create the output directory
