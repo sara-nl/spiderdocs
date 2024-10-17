@@ -202,7 +202,7 @@ we advice you to authenticate to PiCaS with the steps below.
         export PYTHONPATH
 
 You are now ready to start using your PiCaS credentials without having to type them each time you or your jobs need to connect to the PiCaS server.
-Good practices to build worflows with PiCaS can be found in `PiCaS example`_.
+Good practices to build worflows with PiCaS can be found in `PiCaS example`_. In addition, you can use Picas CouchDB from the web interface to work with tokens, see :ref:`CouchDB-Web`.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
