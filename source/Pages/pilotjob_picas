@@ -25,7 +25,7 @@ Besides reducing the overhead for job management including tracking and resubmis
 
 The picture below illustrates the workflow of pilot job systems: 
 (1), the user uploads work to the central database. This could be a list of parameter settings that need to be executed using some application on a computational resource. 
-The user then (2) submits jobs just containing the application to the Grid, which handles retrieving from (3) and updating of (4) the job database. 
+The user then (2) submits jobs just containing the application to the compute cluster or serve, which handles retrieving from (3) and updating of (4) the job database. 
 This process continues until all the work present in the database has been done, the application has crashed or the job has run out of time on the computational resource. 
 When all work has been done, the user retrieves (5) the results from the database.
 
@@ -63,7 +63,7 @@ The source code of PiCaS is on `Github Picas Client`_.
 PiCaS server
 ==========================
 
-PiCaS server, also called a Token Pool Server, is the central repository for the tasks. The PiCaS server is based on  `CouchDB`_ (see `CouchDB book`_), 
+PiCaS server, also called a Token Pool Server, is the central repository for the tasks. The PiCaS server is based on  CouchDB, 
 a NoSQL database, and the client side is written in Python.
 On the server side we have a queue which keeps track of which tokens are available, locked or done. 
 This allows clients to easily retrieve new pieces of work and allows also easy monitoring of the resources. 
@@ -76,7 +76,7 @@ PiCaS client
 
 The PiCaS client library was created to ease communication with the CouchDB back-end. It allows users to easily upload, fetch and modify tokens. 
 The system has been implemented as a Python Iterator, which means that the application is one large for loop that keeps on running as long as there is work to be done. 
-The client is written in Python and uses the python couchdb module, which requires at least python version 2.6.
+The client is written in Python and uses the python couchdb module, which requires at least python version 3.
 
 
 .. _picas_example:
@@ -84,7 +84,7 @@ The client is written in Python and uses the python couchdb module, which requir
 PiCaS example
 ==========================
 
-For PiCaS pilot job examples, please check `PiCaS in practice`_.
+For PiCaS pilot job examples, please check `PiCaS example`_.
 
 
 .. _picas_access:
@@ -97,7 +97,5 @@ If you want to request access, just contact us at helpdesk@surfsara.nl to discus
 
 .. Links:
 
-.. _`Github Picas Client`: https://github.com/jjbot/picasclient/
-.. _`CouchDB`: https://couchdb.apache.org/
-.. _`CouchDB book`: https://guide.couchdb.org/
-.. _`PiCaS in practice`: https://doc.grid.surfsara.nl/en/latest/Pages/Practices/picas/picas_example_dirac.html
+.. _`Github Picas Client`: https://github.com/sara-nl/picasclient/
+.. _`PiCaS example`: https://github.com/sara-nl/picasclient/
