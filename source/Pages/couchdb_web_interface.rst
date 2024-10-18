@@ -21,10 +21,14 @@ After logging in, choose your Picas database by clicking on the database name:
 .. image:: /Images/picas_create_a_token_1.png
    :align: center
 
+|
+
 Next. click on the '+' button next to 'All Documents' and add a new doc:
 
 .. image:: /Images/picas_create_a_token_2.png
    :align: center
+
+|
 
 For creating a new token, a few key-value pair needs to be defined. You can use the following template
 
@@ -46,11 +50,14 @@ Adjust the `_id` and if necessary `input`:
 .. image:: /Images/picas_create_a_token_3.png
    :align: center
 
+|
+
 Click on create document and you will find the newly created token in the todo view:
 
 .. image:: /Images/picas_create_a_token_4.png
    :align: center
 
+|
 
 .. _update-a-token:
 
@@ -64,16 +71,21 @@ Token_7 is in the locked view:
 .. image:: /Images/picas_update_a_token_1.png
    :align: center
 
+|
+
 Click on the token and adjust the value of key `"lock"` to 0:
 
 .. image:: /Images/picas_update_a_token_2.png
    :align: center
+
+|
 
 Save the changes and you will find the token in the todo view:
 
 .. image:: /Images/picas_update_a_token_3.png
    :align: center
 
+|
 
 
 .. _Query a simple view:
@@ -86,11 +98,14 @@ You can find these views under `Monitor > Views`.
 .. image:: /Images/picas_query_a_view_1.png
    :align: center
 
+|
+
 If you click on one view, you will see all the tokens which belong to this view:
 
 .. image:: /Images/picas_query_a_view_2.png
    :align: center
 
+|
 
 
 .. _Query-an-advanced-view:
@@ -104,10 +119,14 @@ Click on the view you want to query:
 .. image:: /Images/picas_reduce_function_1.png
    :align: center
 
+|
+
 Next, click on `options` on the top right corner. Select `reduce` in the query options and run query:
 
 .. image:: /Images/picas_reduce_function_2.png
    :align: center
+
+|
 
 Then you can see the overview of the tokens.
 
