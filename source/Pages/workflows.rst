@@ -201,8 +201,17 @@ we advice you to authenticate to PiCaS with the steps below.
         PYTHONPATH=$HOME/picas_cfg:$PYTHONPATH
         export PYTHONPATH
 
+
 You are now ready to start using your PiCaS credentials without having to type them each time you or your jobs need to connect to the PiCaS server.
-Good practices to build worflows with PiCaS can be found in `PiCaS example`_. In addition, you can use Picas CouchDB from the web interface to work with tokens, see :ref:`CouchDB-Web`.
+There are three different ways to access Picas: 
+    * from the Python client, see `Picas Client`_.
+    * from the web interface, see :ref:`CouchDB-Web`.
+    * from the command line, see :ref:`CouchDB-REST-API`.
+
+
+Good practices to build worflows with PiCaS can be found in `Picas Client`_.
+
+
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
@@ -282,8 +291,8 @@ Therefore we advice users to use ``scrontab`` instead of ``crontab`` when they w
 
 .. Links:
 
-.. _`Pilot job framework`: http://doc.grid.surfsara.nl/en/latest/Pages/Practices/pilot_jobs.html
-.. _`PiCaS`: http://doc.grid.surfsara.nl/en/latest/Pages/Practices/picas/picas_overview.html#picas-overview
+.. _`Pilot job framework`: https://doc.spider.surfsara.nl/en/latest/Pages/pilotjob_picas.html
+.. _`PiCaS`: https://doc.spider.surfsara.nl/en/latest/Pages/pilotjob_picas.html
 .. _`CouchDB`: http://couchdb.apache.org/
-.. _`PiCaS client`: http://doc.grid.surfsara.nl/en/latest/Pages/Practices/picas/picas_overview.html#picas-client
-.. _`PiCaS example`: http://doc.grid.surfsara.nl/en/latest/Pages/Practices/picas/picas_example.html#picas-example
+.. _`PiCaS client`: https://github.com/sara-nl/picasclient/
+.. _`Picas Client`: https://github.com/sara-nl/picasclient/
