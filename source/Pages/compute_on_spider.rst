@@ -21,57 +21,36 @@ The table below lists the available* Spider node types.
    - **Other characteristics**
    - **Included in the partition**
 
- * - 25
-   - wn-ca-[01-25]
+ * - 17
+   - wn-dc-[01-17]
    - AMD Rome 64 Cores/Socket
-   - 64
-   - 480 GB (7,5 GB)
-   - Local scratch 6TB SSD
-   - normal, infinite, short, interactive
+   - 60
+   - 960 GB (16 GB)
+   - Local scratch 12TB SSD
+   - normal
  * - 18
-   - wn-dc-[01-18]
-   - AMD Rome 64 Cores/Socket
-   - 64
-   - 960 GB (15 GB)
+   - wn-la-[01-18]
+   - AMD EPYC Bergamo 128 Cores/Socket
+   - 120
+   - 1440 GB (12 GB)
    - Local scratch 12TB SSD
-   - normal
- * - 5
-   - wn-ha-[01-05]
-   - AMD Rome 64 Cores/Socket
-   - 64
-   - 950 GB (14,85 GB)
-   - Local scratch 12TB SSD
-   - normal, infinite
- * - 5
-   - wn-hb-[01-05]
-   - AMD Naples 64 Cores/Socket
-   - 64
-   - 950 GB (14,85 GB)
-   - Local scratch 12TB SSD
-   - normal
+   - normal, infinite, short, interactive
  * - 2
-   - wn-gp-[01,02]
-   - Intel Cascade Lake 22 Cores/Socket
-   - 22
-   - 720 GB (32,77 GB)
-   - Local scratch 6TB SSD
-   - gpu_v100
- * - 3
-   - wn-ga-[01-03]
-   - AMD Rome (2x) 7 Cores/Socket
-   - 14
-   - 229 GB (16,38 GB)
+   - wn-ga-[01-02]
+   - NVIDIA A100 + AMD Rome (2x) 7 Cores/Socket
+   - 2 GPUs + 14 CPUs
+   - 224 GB (16 GB)
    - Local scratch 6TB SSD
    - gpu_a100_7c
  * - 5
    - wn-gb-[01-05]
-   - Intel Ice Lake(2x) 22 Cores/Socket
-   - 44
+   - NVIDIA A100 + Intel Ice Lake(2x) 22 Cores/Socket
+   - 2 GPUs+ 44 CPUs
    - 353 GB (8 GB)
    - Local scratch 6TB SSD
    - gpu_a100_22c
 
-* Updated on the 29th November, 2023.
+* Updated on the 8th November, 2024.
 
 .. _prepare-workloads:
 
