@@ -7,8 +7,18 @@ Service notices list
 List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` with most recent first:
 
 ==========
+2025
+==========
+* 2025-01-15 The issue with longer queue times has been resolved. Job prioritization is now working as expected.
+* 2025-01-10 Queue times are longer than usual due to a bug in the FairShare mechanism in Slurm.
+
+==========
 2024
 ==========
+
+* 2024-12-16 Spider maintenance has been successfully completed, and the cluster is now fully restored. Upgraded from CentOS Stream 8 to AlmaLinux 9 (binary-compatible with RHEL 9). Upgraded to Slurm version 24.05. 
+* 2024-12-05 Spider will undergo maintenance on Dec 12 and 13. The cluster will start draining 5 days beforehand. To keep scheduling your jobs you have to add a time that still fits before the maintenance: `sbatch --time=1-00:00:00 my_job_script.sh`
+* 2024-11-25 We experienced issues with the DNS servers, which may have impacted the execution of some jobs. Please review your workflows and let us know if you encounter any problems.
 * 2024-8-27 from 16.40 till 2024-8-28 at 09.00 am: The service is down due to network problem during a network maintenance. 
 * 2024-06-12 from 7.00 am till 2024-06-14 at 17.00 am: The service is down due to network problem. 
 * 2024-05-06 from 9.00 am till 10.30am: ui-01 has crashed and was not accessible until it was rebooted.
