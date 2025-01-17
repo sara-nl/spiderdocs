@@ -9,6 +9,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 ==========
 2025
 ==========
+
 * 2025-01-15 The issue with longer queue times has been resolved. Job prioritization is now working as expected.
 * 2025-01-10 Queue times are longer than usual due to a bug in the FairShare mechanism in Slurm.
 
