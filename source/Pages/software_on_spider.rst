@@ -204,6 +204,25 @@ where ``conda.yaml`` contains your installation, for example:
 
 Once the wrapper is created you need to add it to your path to run, and all relevant binaries (such as ``python``) will be called from the container wrapper: ``export PATH="/path/to/install_dir/bin:$PATH"``. You can put the export in your ``.bash_rc`` or set it by hand each time you want to use the container wrapper.
 
+To update the container with standard packages:
+
+.. code-block:: bash
+
+   conda-containerize update /path/to/install_dir/ --post-install update.yaml
+
+or 
+
+.. code-block:: bash
+
+   pip-containerize new --prefix /path/to/install_dir/ requirements.txt
+
+A local repository with a ``setup.py`` can be installed in editable mode, enabling modifications without reinstallation:
+
+.. code-block:: bash
+
+   pip install -e . 
+
+
 .. Tip:: There are more options that can be set in the ``spider.yaml`` file and while building / updating the wrapper. See the documentation and repository for more information:
 
     `LUMI Documentation <https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/>`_
