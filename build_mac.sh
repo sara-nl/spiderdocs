@@ -17,15 +17,15 @@ fi
 
 # Create the output directory
 if [[ -e ${OUTPUT_DIR} ]]; then
-  echo "Output directory already exists. Doing nothing. Supplied output directory: ${OUTPUT_DIR}"
-  exit 1
+  echo "Output directory already exists. Cleaning it up: ${OUTPUT_DIR}"
+  rm -rf "${OUTPUT_DIR}"/*
+else
+  mkdir -p "${OUTPUT_DIR}"
 fi
-mkdir -p "${OUTPUT_DIR}"
-rmdir "${OUTPUT_DIR}" # This seems odd, but makes sure all parent directories exist and that I can copy the temporary output directory to this location under the specified name
 
 # Create a temporary directory for the output which is world writable
 TEMP_BUILD_DIR=$(mktemp -d ${HOME}/rtfd_build_tempdir_XXXXXXXXXX)
-trap "rm -rf ${TEMP_BUILD_DIR}" ERR
+trap "rm -rf ${TEMP_BUILD_DIR}" EXIT
 chmod 2777 ${TEMP_BUILD_DIR}
 
 # Build the documentation in a docker container
