@@ -73,7 +73,7 @@ Create a macaroon
         --duration P7D \
         --chroot \
         --user [USERNAME] \
-        --permissions DOWNLOAD,UPLOAD,DELETE,MANAGE,LIST,READ_METADATA,UPDATE_METADATA \
+        --permissions DOWNLOAD,UPLOAD,DELETE,MANAGE,LIST,READ_METADATA,UPDATE_METADATA,STAGE \
         --ip [IP RANGE] \
         --output rclone [PROJECT_tokenfile]
 
@@ -90,7 +90,8 @@ DELETE               Delete a file or directory
 MANAGE               Rename or move a file or directory
 LIST                 List objects in a directory
 READ_METADATA        Read file status
-UPDATE_METADATA      Stage/unstage a file, change QoS
+UPDATE_METADATA      Change metadata of a file, change QoS
+STAGE                Stage (restore) a file from tape
 ===================  ===============================  
 
 You can explore the other commandline arguments with ``get-macaroon --help``.
