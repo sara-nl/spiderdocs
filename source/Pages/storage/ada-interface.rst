@@ -329,7 +329,7 @@ For each staging request a reference is added in a log file in your home directo
 The log file can be found in ` ~/.ada/requests.log` and it saves the request IDs, 
 target paths and stage request timestamps.  
 
-Your macaroon needs to be created with UPDATE_METADATA permissions to allow for staging operations.
+Your macaroon needs to be created with STAGE permissions to allow for staging operations.
 
 ``--stage <file>``
 
