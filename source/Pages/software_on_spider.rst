@@ -184,7 +184,13 @@ Run the following commands:
     cd hpc-container-wrapper
     bash install.sh spider
 
-The ``spider`` in the second command refers to the ``spider.yaml`` file in ``hpc-container-wrapper/configs``. Once the base installation is setup, you can create a wrapper with:
+The ``spider`` in the second command refers to the ``spider.yaml`` file in ``hpc-container-wrapper/configs``. Once the base installation is setup, export the bin path to be able to use the LCW commands
+
+.. code-block:: bash
+
+    export PATH="/path/to/hpc-container-wrapper/bin:$PATH"
+
+Then you can create a wrapper with:
 
 .. code-block:: bash
 
