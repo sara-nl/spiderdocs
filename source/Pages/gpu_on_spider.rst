@@ -18,16 +18,16 @@ GPUs on Spider
 Using GPU nodes
 ===============
 
-To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-gp-[01,02]`` and ``wn-ga-[01,02]`` and **not** on the UI nodes. 
+To run your program on GPU nodes some guidelines for the user have to be taken into account. Firstly, GPUs and their drivers are only available on the GPU nodes ``wn-ga-[01-02]`` and ``wn-gb-[01-05]`` and **not** on the UI nodes. 
 
 
 To *interactively* log in to a GPU node run:
 
 .. code-block:: bash
 
-   srun --partition=gpu_v100 --time=00:60:00 --gpus v100:1 --pty bash -i -l
+   srun --partition=gpu_a100_7c --time=00:60:00 --gpus=a100:1 --pty bash -i -l
 
-This will open a bash session on a machine in the ``gpu_v100`` partition for 60 minutes.
+This will open a bash session on a machine in the ``gpu_a100`` partition for 60 minutes.
 
 .. tip::
 
@@ -42,7 +42,7 @@ In case the version number of the drivers has to be known, the user can find the
 
    srun -p GPU_PARTITION --gpus GPU:N_GPUS nvidia-smi
 
-where the GPU_PARTITION is either ``gpu_v100``, ``gpu_a100_22c`` or ``gpu_a100_7c`` depending on which one you are planning to use. The ``gpu_a100_7c`` partition has an AMD CPU with 7 cores, while the ``gpu_a100_22c`` has an Intel with 22 cores per GPU. Both partitions have the exact same A100 cards. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which can be ``v100`` or ``a100``. 
+where the GPU_PARTITION is either ``gpu_a100_22c`` or ``gpu_a100_7c`` depending on which one you are planning to use. The ``gpu_a100_7c`` partition has an AMD CPU with 7 cores, while the ``gpu_a100_22c`` has an Intel with 22 cores per GPU. Both partitions have the exact same A100 cards. The ``--gpus`` flag specifies which type of GPU you want to use and how many, you will get ``N_GPUS`` up to the maximum in the cluster of type ``GPU`` which is ``a100``. 
 
 The compilation and running of code is recommended to be done inside of a singularity container, so start by building a singularity image. More information on singularity on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` can be found at :ref:`singularity containers <singularity-containers>`. Once the container is available, the program can be run.
 
