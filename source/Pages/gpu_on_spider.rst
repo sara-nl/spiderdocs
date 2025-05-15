@@ -225,6 +225,9 @@ The container was exposed to the GPU at build-time, and at run-time it also has 
 
 There is also a full HPC development image made available by Nvidia, called "HPC SDK", which is the software development kit that contains all the compilers, libraries and tools necessary to build efficient code that runs on GPUs. This image can be found `here <Https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc>`__.
 
+.. WARNING::
+   If you get an error during building at an ``apt update`` (or similar update mechanism) about writing to ``/tmp`` this is because Slurm has set the permissions of your ``/tmp`` in the slurm job to be only writable for the user account. ``apt`` is run by the system and can not write there. To solve this issue, in your definitions file add ``chmod 777 /tmp`` above any step (like ``apt update``) that needs to write in the tmp-directory.
+
 Running python
 ==============
 
