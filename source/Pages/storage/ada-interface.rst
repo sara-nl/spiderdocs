@@ -397,7 +397,9 @@ Cancelling Staging
 If you accidentally do a stage/unstage request, you can cancel it by calling the dCache API directly. This is not implemented yet in ADA.
 When staging you get an URL pointing to your request, for example: 
 
-``https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123``
+.. code-block:: bash
+
+    https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123
 
 First, you have to  set a BEARER_TOKEN in your terminal with:
 ``export BEARER_TOKEN=XYZ789``
@@ -405,11 +407,15 @@ where "XYZ789" is taken from the ``bearer_token`` line in your macaroon.
 
 You can do an API call directly to cancel this request by running in your terminal:
 
-``curl -i -H "Authorization: bearer $BEARER_TOKEN" -X PATCH "https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123" -H  "accept: application/json" -H  "Content-Type: application/json" -d '{"action":"cancel"}'``
+.. code-block:: bash
+
+    curl -i -H "Authorization: bearer $BEARER_TOKEN" -X PATCH "https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123" -H  "accept: application/json" -H  "Content-Type: application/json" -d '{"action":"cancel"}'
 
 And check the status of your request with:
 
-``curl -i -H "Authorization: bearer $BEARER_TOKEN" -H "Accept: application/json"  -XGET https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123``
+.. code-block:: bash
+
+    curl -i -H "Authorization: bearer $BEARER_TOKEN" -H "Accept: application/json"  -XGET https://dcacheview.grid.surfsara.nl:22880/api/v1/bulk-requests/abc-123
 
 
 .. _transfer-data-rclone:
