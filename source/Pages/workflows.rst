@@ -224,7 +224,7 @@ Snakemake
 
 Snakemake is a workflow management tool that uses `makefiles <https://en.wikipedia.org/wiki/Make_(software)>`_ to define analyses and provide reproducable and scalable results. The workflow can be developed locally and then moved to server, cluster, cloud or grid to scale up the data size and computational needs.
 
-Snakemake has integrations with `Slurm <https://slurm.schedmd.com/>`_, `PBS <https://adaptivecomputing.com/cherry-services/torque-resource-manager/>`_ and `SGE <https://en.wikipedia.org/wiki/Oracle_Grid_Engine>`_ for deploying to compute clusters, see the documentation `here <https://snakemake.readthedocs.io/en/stable/executing/cluster.html>`__.
+Snakemake has integrations with `Slurm <https://slurm.schedmd.com/>`_, `PBS <https://adaptivecomputing.com/cherry-services/torque-resource-manager/>`_ and `SGE <https://en.wikipedia.org/wiki/Oracle_Grid_Engine>`_ for deploying to compute clusters, see the snakemake plugin catalogue `here <https://snakemake.github.io/snakemake-plugin-catalog/>`_, and in particular the slurm executor plugin for use on Spider `here <https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html>`__.
 
 For a showcase that demonstrates the power of snakemake, we advise you to go through the tutorial found `here <https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html>`__.
 
