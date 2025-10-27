@@ -234,6 +234,14 @@ Once your project ends, all the relevant data and accounts will be removed accor
 the `Usage Agreement <https://portal.cua.surf.nl/user/eua>`_.
 
 
+.. _How to Acknowledge SURF:
+
+=======================
+How to Acknowledge SURF
+=======================
+
+We kindly ask you to acknowledge SURF in all publications, presentations, and outputs resulting from research projects that use our infrastructure.
+For the precise acknowledgment wording required for your project, please refer to your grant agreement.
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
 
