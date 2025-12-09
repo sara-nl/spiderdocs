@@ -4,7 +4,7 @@
 Monitoring Spider
 *****************
 
-There are two types of monitoring dashboards for :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, a `public section <https://jobsview.grid.surfsara.nl/grafana/d/i289WluZz/spider?orgId=1>`_ visible for everyone and a section visible only to `authenticated Spider users <https://monitor.spider.surfsara.nl/grafana/dashboards>`_.
+There are two types of monitoring dashboards for :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`, a `public section <https://jobsview.grid.surfsara.nl/grafana/d/wxEI-4DZk/spider-jobs?orgId=1&from=now-6h&to=now>`_ visible for everyone and a section visible only to `authenticated Spider users <https://monitor.spider.surfsara.nl/grafana/dashboards>`_.
 Both are shortly described below. First some general properties and settings are covered. 
 
 At the top of each of these dashboards is a time selection drop down to change the time range of the graph on the x-axis, along with a refresh button and refresh timer.
