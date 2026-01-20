@@ -6,6 +6,13 @@ Service notices list
 
 List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` with most recent first:
 
+=========
+2026
+=========
+
+* 2026-01-19 till 2026-01-20 at 12pm Unplanned maintenance in the network file system (/home and /project mounts). Some nodes might lose access to the shared file system.
+
+
 ==========
 2025
 ==========
