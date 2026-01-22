@@ -17,7 +17,7 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2025
 ==========
 
-* 2025-12-08 till 2026-01-19: Undergoing some routine maintenance. There will be reduced computing capacity for those days, but the cluster will still be available. Jobs in the infinite queue will need to be stopped, and be restarted after the nodes are back online.
+* 2025-12-08 till 2026-01-30: Undergoing some routine maintenance. There will be reduced computing capacity for those days, but the cluster will still be available. Jobs in the infinite queue will need to be stopped, and be restarted after the nodes are back online.
 * 2025-01-15 The issue with longer queue times has been resolved. Job prioritization is now working as expected.
 * 2025-01-10 Queue times are longer than usual due to a bug in the FairShare mechanism in Slurm.
 
