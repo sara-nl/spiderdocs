@@ -10,6 +10,10 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2026
 =========
 
+* 2026-02-23 from 9.00 am till 17:00 pm: planned maintenance on the generic Spider UIs and the Slurm batch node. All interactive processes on the UIs will be stopped and new jobs will not be accepted. The cluster will remain available for running jobs.
+
+* 2026-02-11 from 22.00 pm till 22:30 pm: planned maintenance on the generic Spider UIs. The UIs will not be reachable during this time and all interactive processes on the UIs will be stopped.
+
 * 2026-01-19 till 2026-01-20 at 12pm Unplanned maintenance in the network file system (/home and /project mounts). Some nodes might lose access to the shared file system.
 
 
