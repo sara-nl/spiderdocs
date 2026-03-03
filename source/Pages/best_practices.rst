@@ -12,7 +12,6 @@ Best practices
      * running a large amount of jobs on Spider
 
 
-==========     
 Background
 ==========
 
@@ -154,4 +153,50 @@ PiCaS works as a queue, providing a mechanism to step through the work one task 
 
 When your application involves several steps connected in a workflow that each need to be submitted as independent tasks, you may consider using :ref:`Snakemake <snakemake-on-spider>`. Snakemake is a python-based workflow managment tool for defining, managing and executing workflows with multiple steps and complex dependencies. There are possibilities to combine PiCaS and Snakemake to enable workflow automation and run many jobs and subtasks efficiently and fast. Please contact our :ref:`our helpdesk <helpdesk>` if you need help with automating your workloads on Spider.
 
+Moving a large amount of data within Spider
+===========================================
 
+General
+-------
+
+The main general advice is to do the move operation - no matter the tool that you use - **from a worker node (WN)**. Each machine has a connection to the storage cluster, and if many users use just the few UI machines, these will be strained by the large bandwidth usage. This can cause problems with the connection of the storage cluster, and can result in failure in extreme cases. While at that moment the WNs are not doing much at all in terms network traffic. Try spread the work out and use worker nodes, even multiple WNs if needed.
+
+Although it might add some technical overhead, sending data through the local scratch of a WN will improve performance, instead of moving straight between mounted filesystem folders. This is due to lowering the read/write load on the system. 
+
+When using tools like rclone and rsync (among others), try to use parameters that optimise transfers: 
+
+- Removing progress-bars, verbose output, lowering the loglevel will reduce load from output.
+- Add a bandwith limit when possible: ``--bwlimit 100M`` to limit bandwidth and not affect other users on the same node.
+- Use ``--size-only`` to only check file integrity by size, instead of hash/timestamp checks to reduce metadata and cpu load if possible.
+- Lowering parallelism helps reduce metadata interactions per second, decreasing system load. 
+- Exclude copied or unnecessary files with ``--exclude``.
+
+An example to run rclone to copy data:
+
+.. code-block:: bash
+
+   sbatch --wrap "rclone copy --size-only --transfers 2 --bwlimit 100M \
+          --exclude='.[obsolete files or logs]/' \
+          /home/[PROJECTNAME]-[username]/my-analysis /project/[PROJECTNAME]/Data/"
+
+
+Moving large amounts
+--------------------
+
+Moving a large amount of data can mean multiple things, here are two options: moving large amounts of data, moving many files. The assumption is that the files do not leave the Spider and are moved within the cluster.
+
+| 1. Moving files that are large (>10GB) that account for more than 1TB in total:
+| It is advised to start parallel jobs, as the cluster configured for moving large files in parallel. For small files it is recommended AGAINST parallel transfers, as the individual operations on short timescales affect the system negatively immensely.
+
+| 2. Moving files of which there are many, and are considered small (>10k files, roughly <1MB in size each):
+| It is advised to copy folder by folder, especially if the folder contains many small files. The storage cluster works on a folder by folder basis, and splitting in this way helps reduce the load. Another step to take is tarring many files into one larger file, when moving.
+
+Data verification
+-----------------
+
+In case you want to verify that all files are copied correctly, the best tool for this is ``rsync``, as it is very lightweight on the system. You should do such a check after the transfer has completed.
+
+Contact
+-------
+
+We are continuously working on improving the CephFS performance in Spider. However, there are still issues when user operations on files include too much metadata causing occasional mounting of ``/project`` or ``/home`` to fail on a cluster node. In case you experience this behavior often or notice that many of your jobs fail due to the mount not being available on the node, please contact us to discuss your workflow and interactions with the filesystem. It could be that your application or your job submission practice is triggering the problem and affecting other users on the shared filesystem.
