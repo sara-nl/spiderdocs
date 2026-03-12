@@ -209,7 +209,7 @@ There are three different ways to access Picas:
     * from the command line, see :ref:`CouchDB-REST-API`.
 
 
-Good practices to build worflows with PiCaS can be found in `Picas Client`_.
+Good practices to build worflows with PiCaS and great examples for PiCaS can be found in `Picas Client`_.
 
 
 
@@ -265,7 +265,7 @@ Please note that cronjobs on Spider can be used for testing purposes *only* and 
 this functionality as part of our service. If you wish to use cron jobs for production workflows
 please contact :ref:`our helpdesk <helpdesk>`.
 
-There are some restrictions when setting up a cronjob on Spider. The Spider login ``spider.surfsara.nl``
+There are some restrictions when setting up a cronjob on Spider. The Spider login ``spider.surf.nl``
 is automatically directed to two different login nodes ``ui-01.spider.surfsara.nl`` or
 ``ui-02.spider.surfsara.nl`` and cronjobs will be linked to the UI where they where created.
 If you would like to make changes in your cronjob you need to login directly to the login node (ui-01 or ui-02)

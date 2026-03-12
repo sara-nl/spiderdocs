@@ -20,12 +20,12 @@ Software on Spider
 System software
 ===============
 
-There are cases in which a user or project may need extra software that is not included on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)`. It may require the installation of a new software tool (i.e. emacs editor) or a specific version of a software component that is already on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` (i.e. gcc 9). As a user of this platform you are free to submit a request to :ref:`our helpdesk <helpdesk>` to ask us install software required for your project system-wide. The requests will be evaluated case-by-case, but in general the following policy applies:
+In the usual case the user or project needs extra software that is not included on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
+Extraction and Redistribution)`, it will require the installation of a new software tool (i.e. emacs editor) or a specific version of a software component that is already on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` (i.e. gcc 9). As a user of this platform you are free to submit a request to :ref:`our helpdesk <helpdesk>` to ask us install software required for your project system-wide. The requests will be evaluated case-by-case, but in general the following policy applies:
 
-    * Stand-alone applications easily available through the official RPM repositories (CentOS, EPEL, ...) are suitable to be installed system-wide. Some examples are emacs, joe, jq, ...
+    * Stand-alone applications easily available through the official RPM repositories (AlmaLinux, EPEL, ...) are suitable to be installed system-wide. Some examples are emacs, joe, jq, ...
 
-    * Alternative versions of core tools (i.e. Python 3.6, gcc 9, ...) will have to be evaluated case-by-case. We will accept requests of software that can be deployed using well defined and automated procedures.
+    * Alternative versions of core tools (i.e. Python 3.12, gcc 15, ...) will have to be evaluated case-by-case. We will accept requests of software that can be deployed using well defined and automated procedures.
 
 The standard supported login shell on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is bash. The standard supported software
@@ -34,7 +34,7 @@ setup is identical on all nodes. Basic Unix functionality is installed system-wi
         * software compilers (e.g., gcc, g++, f95)
         * editors (e.g., vi, vim, emacs, nano and edit).
         * graphical tools are supported via X11 ssh forwarding on the login node.
-        * operating system (OS on Spider is CentOS 8) on login and worker nodes.
+        * operating system (OS on Spider is Alma 9) on login and worker nodes.
 
 
 .. _user-installed-sw:
@@ -146,7 +146,7 @@ This example uses many options simultaneously to show the power of combining con
 
 Please note that it is possible to bind several directories by providing a comma
 separated list to the ``--bind`` option, e.g. ``--bind /cvmfs,/project``. Additional
-information can be found in the `Sylabs documentation`_.
+information can be found in the `Apptainer documentation`_.
 
 
 .. _lumi-containers:
@@ -265,7 +265,7 @@ Access
 ======
 
 If you already have access on Softdrive, then you can use it directly from :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)`, simply by exporting the ``/cvmfs/softdrive.nl/$USER``
+Extraction and Redistribution)`, simply by exporting the ``/cvmfs/softdrive.nl/[SOFTDRIVE_USERNAME]``
 software paths into your :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` scripts or your ``.bashrc`` file.
 
@@ -274,12 +274,12 @@ Extraction and Redistribution)` nodes, your Softdrive files will be available un
 
     /cvmfs/softdrive.nl/[SOFTDRIVE_USERNAME]/
 
-Please note that your [SOFTDRIVE_USERNAME] can be different than your [SPIDER_USERNAME].
+Please note that your [SOFTDRIVE_USERNAME] can be different from your [SPIDER_USERNAME].
 
 Installation your software
 ==========================
 
-1 Once access has been arranged, you can log in on the software distribution node, using your Softdrive username and password:
+1. Once access has been arranged, you can log in on the software distribution node, using your Softdrive username and password:
 
 .. code-block:: bash
 
@@ -312,6 +312,6 @@ Extraction and Redistribution)`.
 .. Links:
 
 .. _`Slurm documentation page`: https://slurm.schedmd.com/
-.. _`Sylabs documentation`:  https://www.sylabs.io/docs/
+.. _`Apptainer documentation`:  https://apptainer.org/documentation/
 .. _`Softdrive SURFsara`: http://doc.grid.surfsara.nl/en/latest/Pages/Advanced/grid_software.html#softdrive
 .. _`EESSI website`: https://www.eessi.io/docs/

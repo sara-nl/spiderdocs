@@ -20,9 +20,9 @@ If you run into problems and cannot find an answer in our :ref:`contents` or the
 :ref:`FAQ`, we encourage you to contact our experts who are there to support
 the :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` users. Send us an email with your question at:
-helpdesk@surfsara.nl
+servicedesk@surf.nl
 
-Find more about SURFsara support availability and response times `here`_.
+Find more about SURF support availability and response times `here`_.
 
 
 .. _expertise:
@@ -51,7 +51,7 @@ FAQ
 I cannot login after adding/changing my ssh keys
 ================================================
 
-If you added or changed your SSH key on the `SURFsara portal <https://portal.surfsara.nl/>`_, access to the login node
+If you added or changed your SSH key on the `SURF portal <https://portal.cua.surf.nl/>`_, access to the login node
 may not be immediately possible. It can take *up to 15 minutes* to be able to login
 to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)`. In case that it takes longer time, please contact us at :ref:`helpdesk <helpdesk>`.

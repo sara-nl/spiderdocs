@@ -155,9 +155,9 @@ Please note that in the above example, it is assumed that the data is present on
 Sharing data with macaroons
 ==============================
 
-Macaroons are bearer tokens that authorize someone to access certain directories or files. With this technique, you can share (some of) your data with anyone else. The other person does not need to have a user account or a certificate; only a WebDAV client that supports bearer tokens. Clients that support this are Curl, Rclone and (read only) ordinary browsers such as Firefox. 
+Macaroons are bearer tokens that authorize someone to access certain directories or files. With this technique, you can share (some of) your data with anyone else. The other person does not need to have a user account or a certificate; only a WebDAV client that supports bearer tokens. Clients that support this are Curl, Rclone and (read only) ordinary browsers such as Firefox. More information on approaching dCache can be found :ref:`here <https://doc.grid.surfsara.nl/en/latest/Pages/Advanced/storage_clients/webdav.html#available-webdav-doors>`.
 
-You can get a Macaroon with X509 authentication. Please note, that port 2883 is used for this. The lifetime of your proxy does not limit the lifetime of the macaroon.
+You can get a Macaroon with X509 authentication. The lifetime of your proxy does not limit the lifetime of the macaroon.
 
 .. code-block:: bash
 

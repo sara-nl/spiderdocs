@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# SURFsara user documentation documentation build configuration file
+# SURF user documentation documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -51,8 +51,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Spider user docs'
-copyright = u'SURFsara'
-author = u'SURFsara support team <helpdesk@surfsara.nl'
+copyright = u'SURF'
+author = u'SURF support team <servicedesk@surf.nl'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -230,7 +230,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   (master_doc, 'Spideruserdocumentation.tex', u'Spider user documentation',
-   u'SURFsara support team', 'manual'),
+   u'SURF support team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

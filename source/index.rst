@@ -1,4 +1,4 @@
- .. # Copyright 2018 SURFsara B.V.
+ .. # Copyright 2026 SURF B.V.
    #
    # Licensed under the Apache License, Version 2.0 (the "License");
    # you may not use this file except in compliance with the License.
@@ -92,4 +92,4 @@ Other info:
 
 .. Links:
 
-.. _`SURF`: https://surf.nl/
+.. _`SURF`: https://www.surf.nl/

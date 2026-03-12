@@ -20,8 +20,8 @@ are CephFS and SSDs. Home and project spaces are mounted on CephFS, while the ba
 large scratch areas on local SSD.
 
 CephFS is a distibuted parallel filesystem which stores files as objects and it is suitable for workloads
-that deal with comparably large files. Please note that conda/pip packages handling lots of small files can
-slow down the system response. For high I/O performance, we recommend the local scratch of the worker nodes on SSDs.
+that deal with comparably large files. **Please note that conda/pip packages handling lots of small files can
+slow down the system response.** For high I/O performance, we recommend the local scratch of the worker nodes on SSDs.
 
 .. _transfers-within-spider:
 
@@ -88,8 +88,8 @@ Using scientific catalogs
 
 Scientific catalogs allows you to share software and data repositories accross projects. For example if you would
 like to share a large biobank of data with other research projects you could request access
-to upload to the scientific catalogue. Then it will be accessible from the worker nodes similarly to the ``/home`` and ``/project``
-folders.
+to upload to the scientific catalogue. Then it will be accessible at ``/catalog`` from the worker nodes similarly 
+to the ``/home`` and ``/project`` folders.
 
 To request access to add a shared catalogue please reach out to :ref:`our helpdesk <helpdesk>`.
 
@@ -122,17 +122,17 @@ For more information about how to use scratch during your compute jobs, please r
 Querying internal storage usage
 -------------------------------
 
-The total usage of local spider storage is the total usage of project home folders and project space together. As a mounted filesystem, spider storage can be queried with local Linux commands. However, we advice against using `du` commands to query disk usage because that slows down the system. Instead, you can use `gettfattr` to query the preconfigured extended file attribute `ceph.dir.rbytes`.
+The total usage of local spider storage is the total usage of project home folders and project space together. As a mounted filesystem, spider storage can be queried with local Linux commands. However, we advice against using `du` commands to query disk usage because that slows down the system. Instead, you can use `getfattr` to query the preconfigured extended file attribute `ceph.dir.rbytes` or `stat` the required folder.
 
 **Example**
 
 .. code-block:: bash
 
-   # Project folder
+   # Get the storage attribute for the project folder
    getfattr -n ceph.dir.rbytes --absolute-names /project/[PROJECT]/
 
-   # Home folder
-   getfattr -n ceph.dir.rbytes --absolute-names /home/[PROJECT]-[USER]
+   # Stat the home folder
+   stat /home/[PROJECT]-[USER]
 
 Please note that this will only show your current usage, not the maximum or monthly average.
 
@@ -149,7 +149,7 @@ Transfers from own system
 =========================
 
 If you are logged in as a user on :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
-Extraction and Redistribution)` then we support ``scp``, ``rsync``,
+Extraction and Redistribution)` then we support ``scp``, ``rsync``, ``rclone``,
 ``curl`` or ``wget`` to transfer data between :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` and your own Unix-based system.
 Other options may be available, but these are currently not supported by us.
@@ -159,25 +159,25 @@ Other options may be available, but these are currently not supported by us.
 .. code-block:: bash
 
    # Using scp
-   scp [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
+   scp [spider-username]@spider.surf.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
 
    # Using rsync
-   rsync -a -W [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
+   rsync -a -W [spider-username]@spider.surf.nl:[path-to-your-spider-folder]/transferdata.tar.gz [path-to-your-local-folder]/
 
 * Example of transferring data from your own system to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
    # Using scp
-   scp [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/
+   scp [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surf.nl:[path-to-your-spider-folder]/
 
    # Using rsync
-   rsync -a -W [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surfsara.nl:[path-to-your-spider-folder]/
+   rsync -a -W [path-to-your-local-folder]/transferdata.tar.gz [spider-username]@spider.surf.nl:[path-to-your-spider-folder]/
 
 
 .. _using-dcache:
 
-SURF grid storage / dCache
+SURF dCache / grid storage
 ==========================
 
 SURF grid storage / dCache is our large scalable storage system for quickly processing huge volumes of data.
@@ -245,26 +245,26 @@ using ``scp`` and ``rsync`` to transfer data between :abbr:`Spider (Symbiotic Pl
 .. code-block:: bash
 
    # Using scp
-   scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+   scp /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surf.nl:/home/[ARCHIVE_USERNAME]/
 
    # Using rsync
-   rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/
+   rsync -a -W /home/[USERNAME]/transferdata.tar.gz [ARCHIVE_USERNAME]@archive.surf.nl:/home/[ARCHIVE_USERNAME]/
 
 * Transfer data from Data Archive to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)`:
 
 .. code-block:: bash
 
    # Using scp
-   scp [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
+   scp [ARCHIVE_USERNAME]@archive.surf.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
 
    # Using rsync
-   rsync -a -W [ARCHIVE_USERNAME]@archive.surfsara.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
+   rsync -a -W [ARCHIVE_USERNAME]@archive.surf.nl:/home/[ARCHIVE_USERNAME]/transferdata.tar.gz /home/[USERNAME]/
 
 In case that the file to be retrieved from Data Archive to :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data
 Extraction and Redistribution)` is not
 directly available on disk then the scp/rsync command will hang until the file is
 moved from tape to disk. Data Archive users can query the state of their files by
-logging into the Data Archive user interface and performing a ``dmls -l`` on the files
+logging into the Data Archive user interface and performing a ``dals -l`` on the files
 of interest. Here the state of the file is either on disk (REG) or on tape (OFL).
 The Data Archive user interface is accessible via ``ssh`` from anywhere for users that
 have a login account and an example is given below:
@@ -273,7 +273,7 @@ have a login account and an example is given below:
 
         ssh [ARCHIVE_USERNAME]@archive.surfsara.nl
 	      touch test.txt
-	      dmls  -l test.txt
+	      dals  -l test.txt
 	      -rw-r--r--  1 homer    homer    0 2019-04-25 15:24 (REG) test.txt
 
 Best practices for the usage of Data Archive are described on the `Data Archive`_ page.
@@ -291,6 +291,9 @@ Extraction and Redistribution)` is granted specific compute and storage
 resources in the context of a project. For these resources there is currently
 **no hard quotas**. However, we monitor both the core-hour consumption
 and storage usage to prevent that users exceed their granted allocation.
+There **is** a quota for the home folder as of April 2026: each user gets
+200GB in the home folder. Once this is filled you are blocked from writing until
+there is space again by removing data.
 
 .. _backup-policy:
 
@@ -298,10 +301,9 @@ and storage usage to prevent that users exceed their granted allocation.
 Backup policy
 =============
 
-The data stored on CephFS (home and project spaces) is disk only,
-replicated three times for redundancy. For disk-only data there is **no backup**.
-If you cannot afford to lose this data, we advise you to copy it elsewhere as well.
-
+The data stored on CephFS (home and project spaces) is disk only, replicated using 
+:ref:`erasure coding <https://en.wikipedia.org/wiki/Erasure_code` of 8 blocks with 3 parity blocks. 
+For disk-only data there is **no backup**. If you cannot afford to lose this data, we advise you to copy it elsewhere as well.
 
 =====================
 Data Ownership Policy
@@ -322,4 +324,4 @@ they have left the project.
 .. _`Data Archive`: https://servicedesk.surf.nl/wiki/display/WIKI/Data+Archive
 .. _`Sylabs documentation`:  https://www.sylabs.io/docs/
 .. _`dCache software`: https://www.dcache.org/
-.. _`using local scratch`: https://doc.spider.surfsara.nl/en/latest/Pages/compute_on_spider.html#using-local-scratch
+.. _`using local scratch`: https://doc.spider.surf.nl/en/latest/Pages/compute_on_spider.html#using-local-scratch

@@ -21,8 +21,8 @@ The table below lists the available* Spider node types.
    - **Other characteristics**
    - **Included in the partition**
 
- * - 17
-   - wn-dc-[01-17]
+ * - 15
+   - wn-dc-[01-15]
    - AMD Rome 64 Cores/Socket
    - 60
    - 960 GB (16 GB)
@@ -35,22 +35,22 @@ The table below lists the available* Spider node types.
    - 1440 GB (12 GB)
    - Local scratch 12TB SSD
    - normal, infinite, short, interactive
- * - 2
+ * - 3
    - wn-ga-[01-02]
-   - NVIDIA A100 + AMD Rome (2x) 7 Cores/Socket
-   - 2 GPUs + 14 CPUs
+   - NVIDIA A100-40GB (2x) + AMD Rome 7 Cores/Socket
+   - 4 :ref:`MIG <https://docs.nvidia.com/datacenter/tesla/mig-user-guide/introduction.html>` GPUs @ 20GB + 14 CPUs
    - 224 GB (16 GB)
    - Local scratch 6TB SSD
-   - gpu_a100_7c
+   - gpu_a100_mig
  * - 5
    - wn-gb-[01-05]
-   - NVIDIA A100 + Intel Ice Lake(2x) 22 Cores/Socket
-   - 2 GPUs+ 44 CPUs
+   - NVIDIA A100-40GB (2x) + Intel Ice Lake 22 Cores/Socket
+   - 2 GPUs + 44 CPUs
    - 353 GB (8 GB)
    - Local scratch 6TB SSD
    - gpu_a100_22c
 
-* Updated on the 8th November, 2024.
+* Updated on the 12th Mar, 2026.
 
 .. _prepare-workloads:
 
@@ -69,7 +69,7 @@ specify the resources that your programs need from the system to execute
 successfully.
 
 Before submitting your jobs, it is a good practice to run a few tests of your
-programs locally (on the login node or other system) and observe:
+programs locally (on the short partition node or login node if small) and observe:
 
 i) the time that your programs take to execute
 ii) the amount of cores that your software needs to execute these tasks
@@ -98,9 +98,8 @@ SBATCH directive      Functionality         Usage example
 ``-p <partition>``    partition selection   ``#SBATCH -p infinite`` (the job will run max for 720 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p short`` (the job will run max for 12 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p interactive`` (the job will run max for 12 hours)
-``-p <partition>``    partition selection   ``#SBATCH -p gpu_v100`` (the job will run on V100 nodes with a max of 120 hours)
 ``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100_22c`` (the job will run on A100 nodes with a max of 120 hours, with max 22 cores per GPU)
-``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100_7c`` (the job will run on A100 nodes with a max of 120 hours, with max 7 cores per GPU)
+``-p <partition>``    partition selection   ``#SBATCH -p gpu_a100_mig`` (the job will run on half a A100 with a max of 120 hours, with max 3 cores per GPU)
 ==================    ===================   =================
 
 The specifics of each partition can be found with ``scontrol show partitions``, the information per machine can be found with ``scontrol show node NAME``, where NAME is the name of the worker node and for a simple overview use ``sinfo``.
@@ -256,7 +255,7 @@ Job types
 CPU jobs
 ========
 
-* For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider better an HPC facility.
+* For regular jobs we advise to always only use 1 node per job script i.e., ``-N 1``. If you need multi-node job execution, consider using an HPC facility.
 * On :abbr:`Spider (Symbiotic Platform(s) for Interoperable Data Extraction and Redistribution)` we provide **8000 MB RAM per core**.
 
   * This means that your memory requirements can be specified via the number of cores *without* an extra directive for memory
@@ -287,8 +286,8 @@ Extraction and Redistribution)` as shown in the :ref:`table above <prepare-workl
   * Infinite partition jobs have a maximum walltime of 720 hours. Please note that you should run on this partition at your own risk. Jobs running on this partition can be killed without warning for system maintenance and we will not be responsible for data loss or loss of compute hours.
   * Short partition is meant for testing jobs. It allows for 2 jobs per user with 8 cores max per job and 12 hours max walltime.
   * Interactive partition is meant for testing jobs and has 12 hours maximum walltime.
-  * GPU V100 contains 1 Nvidia V100 (32GB) card per node.
   * GPU A100 contains 2 Nvidia A100 (40GB) cards per node.
+  * GPU MIG contains 4 Nvidia A100 (20GB) cards per node in MIG mode.
 
 =================
 Slurm constraints
@@ -334,11 +333,11 @@ to select specific hardware:
 ==========================    ===================    =================
 SBATCH directive              Functionality          Worker Node
 ==========================    ===================    =================
-``--constraint=napels``       cpu architecture       ``wn-hb-[01-05]``
-``--constraint=rome``         cpu architecture       ``wn-ca-[01-25], wn-ha-[01-05]``
+``--constraint=rome``         cpu architecture       ``wn-dc-[01-15]``
+``--constraint=bergamo``      cpu architecture       ``wn-la-[01-18]``
 ``--constraint=ssd``          local scratch          ``all nodes``
-``--constraint=amd``          cpu family             ``wn-ca-[01-25], wn-ha-[01-05], wn-hb-[01-05]``
-``--constraint=intel``        cpu family             ``wn-db-[01-06], wn-gb-[01-04], wn-gp-[01-02]``
+``--constraint=amd``          cpu family             ``wn-dc-[01-15], wn-la-[01-18], wn-ga-[01-03]``
+``--constraint=intel``        cpu family             ``wn-gb-[01-05]``
 ==========================    ===================    =================
 
 
@@ -381,7 +380,7 @@ Examples
    # look into the details of your usage by job
    sacct \
       -X #sum\
-      -S2020-07-01 -E2020-07-30 \
+      -S2025-07-01 -E2025-07-30 \
       --format=jobid,jobname,cputimeraw,user,alloccpus,state,partition,account,exitcode
 
 .. code-block:: bash
@@ -391,8 +390,8 @@ Examples
       -t second \
       -T cpu cluster \
       AccountUtilizationByUser \
-      Start="2020-07-01" \
-      End="2020-07-30"
+      Start="2025-07-01" \
+      End="2025-07-30"
 
 
 .. seealso:: Still need help? Contact :ref:`our helpdesk <helpdesk>`
