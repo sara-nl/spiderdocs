@@ -10,6 +10,8 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2026
 =========
 
+* 2026-04-13 at 03:00 the storage system went down. Investigation started at 09:00 and before noon it was found to be a known bug. Recovery was at 12:00.
+
 * 2026-03-31 home-folders of users are limited to 200GB max. You can still log in and move data to ``/project`` or remove data, but you can not write new data to ``/home/$USER``.
 
 * 2026-02-26 from 9:00 am till 15:00 pm: Unplanned maintenance users might experience mounting issues on their /project directories. Update 15:20 Situation is improving, we are closely monitoring.
