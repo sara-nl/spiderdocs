@@ -12,7 +12,7 @@ defaults:
     # if this is not a thing which exist
     # I will do a singularity pull
     #container_src: 'docker://centos:8'
-    container_src: 'docker://quay.io/centoshyperscale/centos:stream8'
+    container_src: 'docker://almalinux:9.6-minimal'
     # name of the container image when on disk
     container_image: container.sif 
     sqfs_image: img.sqfs 
@@ -46,7 +46,7 @@ force:
     # Environment variables can be used here 
     # but they will be expanded during build,
     # not during runtime
-    singularity_executable_path: "/usr/bin/singularity"
+    singularity_executable_path: "/usr/bin/apptainer"
     
 # Value will override any user set value
 
