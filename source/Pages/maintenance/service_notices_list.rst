@@ -10,6 +10,10 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2026
 =========
 
+* 2026-05-18 at 10:00 in order to keep the service up and running safely, some maintenance will be done during the day, to address a CVE. No downtime is expected.
+
+* 2026-04-30 at 16:00 unscheduled maintenance: Login machines and worker nodes had to be rebooted to apply a fix for a security issue.
+
 * 2026-04-13 at 03:00 the storage system went down. Investigation started at 09:00 and before noon it was found to be a known bug. Recovery was at 12:00.
 
 * 2026-03-31 home-folders of users are limited to 200GB max. You can still log in and move data to ``/project`` or remove data, but you can not write new data to ``/home/$USER``.
