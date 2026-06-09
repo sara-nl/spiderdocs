@@ -169,8 +169,7 @@ When using conda- and/or pip-based virtual environments, consider using LCW inst
 Caveats to LCW
 ==============
 
-You can only run a single apptainer container simultaneously, so if you have LCW running in your terminal, you can not run a second container in the same terminal. Recursive containerization is also disallowed in apptainer.
-When using very specific **large** containers, such as GPU containers (Nvidia, AMD, Intel), use the container directly instead of user LCW, as you have to build on top of the container contents.
+When using very specific **large** containers, such as GPU containers (Nvidia, AMD, Intel), use the container directly instead of using LCW, as you have to build on top of the container contents.
 
 Example code
 ============
