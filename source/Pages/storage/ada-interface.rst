@@ -69,7 +69,7 @@ Create a macaroon
 .. code-block:: bash
 
     get-macaroon \
-        --url https://webdav.grid.surfsara.nl:2880/pnfs/grid.sara.nl/data/[PROJECT] \
+        --url https://webdav.grid.surfsara.nl:443/pnfs/grid.sara.nl/data/[PROJECT] \
         --duration P7D \
         --chroot \
         --user [USERNAME] \
@@ -132,7 +132,7 @@ Inspect the macaroon
     [tokenfile]
     type = webdav
     bearer_token = MDAxY2xvY2F0aWXXXXXXXXXXXXXXXX
-    url = https://webdav.grid.surfsara.nl:2880/
+    url = https://webdav.grid.surfsara.nl:443/
     vendor = other
     user =
     password =
