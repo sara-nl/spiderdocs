@@ -10,6 +10,10 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2026
 =========
 
+* 2026-07-31 User network namespaces have been disabled to address recent CVE security vulnerabilities. This affects Apptainer and container workflows. We're working on a way to re-enable them.
+
+* 2026-07-03 From July 1st we see greatly improved stability from the changes rolled out June 1st
+
 * 2026-05-28 Multi-MDS has been rolled out, there are now 5 servers handling storage usage, with each having a backup.
 
 * 2026-05-18 at 10:00 in order to keep the service up and running safely, some maintenance will be done during the day, to address a CVE. No downtime is expected.
