@@ -34,7 +34,21 @@ space.
 As a Data manager you have direct credentials on dCache and it is possible
 to access the browser view using your SURFcua credentials in the following link:
 
+https://webdav.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
+
+There is also a secure WebDAV door, which accepts X.509 certificate authentication in addition to CUA credentials, and supports macaroon-based access:
+
 https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
+
+To access via macaroon, open the URL above with your bearer token appended, then enter your CUA credentials when prompted:
+
+https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/?authz=<bearer_token>
+
+The bearer token is the value of bearer_token in your macaroon config file.
+
+The macaroon must be IP-matched to your current network. A macaroon created on Spider includes an IP restriction scoped to the SURF network and will only work for browser access from within that network. 
+To access from your local machine, either create the macaroon locally using the get-macaroon script (see Section :ref:`run-ada-anywhere`), or specify your institute's IP range explicitly with --ip when creating the macaroon on Spider.
+Note that some web browsers may not support this method.
 
 .. note:: You may be asked for a browser certificate, just select cancel and you will be asked for your credentials. These are the same credentials used for logging in to the SURF CUA portal in :numref:`setting-up-your-account`)
 
@@ -527,6 +541,7 @@ Here is an example of a .netrc file that you can create in your home to use user
    login [your-ui-username]
    password [your-ui-password]
 
+.. _run-ada-anywhere:
 
 ================
 Run ADA anywhere
@@ -546,6 +561,8 @@ local machine, then you need to install the following `get-macaroon` and `view-m
 * ``wget https://raw.githubusercontent.com/sara-nl/GridScripts/master/get-macaroon``
 * ``wget https://raw.githubusercontent.com/sara-nl/GridScripts/master/view-macaroon``
 * And their dependencies: ``pymacaroons, python3-html2text``
+
+.. note:: Macaroons created on Spider include an IP restriction scoped to the SURF network. If you need a macaroon that works from your local machine (for example to access dCache via the browser) create it locally using the get-macaroon script above, or specify your institute's IP range explicitly with --ip when creating the macaroon on Spider.
 
 =======================
 ADA configuration files
