@@ -37,7 +37,7 @@ https://webdav.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
 
 To access via macaroon, open the URL above with your bearer token appended, then enter your CUA credentials when prompted:
 
-https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/?authz=<bearer_token>
+https://webdav.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/?authz=<bearer_token>
 
 The bearer token is the value of bearer_token in your macaroon config file.
 
