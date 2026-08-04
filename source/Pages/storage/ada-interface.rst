@@ -31,14 +31,9 @@ dCache storage can be viewed both through the ADA tools or through the browser
 using the web client. The browser view is available only for Data managers, and is just an additional way to explore the storage
 space.
 
-As a Data manager you have direct credentials on dCache and it is possible
-to access the browser view using your SURFcua credentials in the following link:
+As a Data manager you have direct credentials on dCache and it is possible to access the browser view using your SURFcua credentials or a macaroon at the following link:
 
 https://webdav.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
-
-There is also a secure WebDAV door, which accepts X.509 certificate authentication in addition to CUA credentials, and supports macaroon-based access:
-
-https://webdav-secure.grid.surfsara.nl/pnfs/grid.sara.nl/data/[PROJECT]/
 
 To access via macaroon, open the URL above with your bearer token appended, then enter your CUA credentials when prompted:
 
