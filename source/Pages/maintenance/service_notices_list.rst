@@ -10,6 +10,11 @@ List of notable changes and incidents on :abbr:`Spider (Symbiotic Platform(s) fo
 2026
 =========
 
+*2026-11-03 Network namespaces have been re-enabled.
+
+* 2026-10-26 Network namespaces have been disabled
+Due to an urgent security warning the network namespaces are disabled until a patch can be deployed. This impacts at least apptainer, but could affect more.
+
 * 2026-07-31 User network namespaces have been disabled to address recent CVE security vulnerabilities. This affects Apptainer and container workflows. We're working on a way to re-enable them.
 
 * 2026-07-03 From July 1st we see greatly improved stability from the changes rolled out June 1st
