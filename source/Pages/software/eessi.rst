@@ -28,24 +28,24 @@ To access the EESSI software stack, first set up the EESSI environment by runnin
 
 .. code-block:: bash
 
-  source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+  source /cvmfs/software.eessi.io/versions/2025.06/init/bash
 
 You should be able to see the following output
 
 .. code-block:: bash
 
-  Found EESSI repo @ /cvmfs/software.eessi.io/versions/2023.06!
+  Found EESSI repo @ /cvmfs/software.eessi.io/versions/2025.06!
   archdetect says x86_64/amd/zen2
   Using x86_64/amd/zen2 as software subdirectory.
-  Found Lmod configuration file at /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/.lmod/lmodrc.lua
-  Found Lmod SitePackage.lua file at /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/.lmod/SitePackage.lua
+  Found Lmod configuration file at /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/.lmod/lmodrc.lua
+  Found Lmod SitePackage.lua file at /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/.lmod/SitePackage.lua
   Using /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all as the directory to be added to MODULEPATH.
-  Using /cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen2/modules/all as the site extension directory to be added to MODULEPATH.
+  Using /cvmfs/software.eessi.io/host_injections/2025.06/software/linux/x86_64/amd/zen2/modules/all as the site extension directory to be added to MODULEPATH.
   Initializing Lmod...
-  Prepending /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
-  Prepending site path /cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
-  Environment set up to use EESSI (2023.06), have fun!
-  {EESSI 2023.06} [xxxxx@ui-01 ~]$
+  Prepending /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
+  Prepending site path /cvmfs/software.eessi.io/host_injections/2025.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
+  Environment set up to use EESSI (2025.06), have fun!
+  {EESSI 2025.06} [xxxxx@ui-01 ~]$
 
 The last line is the shell prompt where you can run your bash commands.
 
