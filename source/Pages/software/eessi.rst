@@ -33,14 +33,20 @@ To access the EESSI software stack, first set up the EESSI environment by runnin
 You should be able to see the following output
 
 .. code-block:: bash
-
+  
+  [xxx@ui-02 ~]$ source /cvmfs/software.eessi.io/versions/2025.06/init/bash
   Found EESSI repo @ /cvmfs/software.eessi.io/versions/2025.06!
   archdetect says x86_64/amd/zen2
+  archdetect could not detect any accelerators
   Using x86_64/amd/zen2 as software subdirectory.
   Found Lmod configuration file at /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/.lmod/lmodrc.lua
   Found Lmod SitePackage.lua file at /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/.lmod/SitePackage.lua
-  Using /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all as the directory to be added to MODULEPATH.
+  Using /cvmfs/software.eessi.io/host_injections/2025.06/software/linux/x86_64/amd/zen2 as the site extension directory for installations.
+  Using  as the site extension directory for accelerated installations.
+  Adding Lmod site configuration file path () to /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/.lmod/lmodrc.lua
+  Using /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/modules/all as the directory to be added to MODULEPATH.
   Using /cvmfs/software.eessi.io/host_injections/2025.06/software/linux/x86_64/amd/zen2/modules/all as the site extension directory to be added to MODULEPATH.
+  Found libcurl CAs file at RHEL location, setting CURL_CA_BUNDLE
   Initializing Lmod...
   Prepending /cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
   Prepending site path /cvmfs/software.eessi.io/host_injections/2025.06/software/linux/x86_64/amd/zen2/modules/all to $MODULEPATH...
@@ -65,7 +71,7 @@ You can directly load the modules that you need. For example, to load Python mod
 
 .. code-block:: bash
 
-  module load Python/3.10.8-GCCcore-12.2.0
+  module load Python/3.13.5-GCCcore-14.3.0
 
 
 .. _eessi-job-script:
@@ -85,11 +91,11 @@ You can also use the EESSI software stack in a job script in Spider by inclduing
   #SBTACH -p normal
 
   # source the EESSI environment
-  source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+  source /cvmfs/software.eessi.io/versions/2025.06/init/bash
 
   # load the modules in EESSI
-  module load matplotlib/3.7.0-gfbf-2022b
-  module load Python/3.10.8-GCCcore-12.2.0
+  module load matplotlib/3.10.5-gfbf-2025b
+  module load Python/3.13.5-GCCcore-14.3.0
 
   # confim that EESSI repository is used
   echo "I am running on " $HOSTNAME
